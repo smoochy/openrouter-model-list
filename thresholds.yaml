@@ -1,0 +1,35 @@
+# Hard floor — no buffer applied. Models whose parameter count can't be
+# determined from their OpenRouter id (e.g. no "28b"-style token) are
+# excluded, since we can't verify they meet this floor. Use `allowlist`
+# below to force-include specific models regardless.
+min_param_b: 28
+
+# Soft thresholds derived from mengram's current extraction prompt + schema
+# size (~16.8k chars / ~4.2k tokens). buffer_pct is added on top of these
+# before filtering.
+min_context_length: 40000
+min_max_output_tokens: 8000
+buffer_pct: 5
+require_structured_output: true
+
+# Post-probe filters, using OpenRouter's aggregated endpoint stats
+# (uptime_last_1d / latency_last_30m.p50). Leave empty to disable.
+min_uptime:
+max_latency_ms:
+
+# If buffering shrinks the candidate pool below this, relax buffer_pct
+# step-wise toward 0 until the pool is large enough (min_param_b stays fixed).
+min_candidate_pool: 3
+
+# Model IDs always included in the candidate pool, bypassing min_param_b and
+# the context/output thresholds. Still must pass require_structured_output
+# (if enabled) — excluded with a warning if not. Still probed and scored
+# normally. May be empty.
+allowlist:
+  - openrouter/owl-alpha
+
+# Model IDs always included in the candidate pool, bypassing min_param_b,
+# context/output thresholds, AND require_structured_output entirely. Use for
+# models known to be suitable that don't report structured-output support via
+# the catalog API. Still probed and scored normally. May be empty.
+hardallowlist: []
