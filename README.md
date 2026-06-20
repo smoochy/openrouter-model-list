@@ -1,17 +1,17 @@
-# mengram-model-list
+# openrouter-model-list
 
 [![README Style](https://img.shields.io/badge/README%20style-standard-2ea44f)](https://github.com/RichardLitt/standard-readme)
-[![CI](https://github.com/smoochy/mengram-model-list/actions/workflows/update-models.yml/badge.svg)](https://github.com/smoochy/mengram-model-list/actions)
+[![CI](https://github.com/smoochy/openrouter-model-list/actions/workflows/update-models.yml/badge.svg)](https://github.com/smoochy/openrouter-model-list/actions)
 
 [![Coindrop](https://img.shields.io/badge/Tip%20me%20crypto-smoochy-FFB655?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUxMikgc2NhbGUoLjEgLS4xKSIgZmlsbD0iIzAwMCI%2BPHBhdGggZD0iTTE5NjIgNTAwOCBjMCAtNDAgMCAtNzkgLTEgLTg1IC0xIC05IC0yNSAtMTMgLTg2IC0xMyBsLTg1IDAgMCAtODUgYzAgLTYxIDQgLTg1IDEzIC04NiA2IDAgNDUgMCA4NSAxIDgyIDEgNzUgMTIgNzQgLTEwNyBsLTEgLTYzIDg3IDAgODcgMCAwIDgzIC0xIDgyIC04NiAzIC04NSAzIDEgODIgMSA4MiA4MyAzIGM2OCAyIDgyIDAgODMgLTEzIDAgLTggMSAtNDYgMiAtODUgbDAgLTcwIDg3IDAgODYgMCAtMSA4MyAtMSA4MiAtODYgMyAtODYgMyAxIDgyIDIgODIgLTg3IDMgLTg2IDMgMCAtNzN6Ii8%2BPHBhdGggZD0iTTM5MzIgNDgyMCBjLTQgLTMgLTcgLTQyIC02IC04NiBsMCAtODIgLTc5IDIgYy00MyAxIC04MiAtMSAtODYgLTQgLTQgLTMgLTcgLTQxIC03IC04NSBsMSAtODAgNzAgLTIgYzEwNCAtMyAxMDEgLTUgMTAwIDgzIC0xIDg5IDAgOTAgMTAxIDg5IGw3MCAtMiAtMiA4MSBjLTEgNDUgLTIgODQgLTMgODcgLTEgNiAtMTUwIDYgLTE1OSAtMXoiLz48cGF0aCBkPSJNNDEwMiA0NjQ1IGMtMyAtNSAtNiAtNDQgLTcgLTg3IGwwIC03NiA4NSAwIDg2IDEgMCA4NSAtMSA4NSAtNzggMSBjLTQ0IDEgLTgyIC0zIC04NSAtOXoiLz48cGF0aCBkPSJNMjg0MCA0NTUzIGMtMzAzIC02MyAtNTUyIC0zMTAgLTYwNCAtNTk5IC0xOCAtOTkgLTEyIC05MSAtNjkgLTk4IC0xNDkgLTIwIC0xMzAgLTI1IC0xNzUgNDEgLTc0IDEwOCAtMTg0IDIwMSAtMzEyIDI2MSAtNjkgMzMgLTE5NyA2MyAtMjc3IDY1IC02NCAyIC03NiAtMSAtOTUgLTIxIC0yMyAtMjIgLTIzIC0yNiAtMjYgLTMyNiBsLTMgLTMwMyAtNDIgLTIzIGMtMjYwIC0xNDMgLTUyMiAtMzg5IC02ODIgLTY0MiBsLTMwIC00NyAtMTkwIC0xIGMtMTA0IDAgLTIwMiAtMyAtMjE3IC03IC00MCAtMTEgLTk2IC02OSAtMTA4IC0xMTEgLTggLTI1IC0xMCAtMjE0IC04IC01ODMgbDMgLTU0NSAyNyAtNDEgYzQ1IC02OSA3MyAtNzYgMzAyIC03OCAxNTUgLTEgMjAxIC00IDIwNCAtMTQgNiAtMTggMTA4IC0xNjcgMTQxIC0yMDQgMTE4IC0xMzcgMjA3IC0yMjQgMzIwIC0zMTEgNDIgLTMyIDEwMCAtNzIgMTI4IC04OCAyOSAtMTcgNTYgLTM1IDYwIC00MSA0IC02IDcgLTE1OCA4IC0zMzcgMCAtMzIyIDEgLTMyNSAyNCAtMzY2IDE0IC0yNSA0MCAtNTEgNjUgLTY1IDQwIC0yMyA0NyAtMjMgMzIxIC0yNCAxNTQgMCAyOTYgMyAzMTYgOCA0OSAxMiAxMDUgNjYgMTE4IDExNCA2IDIxIDExIDEwOSAxMSAxOTYgMCAxNDYgMSAxNTggMTggMTUzIDkgLTMgNDIgLTggNzIgLTExIDMwIC0zIDYyIC04IDcwIC0xMCAzNyAtMTAgMjA5IC0xOSAzNTUgLTE5IDIzMCAwIDMzNiAxMSA1ODkgNjAgNjYgMTIgMjM2IDYwIDMxOSA4OSA1NCAxOSAxMDEgMzUgMTA1IDM1IDQgMCA3IC0xMDcgNyAtMjM4IDAgLTIyNiAxIC0yMzkgMjIgLTI4MyAxNiAtMzEgMzYgLTUzIDY1IC02OSA0MyAtMjQgNDUgLTI0IDMzOCAtMjQgMzM1IDAgMzQ2IDIgMzk3IDc3IGwyOCA0MiAxIDU1MSAxIDU1MSA0NCA1OSBjMTQ0IDE5MCAyNDAgNDE1IDI4MyA2NjEgNCAyMiAxMyAyNCA0OSAxMCA0NSAtMTkgNTAgLTM4IDUyIC0yMjIgMSAtMTM3IDMgLTE1NCAyNCAtMTkxIDMwIC01MyA4NCAtODQgMTUzIC04OCAyOSAtMiA1OSAtMSA2NiAyIDggMyAxMiAzMCAxMiA4NyBsMCA4MiAtNDIgLTEgLTQzIC0xIC0xIDE1NSBjLTEgMTM0IC00IDE2MiAtMjEgMjAyIC0zNiA4MCAtOTYgMTI4IC0xOTIgMTUyIGwtNDMgMTIgLTQgNzQgYy0yIDQxIC02IDkxIC0xMCAxMTAgLTMgMTkgLTggNDYgLTExIDYwIC0zMiAxODEgLTEyNiAzOTQgLTI1MSA1NzAgLTU2IDc4IC0yNDAgMjc2IC0zMTcgMzQwIC0xMDUgODcgLTMwMSAyMTQgLTQwOCAyNjQgbC0zOSAxOCA4IDcxIGMxNCAxNDEgNiAyMzIgLTMxIDM0NSAtODkgMjY0IC0zMDUgNDU2IC01ODQgNTE4IC01NCAxMiAtMjI4IDEwIC0yOTEgLTN6Ii8%2BPHBhdGggZD0iTTM5MzEgNDQ3NSBjLTYgLTggLTcgLTEwNCAtMiAtMTUzIDEgLTEwIDIyIC0xMiA4NCAtMTAgbDgyIDMgMCA3OCBjMSA0MyAtMyA4MSAtOCA4NCAtMTcgMTAgLTE0OCA4IC0xNTYgLTJ6Ii8%2BPHBhdGggZD0iTTQ2OTQgNDA1OCBsMSAtODMgLTg2IC0zIC04NiAtMyAwIC04NCAwIC04NCA4NiAtMyA4NiAtMyAtMSAtODMgLTEgLTgzIDg2IDMgODYgMyAwIDgwIDAgODAgLTg2IDMgLTg2IDMgMSA4NCAwIDg0IDg1IDMgODUgMyAxIDgzIDEgODIgLTg3IDAgLTg3IDAgMiAtODJ6Ii8%2BPHBhdGggZD0iTTQ4NjQgMzg4OCBsMSAtODMgODUgMCA4NSAwIDAgODAgLTEgODAgLTg1IDMgLTg1IDMgMCAtODN6Ii8%2BPC9nPjwvc3ZnPg%3D%3D)](https://coindrop.to/smoochy) [![Tip me uptime](https://img.shields.io/badge/Tip%20me%20uptime%20%F0%9F%96%A5%EF%B8%8F-smoochy84-E9C46A?logo=buymeacoffee&logoColor=000000)](https://www.buymeacoffee.com/smoochy84) [![Ko-fi](https://img.shields.io/badge/Ko--fi-smoochy-7CC6FE?logo=ko-fi&logoColor=000000)](https://ko-fi.com/smoochy)
 
-> A daily-refreshed, weighted list of free OpenRouter models suitable for [mengram](https://github.com/alibaizhanov/mengram)'s knowledge-extraction step, with automatic fallback when a model is retired or renamed.
+> Daily-refreshed, scored lists of free OpenRouter models for different use cases. Consumers point at the file matching their requirements; the workflow keeps it current without manual upkeep.
 
-This repository publishes `models.json`: a ranked, scored set of free
+This repository publishes `models-mengram.json`: a ranked, scored set of free
 OpenRouter models that meet mengram's extraction requirements (context
 length, output tokens, structured-output support). A scheduled GitHub
 Actions workflow re-fetches the OpenRouter catalog, probes each candidate
-model, and rewrites `models.json` so consumers always have a working
+model, and rewrites `models-mengram.json` so consumers always have a working
 fallback list without manual upkeep.
 
 If this project saves you time or helps your setup, you can support ongoing
@@ -40,6 +40,15 @@ renamed, which made that configuration brittle and caused silent extraction
 failures. This repository provides a maintained, automatically updated
 fallback list so mengram can select from several known-good free models
 instead of relying on one.
+
+## Available Model Lists
+
+| File | Use Case | Key Requirement |
+| ---- | -------- | --------------- |
+| [`models-mengram.json`](models-mengram.json) | [mengram](https://github.com/alibaizhanov/mengram) knowledge extraction | Structured output (`response_format`) support, ≥40k context |
+| [`models-yt-summarizer.json`](models-yt-summarizer.json) | [yt-transcript-distiller](https://github.com/smoochy/yt-transcript-distiller) — YouTube transcript summarization | ≥32k context, plain text generation (no structured output required) |
+
+Each file is independently generated with its own `thresholds-*.yaml` configuration. Point your `model_list_url` at the file matching your use case.
 
 ## How It Works
 
@@ -85,7 +94,7 @@ instead of relying on one.
    `(0.6*uptime + 0.3*latency_norm + 0.1*capability_norm) * own_uptime`
    (OpenRouter's uptime matters most, then latency, then context/parameter
    size, all multiplied by our own reliability malus) and sort descending
-   into `models.json`.
+   into the output file.
 
 ## Configuration
 
@@ -110,7 +119,7 @@ Edit the file and either wait for the next scheduled run or trigger
 
 ## Output Format
 
-`models.json`:
+`models-mengram.json`:
 
 ```json
 {
@@ -147,7 +156,7 @@ meaning, so consumers can detect incompatible changes.
 ## Consuming
 
 ```
-https://raw.githubusercontent.com/smoochy/mengram-model-list/main/models.json
+https://raw.githubusercontent.com/smoochy/openrouter-model-list/main/models-mengram.json
 ```
 
 mengram reads this URL via its `model_list_url` config option and falls back
@@ -160,7 +169,7 @@ through the ranked list if the primary model becomes unavailable.
 - **Scheduled**: daily at 03:00 UTC
 - **Manual**: via `workflow_dispatch`
 
-Each run regenerates `models.json` and the per-model probe history under
+Each run regenerates the model list files and the per-model probe history under
 `history/`, and commits the changes only if something changed.
 
 ## Probe History
@@ -184,7 +193,7 @@ reviewed and adapted before publication.
 - No secrets are committed to the repository
 - The workflow uses the `OPENROUTER_API_KEY` repository secret to fetch the
   catalog and probe candidate models
-- The built-in `GITHUB_TOKEN` is used to commit `models.json` and
+- The built-in `GITHUB_TOKEN` is used to commit the model list files and
   `history/` updates
 
 ## Maintainers
@@ -193,8 +202,8 @@ reviewed and adapted before publication.
 
 ## Contributing
 
-Issues and pull requests are welcome. Keep `thresholds.yaml`, the filtering
-and scoring code, and this README aligned so the published `models.json`
+Issues and pull requests are welcome. Keep `thresholds-*.yaml`, the filtering
+and scoring code, and this README aligned so the published model list
 behavior stays easy to audit.
 
 ## License

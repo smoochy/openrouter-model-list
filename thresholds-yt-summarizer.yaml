@@ -1,0 +1,16 @@
+# For YouTube transcript summarization.
+# Transcripts for long videos can reach 30k–40k tokens; context floor is mandatory.
+# No structured output required — plain text summarization only.
+min_param_b: 14
+min_context_length: 32000
+min_max_output_tokens: 2000
+buffer_pct: 5
+require_structured_output: false
+min_uptime:
+max_latency_ms:
+min_candidate_pool: 3
+allowlist:
+  - meta-llama/llama-4-scout:free
+  - openrouter/owl-alpha
+  - qwen/qwen3-32b:free
+hardallowlist: []
