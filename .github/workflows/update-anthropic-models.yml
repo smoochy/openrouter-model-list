@@ -24,21 +24,22 @@ jobs:
             -H "x-api-key: $ANTHROPIC_API_KEY" \
             -H "anthropic-version: 2023-06-01" \
           | python3 -c "
-          import json, sys
-          data = json.load(sys.stdin)
-          models = [
-            {'id': m['id'], 'name': m.get('display_name', m['id'])}
-            for m in data.get('data', [])
-            if m.get('type') == 'model'
-          ]
+          import json, sys, datetime
+          raw = json.load(sys.stdin)
+          models = [m for m in raw.get('data', []) if m.get('type') == 'model']
           models.sort(key=lambda m: m['id'])
-          print(json.dumps(models, indent=2))
-          " > anthropic-models.json
+          with open('anthropic-models.json', 'w') as f:
+              json.dump(models, f, indent=2)
+              f.write('\n')
+          entry = {'timestamp': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'), 'models': models}
+          with open('history/anthropic-models.jsonl', 'a') as f:
+              f.write(json.dumps(entry, separators=(',', ':')) + '\n')
+          "
 
-      - name: Commit if changed
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add anthropic-models.json
-          git diff --cached --quiet || git commit -m "Update Anthropic model list"
+          git add anthropic-models.json history/anthropic-models.jsonl
+          git commit -m "Update Anthropic model list"
           git push
