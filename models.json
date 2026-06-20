@@ -1,36 +1,46 @@
 {
-  "generated_at": "2026-06-19T04:33:20.451183Z",
+  "generated_at": "2026-06-20T04:30:25.722164Z",
   "schema_version": 2,
   "models": [
     {
-      "id": "openrouter/owl-alpha",
-      "score": 0.8845,
-      "context_length": 1048756,
-      "max_output_tokens": 262144,
-      "uptime": 0.9998,
-      "latency_ms": 1923,
+      "id": "google/gemma-4-31b-it:free",
+      "score": 0.8609,
+      "context_length": 262144,
+      "max_output_tokens": 32768,
+      "uptime": 0.9984,
+      "latency_ms": 1051,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8424,
+      "score": 0.8609,
       "context_length": 1000000,
       "max_output_tokens": 262144,
+      "uptime": 0.9993,
+      "latency_ms": 2234,
+      "own_uptime": 1.0,
+      "sanity_ok": true
+    },
+    {
+      "id": "openrouter/owl-alpha",
+      "score": 0.7651,
+      "context_length": 1048756,
+      "max_output_tokens": 262144,
       "uptime": 0.9994,
-      "latency_ms": 2543,
+      "latency_ms": 3909,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "qwen/qwen3-next-80b-a3b-instruct:free",
-      "score": 0.0772,
+      "score": 0.0667,
       "context_length": 262144,
       "max_output_tokens": null,
-      "uptime": 0.709,
-      "latency_ms": 924,
-      "own_uptime": 0.1111,
-      "sanity_ok": true
+      "uptime": 0.6688,
+      "latency_ms": 980,
+      "own_uptime": 0.1,
+      "sanity_ok": false
     }
   ]
 }
