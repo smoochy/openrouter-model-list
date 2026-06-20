@@ -12,11 +12,28 @@ from filters import filter_candidates
 from openrouter_client import fetch_models
 from probe import HISTORY_DIR, probe_model, read_history, record_probe
 from scoring import NEUTRAL_UPTIME, compute_score, compute_uptime, passes_post_probe_filters
-from thresholds import DEFAULT_THRESHOLDS_PATH, load_thresholds
+from thresholds import load_thresholds
 
 REPO_ROOT = Path(__file__).parent.parent
-MODELS_JSON_PATH = REPO_ROOT / "models.json"
+
+PROFILES = {
+    "mengram": {
+        "thresholds_path": REPO_ROOT / "thresholds.yaml",
+        "output_path": REPO_ROOT / "models-mengram.json",
+    },
+    "yt-summarizer": {
+        "thresholds_path": REPO_ROOT / "thresholds-yt-summarizer.yaml",
+        "output_path": REPO_ROOT / "models-yt-summarizer.json",
+    },
+}
+
 SCHEMA_VERSION = 2
+
+
+def resolve_profile(name: str) -> dict:
+    if name not in PROFILES:
+        raise ValueError(f"Unknown profile: {name!r}. Choose from: {list(PROFILES)}")
+    return PROFILES[name]
 
 
 def generate(
@@ -87,14 +104,25 @@ def generate(
 
 
 def main() -> int:
+    import argparse
+    parser = argparse.ArgumentParser(description="Generate an OpenRouter model list.")
+    parser.add_argument(
+        "--profile",
+        choices=list(PROFILES),
+        default="mengram",
+        help="Which profile to run (default: mengram)",
+    )
+    args = parser.parse_args()
+
+    profile = resolve_profile(args.profile)
     api_key = os.environ["OPENROUTER_API_KEY"]
     client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
     now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
     generate(
-        thresholds_path=DEFAULT_THRESHOLDS_PATH,
+        thresholds_path=profile["thresholds_path"],
         history_dir=HISTORY_DIR,
-        output_path=MODELS_JSON_PATH,
+        output_path=profile["output_path"],
         fetch_models_fn=fetch_models,
         fetch_endpoint_stats_fn=fetch_endpoint_stats,
         probe_model_fn=probe_model,

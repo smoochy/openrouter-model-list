@@ -1,8 +1,30 @@
 """Tests for generate_models.generate()."""
 import json
 
+import pytest
+
 from generate_models import generate
 from scoring import NEUTRAL_UPTIME
+
+
+def test_resolve_profile_mengram():
+    from generate_models import resolve_profile, REPO_ROOT
+    p = resolve_profile("mengram")
+    assert p["thresholds_path"] == REPO_ROOT / "thresholds.yaml"
+    assert p["output_path"] == REPO_ROOT / "models-mengram.json"
+
+
+def test_resolve_profile_yt_summarizer():
+    from generate_models import resolve_profile, REPO_ROOT
+    p = resolve_profile("yt-summarizer")
+    assert p["thresholds_path"] == REPO_ROOT / "thresholds-yt-summarizer.yaml"
+    assert p["output_path"] == REPO_ROOT / "models-yt-summarizer.json"
+
+
+def test_resolve_profile_unknown_raises():
+    from generate_models import resolve_profile
+    with pytest.raises(ValueError, match="Unknown profile"):
+        resolve_profile("bogus")
 
 
 def make_model(id, context_length=40000, max_completion_tokens=8000, supported_parameters=None, free=True):
