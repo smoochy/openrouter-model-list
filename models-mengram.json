@@ -1,35 +1,35 @@
 {
-  "generated_at": "2026-06-27T04:22:52.208866Z",
+  "generated_at": "2026-06-28T04:31:49.640466Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.922,
+      "score": 0.9281,
       "context_length": 1000000,
       "max_output_tokens": 262144,
-      "uptime": 0.9973,
-      "latency_ms": 1195,
+      "uptime": 0.9979,
+      "latency_ms": 1100,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "openrouter/owl-alpha",
-      "score": 0.8495,
+      "score": 0.7952,
       "context_length": 1048756,
       "max_output_tokens": 262144,
-      "uptime": 0.9999,
-      "latency_ms": 2506,
+      "uptime": 0.9998,
+      "latency_ms": 3411,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "qwen/qwen3-next-80b-a3b-instruct:free",
-      "score": 0.1744,
+      "score": 0.1903,
       "context_length": 262144,
       "max_output_tokens": null,
-      "uptime": 0.6534,
-      "latency_ms": 807,
-      "own_uptime": 0.2609,
+      "uptime": 0.867,
+      "latency_ms": 870,
+      "own_uptime": 0.24,
       "sanity_ok": false
     }
   ]
