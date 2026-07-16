@@ -1,76 +1,76 @@
 {
-  "generated_at": "2026-07-15T05:26:42.106999Z",
+  "generated_at": "2026-07-16T05:37:06.836343Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.926,
+      "score": 0.9186,
       "context_length": 1000000,
       "max_output_tokens": 262144,
-      "uptime": 0.9959,
-      "latency_ms": 1192,
-      "own_uptime": 1.0,
+      "uptime": 0.9947,
+      "latency_ms": 1026,
+      "own_uptime": 0.9821,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-nano-30b-a3b:free",
-      "score": 0.8799,
+      "score": 0.8913,
       "context_length": 256000,
       "max_output_tokens": null,
-      "uptime": 0.9919,
-      "latency_ms": 680,
+      "uptime": 0.9894,
+      "latency_ms": 466,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8462,
+      "score": 0.8496,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9977,
-      "latency_ms": 1952,
-      "own_uptime": 0.96,
+      "uptime": 0.9973,
+      "latency_ms": 1914,
+      "own_uptime": 0.9615,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-      "score": 0.8046,
+      "score": 0.8076,
       "context_length": 256000,
       "max_output_tokens": 65536,
-      "uptime": 0.9148,
-      "latency_ms": 606,
-      "own_uptime": 0.96,
+      "uptime": 0.8982,
+      "latency_ms": 410,
+      "own_uptime": 0.9615,
       "sanity_ok": true
     },
     {
       "id": "openai/gpt-oss-20b:free",
-      "score": 0.6369,
+      "score": 0.6599,
       "context_length": 131072,
       "max_output_tokens": 32768,
-      "uptime": 0.9523,
-      "latency_ms": 4126,
+      "uptime": 0.9498,
+      "latency_ms": 3718,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
-      "id": "google/gemma-4-31b-it:free",
-      "score": 0.4099,
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "score": 0.4015,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9983,
-      "latency_ms": 1106,
-      "own_uptime": 0.4773,
-      "sanity_ok": false
+      "uptime": 0.9803,
+      "latency_ms": 2812,
+      "own_uptime": 0.5385,
+      "sanity_ok": true
     },
     {
-      "id": "google/gemma-4-26b-a4b-it:free",
-      "score": 0.3751,
+      "id": "google/gemma-4-31b-it:free",
+      "score": 0.3646,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9815,
-      "latency_ms": 3229,
-      "own_uptime": 0.52,
-      "sanity_ok": true
+      "uptime": 0.9987,
+      "latency_ms": 1351,
+      "own_uptime": 0.4318,
+      "sanity_ok": false
     },
     {
       "id": "qwen/qwen3-next-80b-a3b-instruct:free",
@@ -84,12 +84,12 @@
     },
     {
       "id": "meta-llama/llama-3.3-70b-instruct:free",
-      "score": 0.0016,
+      "score": 0.0015,
       "context_length": 131072,
       "max_output_tokens": null,
       "uptime": 0.0,
-      "latency_ms": null,
-      "own_uptime": 0.12,
+      "latency_ms": 11346,
+      "own_uptime": 0.1154,
       "sanity_ok": false
     },
     {
@@ -99,7 +99,7 @@
       "max_output_tokens": null,
       "uptime": 0.0,
       "latency_ms": null,
-      "own_uptime": 0.08,
+      "own_uptime": 0.0769,
       "sanity_ok": false
     }
   ]
