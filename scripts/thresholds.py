@@ -11,6 +11,7 @@ DEFAULTS = {
     "min_max_output_tokens": 8000,
     "buffer_pct": 5,
     "require_structured_output": True,
+    "require_tools": False,
     "min_uptime": None,
     "max_latency_ms": None,
     "min_candidate_pool": 3,

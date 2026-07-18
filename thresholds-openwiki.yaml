@@ -1,0 +1,23 @@
+# Profile for OpenWiki (agentic repo-documentation generator).
+# OpenWiki reads many files per synthesis step and writes whole wiki pages
+# in one shot, so it needs a large context window, a high output ceiling,
+# and tool-calling for its agent loop.
+min_param_b: 70
+
+min_context_length: 128000
+min_max_output_tokens: 16000
+buffer_pct: 5
+require_structured_output: false
+require_tools: true
+
+# Post-probe filters, using OpenRouter's aggregated endpoint stats
+# (uptime_last_1d / latency_last_30m.p50). Leave empty to disable.
+min_uptime:
+max_latency_ms:
+
+# If buffering shrinks the candidate pool below this, relax buffer_pct
+# step-wise toward 0 until the pool is large enough (min_param_b stays fixed).
+min_candidate_pool: 2
+
+allowlist: []
+hardallowlist: []

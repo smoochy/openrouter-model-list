@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-07-19
+
+### Added
+
+- `openwiki` profile (`thresholds-openwiki.yaml`, output `models-openwiki.json`): 70B floor, 128k context, 16k output, tool-calling required — for OpenWiki repo-documentation runs
+- `require_tools` threshold flag + `supports_tools()` filter (checks `tools`/`tool_choice` in `supported_parameters`); soft-allowlisted models missing tool support are excluded with a warning
+- `models-openwiki.json` generation step in `update-models.yml`
+- Tests: `supports_tools`, `require_tools` filtering, allowlist tool-warning
+
 ## 2026-06-20
 
 ### Added
