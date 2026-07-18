@@ -25,6 +25,10 @@ PROFILES = {
         "thresholds_path": REPO_ROOT / "thresholds-yt-summarizer.yaml",
         "output_path": REPO_ROOT / "models-yt-summarizer.json",
     },
+    "openwiki": {
+        "thresholds_path": REPO_ROOT / "thresholds-openwiki.yaml",
+        "output_path": REPO_ROOT / "models-openwiki.json",
+    },
 }
 
 SCHEMA_VERSION = 2

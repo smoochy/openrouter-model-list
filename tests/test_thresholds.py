@@ -24,6 +24,7 @@ def test_load_thresholds_reads_all_fields(tmp_path):
         "min_max_output_tokens": 8000,
         "buffer_pct": 5,
         "require_structured_output": True,
+        "require_tools": False,
         "min_uptime": None,
         "max_latency_ms": None,
         "min_candidate_pool": 3,
@@ -43,6 +44,7 @@ def test_load_thresholds_applies_defaults_for_missing_keys(tmp_path):
     assert result["min_max_output_tokens"] == 8000
     assert result["buffer_pct"] == 5
     assert result["require_structured_output"] is True
+    assert result["require_tools"] is False
     assert result["min_uptime"] is None
     assert result["max_latency_ms"] is None
     assert result["min_candidate_pool"] == 3

@@ -1,5 +1,5 @@
 from conftest import make_model
-from filters import filter_candidates, is_free, parse_param_count, supports_structured_output
+from filters import filter_candidates, is_free, parse_param_count, supports_structured_output, supports_tools
 from thresholds import DEFAULTS
 
 
@@ -21,6 +21,47 @@ def test_is_free_checks_zero_pricing():
 def test_supports_structured_output():
     assert supports_structured_output(make_model("a/b", supported_parameters=["response_format"])) is True
     assert supports_structured_output(make_model("a/b", supported_parameters=["tools"])) is False
+
+
+def test_supports_tools():
+    assert supports_tools(make_model("a/b", supported_parameters=["tools"])) is True
+    assert supports_tools(make_model("a/b", supported_parameters=["tool_choice"])) is True
+    assert supports_tools(make_model("a/b", supported_parameters=["response_format"])) is False
+
+
+def test_filter_candidates_requires_tools_when_configured():
+    thresholds = dict(DEFAULTS)
+    thresholds["buffer_pct"] = 0
+    thresholds["require_structured_output"] = False
+    thresholds["require_tools"] = True
+
+    models = [
+        make_model("tooled/model-32b:free", supported_parameters=["tools"]),
+        make_model("untooled/model-32b:free", supported_parameters=["response_format"]),
+    ]
+
+    result = filter_candidates(models, thresholds)
+
+    ids = [m["id"] for m in result]
+    assert ids == ["tooled/model-32b:free"]
+
+
+def test_filter_candidates_allowlist_excludes_missing_tools_with_warning(capsys):
+    thresholds = dict(DEFAULTS)
+    thresholds["buffer_pct"] = 0
+    thresholds["require_structured_output"] = False
+    thresholds["require_tools"] = True
+    thresholds["allowlist"] = ["no-tools/model"]
+
+    models = [
+        make_model("no-tools/model", context_length=1000, max_completion_tokens=1, supported_parameters=[]),
+    ]
+
+    result = filter_candidates(models, thresholds)
+
+    assert result == []
+    captured = capsys.readouterr()
+    assert "allowlisted model no-tools/model excluded: missing tool-calling support" in captured.err
 
 
 def test_filter_candidates_applies_param_floor_without_buffer():

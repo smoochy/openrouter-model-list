@@ -27,6 +27,11 @@ def supports_structured_output(model: dict) -> bool:
     return "response_format" in params or "structured_outputs" in params
 
 
+def supports_tools(model: dict) -> bool:
+    params = model.get("supported_parameters", [])
+    return "tools" in params or "tool_choice" in params
+
+
 def filter_candidates(models: list[dict], thresholds: dict) -> list[dict]:
     """Filter free models by suitability thresholds.
 
@@ -60,6 +65,12 @@ def filter_candidates(models: list[dict], thresholds: dict) -> list[dict]:
                 file=sys.stderr,
             )
             continue
+        if thresholds["require_tools"] and not supports_tools(m):
+            print(
+                f"warning: allowlisted model {m['id']} excluded: missing tool-calling support",
+                file=sys.stderr,
+            )
+            continue
         soft_allowed.append(m)
 
     allowed = hard_allowed + soft_allowed
@@ -87,6 +98,8 @@ def filter_candidates(models: list[dict], thresholds: dict) -> list[dict]:
             if max_out is not None and max_out < min_out:
                 continue
             if thresholds["require_structured_output"] and not supports_structured_output(m):
+                continue
+            if thresholds["require_tools"] and not supports_tools(m):
                 continue
             candidates.append(m)
 
