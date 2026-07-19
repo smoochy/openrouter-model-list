@@ -1,35 +1,35 @@
 {
-  "generated_at": "2026-07-18T23:04:22.065130Z",
+  "generated_at": "2026-07-19T05:51:14.725247Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.9225,
+      "score": 0.9246,
       "context_length": 1000000,
       "max_output_tokens": 262144,
-      "uptime": 0.9978,
-      "latency_ms": 1013,
-      "own_uptime": 0.9836,
+      "uptime": 0.9977,
+      "latency_ms": 985,
+      "own_uptime": 0.9841,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8462,
+      "score": 0.8615,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9975,
-      "latency_ms": 2052,
-      "own_uptime": 0.9667,
+      "uptime": 0.9974,
+      "latency_ms": 1819,
+      "own_uptime": 0.9688,
       "sanity_ok": true
     },
     {
       "id": "qwen/qwen3-next-80b-a3b-instruct:free",
-      "score": 0.003,
+      "score": 0.0025,
       "context_length": 262144,
       "max_output_tokens": null,
       "uptime": 0.0,
       "latency_ms": null,
-      "own_uptime": 0.1148,
+      "own_uptime": 0.0952,
       "sanity_ok": false
     }
   ]
