@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-05
+
+### Changed
+
+- `.github/workflows/openwiki-update.yaml` keeps every `sanity_ok` model from `models-openwiki.json` as a fallback candidate rather than taking only the top-scoring one, and the run step walks the list in score order until one succeeds. `sanity_ok` records that a smoke call returned something, which is a weaker claim than surviving a full documentation run: a scheduled mengram run died on `Received empty response from chat model call.` from the top free model while the second candidate was untouched. The list stays free-only; no paid model enters the rotation
+
 ## 2026-07-19
 
 ### Added
