@@ -12,13 +12,18 @@ This repository implements a **daily-refreshed, scored model list pipeline** for
 
 ## High-Level Data Flow
 
-<!-- openwiki: mermaid parse failed and this diagram was converted to a text fence so it does not break rendering. Fix the diagram source and restore the mermaid fence. Parser error: Heuristic: an unescaped angle bracket inside a label breaks rendering; rephrase the label. -->
-```text
+```mermaid
 flowchart TD
-    A[GitHub Actions Workflow<br/>update-models.yml<br/>Daily 03:00 UTC] --> B[generate_models.py<br/>--profile mengram]
-    A --> C[generate_models.py<br/>--profile yt-summarizer]
-    A --> D[generate_models.py<br/>--profile openwiki]
-    A --> E[fetch_anthropic_models.py<br/>Weekly Tue 03:00 UTC]
+    A[GitHub Actions Workflow
+update-models.yml
+Daily 03:00 UTC] --> B[generate_models.py
+--profile mengram]
+    A --> C[generate_models.py
+--profile yt-summarizer]
+    A --> D[generate_models.py
+--profile openwiki]
+    A --> E[fetch_anthropic_models.py
+Weekly Tue 03:00 UTC]
 
     B --> F[models-mengram.json]
     C --> G[models-yt-summarizer.json]
@@ -26,36 +31,52 @@ flowchart TD
     E --> I[anthropic-models.json]
 
     subgraph Pipeline[Per-Profile Pipeline]
-        B1[Fetch OpenRouter Models<br/>openrouter_client.py] --> B2[Filter Free Models<br/>filters.py]
-        B2 --> B3[Apply Profile Thresholds<br/>thresholds-*.yaml]
-        B3 --> B4[Fetch Endpoint Stats<br/>endpoint_stats.py]
-        B4 --> B5[Probe Each Candidate<br/>probe.py]
-        B5 --> B6[Read 30-Day Probe History<br/>probe.py]
-        B6 --> B7[Score Candidates<br/>scoring.py]
-        B7 --> B8[Write Output JSON<br/>generate_models.py]
+        B1[Fetch OpenRouter Models
+openrouter_client.py] --> B2[Filter Free Models
+filters.py]
+        B2 --> B3[Apply Profile Thresholds
+thresholds-*.yaml]
+        B3 --> B4[Fetch Endpoint Stats
+endpoint_stats.py]
+        B4 --> B5[Probe Each Candidate
+probe.py]
+        B5 --> B6[Read 30-Day Probe History
+probe.py]
+        B6 --> B7[Score Candidates
+scoring.py]
+        B7 --> B8[Write Output JSON
+generate_models.py]
     end
 
-    F -.-> J[Consumers<br/>mengram, yt-summarizer, OpenWiki]
+    F -.-> J[Consumers
+mengram, yt-summarizer, OpenWiki]
     G -.-> J
     H -.-> J
-    I -.-> K[Consumers<br/>yt-summarizer Claude selector]
+    I -.-> K[Consumers
+yt-summarizer Claude selector]
 ```
 
 **Caption:** High-level pipeline: scheduled workflow runs per-profile generation; each profile runs the full filter→probe→score pipeline; outputs consumed by downstream tools.
 
 ## Component Architecture
 
-<!-- openwiki: mermaid parse failed and this diagram was converted to a text fence so it does not break rendering. Fix the diagram source and restore the mermaid fence. Parser error: Heuristic: an unescaped angle bracket inside a label breaks rendering; rephrase the label. -->
-```text
+```mermaid
 flowchart LR
     subgraph Scripts[scripts/]
-        GM[generate_models.py<br/>Orchestrator]
-        FL[filters.py<br/>Threshold filtering]
-        ES[endpoint_stats.py<br/>OpenRouter endpoint stats]
-        PR[probe.py<br/>Probe & history]
-        SC[scoring.py<br/>Weighted scoring]
-        TH[thresholds.py<br/>Load YAML + defaults]
-        OR[openrouter_client.py<br/>Fetch model catalog]
+        GM[generate_models.py
+Orchestrator]
+        FL[filters.py
+Threshold filtering]
+        ES[endpoint_stats.py
+OpenRouter endpoint stats]
+        PR[probe.py
+Probe & history]
+        SC[scoring.py
+Weighted scoring]
+        TH[thresholds.py
+Load YAML + defaults]
+        OR[openrouter_client.py
+Fetch model catalog]
     end
 
     subgraph Config[Config]
@@ -65,14 +86,19 @@ flowchart LR
     end
 
     subgraph Data[Data]
-        HM[history/*.jsonl<br/>30-day rolling probes]
-        MO[models-*.json<br/>Output lists]
-        AM[anthropic-models.json<br/>Weekly Anthropic fetch]
+        HM[history/*.jsonl
+30-day rolling probes]
+        MO[models-*.json
+Output lists]
+        AM[anthropic-models.json
+Weekly Anthropic fetch]
     end
 
     subgraph External[External APIs]
-        OR_API[OpenRouter API<br/>/models, /endpoints]
-        ANTH_API[Anthropic API<br/>/v1/models]
+        OR_API[OpenRouter API
+/models, /endpoints]
+        ANTH_API[Anthropic API
+/v1/models]
     end
 
     GM --> FL
@@ -142,6 +168,7 @@ Three independent profiles, each with its own thresholds and output:
 | `yt-summarizer` | `models-yt-summarizer.json` | `thresholds-yt-summarizer.yaml` | YouTube transcript summarization: ≥14B params, ≥32k context, ≥2k output, no structured output |
 | `openwiki` | `models-openwiki.json` | `thresholds-openwiki.yaml` | OpenWiki agentic doc generation: ≥70B params, ≥128k context, ≥16k output, tool-calling required |
 
+<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 See [Profiles & Thresholds](configuration/profiles.md) for details.
 
 ## External Dependencies
@@ -158,7 +185,11 @@ See [Profiles & Thresholds](configuration/profiles.md) for details.
 
 ## Related Pages
 
+<!-- openwiki: broken internal link [workflows/generate-models.md] file "workflows/generate-models.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Model Generation Workflow](workflows/generate-models.md) — Step-by-step pipeline walkthrough
+<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Profiles & Thresholds](configuration/profiles.md) — Threshold configs and profile details
+<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [GitHub Actions](operations/github-actions.md) — Workflow definitions and scheduling
+<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Source Map](source-map.md) — File-to-concept mapping
