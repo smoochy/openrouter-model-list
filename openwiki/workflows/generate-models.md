@@ -68,6 +68,7 @@ generate(
 )
 ```
 
+<!-- openwiki: broken internal link [../scripts/generate_models.py] file "../scripts/generate_models.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/generate_models.py`](../scripts/generate_models.py) lines 37-100
 
 ### 2. Fetch OpenRouter Catalog: `openrouter_client.py::fetch_models`
@@ -85,6 +86,7 @@ def fetch_models(api_key: str) -> list[dict]:
 
 Returns full model catalog with fields: `id`, `name`, `pricing`, `context_length`, `top_provider.max_completion_tokens`, `supported_parameters`, etc.
 
+<!-- openwiki: broken internal link [../scripts/openrouter_client.py] file "../scripts/openrouter_client.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/openrouter_client.py`](../scripts/openrouter_client.py)
 
 ### 3. Filter Free Models: `filters.py::is_free`
@@ -97,6 +99,7 @@ def is_free(model: dict) -> bool:
 
 Keeps only models where both prompt and completion pricing are `"0"` (string).
 
+<!-- openwiki: broken internal link [../scripts/filters.py] file "../scripts/filters.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/filters.py`](../scripts/filters.py) lines 20-22
 
 ### 4. Apply Thresholds: `filters.py::filter_candidates`
@@ -111,6 +114,7 @@ This is the core filtering logic. Order of operations:
 6. **Relax buffer** — If `len(allowed) + len(candidates) < min_candidate_pool`, decrement `buffer_pct` by 1 and retry (down to 0). `min_param_b` NEVER relaxes.
 7. **Return** `allowed + candidates`
 
+<!-- openwiki: broken internal link [../scripts/filters.py] file "../scripts/filters.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/filters.py`](../scripts/filters.py) lines 35-107
 
 ### 5. Fetch Endpoint Stats: `endpoint_stats.py::fetch_endpoint_stats`
@@ -127,6 +131,7 @@ Returns `{"uptime": float, "latency_p50": float|None}` or `None` if request fail
 
 **Fallback:** If `None`, use `NEUTRAL_UPTIME = 0.5` and `latency_p50 = None`.
 
+<!-- openwiki: broken internal link [../scripts/endpoint_stats.py] file "../scripts/endpoint_stats.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/endpoint_stats.py`](../scripts/endpoint_stats.py)
 
 ### 6. Probe Candidate: `probe.py::probe_model`
@@ -149,6 +154,7 @@ def probe_model(client, model_id: str) -> dict:
 
 Sends a minimal 1-token completion via OpenAI client (pointing at OpenRouter). Records result to history.
 
+<!-- openwiki: broken internal link [../scripts/probe.py] file "../scripts/probe.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/probe.py`](../scripts/probe.py) lines 11-24
 
 ### 7. Record Probe History: `probe.py::record_probe`
@@ -163,6 +169,7 @@ History file: `history/google__gemma-4-31b-it__free.jsonl` (slashes/colons → `
 
 Each line: `{"timestamp": "2026-01-15T03:00:00Z", "success": true, "latency_ms": 1234}`
 
+<!-- openwiki: broken internal link [../scripts/probe.py] file "../scripts/probe.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/probe.py`](../scripts/probe.py) lines 27-41
 
 ### 8. Compute Own Uptime: `probe.py::compute_uptime` / `scoring.py::compute_uptime`
@@ -179,6 +186,7 @@ def compute_uptime(history: list[dict]) -> float:
 - **≥3 probes** → actual success rate (0.0–1.0)
 - Used as multiplicative malus on final score
 
+<!-- openwiki: broken internal link [../scripts/scoring.py] file "../scripts/scoring.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/scoring.py`](../scripts/scoring.py) lines 12-16
 
 ### 9. Post-Probe Filters: `scoring.py::passes_post_probe_filters`
@@ -194,6 +202,7 @@ def passes_post_probe_filters(uptime: float, latency_p50: float|None, thresholds
 
 Optional filters applied AFTER probing. Currently unused (both `min_uptime` and `max_latency_ms` are empty in all thresholds files).
 
+<!-- openwiki: broken internal link [../scripts/scoring.py] file "../scripts/scoring.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/scoring.py`](../scripts/scoring.py) lines 29-36
 
 ### 10. Score Candidates: `scoring.py::compute_score`
@@ -225,6 +234,7 @@ def compute_score(model, or_uptime, or_latency_p50, max_context, own_uptime):
 - **10% Capability** — Relative context length within candidate pool
 - **Own uptime malus** — Multiplies base score by 30-day probe success rate (0.5 neutral for new models)
 
+<!-- openwiki: broken internal link [../scripts/scoring.py] file "../scripts/scoring.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/scoring.py`](../scripts/scoring.py) lines 39-66
 
 ### 11. Sort & Write Output: `generate_models.py`
@@ -262,6 +272,7 @@ Output schema (v2):
 }
 ```
 
+<!-- openwiki: broken internal link [../scripts/generate_models.py] file "../scripts/generate_models.py" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`scripts/generate_models.py`](../scripts/generate_models.py) lines 94-100
 
 ## Profile Differences
@@ -278,6 +289,7 @@ Output schema (v2):
 | `allowlist` | `openrouter/owl-alpha` | `meta-llama/llama-4-scout:free`, `openrouter/owl-alpha`, `qwen/qwen3-32b:free` | (empty) |
 | `hardallowlist` | (empty) | (empty) | (empty) |
 
+<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 See [Profiles & Thresholds](configuration/profiles.md) for full threshold details.
 
 ## Error Handling & Warnings
@@ -310,7 +322,11 @@ uv run pytest
 
 ## Related Pages
 
+<!-- openwiki: broken internal link [architecture/overview.md] file "architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Architecture Overview](architecture/overview.md) — High-level system design
+<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Profiles & Thresholds](configuration/profiles.md) — Threshold configuration details
+<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [GitHub Actions](operations/github-actions.md) — Scheduled workflow execution
+<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Source Map](source-map.md) — File-to-concept mapping

@@ -18,6 +18,7 @@ Consumers point their `model_list_url` at the file matching their requirements; 
 - [Model Generation Workflow](workflows/generate-models.md) — End-to-end generation pipeline
 - [Profiles & Thresholds](configuration/profiles.md) — Per-profile thresholds and model lists
 - [GitHub Actions](operations/github-actions.md) — Scheduled workflows and manual triggers
+<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Source Map](source-map.md) — Source code map linking docs to implementation
 
 ## Available Model Lists
@@ -83,8 +84,7 @@ The file updates daily via GitHub Actions. No manual upkeep required.
 │   ├── probe.py                  # Probe models, record 30-day history
 │   ├── endpoint_stats.py         # Fetch OpenRouter endpoint uptime/latency
 │   ├── openrouter_client.py      # Fetch OpenRouter model catalog
-│   ├── thresholds.py             # Load thresholds YAML with defaults
-│   └── scoring.py                # Scoring constants and logic
+│   └── thresholds.py             # Load thresholds YAML with defaults
 ├── thresholds-*.yaml             # Profile thresholds (see Profiles)
 ├── models-*.json                 # Generated model lists (see Available Model Lists)
 ├── history/                      # 30-day rolling probe history (JSONL per model)
@@ -109,6 +109,7 @@ The file updates daily via GitHub Actions. No manual upkeep required.
 - See [Model Generation Workflow](workflows/generate-models.md) for the end-to-end pipeline
 - Review [Profiles & Thresholds](configuration/profiles.md) to understand or customize profiles
 - Check [GitHub Actions](operations/github-actions.md) for scheduled/automated runs
+<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - Browse [Source Map](source-map.md) to trace docs to implementation
 
 ---
