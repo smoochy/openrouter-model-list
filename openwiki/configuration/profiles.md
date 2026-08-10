@@ -121,6 +121,7 @@ hardallowlist: []
 - `allowlist: [openrouter/owl-alpha]` — Bypasses param floor and context/output thresholds, but still needs structured output (excluded with warning if missing).
 - `min_candidate_pool: 3` — If fewer than 3 candidates after buffering, relax `buffer_pct` toward 0.
 
+<!-- openwiki: broken internal link [../thresholds-mengram.yaml] file "../thresholds-mengram.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`thresholds-mengram.yaml`](../thresholds-mengram.yaml)
 
 ## Profile: yt-summarizer
@@ -152,6 +153,7 @@ hardallowlist: []
 - `require_structured_output: false` — Plain text generation is fine.
 - Allowlist includes 3 models that may not meet param/context thresholds but are known-good for summarization.
 
+<!-- openwiki: broken internal link [../thresholds-yt-summarizer.yaml] file "../thresholds-yt-summarizer.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`thresholds-yt-summarizer.yaml`](../thresholds-yt-summarizer.yaml)
 
 ## Profile: openwiki
@@ -184,6 +186,7 @@ hardallowlist: []
 - Smallest `min_candidate_pool: 2` — Fewer models expected to meet this bar.
 - No allowlist — Strict thresholds only.
 
+<!-- openwiki: broken internal link [../thresholds-openwiki.yaml] file "../thresholds-openwiki.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
 **Source:** [`thresholds-openwiki.yaml`](../thresholds-openwiki.yaml)
 
 ## Comparison Table
@@ -255,12 +258,17 @@ These would further reduce the candidate pool after scoring.
        "output_path": REPO_ROOT / "models-new-profile.json",
    },
    ```
+<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 3. Add generation step to `.github/workflows/update-models.yml` (see [GitHub Actions](operations/github-actions.md))
 4. Run locally to test: `python scripts/generate_models.py --profile new-profile`
 
 ## Related Pages
 
+<!-- openwiki: broken internal link [workflows/generate-models.md] file "workflows/generate-models.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Model Generation Workflow](workflows/generate-models.md) — How thresholds are applied in the pipeline
+<!-- openwiki: broken internal link [architecture/overview.md] file "architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Architecture Overview](architecture/overview.md) — High-level system design
+<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [GitHub Actions](operations/github-actions.md) — Scheduled workflow that runs all profiles
+<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Source Map](source-map.md) — File-to-concept mapping

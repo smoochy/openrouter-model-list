@@ -278,7 +278,11 @@ All workflows support `workflow_dispatch` for on-demand runs:
 
 ## Related Pages
 
+<!-- openwiki: broken internal link [workflows/generate-models.md] file "workflows/generate-models.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Model Generation Workflow](workflows/generate-models.md) — Pipeline executed by the daily workflow
+<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Profiles & Thresholds](configuration/profiles.md) — Threshold configs for each profile
+<!-- openwiki: broken internal link [architecture/overview.md] file "architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Architecture Overview](architecture/overview.md) — High-level system design
+<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Source Map](source-map.md) — File-to-concept mapping
