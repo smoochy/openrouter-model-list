@@ -1,64 +1,64 @@
 {
-  "generated_at": "2026-08-15T03:34:31.588339Z",
+  "generated_at": "2026-08-16T03:43:11.467008Z",
   "schema_version": 2,
   "models": [
     {
-      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8504,
-      "context_length": 1000000,
-      "max_output_tokens": 65536,
-      "uptime": 0.9926,
-      "latency_ms": 1441,
-      "own_uptime": 0.9355,
-      "sanity_ok": true
-    },
-    {
       "id": "nvidia/nemotron-3-nano-30b-a3b:free",
-      "score": 0.8504,
+      "score": 0.8543,
       "context_length": 256000,
       "max_output_tokens": null,
-      "uptime": 0.968,
-      "latency_ms": 490,
+      "uptime": 0.9774,
+      "latency_ms": 517,
       "own_uptime": 0.9697,
       "sanity_ok": true
     },
     {
-      "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-      "score": 0.8371,
-      "context_length": 256000,
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "score": 0.8511,
+      "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9814,
-      "latency_ms": 388,
-      "own_uptime": 0.9394,
+      "uptime": 0.9959,
+      "latency_ms": 1480,
+      "own_uptime": 0.9365,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8318,
+      "score": 0.8448,
       "context_length": 262144,
       "max_output_tokens": 262144,
-      "uptime": 0.9851,
-      "latency_ms": 816,
-      "own_uptime": 0.9579,
+      "uptime": 0.9966,
+      "latency_ms": 868,
+      "own_uptime": 0.9688,
+      "sanity_ok": true
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "score": 0.8374,
+      "context_length": 256000,
+      "max_output_tokens": 65536,
+      "uptime": 0.9861,
+      "latency_ms": 431,
+      "own_uptime": 0.9394,
       "sanity_ok": true
     },
     {
       "id": "google/gemma-4-26b-a4b-it:free",
-      "score": 0.7846,
+      "score": 0.7291,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9845,
-      "latency_ms": 1796,
-      "own_uptime": 0.9697,
-      "sanity_ok": true
+      "uptime": 0.9863,
+      "latency_ms": 2365,
+      "own_uptime": 0.9394,
+      "sanity_ok": false
     },
     {
       "id": "openai/gpt-oss-20b:free",
-      "score": 0.6808,
+      "score": 0.6767,
       "context_length": 131072,
       "max_output_tokens": 32768,
-      "uptime": 0.9695,
-      "latency_ms": 3212,
+      "uptime": 0.9739,
+      "latency_ms": 3326,
       "own_uptime": 0.9697,
       "sanity_ok": true
     },
@@ -67,8 +67,8 @@
       "score": 0.026,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9981,
-      "latency_ms": 1098,
+      "uptime": 0.9989,
+      "latency_ms": 1143,
       "own_uptime": 0.0303,
       "sanity_ok": false
     }
