@@ -22,13 +22,13 @@ Daily 03:00 UTC] --> B[generate_models.py
 --profile yt-summarizer]
     A --> D[generate_models.py
 --profile openwiki]
-    A --> E[fetch_anthropic_models.py
-Weekly Tue 03:00 UTC]
 
     B --> F[models-mengram.json]
     C --> G[models-yt-summarizer.json]
     D --> H[models-openwiki.json]
-    E --> I[anthropic-models.json]
+
+    E[update-anthropic-models.yml
+Weekly Tue 03:15 UTC] --> I[anthropic-models.json]
 
     subgraph Pipeline[Per-Profile Pipeline]
         B1[Fetch OpenRouter Models
