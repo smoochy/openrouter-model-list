@@ -150,10 +150,13 @@ flowchart TD
     C -->|Yes| E[Checkout]
     E --> F[Setup Node.js 24]
     F --> G[npm install -g openwiki]
-    G --> H[Fetch models-openwiki.json<br/>Pick top sanity_ok model]
-    H --> I[Run: openwiki code --update --print]
-    I --> J[Create PR with openwiki/ changes]
+    G --> H[Fetch models-openwiki.json<br/>Get ALL sanity_ok models]
+    H --> I[Loop: try each model until one succeeds]
+    I --> J[Run: openwiki code --update --print]
+    J --> K[Create PR with openwiki/ changes]
 ```
+
+**Caption:** OpenWiki bi-weekly update flow with ISO week parity gate and model fallback loop.
 
 ### Gate Job (Week Parity)
 
@@ -175,17 +178,39 @@ fi
 
 ### Model Selection
 
-Before running OpenWiki, the workflow picks the best model from `models-openwiki.json`:
+Before running OpenWiki, the workflow fetches ALL sanity_ok models from `models-openwiki.json`:
 
 ```bash
-MODEL=$(curl -sf https://raw.githubusercontent.com/smoochy/openrouter-model-list/main/models-openwiki.json \
-  | jq -r '[.models[] | select(.sanity_ok)][0].id // empty')
+MODELS=$(curl -sf https://raw.githubusercontent.com/smoochy/openrouter-model-list/main/models-openwiki.json \
+  | jq -r '[.models[] | select(.sanity_ok) | .id] | join(" ")')
+if [ -z "$MODELS" ]; then
+  echo "No sanity_ok model in models-openwiki.json" >&2
+  exit 1
+fi
+echo "Candidate models: $MODELS"
+echo "OPENWIKI_MODEL_IDS=$MODELS" >> "$GITHUB_ENV"
+```
+
+Then it loops through each candidate until one succeeds:
+
+```bash
+for model in $OPENWIKI_MODEL_IDS; do
+  echo "::group::OpenWiki with $model"
+  if OPENWIKI_MODEL_ID="$model" openwiki code --update --print; then
+    echo "::endgroup::"
+    exit 0
+  fi
+  echo "::endgroup::"
+  echo "Model $model failed; trying next candidate."
+done
+echo "All candidate models failed." >&2
+exit 1
 ```
 
 - Fetches the latest `models-openwiki.json` from the repo
 - Filters to `sanity_ok: true` models
-- Takes the **first** (highest-scored) model
-- Fails if no sanity-ok model exists
+- Tries each model in score order (highest first) until one completes successfully
+- Fails if no sanity-ok model exists or all candidates fail
 
 ### OpenWiki Execution
 
