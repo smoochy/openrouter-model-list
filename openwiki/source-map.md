@@ -75,7 +75,7 @@ Gate job runs on **every trigger** (cron or manual), but manual dispatch always 
 | Area | Configuration |
 |------|---------------|
 | Concurrency | All workflows: `group: update-model-lists`, `cancel-in-progress: false` |
-| Secrets | `AUTOMATION_APP_ID`, `AUTOMATION_APP_KEY` (GitHub App token), `OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`, `LANGSMITH_API_KEY` |
+| Secrets | `OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`, `LANGSMITH_API_KEY` (the daily and weekly model-list workflows no longer use a GitHub App token; they authenticate with the job's built-in `GITHUB_TOKEN` and publish their changes through a pull request) |
 | Python env | `uv sync` (pyproject.toml), Python 3.11+ on ubuntu-latest |
 | Node env | `actions/setup-node@v7` with Node 24, `npm install -g openwiki` |
 
