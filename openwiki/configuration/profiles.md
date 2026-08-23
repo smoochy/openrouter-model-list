@@ -121,8 +121,7 @@ hardallowlist: []
 - `allowlist: [openrouter/owl-alpha]` — Bypasses param floor and context/output thresholds, but still needs structured output (excluded with warning if missing).
 - `min_candidate_pool: 3` — If fewer than 3 candidates after buffering, relax `buffer_pct` toward 0.
 
-<!-- openwiki: broken internal link [../thresholds-mengram.yaml] file "../thresholds-mengram.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
-**Source:** [`thresholds-mengram.yaml`](../thresholds-mengram.yaml)
+**Source:** [`thresholds-mengram.yaml`](../../thresholds-mengram.yaml)
 
 ## Profile: yt-summarizer
 
@@ -153,8 +152,7 @@ hardallowlist: []
 - `require_structured_output: false` — Plain text generation is fine.
 - Allowlist includes 3 models that may not meet param/context thresholds but are known-good for summarization.
 
-<!-- openwiki: broken internal link [../thresholds-yt-summarizer.yaml] file "../thresholds-yt-summarizer.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
-**Source:** [`thresholds-yt-summarizer.yaml`](../thresholds-yt-summarizer.yaml)
+**Source:** [`thresholds-yt-summarizer.yaml`](../../thresholds-yt-summarizer.yaml)
 
 ## Profile: openwiki
 
@@ -186,8 +184,7 @@ hardallowlist: []
 - Smallest `min_candidate_pool: 2` — Fewer models expected to meet this bar.
 - No allowlist — Strict thresholds only.
 
-<!-- openwiki: broken internal link [../thresholds-openwiki.yaml] file "../thresholds-openwiki.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
-**Source:** [`thresholds-openwiki.yaml`](../thresholds-openwiki.yaml)
+**Source:** [`thresholds-openwiki.yaml`](../../thresholds-openwiki.yaml)
 
 ## Comparison Table
 

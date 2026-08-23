@@ -18,7 +18,6 @@ Consumers point their `model_list_url` at the file matching their requirements; 
 - [Model Generation Workflow](workflows/generate-models.md) — End-to-end generation pipeline
 - [Profiles & Thresholds](configuration/profiles.md) — Per-profile thresholds and model lists
 - [GitHub Actions](operations/github-actions.md) — Scheduled workflows and manual triggers
-<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - [Source Map](source-map.md) — Source code map linking docs to implementation
 
 ## Available Model Lists
@@ -109,7 +108,6 @@ The file updates daily via GitHub Actions. No manual upkeep required.
 - See [Model Generation Workflow](workflows/generate-models.md) for the end-to-end pipeline
 - Review [Profiles & Thresholds](configuration/profiles.md) to understand or customize profiles
 - Check [GitHub Actions](operations/github-actions.md) for scheduled/automated runs
-<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
 - Browse [Source Map](source-map.md) to trace docs to implementation
 
 ---
