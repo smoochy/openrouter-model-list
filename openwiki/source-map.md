@@ -49,8 +49,8 @@ This page maps each major documentation concept to its canonical source files, k
 
 | Workflow | File | Schedule | Key Steps |
 |----------|------|----------|-----------|
-| Daily model lists | `.github/workflows/update-models.yml` | `0 3 * * *` (daily 03:00 UTC) | Checkout → uv sync → generate 3 profiles → commit if changed |
-| Weekly Anthropic | `.github/workflows/update-anthropic-models.yml` | `15 3 * * 2` (Tue 03:15 UTC) | Fetch Anthropic API → normalize → commit if changed |
+| Daily model lists | `.github/workflows/update-models.yml` | `0 3 * * *` (daily 03:00 UTC) | Checkout → uv sync → generate 3 profiles → PR to `automation/update-models` → merge attempt (tolerated if refused) |
+| Weekly Anthropic | `.github/workflows/update-anthropic-models.yml` | `15 3 * * 2` (Tue 03:15 UTC) | Fetch Anthropic API → normalize → PR to `automation/update-anthropic-models` → merge attempt (tolerated if refused) |
 | Bi-weekly OpenWiki | `.github/workflows/openwiki-update.yaml` | `0 5 * * 6` (Sat 05:00 UTC) + gate | Gate: ISO week parity → Checkout → Install openwiki → Fetch ALL sanity_ok models from `models-openwiki.json` → Loop through candidates trying each until one succeeds → Create PR |
 
 ### OpenWiki Workflow Details (Corrected)
@@ -75,7 +75,7 @@ Gate job runs on **every trigger** (cron or manual), but manual dispatch always 
 | Area | Configuration |
 |------|---------------|
 | Concurrency | All workflows: `group: update-model-lists`, `cancel-in-progress: false` |
-| Secrets | `AUTOMATION_APP_ID`, `AUTOMATION_APP_KEY` (GitHub App token), `OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`, `LANGSMITH_API_KEY` |
+| Secrets | `OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`, `LANGSMITH_API_KEY` (the daily and weekly model-list workflows no longer use a GitHub App token; they authenticate with the job's built-in `GITHUB_TOKEN` and publish their changes through a pull request) |
 | Python env | `uv sync` (pyproject.toml), Python 3.11+ on ubuntu-latest |
 | Node env | `actions/setup-node@v7` with Node 24, `npm install -g openwiki` |
 

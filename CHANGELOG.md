@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-23
+
+### Changed
+
+- `.github/workflows/update-models.yml` and `.github/workflows/update-anthropic-models.yml` no longer mint a GitHub App token to push straight to `main`; both dropped the `actions/create-github-app-token` step and the `AUTOMATION_APP_ID`/`AUTOMATION_APP_KEY` secrets, and the checkout step is back on the default `GITHUB_TOKEN`. The hand-rolled `git config` / `git commit` / `git pull --rebase` / `git push` block is replaced with `peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8`, opening `automation/update-models` and `automation/update-anthropic-models` respectively, and each job gained `pull-requests: write` next to its existing `contents: write`. A step right after tries to merge the new pull request immediately under `GITHUB_TOKEN`; this repository has `required_approving_review_count: 0` and no required status checks, so the immediate self-merge is an audit trail rather than a review bypass, and a refused merge is tolerated on purpose - it leaves the pull request open for `fleet-timed-pr-automerge` in `homelab-private` to merge as the App instead, which is the designed floor, not an error.
+
 ## 2026-08-05
 
 ### Changed
