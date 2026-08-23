@@ -49,8 +49,8 @@ This page maps each major documentation concept to its canonical source files, k
 
 | Workflow | File | Schedule | Key Steps |
 |----------|------|----------|-----------|
-| Daily model lists | `.github/workflows/update-models.yml` | `0 3 * * *` (daily 03:00 UTC) | Checkout → uv sync → generate 3 profiles → commit if changed |
-| Weekly Anthropic | `.github/workflows/update-anthropic-models.yml` | `15 3 * * 2` (Tue 03:15 UTC) | Fetch Anthropic API → normalize → commit if changed |
+| Daily model lists | `.github/workflows/update-models.yml` | `0 3 * * *` (daily 03:00 UTC) | Checkout → uv sync → generate 3 profiles → PR to `automation/update-models` → merge attempt (tolerated if refused) |
+| Weekly Anthropic | `.github/workflows/update-anthropic-models.yml` | `15 3 * * 2` (Tue 03:15 UTC) | Fetch Anthropic API → normalize → PR to `automation/update-anthropic-models` → merge attempt (tolerated if refused) |
 | Bi-weekly OpenWiki | `.github/workflows/openwiki-update.yaml` | `0 5 * * 6` (Sat 05:00 UTC) + gate | Gate: ISO week parity → Checkout → Install openwiki → Fetch ALL sanity_ok models from `models-openwiki.json` → Loop through candidates trying each until one succeeds → Create PR |
 
 ### OpenWiki Workflow Details (Corrected)
