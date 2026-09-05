@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:33662d5a3620a936082f088a59277e26a2cfd911f8eac258977432a1961e6921",
+  "claims": [
+    {
+      "id": "claim_8f64b98699d640de9c6a717956a214db",
+      "statement": "The per-profile pipeline consists of nine stages: fetch catalog, filter free, apply thresholds, fetch endpoint stats, probe, compute own uptime, post-probe filter, score, and sort & write.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py",
+          "version": "repo-file-v1:sha256:99ac7cc2ad14dcaab5093e0c5326aa07b817f086ee4616d67b93296ddb957b6e"
+        },
+        {
+          "resource": "repo://scripts/filters.py",
+          "version": "repo-file-v1:sha256:20f5c9a2d7ca0824c11bf051efdc3d47b72ee7e8d3fa4b645d4452d64327d7b4"
+        },
+        {
+          "resource": "repo://scripts/generate_models.py",
+          "version": "repo-file-v1:sha256:e61b47eaf5ff0b4a2ecbf5347da74b9c27272ec623a3e41214380e64437272eb"
+        },
+        {
+          "resource": "repo://scripts/openrouter_client.py",
+          "version": "repo-file-v1:sha256:709fbaad64398fca50af927533dc095be6ad34c25782535333aba080697538f8"
+        },
+        {
+          "resource": "repo://scripts/probe.py",
+          "version": "repo-file-v1:sha256:9f4402180be01ca6229a400bb684dfeae2924cd1599aff47f01ec665608aa839"
+        },
+        {
+          "resource": "repo://scripts/scoring.py",
+          "version": "repo-file-v1:sha256:bb1d005198ac9525f158235466a1947e3aa3d838667705666d183871e1d66786"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.0",
+    "at": "2026-09-05T08:44:41.032Z"
+  }
+}
