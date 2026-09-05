@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:9fca57ddbd90635eb8dd0b2e7533706f380245c476880ab0b6008eb268fdaf9a",
+  "claims": [
+    {
+      "id": "claim_2b0e1d633ada4a879f91801013e4872a",
+      "statement": "The page /openwiki/configuration/profiles.md accurately describes the threshold schema and the three profiles (mengram, yt-summarizer, openwiki) as defined in the threshold YAML files and the scripts/thresholds.py file.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/thresholds.py",
+          "version": "repo-file-v1:sha256:5d9295b6870684991b5f2daa93c6350ad4e742ea648e415925e91e202544ac0d"
+        },
+        {
+          "resource": "repo://thresholds-mengram.yaml",
+          "version": "repo-file-v1:sha256:6080b4e82f2c421bbf09bad4d0cd576e997276d73d7f00f23633b55e25da1eac"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.0",
+    "at": "2026-09-05T08:44:41.032Z"
+  }
+}

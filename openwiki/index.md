@@ -1,10 +1,10 @@
 ---
-okf_version: "0.1"
+okf_version: "0.2"
 ---
 
 # Files
 
-- [openrouter-model-list Wiki](quickstart.md) - Daily-refreshed, scored lists of free OpenRouter models for different use cases. A GitHub Actions workflow fetches the OpenRouter catalog, filters free models by capability thresholds, probes each candidate, scores them by uptime/latency/capability, and publishes ranked JSON lists.
+- [Quickstart](quickstart.md) - Get started with the repository for consumers and contributors. Provides an overview of the model lists, how to use them, and how to run the generation locally.
 - [Source Map](source-map.md) - Maps documentation concepts to their canonical source files, symbols, and test coverage for the openrouter-model-list pipeline.
 
 # Directories
@@ -12,4 +12,5 @@ okf_version: "0.1"
 - [architecture](architecture/)
 - [configuration](configuration/)
 - [operations](operations/)
+- [testing](testing/)
 - [workflows](workflows/)
