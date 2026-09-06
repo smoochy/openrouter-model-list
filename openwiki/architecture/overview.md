@@ -4,6 +4,23 @@ title: Architecture Overview
 description: "High-level architecture of the openrouter-model-list pipeline: fetch OpenRouter catalog, filter free models by profile thresholds, fetch endpoint stats, probe candidates, score, and write ranked model lists."
 resource: /openwiki/architecture/overview.md
 tags: ["architecture", "overview", "pipeline"]
+verified:
+  - by: openwiki/0.5.0
+    at: 2026-09-05T08:44:41.032Z
+sources:
+  - id: openwiki-source-678af2bf704a9375a5423843
+    resource: repo://scripts/endpoint_stats.py
+  - id: openwiki-source-d62a846da6fa0f2e25b94fa4
+    resource: repo://scripts/filters.py
+  - id: openwiki-source-d8b85b547cd70ae9d19deeea
+    resource: repo://scripts/generate_models.py
+  - id: openwiki-source-f53424678e8568c6002e83f4
+    resource: repo://scripts/openrouter_client.py
+  - id: openwiki-source-11968c67bba9651b9ac1c4e5
+    resource: repo://scripts/probe.py
+  - id: openwiki-source-f3047b157e385d6464b26dbd
+    resource: repo://scripts/scoring.py
+generated: { by: "openwiki/0.5.0", at: "2026-09-05T08:44:41.032Z" }
 ---
 
 # Architecture Overview
@@ -168,8 +185,7 @@ Three independent profiles, each with its own thresholds and output:
 | `yt-summarizer` | `models-yt-summarizer.json` | `thresholds-yt-summarizer.yaml` | YouTube transcript summarization: ≥14B params, ≥32k context, ≥2k output, no structured output |
 | `openwiki` | `models-openwiki.json` | `thresholds-openwiki.yaml` | OpenWiki agentic doc generation: ≥70B params, ≥128k context, ≥16k output, tool-calling required |
 
-<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-See [Profiles & Thresholds](configuration/profiles.md) for details.
+See [Profiles & Thresholds](../configuration/profiles.md) for details.
 
 ## External Dependencies
 
@@ -185,11 +201,7 @@ See [Profiles & Thresholds](configuration/profiles.md) for details.
 
 ## Related Pages
 
-<!-- openwiki: broken internal link [workflows/generate-models.md] file "workflows/generate-models.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Model Generation Workflow](workflows/generate-models.md) — Step-by-step pipeline walkthrough
-<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Profiles & Thresholds](configuration/profiles.md) — Threshold configs and profile details
-<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [GitHub Actions](operations/github-actions.md) — Workflow definitions and scheduling
-<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Source Map](source-map.md) — File-to-concept mapping
+- [Model Generation Workflow](../workflows/generate-models.md) — Step-by-step pipeline walkthrough
+- [Profiles & Thresholds](../configuration/profiles.md) — Threshold configs and profile details
+- [GitHub Actions](../operations/github-actions.md) — Workflow definitions and scheduling
+- [Source Map](../source-map.md) — File-to-concept mapping

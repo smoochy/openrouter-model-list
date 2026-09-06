@@ -4,6 +4,15 @@ title: Profiles & Thresholds Configuration
 description: "Per-profile threshold configuration for the three model generation profiles: mengram (structured extraction), yt-summarizer (YouTube transcripts), and openwiki (agentic documentation). Each profile has its own thresholds YAML and output JSON."
 resource: /openwiki/configuration/profiles.md
 tags: ["configuration", "profiles", "thresholds", "mengram", "yt-summarizer", "openwiki"]
+verified:
+  - by: openwiki/0.5.0
+    at: 2026-09-05T08:44:41.032Z
+sources:
+  - id: openwiki-source-a53118abdd8a4e93bbeab156
+    resource: repo://scripts/thresholds.py
+  - id: openwiki-source-efe52f802136ea4316cd0f90
+    resource: repo://thresholds-mengram.yaml
+generated: { by: "openwiki/0.5.0", at: "2026-09-05T08:44:41.032Z" }
 ---
 
 # Profiles & Thresholds Configuration
@@ -261,11 +270,7 @@ These would further reduce the candidate pool after scoring.
 
 ## Related Pages
 
-<!-- openwiki: broken internal link [workflows/generate-models.md] file "workflows/generate-models.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Model Generation Workflow](workflows/generate-models.md) — How thresholds are applied in the pipeline
-<!-- openwiki: broken internal link [architecture/overview.md] file "architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Architecture Overview](architecture/overview.md) — High-level system design
-<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [GitHub Actions](operations/github-actions.md) — Scheduled workflow that runs all profiles
-<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Source Map](source-map.md) — File-to-concept mapping
+- [Model Generation Workflow](/openwiki/workflows/generate-models.md) — How thresholds are applied in the pipeline
+- [Architecture Overview](/openwiki/architecture/overview.md) — High-level system design
+- [GitHub Actions](/openwiki/operations/github-actions.md) — Scheduled workflow that runs all profiles
+- [Source Map](/openwiki/source-map.md) — File-to-concept mapping

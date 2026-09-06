@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:9b0e0f81a171faf5360453ea5a22dc33893e21c40f3c18035f8804ed6ba24870",
+  "claims": [
+    {
+      "id": "claim_f93f102c71ac41d18158876803fd06bd",
+      "statement": "The repository provides daily-refreshed, scored lists of free OpenRouter models for different use cases.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L4-L6",
+          "version": "repo-lines-v1:sha256:44cd4fe0cfc046ee8f2322d6408c444530850316fe26f044de39af9d28810756:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTI4ODQwYTZiN2U2MDMwM2Q4N2JlNGQ0ZDgyYTUwYjMzMjg0MjkwZGVjNGUzNDI4ZDQ3ZDkzZmJlZmQxYzU5MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2YyZmE3M2YwNzA0ODlkOTcyNGEwMjlkZmI1MDJhYTA4ODUwN2QwODU3OWJiYmNjOTRlZDkzNWMxYTA1MzMxNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmMxY2M5YTFlYzBkNmI3YmMyNWM4OTVlNDM1OWY3YjA2NWI0ZjZhMDg1YjRmZTY2Yjg4ZmY3YjE3OTg2NDM2NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWU2MjU1YjA2NDIzNzc3ODAzNGFmNTI3MGVmM2Q5ODFkYTFhNjFiM2UzZThkMWFiNmYxMDcyNmEwZDgwM2QyYiJ9"
+        },
+        {
+          "resource": "repo://README.md#L8-L9",
+          "version": "repo-lines-v1:sha256:2f6b81ec30474c84add87a115ba75762773f3f208113f5edee8f914028263aaa:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWE0NzcxY2Y5NTQ5NjVlNmY1ZDI0NWVlZGFiZTMwZTJlZDZlYTg3NGZhMWZkZTBlZTU2YTMwNzM4OGE4MTRjNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzY0YTQ1M2U1ZmU5YzJkMTc3YWI1YWE4MjNlZTYxZTdhNGQxYjI0YjJmMGEyNzMzODgxMTUxZmYxMTM5NjcyZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGMwNzBjYWE2ODRkMzcyM2Y2ZWQ2OGE5YzFlYWU5Y2JhYjRjNzM1ZWU2OTI5ZGU2MGJkYWQ0NjgzMTFjOGNkNSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_985f4bd8215d4c28a554496a91661ba4",
+      "statement": "The repository provides instructions for consumers on how to use the model lists (by pointing to raw GitHub URLs) and for contributors on how to run the generation locally.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L158-L166",
+          "version": "repo-lines-v1:sha256:fef972c8891f948a54b8d71475018b6863b0191ce4ec140377cce8af0763c3a8:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGFiMjA4Zjg2NzljZDBiYTUyZmEyODdkMjc1MzE1ZTg5MDQwMTgzMDFkMTI4ODVkNDQxNDM0OGUwYTlhNDlkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmY0NDlhZTc3ZDQyY2IwNjViOTk1ZjEyYmRhY2VlZjRlNzRjY2RhODc5ZWNkZmVmNTRlZjM4YmFkZmMxOTk4YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjJkOTQ0ZDVjN2IwY2Q1OTdjMGE1YmU4YzA3YmNjYjI4NDhhOGJjYmU5YzdiOWNlMTJiYjJmMDE2OTBiMzMxMSJ9"
+        },
+        {
+          "resource": "repo://README.md#L229-L233",
+          "version": "repo-lines-v1:sha256:4ba334b67f4ce8932c0b7ed4d4519f1d609fb0c1813e028b938c756a12187084:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWRlNmViMjJjOTFhZDQyYzQ4Y2UzNjc5NzRmYjdmYjY3ZWNiYjU4ZTQyMGRjYzQ0NmQzZjQyN2Q0M2U5Njg0MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTJlNTc3MjVmN2E0MmEwMThkMzk3ZjM5ZWY0YWNlNTBhNmU0MzNjYzQxMzA3NGYzZGU4NTY0YTkxMzUwMTY0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2RkYmQ0ZmVhOWZiZTZiYWI3NTVmMmFlMzFiY2VkMTlhODIyM2I5ODgwYjdiZTVjOTYxZmZmNGMyMjJiNzY2NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDMwNDU1OGQ4YzMzZThjYWNlNTQxMDAwM2EwZjMxMTdkODQyMmE3ZDBhOWQ2OGFkZDY0OTBmMGM4ZWVkMWNhZiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.0",
+    "at": "2026-09-05T08:44:41.032Z"
+  }
+}
