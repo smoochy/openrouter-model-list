@@ -60,3 +60,5 @@
 {"timestamp": "2026-09-06T07:32:39.354565Z", "success": true, "latency_ms": 485}
 {"timestamp": "2026-09-07T07:50:35.901615Z", "success": true, "latency_ms": 1997}
 {"timestamp": "2026-09-07T07:50:48.437377Z", "success": true, "latency_ms": 551}
+{"timestamp": "2026-09-07T18:20:30.510456Z", "success": false, "latency_ms": 2136}
+{"timestamp": "2026-09-07T18:20:34.009360Z", "success": false, "latency_ms": 1702}
