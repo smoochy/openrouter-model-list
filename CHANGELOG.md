@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-07
+
+### Changed
+
+- `thresholds-openwiki.yaml` allowlists `thinkingmachines/inkling:free`, `poolside/laguna-s-2.1:free`, `cohere/north-mini-code:free` and `nvidia/nemotron-3.5-lightning:free`. `min_param_b` reads the parameter count out of the model id, and most current free models carry no size token in their slug, so the 70B floor dropped 15 of 21 free models untested and left exactly two Nvidia Nemotron models - a single provider, and the same one whose non-retryable 404s kill the OpenWiki documentation runs. All four allowlisted models clear the context, output and tool-calling thresholds on their catalog metadata; only the unparseable size kept them out. The candidate pool goes from 2 models on 1 provider to 6 on 4. Config only: `filters.py` and its `min_param_b` hard-floor semantics are unchanged, so the `mengram` and `yt-summarizer` profiles keep their current behaviour
+
 ## 2026-08-23
 
 ### Changed
