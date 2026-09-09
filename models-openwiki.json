@@ -1,66 +1,66 @@
 {
-  "generated_at": "2026-09-08T07:46:27.990136Z",
+  "generated_at": "2026-09-09T07:48:28.761723Z",
   "schema_version": 2,
   "models": [
     {
+      "id": "cohere/north-mini-code:free",
+      "score": 0.873,
+      "context_length": 256000,
+      "max_output_tokens": 64000,
+      "uptime": 0.9601,
+      "latency_ms": 458,
+      "own_uptime": 1.0,
+      "sanity_ok": true
+    },
+    {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8157,
+      "score": 0.8322,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 0.9382,
-      "latency_ms": 1204,
+      "uptime": 0.9575,
+      "latency_ms": 1122,
+      "own_uptime": 1.0,
+      "sanity_ok": true
+    },
+    {
+      "id": "nvidia/nemotron-3.5-lightning:free",
+      "score": 0.6815,
+      "context_length": 1000000,
+      "max_output_tokens": 65536,
+      "uptime": 0.9769,
+      "latency_ms": 7873,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.6563,
+      "score": 0.6546,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9702,
-      "latency_ms": 49951,
+      "uptime": 0.9672,
+      "latency_ms": 47994,
       "own_uptime": 0.9688,
       "sanity_ok": true
     },
     {
-      "id": "thinkingmachines/inkling:free",
-      "score": 0.4545,
-      "context_length": 1048576,
-      "max_output_tokens": 262144,
-      "uptime": 0.9996,
-      "latency_ms": 1512,
-      "own_uptime": 0.5,
-      "sanity_ok": false
-    },
-    {
-      "id": "cohere/north-mini-code:free",
-      "score": 0.417,
-      "context_length": 256000,
-      "max_output_tokens": 64000,
-      "uptime": 0.9689,
-      "latency_ms": 1195,
-      "own_uptime": 0.5,
-      "sanity_ok": true
-    },
-    {
       "id": "poolside/laguna-s-2.1:free",
-      "score": 0.403,
+      "score": 0.5368,
       "context_length": 262144,
       "max_output_tokens": 32768,
       "uptime": 0.9998,
-      "latency_ms": 1981,
-      "own_uptime": 0.5,
-      "sanity_ok": false
+      "latency_ms": 1994,
+      "own_uptime": 0.6667,
+      "sanity_ok": true
     },
     {
-      "id": "nvidia/nemotron-3.5-lightning:free",
-      "score": 0.3435,
-      "context_length": 1000000,
-      "max_output_tokens": 65536,
-      "uptime": 0.9862,
-      "latency_ms": 32529,
-      "own_uptime": 0.5,
-      "sanity_ok": true
+      "id": "thinkingmachines/inkling:free",
+      "score": 0.0,
+      "context_length": 1048576,
+      "max_output_tokens": 262144,
+      "uptime": 0.9996,
+      "latency_ms": 2244,
+      "own_uptime": 0.0,
+      "sanity_ok": false
     }
   ]
 }
