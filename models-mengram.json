@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-10T07:49:06.905823Z",
+  "generated_at": "2026-09-11T07:42:50.093172Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.9199,
+      "score": 0.9325,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 0.9887,
-      "latency_ms": 1222,
+      "uptime": 0.9898,
+      "latency_ms": 1023,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "google/gemma-4-31b-it:free",
-      "score": 0.3011,
+      "score": 0.3173,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9966,
-      "latency_ms": 1576,
-      "own_uptime": 0.3333,
+      "uptime": 0.993,
+      "latency_ms": 2110,
+      "own_uptime": 0.3651,
       "sanity_ok": true
     }
   ]
