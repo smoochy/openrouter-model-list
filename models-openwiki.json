@@ -1,55 +1,55 @@
 {
-  "generated_at": "2026-09-16T08:13:43.989185Z",
+  "generated_at": "2026-09-17T08:20:04.339753Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3.5-lightning:free",
-      "score": 0.8702,
+      "score": 0.8752,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.991,
-      "latency_ms": 1995,
+      "uptime": 0.9792,
+      "latency_ms": 1796,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "cohere/north-mini-code:free",
-      "score": 0.8697,
+      "score": 0.8619,
       "context_length": 256000,
       "max_output_tokens": 64000,
-      "uptime": 0.9769,
-      "latency_ms": 681,
+      "uptime": 0.974,
+      "latency_ms": 782,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8456,
+      "score": 0.8519,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 0.9703,
-      "latency_ms": 1027,
+      "uptime": 0.9655,
+      "latency_ms": 872,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8022,
+      "score": 0.8505,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9817,
-      "latency_ms": 3037,
+      "uptime": 0.971,
+      "latency_ms": 2124,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "poolside/laguna-s-2.1:free",
-      "score": 0.7305,
+      "score": 0.734,
       "context_length": 262144,
       "max_output_tokens": 32768,
       "uptime": 0.9999,
-      "latency_ms": 1888,
-      "own_uptime": 0.9,
+      "latency_ms": 1959,
+      "own_uptime": 0.9091,
       "sanity_ok": true
     },
     {
@@ -58,7 +58,7 @@
       "context_length": 1048576,
       "max_output_tokens": 262144,
       "uptime": 0.9997,
-      "latency_ms": 1583,
+      "latency_ms": 1743,
       "own_uptime": 0.0,
       "sanity_ok": false
     }
