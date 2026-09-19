@@ -2,8 +2,20 @@
 type: Operations
 title: GitHub Actions Workflows
 description: "Scheduled GitHub Actions workflows that keep model lists and documentation current: daily model list updates (3 profiles), weekly Anthropic model list, and bi-weekly OpenWiki documentation updates."
-resource: /openwiki/operations/github-actions.md
 tags: ["operations", "github-actions", "workflows", "scheduling", "automation"]
+verified:
+  - by: openwiki/0.5.2
+    at: 2026-09-19T09:07:56.091Z
+sources:
+  - id: openwiki-source-e082dc1d961398caa2e27f47
+    resource: repo://.github/workflows/openwiki-update.yaml
+  - id: openwiki-source-cc9c2e48d2340a266da2a1aa
+    resource: repo://.github/workflows/update-anthropic-models.yml
+  - id: openwiki-source-c98bff360638db4f2aa27c80
+    resource: repo://.github/workflows/update-models.yml
+  - id: openwiki-source-d8b85b547cd70ae9d19deeea
+    resource: repo://scripts/generate_models.py
+generated: { by: "openwiki/0.5.2", at: "2026-09-19T09:07:56.091Z" }
 ---
 
 # GitHub Actions Workflows
@@ -14,7 +26,7 @@ This repository uses three GitHub Actions workflows for automated maintenance:
 |----------|------|----------|---------|
 | **Update model lists** | `update-models.yml` | Daily 03:00 UTC | Refresh `models-mengram.json`, `models-yt-summarizer.json`, `models-openwiki.json` |
 | **Update Anthropic models** | `update-anthropic-models.yml` | Weekly Tue 03:15 UTC | Fetch and commit `anthropic-models.json` |
-| **OpenWiki Update** | `openwiki-update.yaml` | Bi-weekly Sat 05:00 UTC | Regenerate repository documentation via OpenWiki |
+| **OpenWiki Update** | `openwiki-update.yaml` | Bi-weekly Sat 05:00 UTC (even ISO weeks) | Regenerate repository documentation via OpenWiki |
 
 All workflows use `concurrency.group: update-model-lists` to prevent overlapping runs.
 
@@ -23,7 +35,7 @@ All workflows use `concurrency.group: update-model-lists` to prevent overlapping
 ## 1. Update Model Lists (`update-models.yml`)
 
 **Trigger:** Daily at 03:00 UTC + manual dispatch  
-**Permissions:** `contents: write` (to commit updated JSON files)  
+**Permissions:** `contents: write`, `pull-requests: write` (to create PRs and attempt merge)  
 **Secrets required:** `SYNC_PAT` (repo write token), `OPENROUTER_API_KEY`
 
 ### Flow
@@ -36,13 +48,10 @@ flowchart TD
     D --> E[Generate mengram profile]
     D --> F[Generate yt-summarizer profile]
     D --> G[Generate openwiki profile]
-    E --> H[Commit if changed]
+    E --> H[Create PR with changes]
     F --> H
     G --> H
-    H --> I[git add models-*.json history/]
-    I --> J[git commit -m \"Update model lists\"]
-    J --> K[git pull --rebase]
-    K --> L[git push]
+    H --> I[Attempt immediate merge]
 ```
 
 ### Steps Detail
@@ -50,12 +59,13 @@ flowchart TD
 | Step | Command | Notes |
 |------|---------|-------|
 | Checkout | `actions/checkout@v7` | Uses `SYNC_PAT` for write access |
-| Install uv | `astral-sh/setup-uv@v9.0.0` | Fast Python package installer |
+| Install uv | `astral-sh/setup-uv@v10.1.0` | Fast Python package installer |
 | Install deps | `uv sync` | Installs from `pyproject.toml` |
 | Generate mengram | `uv run scripts/generate_models.py --profile mengram` | `OPENROUTER_API_KEY` in env |
 | Generate yt-summarizer | `uv run scripts/generate_models.py --profile yt-summarizer` | Same API key |
 | Generate openwiki | `uv run scripts/generate_models.py --profile openwiki` | Same API key |
-| Commit | `git add ... && git diff --cached --quiet \|\| git commit` | Only commits if files changed |
+| Create PR | `peter-evans/create-pull-request@v8` | Branch: `automation/update-models` |
+| Attempt merge | `gh pr merge` | Uses `GITHUB_TOKEN`; leaves PR open if refused |
 
 ### Output Files Committed
 
@@ -66,17 +76,17 @@ flowchart TD
 
 ### Failure Modes
 
-- **OpenRouter API failure** → Step fails, workflow fails, no commit
+- **OpenRouter API failure** → Step fails, workflow fails, no PR created
 - **No free endpoints for a model** → Warning logged, neutral uptime used, model still scored
 - **Probe failure** → Warning logged, failure recorded in history, `sanity_ok: false` in output
-- **Git push conflict** → `git pull --rebase` handles most cases; concurrent workflow blocked by concurrency group
+- **Git push conflict** → Handled by PR creation; concurrent workflow blocked by concurrency group
 
 ---
 
 ## 2. Update Anthropic Models (`update-anthropic-models.yml`)
 
 **Trigger:** Weekly Tuesday 03:15 UTC (offset from daily to avoid conflict) + manual dispatch  
-**Permissions:** `contents: write`  
+**Permissions:** `contents: write`, `pull-requests: write`  
 **Secrets required:** `SYNC_PAT`, `ANTHROPIC_API_KEY`
 
 ### Flow
@@ -94,8 +104,8 @@ sequenceDiagram
     GH->>FS: Write anthropic-models.json
     GH->>FS: Append to history/anthropic-models.jsonl
     GH->>Git: git add anthropic-models.json history/anthropic-models.jsonl
-    GH->>Git: git commit -m "Update Anthropic model list"
-    GH->>Git: git pull --rebase && git push
+    GH->>Git: Create PR via peter-evans/create-pull-request
+    GH->>Git: Attempt immediate merge with gh pr merge
 ```
 
 ### Inline Python Script
@@ -124,12 +134,16 @@ with open('history/anthropic-models.jsonl', 'a') as f:
 
 ### Output Files Committed
 
-- `anthropic-models.json` — Array of `{id, name}` for current Anthropic models (type=="model" only), sorted by `id`
+- `anthropic-models.json` — Array of `{id, name, type, ...}` for current Anthropic models (type=="model" only), sorted by `id`
 - `history/anthropic-models.jsonl` — Rolling log with timestamp and full model list per fetch
 
 ### Schedule Note
 
 Runs at **03:15 UTC Tuesday** (cron `15 3 * * 2`), 15 minutes after the daily model list workflow to avoid API rate limit contention.
+
+### PR Strategy
+
+Creates a PR on branch `automation/update-anthropic-models`, then attempts immediate merge via `gh pr merge`. If merge is refused (branch protection, race, conflict), the PR is left open for the `fleet-timed-pr-automerge` app to merge later.
 
 ---
 
@@ -146,7 +160,7 @@ Runs at **03:15 UTC Tuesday** (cron `15 3 * * 2`), 15 minutes after the daily mo
 flowchart TD
     A[Cron: 0 5 * * 6<br/>Saturday 05:00 UTC] --> B[Gate: Check ISO week parity]
     B --> C{Even week?}
-    C -->|No| D[Skip: echo \"Odd ISO week; skipping\"]
+    C -->|No| D[Skip: echo "Odd ISO week; skipping"]
     C -->|Yes| E[Checkout]
     E --> F[Setup Node.js 24]
     F --> G[npm install -g openwiki]
@@ -236,7 +250,7 @@ Uses `peter-evans/create-pull-request@v8`:
 - Commit message: `"docs: update OpenWiki"`
 - Title: `"docs: update OpenWiki"`
 - Paths: `openwiki/`, `CLAUDE.md`
-- Auto-merges not enabled (PR requires review)
+- Does NOT auto-merge (PR requires review)
 
 ---
 
@@ -280,7 +294,7 @@ All workflows support `workflow_dispatch` for on-demand runs:
 - **Logs**: Each step expands to show stdout/stderr
 - **Warnings**: Probe failures, missing endpoint stats, allowlist exclusions appear in step logs
 - **History**: `history/` directory committed daily shows 30-day probe trends
-- **PRs**: OpenWiki updates create PRs for review before merging
+- **PRs**: OpenWiki updates create PRs for review before merging; model list workflows create PRs that attempt immediate merge
 
 ---
 
@@ -294,10 +308,7 @@ All workflows support `workflow_dispatch` for on-demand runs:
      env:
        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
    ```
-3. Add output file to commit step:
-   ```yaml
-   git add models-<name>.json models-mengram.json models-yt-summarizer.json models-openwiki.json history/
-   ```
+3. The PR creation step automatically includes all `models-*.json` and `history/` files
 
 ---
 

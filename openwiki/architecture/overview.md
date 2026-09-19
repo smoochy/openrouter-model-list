@@ -4,9 +4,6 @@ title: Architecture Overview
 description: "High-level architecture of the openrouter-model-list pipeline: fetch OpenRouter catalog, filter free models by profile thresholds, fetch endpoint stats, probe candidates, score, and write ranked model lists."
 resource: /openwiki/architecture/overview.md
 tags: ["architecture", "overview", "pipeline"]
-verified:
-  - by: openwiki/0.5.0
-    at: 2026-09-05T08:44:41.032Z
 sources:
   - id: openwiki-source-678af2bf704a9375a5423843
     resource: repo://scripts/endpoint_stats.py
