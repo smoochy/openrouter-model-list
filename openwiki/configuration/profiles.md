@@ -2,17 +2,16 @@
 type: Configuration
 title: Profiles & Thresholds Configuration
 description: "Per-profile threshold configuration for the three model generation profiles: mengram (structured extraction), yt-summarizer (YouTube transcripts), and openwiki (agentic documentation). Each profile has its own thresholds YAML and output JSON."
-resource: /openwiki/configuration/profiles.md
 tags: ["configuration", "profiles", "thresholds", "mengram", "yt-summarizer", "openwiki"]
 verified:
-  - by: openwiki/0.5.0
-    at: 2026-09-05T08:44:41.032Z
+  - by: openwiki/0.5.2
+    at: 2026-09-19T09:07:56.091Z
 sources:
   - id: openwiki-source-a53118abdd8a4e93bbeab156
     resource: repo://scripts/thresholds.py
   - id: openwiki-source-efe52f802136ea4316cd0f90
     resource: repo://thresholds-mengram.yaml
-generated: { by: "openwiki/0.5.0", at: "2026-09-05T08:44:41.032Z" }
+generated: { by: "openwiki/0.5.2", at: "2026-09-19T09:07:56.091Z" }
 ---
 
 # Profiles & Thresholds Configuration
@@ -180,7 +179,11 @@ require_tools: true
 min_uptime:
 max_latency_ms:
 min_candidate_pool: 2
-allowlist: []
+allowlist:
+  - thinkingmachines/inkling:free
+  - poolside/laguna-s-2.1:free
+  - cohere/north-mini-code:free
+  - nvidia/nemotron-3.5-lightning:free
 hardallowlist: []
 ```
 
@@ -191,7 +194,7 @@ hardallowlist: []
 - `require_tools: true` — Must support `tools`/`tool_choice` for agent loop.
 - `require_structured_output: false` — Tool-calling is the key feature, not structured output.
 - Smallest `min_candidate_pool: 2` — Fewer models expected to meet this bar.
-- No allowlist — Strict thresholds only.
+- `allowlist` includes 4 free models that don't encode size in their ID (so would be dropped by `min_param_b: 70`) but meet context/output/tool thresholds per catalog metadata. These diversify providers beyond just Nvidia Nemotron models.
 
 **Source:** [`thresholds-openwiki.yaml`](../../thresholds-openwiki.yaml)
 
@@ -206,7 +209,7 @@ hardallowlist: []
 | `require_structured_output` | **true** | false | false |
 | `require_tools` | false | false | **true** |
 | `min_candidate_pool` | 3 | 3 | 2 |
-| `allowlist` | owl-alpha | llama-4-scout, owl-alpha, qwen3-32b | (none) |
+| `allowlist` | owl-alpha | llama-4-scout, owl-alpha, qwen3-32b | inkling, laguna-s-2.1, north-mini-code, nemotron-3.5-lightning |
 | `hardallowlist` | (none) | (none) | (none) |
 
 ## Parameter Count Parsing
@@ -272,5 +275,4 @@ These would further reduce the candidate pool after scoring.
 
 - [Model Generation Workflow](/openwiki/workflows/generate-models.md) — How thresholds are applied in the pipeline
 - [Architecture Overview](/openwiki/architecture/overview.md) — High-level system design
-- [GitHub Actions](/openwiki/operations/github-actions.md) — Scheduled workflow that runs all profiles
 - [Source Map](/openwiki/source-map.md) — File-to-concept mapping

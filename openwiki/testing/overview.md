@@ -3,9 +3,6 @@ type: concept
 title: Testing Overview
 description: Explain the testing strategy for the repository, including unit tests for filters, scoring, probing, and end-to-end workflows.
 tags: ["testing", "unit-tests", "integration", "workflow"]
-verified:
-  - by: openwiki/0.5.0
-    at: 2026-09-05T08:44:41.032Z
 sources:
   - id: openwiki-source-7995d21acf8700126d80f174
     resource: repo://tests/test_endpoint_stats.py
