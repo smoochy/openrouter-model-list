@@ -1,66 +1,66 @@
 {
-  "generated_at": "2026-09-20T08:13:55.858448Z",
+  "generated_at": "2026-09-21T08:31:08.054321Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8585,
+      "score": 0.855,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 0.983,
-      "latency_ms": 958,
+      "uptime": 0.9795,
+      "latency_ms": 982,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8178,
+      "score": 0.7821,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9969,
-      "latency_ms": 3006,
+      "uptime": 0.9957,
+      "latency_ms": 3589,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-      "score": 0.8012,
+      "score": 0.7583,
       "context_length": 256000,
       "max_output_tokens": 65536,
-      "uptime": 0.8415,
-      "latency_ms": 488,
+      "uptime": 0.799,
+      "latency_ms": 778,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "google/gemma-4-31b-it:free",
-      "score": 0.435,
+      "score": 0.4574,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9972,
-      "latency_ms": 1348,
-      "own_uptime": 0.5156,
-      "sanity_ok": true
-    },
-    {
-      "id": "qwen/qwen3.8-27b:free",
-      "score": 0.288,
-      "context_length": 262144,
-      "max_output_tokens": 235929,
-      "uptime": 0.9563,
-      "latency_ms": 598,
-      "own_uptime": 0.3333,
+      "uptime": 0.9988,
+      "latency_ms": 1076,
+      "own_uptime": 0.5312,
       "sanity_ok": false
     },
     {
+      "id": "qwen/qwen3.8-27b:free",
+      "score": 0.4443,
+      "context_length": 262144,
+      "max_output_tokens": 235929,
+      "uptime": 0.9988,
+      "latency_ms": 613,
+      "own_uptime": 0.5,
+      "sanity_ok": true
+    },
+    {
       "id": "google/gemma-4-26b-a4b-it:free",
-      "score": 0.2698,
+      "score": 0.2687,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9969,
-      "latency_ms": 1016,
+      "uptime": 0.999,
+      "latency_ms": 1097,
       "own_uptime": 0.3125,
-      "sanity_ok": true
+      "sanity_ok": false
     }
   ]
 }
