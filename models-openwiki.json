@@ -1,54 +1,54 @@
 {
-  "generated_at": "2026-09-21T08:31:37.422499Z",
+  "generated_at": "2026-09-22T08:11:48.360505Z",
   "schema_version": 2,
   "models": [
     {
       "id": "cohere/north-mini-code:free",
-      "score": 0.8645,
+      "score": 0.859,
       "context_length": 256000,
       "max_output_tokens": 64000,
-      "uptime": 0.9751,
-      "latency_ms": 748,
+      "uptime": 0.9756,
+      "latency_ms": 846,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8538,
+      "score": 0.8454,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 0.9795,
-      "latency_ms": 982,
+      "uptime": 0.9572,
+      "latency_ms": 898,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.7775,
+      "score": 0.7832,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9957,
-      "latency_ms": 3589,
+      "uptime": 0.9936,
+      "latency_ms": 3472,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "poolside/laguna-s-2.1:free",
-      "score": 0.6906,
+      "score": 0.7003,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9998,
-      "latency_ms": 2134,
-      "own_uptime": 0.8667,
+      "uptime": 0.9993,
+      "latency_ms": 2070,
+      "own_uptime": 0.875,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3.5-lightning:free",
-      "score": 0.6568,
+      "score": 0.644,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9356,
-      "latency_ms": 8311,
+      "uptime": 0.9144,
+      "latency_ms": 11959,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
@@ -58,7 +58,7 @@
       "context_length": 1048576,
       "max_output_tokens": 262144,
       "uptime": 0.9997,
-      "latency_ms": 1946,
+      "latency_ms": 2140,
       "own_uptime": 0.0,
       "sanity_ok": false
     }
