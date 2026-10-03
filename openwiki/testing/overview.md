@@ -19,6 +19,9 @@ sources:
   - id: openwiki-source-3408766c6be85dd20e112827
     resource: repo://tests/test_thresholds.py
 generated: { by: "openwiki/0.5.0", at: "2026-09-05T08:44:41.032Z" }
+verified:
+  - by: openwiki/0.7.0
+    at: 2026-10-03T10:09:48.589Z
 ---
 
 The OpenWiki project employs a comprehensive testing strategy to ensure correctness and reliability across its modules. Tests are organized in the `tests/` directory and cover unit-level functionality for individual components as well as integrated workflows that exercise end-to-end model generation processes.

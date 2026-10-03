@@ -18,6 +18,9 @@ sources:
   - id: openwiki-source-f3047b157e385d6464b26dbd
     resource: repo://scripts/scoring.py
 generated: { by: "openwiki/0.5.0", at: "2026-09-05T08:44:41.032Z" }
+verified:
+  - by: openwiki/0.7.0
+    at: 2026-10-03T10:09:48.589Z
 ---
 
 # Architecture Overview
