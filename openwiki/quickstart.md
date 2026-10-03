@@ -3,9 +3,6 @@ type: Quickstart
 title: Quickstart
 description: Get started with the repository for consumers and contributors. Provides an overview of the model lists, how to use them, and how to run the generation locally.
 tags: [openrouter, llm, models, automation, github-actions, mengram, yt-summarizer, openwiki, anthropic]
-verified:
-  - by: openwiki/0.5.2
-    at: 2026-09-19T09:07:56.091Z
 sources:
   - id: openwiki-source-cc9c2e48d2340a266da2a1aa
     resource: repo://.github/workflows/update-anthropic-models.yml
@@ -28,6 +25,9 @@ sources:
   - id: openwiki-source-95e171e2045483fa0c961258
     resource: repo://thresholds-yt-summarizer.yaml
 generated: { by: "openwiki/0.5.2", at: "2026-09-19T09:07:56.091Z" }
+verified:
+  - by: openwiki/0.7.0
+    at: 2026-10-03T10:09:48.589Z
 ---
 
 # Quickstart
