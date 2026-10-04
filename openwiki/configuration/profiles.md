@@ -11,7 +11,7 @@ sources:
     resource: repo://scripts/thresholds.py
   - id: openwiki-source-efe52f802136ea4316cd0f90
     resource: repo://thresholds-mengram.yaml
-generated: { by: "openwiki/0.5.2", at: "2026-09-19T09:07:56.091Z" }
+generated: { by: "openwiki/0.7.0", at: "2026-10-03T10:09:48.589Z" }
 ---
 
 # Profiles & Thresholds Configuration
@@ -273,6 +273,9 @@ These would further reduce the candidate pool after scoring.
 
 ## Related Pages
 
+<!-- openwiki: broken internal link [/openwiki/workflows/generate-models.md] link "/openwiki/workflows/generate-models.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
 - [Model Generation Workflow](/openwiki/workflows/generate-models.md) — How thresholds are applied in the pipeline
+<!-- openwiki: broken internal link [/openwiki/architecture/overview.md] link "/openwiki/architecture/overview.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
 - [Architecture Overview](/openwiki/architecture/overview.md) — High-level system design
+<!-- openwiki: broken internal link [/openwiki/source-map.md] link "/openwiki/source-map.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
 - [Source Map](/openwiki/source-map.md) — File-to-concept mapping

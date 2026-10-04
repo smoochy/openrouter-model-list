@@ -3,9 +3,6 @@ type: Operations
 title: GitHub Actions Workflows
 description: "Scheduled GitHub Actions workflows that keep model lists and documentation current: daily model list updates (3 profiles), weekly Anthropic model list, and bi-weekly OpenWiki documentation updates."
 tags: ["operations", "github-actions", "workflows", "scheduling", "automation"]
-verified:
-  - by: openwiki/0.5.2
-    at: 2026-09-19T09:07:56.091Z
 sources:
   - id: openwiki-source-e082dc1d961398caa2e27f47
     resource: repo://.github/workflows/openwiki-update.yaml
@@ -16,6 +13,9 @@ sources:
   - id: openwiki-source-d8b85b547cd70ae9d19deeea
     resource: repo://scripts/generate_models.py
 generated: { by: "openwiki/0.5.2", at: "2026-09-19T09:07:56.091Z" }
+verified:
+  - by: openwiki/0.7.0
+    at: 2026-10-03T10:09:48.589Z
 ---
 
 # GitHub Actions Workflows
