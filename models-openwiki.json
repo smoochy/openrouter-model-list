@@ -1,64 +1,64 @@
 {
-  "generated_at": "2026-10-06T09:43:10.614682Z",
+  "generated_at": "2026-10-07T09:41:50.980838Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3.5-lightning:free",
-      "score": 0.913,
+      "score": 0.9363,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.983,
-      "latency_ms": 1203,
+      "uptime": 0.9724,
+      "latency_ms": 708,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8665,
+      "score": 0.868,
       "context_length": 262144,
       "max_output_tokens": 235929,
       "uptime": 0.9994,
-      "latency_ms": 969,
-      "own_uptime": 1.0,
-      "sanity_ok": true
-    },
-    {
-      "id": "cohere/north-mini-code:free",
-      "score": 0.8621,
-      "context_length": 256000,
-      "max_output_tokens": 64000,
-      "uptime": 0.9702,
-      "latency_ms": 741,
+      "latency_ms": 943,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8315,
+      "score": 0.8527,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9617,
-      "latency_ms": 2347,
+      "uptime": 0.9659,
+      "latency_ms": 2036,
+      "own_uptime": 1.0,
+      "sanity_ok": true
+    },
+    {
+      "id": "cohere/north-mini-code:free",
+      "score": 0.7915,
+      "context_length": 256000,
+      "max_output_tokens": 64000,
+      "uptime": 0.974,
+      "latency_ms": 1955,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "poolside/laguna-s-2.1:free",
-      "score": 0.6466,
+      "score": 0.6557,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9993,
-      "latency_ms": 1939,
-      "own_uptime": 0.8,
-      "sanity_ok": false
+      "uptime": 0.9992,
+      "latency_ms": 1858,
+      "own_uptime": 0.8065,
+      "sanity_ok": true
     },
     {
       "id": "thinkingmachines/inkling:free",
       "score": 0.0,
       "context_length": 1048576,
       "max_output_tokens": 262144,
-      "uptime": 0.9931,
-      "latency_ms": 2101,
+      "uptime": 0.9929,
+      "latency_ms": 2117,
       "own_uptime": 0.0,
       "sanity_ok": false
     }
