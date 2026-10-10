@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-10
+
+### Changed
+
+- `.github/workflows/update-anthropic-models.yml` runs daily at 03:15 UTC instead of Tuesdays only. A weekly cron makes the worst-case lag between a model shipping and appearing in `anthropic-models.json` almost seven days, and that is not a theoretical bound: `claude-haiku-5-5` shipped the day after the 2026-10-06 run and was still missing on 2026-10-10 with the next run three days out. Consumers that pick a model from this file therefore cannot see a new model for up to a week. The 03:15 offset against `update-models.yml` at 03:00 stays, as does the shared `update-model-lists` concurrency group, so the two jobs still never overlap. Runner minutes are free on a public repository, and `peter-evans/create-pull-request` only opens a pull request when the file actually changed, so a daily schedule adds no pull-request noise on days when Anthropic ships nothing
+
 ## 2026-09-07
 
 ### Changed
