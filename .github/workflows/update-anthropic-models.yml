@@ -2,7 +2,7 @@ name: Update Anthropic model list
 
 on:
   schedule:
-    - cron: "15 3 * * 2"  # Tuesday 03:15 UTC (offset to avoid conflict with update-models)
+    - cron: "15 3 * * *"  # daily 03:15 UTC (offset to avoid conflict with update-models at 03:00)
   workflow_dispatch:
 
 concurrency:
