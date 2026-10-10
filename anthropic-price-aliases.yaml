@@ -1,0 +1,25 @@
+# Fallback join table for scripts/generate_anthropic_models.py.
+#
+# Primary join: slugify() the pricing page's "Model" column text and match it
+# directly against an API model id (e.g. "Claude Opus 5.5" -> "claude-opus-5-5").
+#
+# This file covers what slugify can't reach:
+#   - dated model ids (the page names the family, the API returns a dated id)
+#   - a family the pricing page splits into multiple rows (Claude Haiku 5.5:
+#     "for prompts up to 100,000 tokens" / "for prompts over 100,000 tokens")
+#
+# Each key is the slugified pricing-page row name; each value is the list of
+# API model ids that row's price applies to. A row with no matching key here
+# and no direct slug match simply isn't consumed - that's fine, the pricing
+# page lists more (including retired) models than the API currently returns.
+# What fails the run is the reverse: an API model id that ends up with no
+# price at all, from either path.
+aliases:
+  claude-opus-4-5:
+    - claude-opus-4-5-20251101
+  claude-sonnet-4-5:
+    - claude-sonnet-4-5-20250929
+  claude-haiku-4-5:
+    - claude-haiku-4-5-20251001
+  claude-haiku-5-5-for-prompts-up-to-100000-tokens:
+    - claude-haiku-5-5

@@ -19,26 +19,16 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Fetch and normalize Anthropic models
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10.2.0
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Fetch, price, and normalize Anthropic models
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          curl -sf https://api.anthropic.com/v1/models \
-            -H "x-api-key: $ANTHROPIC_API_KEY" \
-            -H "anthropic-version: 2023-06-01" \
-          | python3 -c "
-          import json, sys, datetime
-          from datetime import timezone
-          raw = json.load(sys.stdin)
-          models = [m for m in raw.get('data', []) if m.get('type') == 'model']
-          models.sort(key=lambda m: m['id'])
-          with open('anthropic-models.json', 'w') as f:
-              json.dump(models, f, indent=2)
-              f.write('\n')
-          entry = {'timestamp': datetime.datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'models': models}
-          with open('history/anthropic-models.jsonl', 'a') as f:
-              f.write(json.dumps(entry, separators=(',', ':')) + '\n')
-          "
+        run: uv run scripts/generate_anthropic_models.py
 
       - name: Create pull request if there are changes
         id: create-pr

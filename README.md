@@ -177,17 +177,47 @@ Each run regenerates the model list files and the per-model probe history under
 ## Anthropic Model List
 
 `anthropic-models.json` contains the current set of Anthropic Claude models,
-fetched daily from `https://api.anthropic.com/v1/models`. Format:
+fetched daily from `https://api.anthropic.com/v1/models`, each with a `pricing`
+field scraped from [the Anthropic pricing page](https://platform.claude.com/docs/en/about-claude/pricing). Format:
 
 ```json
 [
-  { "id": "claude-haiku-4-5-20251001", "display_name": "Claude Haiku 4.5", "type": "model", "created_at": 1748995200 },
-  { "id": "claude-opus-4-8", "display_name": "Claude Opus 4.8", "type": "model", "created_at": 1749600000 },
-  { "id": "claude-sonnet-4-6", "display_name": "Claude Sonnet 4.6", "type": "model", "created_at": 1749600000 }
+  {
+    "id": "claude-haiku-4-5-20251001",
+    "display_name": "Claude Haiku 4.5",
+    "type": "model",
+    "created_at": 1748995200,
+    "pricing": {
+      "input": 1,
+      "cache_write_5m": 1.25,
+      "cache_write_1h": 2,
+      "cache_read": 0.1,
+      "output": 5
+    }
+  },
+  { "id": "claude-opus-4-8", "display_name": "Claude Opus 4.8", "type": "model", "created_at": 1749600000, "pricing": { "input": 5, "cache_write_5m": 6.25, "cache_write_1h": 10, "cache_read": 0.5, "output": 25 } },
+  { "id": "claude-sonnet-4-6", "display_name": "Claude Sonnet 4.6", "type": "model", "created_at": 1749600000, "pricing": { "input": 3, "cache_write_5m": 3.75, "cache_write_1h": 6, "cache_read": 0.3, "output": 15 } }
 ]
 ```
 
-Only entries with `type == "model"` are included; sorted by `id` ascending. Note: the field is `display_name` (native Anthropic API field name), not `name`.
+Only entries with `type == "model"` are included; sorted by `id` ascending. Note: the field is `display_name` (native Anthropic API field name), not `name`. The file stays a bare array, not the `{generated_at, schema_version, models}` wrapper used by `models-*.json` — adopting that shape here would break the existing consumer below, and nothing in scope needed it.
+
+All five `pricing` fields are `$ / MTok` (dollars per million tokens), as the pricing page states them:
+
+- `input` — base input tokens
+- `cache_write_5m` — 5-minute prompt cache writes
+- `cache_write_1h` — 1-hour prompt cache writes
+- `cache_read` — cache hits and refreshes
+- `output` — output tokens
+
+**Generation**: [`scripts/generate_anthropic_models.py`](scripts/generate_anthropic_models.py) fetches every
+page of `/v1/models`, scrapes the pricing table, and joins each model id onto its price by slugifying the
+pricing page's model name (`Claude Opus 5.5` → `claude-opus-5-5`), falling back to
+[`anthropic-price-aliases.yaml`](anthropic-price-aliases.yaml) for ids the slug can't reach — dated ids such as
+`claude-haiku-4-5-20251001`, and `claude-haiku-5-5`, which the pricing page splits into two rows by prompt
+length. The run fails closed (non-zero exit, nothing written) if any model ends up with no price, the pricing
+table's header or column count doesn't match what's expected, or a price is zero or fails to parse — so a
+broken scrape leaves the last committed `anthropic-models.json` in place instead of publishing bad prices.
 
 **Consumers** fetch this list from raw.githubusercontent.com:
 
