@@ -48,7 +48,7 @@ instead of relying on one.
 | ---- | -------- | --------------- |
 | [`models-mengram.json`](models-mengram.json) | [mengram](https://github.com/alibaizhanov/mengram) knowledge extraction | Structured output (`response_format`) support, ≥40k context |
 | [`models-yt-summarizer.json`](models-yt-summarizer.json) | [yt-transcript-distiller](https://github.com/smoochy/yt-transcript-distiller) — YouTube transcript summarization | ≥32k context, plain text generation (no structured output required) |
-| [`anthropic-models.json`](anthropic-models.json) | [yt-transcript-distiller](https://github.com/smoochy/yt-transcript-distiller) — Claude model selector | List of current Anthropic Claude models (fetched weekly from Anthropic API) |
+| [`anthropic-models.json`](anthropic-models.json) | [yt-transcript-distiller](https://github.com/smoochy/yt-transcript-distiller) — Claude model selector | List of current Anthropic Claude models (fetched daily from Anthropic API) |
 
 Each file is independently generated with its own `thresholds-*.yaml` configuration. Point your `model_list_url` at the file matching your use case.
 
@@ -177,7 +177,7 @@ Each run regenerates the model list files and the per-model probe history under
 ## Anthropic Model List
 
 `anthropic-models.json` contains the current set of Anthropic Claude models,
-fetched weekly from `https://api.anthropic.com/v1/models`. Format:
+fetched daily from `https://api.anthropic.com/v1/models`. Format:
 
 ```json
 [
@@ -196,7 +196,7 @@ https://raw.githubusercontent.com/smoochy/openrouter-model-list/main/anthropic-m
 ```
 
 The [update-anthropic-models.yml](.github/workflows/update-anthropic-models.yml) workflow runs
-every Tuesday at 03:00 UTC (plus `workflow_dispatch`) and commits only when the list changes.
+daily at 03:15 UTC (plus `workflow_dispatch`) and commits only when the list changes.
 
 ## Probe History
 
