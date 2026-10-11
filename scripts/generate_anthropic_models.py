@@ -72,7 +72,8 @@ def fetch_models(api_key: str) -> list[dict]:
 
 
 def fetch_pricing_page(url: str = PRICING_URL) -> str:
-    resp = httpx.get(url, timeout=30, follow_redirects=True)
+    # Without this header the docs site answers with the HTML page, which has no markdown table.
+    resp = httpx.get(url, headers={"Accept": "text/markdown"}, timeout=30, follow_redirects=True)
     resp.raise_for_status()
     return resp.text
 
