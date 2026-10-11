@@ -23,3 +23,6 @@ aliases:
     - claude-haiku-4-5-20251001
   claude-haiku-5-5-for-prompts-up-to-100000-tokens:
     - claude-haiku-5-5
+  # Upper tier: emitted as the model's optional pricing_long_context field.
+  claude-haiku-5-5-for-prompts-over-100000-tokens:
+    - claude-haiku-5-5

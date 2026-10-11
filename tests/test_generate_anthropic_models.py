@@ -9,6 +9,7 @@ from generate_anthropic_models import (
     PricingError,
     fetch_models,
     generate,
+    join_long_context,
     join_prices,
     parse_pricing_table,
     slugify,
@@ -109,6 +110,46 @@ def test_join_prices_alias_covers_split_row():
     }
     priced = join_prices(["claude-haiku-5-5"], pricing_table, aliases)
     assert priced == {"claude-haiku-5-5": {"input": 0.10}}
+
+
+def test_join_long_context_alias_and_threshold():
+    pricing_table = {
+        "Claude Haiku 5.5 (for prompts up to 100,000 tokens)": {"input": 0.10},
+        "Claude Haiku 5.5 (for prompts over 100,000 tokens)": {"input": 0.50},
+    }
+    aliases = {"claude-haiku-5-5-for-prompts-over-100000-tokens": ["claude-haiku-5-5"]}
+    tiers = join_long_context(["claude-haiku-5-5"], pricing_table, aliases)
+    assert tiers == {"claude-haiku-5-5": {"threshold_input_tokens": 100000, "input": 0.50}}
+
+
+def test_join_long_context_none_for_untiered_model():
+    assert join_long_context(["claude-opus-5-5"], {"Claude Opus 5.5": {"input": 4.0}}, {}) == {}
+
+
+def test_generate_adds_pricing_long_context_only_to_tiered(tmp_path):
+    row = "| {} | ${} / MTok | $1 / MTok | $1 / MTok | $1 / MTok | ${} / MTok |"
+    md = table_md([
+        row.format("Claude Haiku 5.5 (for prompts up to 100,000 tokens)", "0.10", "0.50"),
+        row.format("Claude Haiku 5.5 (for prompts over 100,000 tokens)", "0.50", "2.50"),
+        row.format("Claude Opus 5.5", "4", "20"),
+    ])
+    result = generate(
+        api_key="k",
+        fetch_models_fn=lambda k: [{"type": "model", "id": "claude-haiku-5-5"}, {"type": "model", "id": "claude-opus-5-5"}],
+        fetch_pricing_fn=lambda: md,
+        aliases={
+            "claude-haiku-5-5-for-prompts-up-to-100000-tokens": ["claude-haiku-5-5"],
+            "claude-haiku-5-5-for-prompts-over-100000-tokens": ["claude-haiku-5-5"],
+        },
+        now="t",
+        output_path=tmp_path / "o.json",
+        history_path=tmp_path / "h.jsonl",
+    )
+    haiku, opus = result
+    assert haiku["pricing"]["input"] == 0.10
+    assert haiku["pricing_long_context"]["threshold_input_tokens"] == 100000
+    assert haiku["pricing_long_context"]["output"] == 2.50
+    assert "pricing_long_context" not in opus
 
 
 def test_join_prices_unmapped_model_fails_closed():

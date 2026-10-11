@@ -34,7 +34,8 @@ TABLE_HEADER = (
 )
 PRICE_FIELDS = ["input", "cache_write_5m", "cache_write_1h", "cache_read", "output"]
 
-PRICE_RE = re.compile(r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*/\s*MTok")
+LONG_CONTEXT_RE = re.compile(r"\(\s*for prompts over ([0-9][0-9,]*) tokens\s*\)", re.IGNORECASE)
+PRICE_RE =re.compile(r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*/\s*MTok")
 
 
 class PricingError(RuntimeError):
@@ -165,6 +166,32 @@ def join_prices(
     return priced
 
 
+def join_long_context(
+    model_ids: list[str],
+    pricing_table: dict[str, dict[str, float]],
+    aliases: dict[str, list[str]],
+) -> dict[str, dict]:
+    """Join 'for prompts over N tokens' rows onto model ids as {threshold_input_tokens, <prices>}.
+
+    A tier row is joined like a base row (alias first, then the slug of the name without the
+    parenthesis). A tier row that maps to no API model id is ignored, like any other unused row.
+    """
+    tiers: dict[str, dict] = {}
+    for page_name, prices in pricing_table.items():
+        m = LONG_CONTEXT_RE.search(page_name)
+        if not m:
+            continue
+        threshold = int(m.group(1).replace(",", ""))
+        if threshold <= 0:
+            raise PricingError(f"invalid long-context threshold in {page_name!r}")
+        base_slug = slugify(page_name[: m.start()])
+        targets = aliases.get(slugify(page_name)) or ([base_slug] if base_slug in model_ids else [])
+        for model_id in targets:
+            if model_id in model_ids:
+                tiers.setdefault(model_id, {"threshold_input_tokens": threshold, **prices})
+    return tiers
+
+
 def generate(
     *,
     api_key: str,
@@ -179,8 +206,11 @@ def generate(
     pricing_table = parse_pricing_table(fetch_pricing_fn())
     prices = join_prices([m["id"] for m in models], pricing_table, aliases)
 
+    tiers = join_long_context([m["id"] for m in models], pricing_table, aliases)
     for model in models:
         model["pricing"] = prices[model["id"]]
+        if model["id"] in tiers:
+            model["pricing_long_context"] = tiers[model["id"]]
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
