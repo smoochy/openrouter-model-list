@@ -210,6 +210,15 @@ All five `pricing` fields are `$ / MTok` (dollars per million tokens), as the pr
 - `cache_read` — cache hits and refreshes
 - `output` — output tokens
 
+**Long-context tier (optional).** A model the pricing page prices in tiers also carries `pricing_long_context`, with the same five price fields plus `threshold_input_tokens` (integer). It is absent for single-price models, and `pricing` is unchanged, so existing consumers keep working. A consumer prices a request from its input token count: if `input_tokens > threshold_input_tokens` use `pricing_long_context`, otherwise `pricing` (strictly greater than; the page says "up to" and "over"). Today only `claude-haiku-5-5` has it:
+
+```json
+"pricing": { "input": 0.1, "cache_write_5m": 0.125, "cache_write_1h": 0.2, "cache_read": 0.01, "output": 0.5 },
+"pricing_long_context": { "threshold_input_tokens": 100000, "input": 0.5, "cache_write_5m": 0.625, "cache_write_1h": 1.0, "cache_read": 0.05, "output": 2.5 }
+```
+
+The tier row is mapped in [`anthropic-price-aliases.yaml`](anthropic-price-aliases.yaml) like the base row; the threshold is parsed from the row name "(for prompts over N tokens)".
+
 **Generation**: [`scripts/generate_anthropic_models.py`](scripts/generate_anthropic_models.py) fetches every
 page of `/v1/models`, scrapes the pricing table, and joins each model id onto its price by slugifying the
 pricing page's model name (`Claude Opus 5.5` → `claude-opus-5-5`), falling back to

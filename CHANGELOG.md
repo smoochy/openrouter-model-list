@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-11
+
+### Added
+
+- `anthropic-models.json` entries for tiered models gain an optional `pricing_long_context` object (`threshold_input_tokens` plus the five `pricing` fields), applied when a prompt has more input tokens than the threshold. `scripts/generate_anthropic_models.py` parses the threshold from the pricing row "(for prompts over N tokens)" and `anthropic-price-aliases.yaml` maps the Claude Haiku 5.5 upper-tier row. `pricing` is unchanged. Documented in `README.md`
+
 ## 2026-10-10
 
 ### Changed
