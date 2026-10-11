@@ -82,7 +82,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 10.0,
+      "cache_write_5m": 12.5,
+      "cache_write_1h": 20.0,
+      "cache_read": 1.0,
+      "output": 50.0
+    }
   },
   {
     "type": "model",
@@ -167,7 +174,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 10.0,
+      "cache_write_5m": 12.5,
+      "cache_write_1h": 20.0,
+      "cache_read": 0.25,
+      "output": 50.0
+    }
   },
   {
     "type": "model",
@@ -252,7 +266,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 1.0,
+      "cache_write_5m": 1.25,
+      "cache_write_1h": 2.0,
+      "cache_read": 0.1,
+      "output": 5.0
+    }
   },
   {
     "type": "model",
@@ -337,7 +358,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 0.1,
+      "cache_write_5m": 0.125,
+      "cache_write_1h": 0.2,
+      "cache_read": 0.01,
+      "output": 0.5
+    }
   },
   {
     "type": "model",
@@ -422,7 +450,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 5.0,
+      "cache_write_5m": 6.25,
+      "cache_write_1h": 10.0,
+      "cache_read": 0.5,
+      "output": 25.0
+    }
   },
   {
     "type": "model",
@@ -507,7 +542,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 5.0,
+      "cache_write_5m": 6.25,
+      "cache_write_1h": 10.0,
+      "cache_read": 0.5,
+      "output": 25.0
+    }
   },
   {
     "type": "model",
@@ -592,7 +634,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 5.0,
+      "cache_write_5m": 6.25,
+      "cache_write_1h": 10.0,
+      "cache_read": 0.5,
+      "output": 25.0
+    }
   },
   {
     "type": "model",
@@ -677,7 +726,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 5.0,
+      "cache_write_5m": 6.25,
+      "cache_write_1h": 10.0,
+      "cache_read": 0.5,
+      "output": 25.0
+    }
   },
   {
     "type": "model",
@@ -762,7 +818,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 5.0,
+      "cache_write_5m": 6.25,
+      "cache_write_1h": 10.0,
+      "cache_read": 0.5,
+      "output": 25.0
+    }
   },
   {
     "type": "model",
@@ -847,7 +910,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 4.0,
+      "cache_write_5m": 5.0,
+      "cache_write_1h": 8.0,
+      "cache_read": 0.2,
+      "output": 20.0
+    }
   },
   {
     "type": "model",
@@ -932,7 +1002,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 3.0,
+      "cache_write_5m": 3.75,
+      "cache_write_1h": 6.0,
+      "cache_read": 0.3,
+      "output": 15.0
+    }
   },
   {
     "type": "model",
@@ -1017,7 +1094,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 3.0,
+      "cache_write_5m": 3.75,
+      "cache_write_1h": 6.0,
+      "cache_read": 0.3,
+      "output": 15.0
+    }
   },
   {
     "type": "model",
@@ -1102,7 +1186,14 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 2.0,
+      "cache_write_5m": 2.5,
+      "cache_write_1h": 4.0,
+      "cache_read": 0.2,
+      "output": 10.0
+    }
   },
   {
     "type": "model",
@@ -1187,6 +1278,13 @@
     },
     "lifecycle": "active",
     "deprecated_at": null,
-    "retires_at": null
+    "retires_at": null,
+    "pricing": {
+      "input": 2.0,
+      "cache_write_5m": 2.5,
+      "cache_write_1h": 4.0,
+      "cache_read": 0.1,
+      "output": 10.0
+    }
   }
 ]
