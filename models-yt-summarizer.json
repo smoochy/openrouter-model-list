@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-10-11T09:36:54.768944Z",
+  "generated_at": "2026-10-15T07:56:48.682231Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.8794,
+      "score": 0.8503,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 1.0,
-      "latency_ms": 781,
+      "uptime": 0.9993,
+      "latency_ms": 1258,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8791,
+      "score": 0.7075,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9958,
-      "latency_ms": 1973,
+      "uptime": 0.7174,
+      "latency_ms": 2049,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "google/gemma-4-31b-it:free",
-      "score": 0.3849,
+      "score": 0.3671,
       "context_length": 262144,
       "max_output_tokens": 32768,
       "uptime": 1.0,
-      "latency_ms": 1180,
-      "own_uptime": 0.45,
+      "latency_ms": 1159,
+      "own_uptime": 0.4286,
+      "sanity_ok": false
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "score": 0.2756,
+      "context_length": 262144,
+      "max_output_tokens": 32768,
+      "uptime": 0.9981,
+      "latency_ms": 1127,
+      "own_uptime": 0.3214,
       "sanity_ok": false
     },
     {
       "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-      "score": 0.3706,
+      "score": 0.0939,
       "context_length": 256000,
       "max_output_tokens": 65536,
-      "uptime": 0.1222,
-      "latency_ms": 473,
+      "uptime": 0.1139,
+      "latency_ms": 5219,
       "own_uptime": 1.0,
       "sanity_ok": true
-    },
-    {
-      "id": "google/gemma-4-26b-a4b-it:free",
-      "score": 0.2886,
-      "context_length": 262144,
-      "max_output_tokens": 32768,
-      "uptime": 1.0,
-      "latency_ms": 1008,
-      "own_uptime": 0.3333,
-      "sanity_ok": false
     }
   ]
 }
