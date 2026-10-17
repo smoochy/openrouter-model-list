@@ -17,10 +17,10 @@ sources:
     resource: repo://scripts/probe.py
   - id: openwiki-source-f3047b157e385d6464b26dbd
     resource: repo://scripts/scoring.py
-generated: { by: "openwiki/0.5.0", at: "2026-09-05T08:44:41.032Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
 verified:
-  - by: openwiki/0.7.0
-    at: 2026-10-03T10:09:48.589Z
+  - by: openwiki/0.7.2
+    at: 2026-10-17T08:58:08.450Z
 ---
 
 # Architecture Overview
@@ -45,7 +45,7 @@ Daily 03:00 UTC] --> B[generate_models.py
     D --> H[models-openwiki.json]
 
     E[update-anthropic-models.yml
-Weekly Tue 03:15 UTC] --> I[anthropic-models.json]
+Daily 03:15 UTC] --> I[anthropic-models.json]
 
     subgraph Pipeline[Per-Profile Pipeline]
         B1[Fetch OpenRouter Models
@@ -195,7 +195,7 @@ See [Profiles & Thresholds](../configuration/profiles.md) for details.
 ## Deployment
 
 - **Runtime**: GitHub Actions (`ubuntu-latest`, Python 3.11+)
-- **Schedule**: Daily 03:00 UTC (`update-models.yml`); Weekly Tue 03:00 UTC (`update-anthropic-models.yml`)
+- **Schedule**: Daily 03:00 UTC (`update-models.yml`); Daily 03:15 UTC (`update-anthropic-models.yml`)
 - **Artifacts**: Committed JSON files pushed back to repo on change
 - **History**: `history/` directory committed daily (30-day rolling probe logs)
 
