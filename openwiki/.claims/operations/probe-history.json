@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:cffa7f2b8a3b18d49a620e023314523be68cfc268ec8d12888fe039bf5dcf670",
+  "claims": [
+    {
+      "id": "claim_d84e55361bf948a397e70520ea137c0b",
+      "statement": "The probe_model function sends a minimal completion request (max_tokens=1, prompt \"ping\") to the OpenRouter API for a given model ID and returns a dictionary with success (boolean) and latency_ms (integer).",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L11-L24",
+          "version": "repo-lines-v1:sha256:e26e05a835aeba54b7421d5cb8564db666c413cd808735a66fe703575a56b7f6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxODNhNzk4YjE3ZDE0NjlmZjc4NTk3ODgzNzAwOTQ5ZTZkYjRkNmE4NDNhYzM2ZDE2OWI1OTc0MWFkZjM0MTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyYmM1YjczODRhOThiNzQxNGMwOGIyMTNlODQyODE3N2I3NThmMzhiYjc0ZjE5YTU0MWQzYWZhNTFkNThjZmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBlZTYyMzY0YmM4NzExNzE4ZjZiM2Q2OTU4MjQwMzgwMjZmYTEwZTZkZDU1MmIxZmM4ZjllMDI5OTA5ZmIwODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdiNWUxMWQzNTFmMDZiM2ZmZjc2MThkNzhiYzBmZmY3ODhjOTE4Y2MzYThiNGYyMThjMTgyZmYxMTRhZGUwYjYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_485f365074bb48d6a86bccec6e9f4dba",
+      "statement": "The record_probe function appends probe results to a JSONL file in the history/ directory, using a filename derived from the model ID by replacing '/' and ':' with '__', and trims the history to the last 30 days.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L27-L41",
+          "version": "repo-lines-v1:sha256:a12754ec070f2c224debd50c518d05b2a3e3155cdd7d9ff4a14ff50455ef45e7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5MjMyYjg1NjkyMWFhYmYwYmY4YjA1ZGZmOGE3ZTBjMzk0M2VhMzM3MzE5MDdhMDUwNjhkMmEyMTRmM2Q0NjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmZDU2OTFkYmYxNDc4ZjljZGYxMzZlNDIwYTc2YmI2YzkzZDEzY2Y5MWRjNGEyMjY5NTg3Nzc0ZmYzMDhjY2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZDE4ZGU2YjU5N2JlNThkYzMwMGEwY2M1MWMwODc0ZmY5YjlmZjhjYzRhOGM2MzZmZTJkOWFlMzJiMzE5OWYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_866d16c37f6b4dc99054e621ebf749b6",
+      "statement": "The read_history function reads the JSONL file for a given model ID and returns a list of dictionaries, each representing a probe result with timestamp, success, and latency_ms.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L43-L48",
+          "version": "repo-lines-v1:sha256:b121861ff084f06350353025a8875f9b61d6421bd789cb7fa249ba67cffecc43:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzdkYjNjMDRhNTRmM2NkOTI3MGUyOWE0OTJlYWNhZWQyNDY0MzhlMmM0ZTZjOGNjMTk0MzRmZDAyMDNkODRhMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjIzNWQ0YjE0YzNmMDQyMTQwODc0MWExYTkxZmE3YjNhM2I4YzRmMjAyYzY5ZDk2NjdiNjEyMWRhN2NlODE1ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTVlMmVhMDk3MDFiYmU0NmQzNjE3NTlmNmU1NjhjNWE5NGYzNjNjM2Y0Zjk0M2U3YjY3OTliZmRlMTU3Mjg0MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDJlNmExOGE4ZTIwNDM5OTQ1MzNiOTY3OWIzOTQzNGY0ZmQ0ODQ5YjJhMTQ5ZDZiZTI0MDJhZWEwNmJiMDhiNCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5e9204ad37ba411997bc58bc9157c07f",
+      "statement": "The compute_uptime function calculates the local probe success rate (own_uptime) as the ratio of successful probes to total probes in the history, returning 0.5 if fewer than 3 probes are available.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py#L12-L16",
+          "version": "repo-lines-v1:sha256:20e3619b0622cee246b3aa0a1613d38544838ec0f4d3cb0b0ac3a052d778360b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTBmNTkxNzZiZDZlYWQ5ODc2YjQxY2Q1ZWE1MDUzOTIzYTdlYzcwMzVjNDc0YjZjNDc0NmI3MjU1M2U5YmJjMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWNiYWUxMmUyM2YwNDEyZGM5MzBhNzUxYTIwNGYzZmE5MTBhNDNkZGM4NTE2Mzk3ZjE0MDE1MGMzNzg1YTEwOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmRjNzk2ODg5ZjAzYmQxMjhlMjZjNTg1YmVhNDM0ZjI5NWRmODExZTc1MjUxYjg2M2ZkOTYyOTYwMWQ3YzU3MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzIyZDM2NTcxZDBiMTYwMTI0NWU3N2MyNzM4NzY3MDM1OGJmMGJlMDBmMTY0MTNhYzRjNmU1YzNiZjQ5N2JkNCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_4aa58d04485347719fcac37edb4fadd2",
+      "statement": "The compute_score function combines OpenRouter-reported uptime, latency, and capability into a base score, then multiplies by the own_uptime factor (from local probe history) to adjust the score based on local reliability.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py#L39-L66",
+          "version": "repo-lines-v1:sha256:464860741c74676bea9c6773fb26d3ca045e62822a33d2831484f3d8e6d3c1ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0MzA2M2I1YWIzN2Y1MGU5ZTQ5YmNlMGY4MTQxOTRlMWUwMjc0OGNhOTU1YmZjMzU2ZTNkM2M2MjBhNTUxMDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzMzdiYjZjZjE1N2ExYmQ0MzNmYTVlZGFiMjM2N2Y3OTY5NjNiYjQ4N2ZjMDJlNjQyNzRlMWVkMzM1MDY3N2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlNzU3NWMzYjc3NzZjZjJmOWMyYmZiY2E0NGYyMTQ4MTNhNzgyN2VhYTljMzg0NTRjNzAzYjY4OWE3NDQzODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-17T08:58:08.450Z"
+  }
+}

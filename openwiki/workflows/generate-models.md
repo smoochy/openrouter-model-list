@@ -4,6 +4,13 @@ title: Model Generation Workflow
 description: "End-to-end model generation pipeline for each profile: fetch OpenRouter catalog, filter free models by thresholds, fetch endpoint stats, probe candidates, score, and write ranked output JSON."
 resource: /openwiki/workflows/generate-models.md
 tags: ["workflow", "generation", "pipeline", "filters", "scoring", "probing"]
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-17T08:58:08.450Z
+sources:
+  - id: openwiki-source-d62a846da6fa0f2e25b94fa4
+    resource: repo://scripts/filters.py
+generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
 ---
 
 # Model Generation Workflow
@@ -278,8 +285,7 @@ Output schema (v2):
 | `allowlist` | `openrouter/owl-alpha` | `meta-llama/llama-4-scout:free`, `openrouter/owl-alpha`, `qwen/qwen3-32b:free` | (empty) |
 | `hardallowlist` | (empty) | (empty) | (empty) |
 
-<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-See [Profiles & Thresholds](configuration/profiles.md) for full threshold details.
+See [Profiles & Thresholds](../configuration/profiles.md) for full threshold details.
 
 ## Error Handling & Warnings
 
@@ -311,11 +317,7 @@ uv run pytest
 
 ## Related Pages
 
-<!-- openwiki: broken internal link [architecture/overview.md] file "architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Architecture Overview](architecture/overview.md) — High-level system design
-<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Profiles & Thresholds](configuration/profiles.md) — Threshold configuration details
-<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [GitHub Actions](operations/github-actions.md) — Scheduled workflow execution
-<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Source Map](source-map.md) — File-to-concept mapping
+- [Architecture Overview](../architecture/overview.md) — High-level system design
+- [Profiles & Thresholds](../configuration/profiles.md) — Threshold configuration details
+- [GitHub Actions](../operations/github-actions.md) — Scheduled workflow execution
+- [Source Map](../source-map.md) — File-to-concept mapping

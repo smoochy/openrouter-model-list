@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:4a1d053c966b981de07a07acefedd2813d5f995c3be66a66715129a769548d5b",
+  "pageVersion": "sha256:3fc5854263288e36a16f3f65f8214230ed872ca6cc0f9759898c59a788a9a248",
   "claims": [
     {
       "id": "claim_730efc02923d4807b6bed916283cd82b",
-      "statement": "Three GitHub Actions workflows exist for automated maintenance: update-models.yml (daily 03:00 UTC), update-anthropic-models.yml (weekly Tue 03:15 UTC), and openwiki-update.yaml (bi-weekly Sat 05:00 UTC on even ISO weeks).",
+      "statement": "Three GitHub Actions workflows exist for automated maintenance: update-models.yml (daily 03:00 UTC), update-anthropic-models.yml (daily 03:15 UTC), and openwiki-update.yaml (bi-weekly Sat 05:00 UTC on even ISO weeks).",
       "evidence": [
         {
           "resource": "repo://.github/workflows/openwiki-update.yaml#L3-L6",
@@ -12,7 +12,7 @@
         },
         {
           "resource": "repo://.github/workflows/update-anthropic-models.yml#L3-L6",
-          "version": "repo-lines-v1:sha256:7e1c011e19522d75fed2d63f2c68e9b999b58e391c943e4ff5493d37de731ea3:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTk2ZGM0ODE0OWY1YTgzZDFlZDZkYmIzOWJiYzdlMmI5MDJhYTNkMzRkNmJkNWFlNGIyOTFiNjhkZjBjYTc5YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2YyZmE3M2YwNzA0ODlkOTcyNGEwMjlkZmI1MDJhYTA4ODUwN2QwODU3OWJiYmNjOTRlZDkzNWMxYTA1MzMxNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjU4ZWE4ZTg2ZGY4NWNmZjZmODQ1MjY5NTRlYWEyMjQxNWFmNmVhZmJiMTJkY2ZhNmU0NzhiMDQ0MTQ1MWI1ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWU2MjU1YjA2NDIzNzc3ODAzNGFmNTI3MGVmM2Q5ODFkYTFhNjFiM2UzZThkMWFiNmYxMDcyNmEwZDgwM2QyYiJ9"
+          "version": "repo-lines-v1:sha256:dae3dc02cd860c77a2203bc6813c33ff9f27a79aa5957b13318f711ef2ef402d:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTk2ZGM0ODE0OWY1YTgzZDFlZDZkYmIzOWJiYzdlMmI5MDJhYTNkMzRkNmJkNWFlNGIyOTFiNjhkZjBjYTc5YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2YyZmE3M2YwNzA0ODlkOTcyNGEwMjlkZmI1MDJhYTA4ODUwN2QwODU3OWJiYmNjOTRlZDkzNWMxYTA1MzMxNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjU4ZWE4ZTg2ZGY4NWNmZjZmODQ1MjY5NTRlYWEyMjQxNWFmNmVhZmJiMTJkY2ZhNmU0NzhiMDQ0MTQ1MWI1ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWU2MjU1YjA2NDIzNzc3ODAzNGFmNTI3MGVmM2Q5ODFkYTFhNjFiM2UzZThkMWFiNmYxMDcyNmEwZDgwM2QyYiJ9"
         },
         {
           "resource": "repo://.github/workflows/update-models.yml#L3-L6",
@@ -58,14 +58,14 @@
     },
     {
       "id": "claim_0321b6b63c95468dab186fae9c1ba5cf",
-      "statement": "The update-anthropic-models.yml workflow fetches models from Anthropic API (GET /v1/models), filters to type=='model', sorts by id, writes anthropic-models.json and appends to history/anthropic-models.jsonl, then creates a PR that attempts immediate merge.",
+      "statement": "The update-anthropic-models.yml workflow runs scripts/generate_anthropic_models.py which fetches models from Anthropic API (GET /v1/models), filters to type=='model', sorts by id, fetches and parses Anthropic pricing data, joins pricing onto models, adds long-context pricing tiers, writes anthropic-models.json and appends to history/anthropic-models.jsonl, then creates a PR that attempts immediate merge. The script fails closed (exits with error, no output) if any model lacks pricing or pricing data is invalid.",
       "evidence": [
         {
-          "resource": "repo://.github/workflows/update-anthropic-models.yml#L22-L41",
-          "version": "repo-lines-v1:sha256:b7a93889fb1ffed4a1e12f073399cfe33aaf1f20332efcf3fdf5bb1e1e73fdbb:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFjNmY4NjZiM2YxNzI1OGJiNTJmMTBkYmViNjZiOTEyNmFmNGYyNTllNWRhMWQ3ZTQ3MjQ0ZTA1OWU3YzI1YzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxZDJkMzNhNjk3YjU5MmVhMDdkNGY4OTA2N2EyZTgwNmFlZmM5MjNmYTBiNDgyNzdmYmI2N2M2NGZlOTQwYmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ4NjZjYWNlZmFjMzJiYzhjMzk3MjNhOGI2ZmQ0YTM0MzM3MGQ4ZWZkNDAzZGE1N2UxZGFhMWMzOTdhNmQ1MmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNhNWFjMjZkMWVjYzRkZGRlY2NmYzcyNzlmMzVlODk5MjE4ZjkyYjViMzdjZTA1MjVmOGUyNmFhNTI0OTRjZjUifQ"
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L22-L31",
+          "version": "repo-lines-v1:sha256:dc049827ce77fdfced44efc444786b156c94dbfb236b484a207adf5c3c75cb7c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQwYmE3MDRkYzM4MTFhNTM1ZWRmNzlhOGVhNDNkODZhNWY1YzAzNjhhNDI3MzNmN2E3NzUyNmM4ZDRhYWRlN2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRmMzA2YTNlYTk3ODg0MzFlMGFkYzY5NmViMzM4ZTJhYmE3MDAwNDNkYWY1ODUyYTdiZGE3OTYzMGRkNDkwMGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ4NjZjYWNlZmFjMzJiYzhjMzk3MjNhOGI2ZmQ0YTM0MzM3MGQ4ZWZkNDAzZGE1N2UxZGFhMWMzOTdhNmQ1MmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNhNWFjMjZkMWVjYzRkZGRlY2NmYzcyNzlmMzVlODk5MjE4ZjkyYjViMzdjZTA1MjVmOGUyNmFhNTI0OTRjZjUifQ"
         },
         {
-          "resource": "repo://.github/workflows/update-anthropic-models.yml#L43-L71",
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L33-L61",
           "version": "repo-lines-v1:sha256:b5d160ac41c863268b7541e26b8470b5fa5c890b2b6bd6fad9c162cc5c917dfd:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5ZDY0ZGM2OTYzNTc1ZmQ3MTVmZmJmMjBlNzdjNWFiZjRiODQzMWM0ZTk3YTJkMWU1NmYxOTUxNDFiYjhkYzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJkYTA3YzRlOTBiM2RmMGI1NDNlOTBlYzdmMzZmYTI2ODg2MjJkMDY3NzExYWE1MGQxZGI1NTc5M2RmZWZhZDAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFkZWViNTYwYzE4NTkxMzhhMThmOGViYmI1ODU3Y2EyMmJmNDgzZjY5OTUzNmNjMjlmZjk3YzdhN2MwMGU5MTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoyLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY0NmRhOTA1ODU2MzQ3ODlhZGMzMTY4NzUyZTVhOGRmNjA2ZDM3OWEyYjgxMDc5Y2JiYWU2YTcyMjYxMzJlNDAifQ"
         }
       ]
@@ -97,7 +97,7 @@
           "version": "repo-lines-v1:sha256:c970d1d7f63fc728fa92783d5ffa18c70f1c9654db41ba80eed1f1772505d198:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdiMDc4NDhhNDM2NjY1NmIyYmE2MTk3YmUwMmI5MjA4MTQ1NDZmOWQ5YWQwYjUzMzllNGMyNmEyYzk0NjUxMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkOGRmNjBkNWQxYmQxNTgwNzliZTFmNGVhMmM3ZDFiODUxNGQzN2U5MWY3NmZmYmJlMDRjNDc5MjNiYjE5M2YiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM3MDYzMDRjZmEyMzc1YmY0YmExMjMwYzgyZWZkMTc3YTYxZDdmY2ViZGJjMDhiYzc1YjZhMzZmZmI4ZDNlNWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg4MTFmYmFhOWIwZTFmODQ1YWI4YTQ3MWU5NGU2ZWIyMmI3YTIxMjg3ZWM1NDVlOWY1YjliNTA1YmY2NTAwZjkifQ"
         },
         {
-          "resource": "repo://.github/workflows/update-anthropic-models.yml#L23-L24",
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L29-L30",
           "version": "repo-lines-v1:sha256:6dd7a3470b257fd917b1863415e186e21a60124a1ea1a2e59bbac47c5acf9271:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2IwNzg0OGE0MzY2NjU2YjJiYTYxOTdiZTAyYjkyMDgxNDU0NmY5ZDlhZDBiNTMzOWU0YzI2YTJjOTQ2NTExNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjM2NzA0NzkyNjc2MTU2NjdmMmVlOWUyOTM5ODY2YzFlNDlkYWRiMDk3ZWJmMTMyMjkzNTQyYWU2NGUyZTVjZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGM4YWVhYWQ1NTUwMmNhNTc0ZDIwOWQ5NWMzNTkxY2M3MzFmNzE0NjQ2NDlkNDk3NDhlMTcyY2Y1MTdhY2I3OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMmY5MzI5NGI2Zjk0NTg2MjdlZDkwYWVkNGIwNmVkZWI1OWVlNDlkYTRlODUyNTlhYzI5NzIzMTA4NTgyNDFiNiJ9"
         },
         {
@@ -122,7 +122,7 @@
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.0",
-    "at": "2026-10-03T10:09:48.589Z"
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-17T08:58:08.450Z"
   }
 }

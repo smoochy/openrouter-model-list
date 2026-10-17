@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:6677a35f46a8a71a8e8584a105a25a43c01f2ac59510da4d856a68b654222801",
+  "claims": [
+    {
+      "id": "claim_047fd5c4e5564b4786fd51406878d60d",
+      "statement": "The `is_free` function in `filters.py` considers a model free only if both its prompt and completion pricing are exactly the string `\"0\"`.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py#L93-L95",
+          "version": "repo-lines-v1:sha256:229528adf50fd408f86ecc57287f70a647ee806a2e04ba6fc99b9448adad607e:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmIxZmU3ZTkzNzczMDhjNmRhZWVhMjc1MTg4ZTM2Yzc2ZjdiYWE3ZTlhMmM1NTQwZDBkNDk1NmQyMDEwZmQ3MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzkzZWYwYWQ2ZTlkZWUwZDA5YWZmM2Y2MTY3MWRhN2NiNzBmMDExZTFjNDIwY2UwMGJmMjhiZGE4NTU0ZTZkOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGFjMmVmMjliYTI0ZjNjYzNmMWYxMDMzMzE5OWVkNThmOWQ5NDA4YTAwNmMwOTZiYzA0MmRmMDcxYjExMWIxMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTJiY2U0NWNhNDgxZTM2OTBjNWQ5NzM3ZDc1MTUyN2UxYzBiZGFkZmE2NDUxNGY4ZGUwNGIzNWJjMGZhMjU4NiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-17T08:58:08.450Z"
+  }
+}

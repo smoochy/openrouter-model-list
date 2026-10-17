@@ -12,10 +12,10 @@ sources:
     resource: repo://.github/workflows/update-models.yml
   - id: openwiki-source-d8b85b547cd70ae9d19deeea
     resource: repo://scripts/generate_models.py
-generated: { by: "openwiki/0.5.2", at: "2026-09-19T09:07:56.091Z" }
+generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
 verified:
-  - by: openwiki/0.7.0
-    at: 2026-10-03T10:09:48.589Z
+  - by: openwiki/0.7.2
+    at: 2026-10-17T08:58:08.450Z
 ---
 
 # GitHub Actions Workflows
@@ -25,7 +25,7 @@ This repository uses three GitHub Actions workflows for automated maintenance:
 | Workflow | File | Schedule | Purpose |
 |----------|------|----------|---------|
 | **Update model lists** | `update-models.yml` | Daily 03:00 UTC | Refresh `models-mengram.json`, `models-yt-summarizer.json`, `models-openwiki.json` |
-| **Update Anthropic models** | `update-anthropic-models.yml` | Weekly Tue 03:15 UTC | Fetch and commit `anthropic-models.json` |
+| **Update Anthropic models** | `update-anthropic-models.yml` | Daily 03:15 UTC | Fetch and commit `anthropic-models.json` |
 | **OpenWiki Update** | `openwiki-update.yaml` | Bi-weekly Sat 05:00 UTC (even ISO weeks) | Regenerate repository documentation via OpenWiki |
 
 All workflows use `concurrency.group: update-model-lists` to prevent overlapping runs.
@@ -85,7 +85,7 @@ flowchart TD
 
 ## 2. Update Anthropic Models (`update-anthropic-models.yml`)
 
-**Trigger:** Weekly Tuesday 03:15 UTC (offset from daily to avoid conflict) + manual dispatch  
+**Trigger:** Daily at 03:15 UTC (offset from daily 03:00 to avoid conflict) + manual dispatch  
 **Permissions:** `contents: write`, `pull-requests: write`  
 **Secrets required:** `SYNC_PAT`, `ANTHROPIC_API_KEY`
 
@@ -108,29 +108,18 @@ sequenceDiagram
     GH->>Git: Attempt immediate merge with gh pr merge
 ```
 
-### Inline Python Script
+### Script Execution
 
-The workflow runs a Python one-liner to normalize the response:
+The workflow runs `scripts/generate_anthropic_models.py` which:
+- Fetches all model pages from the Anthropic API (GET /v1/models) and filters to `type == 'model'`
+- Sorts the models by `id`
+- Fetches the Anthropic pricing page and parses the markdown table
+- Joins pricing data onto each model by slugify and alias table
+- Adds long-context pricing tiers where applicable
+- Writes the enriched model list to `anthropic-models.json`
+- Appends a timestamped entry to `history/anthropic-models.jsonl`
 
-```python
-import json, sys, datetime
-from datetime import timezone
-
-raw = json.load(sys.stdin)
-models = [m for m in raw.get('data', []) if m.get('type') == 'model']
-models.sort(key=lambda m: m['id'])
-
-with open('anthropic-models.json', 'w') as f:
-    json.dump(models, f, indent=2)
-    f.write('\n')
-
-entry = {
-    'timestamp': datetime.datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-    'models': models
-}
-with open('history/anthropic-models.jsonl', 'a') as f:
-    f.write(json.dumps(entry, separators=(',', ':')) + '\n')
-```
+The script fails closed (exits with error and no output) if any model lacks pricing or if pricing data is invalid.
 
 ### Output Files Committed
 
@@ -139,7 +128,7 @@ with open('history/anthropic-models.jsonl', 'a') as f:
 
 ### Schedule Note
 
-Runs at **03:15 UTC Tuesday** (cron `15 3 * * 2`), 15 minutes after the daily model list workflow to avoid API rate limit contention.
+Runs at **03:15 UTC daily** (cron `15 3 * * *`), 15 minutes after the daily model list workflow to avoid API rate limit contention.
 
 ### PR Strategy
 
@@ -156,11 +145,12 @@ Creates a PR on branch `automation/update-anthropic-models`, then attempts immed
 ### Flow
 
 <!-- openwiki: mermaid parse failed and this diagram was converted to a text fence so it does not break rendering. Fix the diagram source and restore the mermaid fence. Parser error: Heuristic: a semicolon inside a label breaks rendering; rephrase the label. -->
+<!-- openwiki: mermaid parse failed and this diagram was converted to a text fence so it does not break rendering. Fix the diagram source and restore the mermaid fence. Parser error: Heuristic: an unescaped angle bracket inside a label breaks rendering; rephrase the label. -->
 ```text
 flowchart TD
     A[Cron: 0 5 * * 6<br/>Saturday 05:00 UTC] --> B[Gate: Check ISO week parity]
     B --> C{Even week?}
-    C -->|No| D[Skip: echo "Odd ISO week; skipping"]
+    C -->|No| D[Skip: echo "Odd ISO week skipping"]
     C -->|Yes| E[Checkout]
     E --> F[Setup Node.js 24]
     F --> G[npm install -g openwiki]
