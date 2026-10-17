@@ -76,6 +76,9 @@
           },
           "disabled": {
             "supported": false
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -167,6 +170,9 @@
             "supported": true
           },
           "disabled": {
+            "supported": false
+          },
+          "between_tools": {
             "supported": false
           }
         }
@@ -260,6 +266,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -352,6 +361,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -452,6 +464,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -544,6 +559,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -636,6 +654,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -728,6 +749,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -820,6 +844,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -911,6 +938,9 @@
             "supported": true
           },
           "disabled": {
+            "supported": false
+          },
+          "between_tools": {
             "supported": false
           }
         }
@@ -1004,6 +1034,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -1096,6 +1129,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -1188,6 +1224,9 @@
           },
           "disabled": {
             "supported": true
+          },
+          "between_tools": {
+            "supported": false
           }
         }
       }
@@ -1280,6 +1319,9 @@
           },
           "disabled": {
             "supported": false
+          },
+          "between_tools": {
+            "supported": true
           }
         }
       }
