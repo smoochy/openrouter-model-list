@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:5c370eb097e2b0206b5bbb37439058f092006a5cf7c125e7115ededa3067ef22",
+  "claims": [
+    {
+      "id": "claim_5f9833c75a3042218a1c151d62774e93",
+      "statement": "The main orchestrator for model list generation is in scripts/generate_models.py, containing the generate() function, resolve_profile() helper, PROFILES dictionary, and SCHEMA_VERSION constant.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L19-L34",
+          "version": "repo-lines-v1:sha256:e518c6725689efdf8edab323335a1408d09de0b3709c8465bccfeb0a868cae78:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMTgyMmI4YjQ1M2NiNmIzMDBmYzEwYmU2NjUzYjMyOTU1ZWQwOTY3MTQ4NzY5OGY4Yzk2MjNjYzBhNDQ1MzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImExMGNiZDVkMWFiMzM4NDEyMWRmNDdmZDIxOTNiMzAyMmUzNWU3ZmUzZDNiZjczZWJmNTAyNjBmZTBhYzM4NTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyM2UwZWE2NTFkMzBhODcyYjBlMjU3ZWU4MjlhM2RmYjBiMDVlOGEwNDcyZTZhNmUyN2M1ZmMxZDA5ZTI4YTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyYzU3YzUwOWZmNGUyZjljNjFiYjdhM2Y5MDk2MzFmMWJlZGY5YjkwOTEwNjFlMzA3YjViZDI2MWQ3YzViZGYifQ"
+        },
+        {
+          "resource": "repo://scripts/generate_models.py#L37-L40",
+          "version": "repo-lines-v1:sha256:3af9786b0e8cf9c36b637ecf5056c2ecc3e8cfbe430b0270eacd2ba39e0567d3:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzA4Zjk3MWQwMDcyMDBjZWQ3NTZlYjg3OGIzODEwMmJmYmVlZmNiMDA4MTRhMDcwNjc2NjIyNTliZWZhMzE3OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTJiOTU1ZDVkZWRhMGM4ODNhMGU4NDdkOTBmYTZiZTI0MTMyMTRjYWRmNGY2NWM2NTA0NTNhNThmMzIwNzM5ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDY5NzhjMDYyZDliNjFlNDk5NTI5OWU3NGYyNjk1YjcyYjVjYzJkNWZiMzA1YjgwZjE5MWJiNTZlZDJjN2Y1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGM1YzlkZGVkY2FkZWMzMDgzMzVjMjYxNzcyZjg4Njg1MThmNDcyYWZkMGI2NGY2NmMxNWFkZDg1ZGUyZGY3NSJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_models.py#L43-L43",
+          "version": "repo-lines-v1:sha256:69cba1930d4215580f16a217e46cf9d6b1581aceb7bde1a521f4c7bb61778a54:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjljYmExOTMwZDQyMTU1ODBmMTZhMjE3ZTQ2Y2Y5ZDZiMTU4MWFjZWI3YmRlMWE1MjFmNGM3YmI2MTc3OGE1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjljYmExOTMwZDQyMTU1ODBmMTZhMjE3ZTQ2Y2Y5ZDZiMTU4MWFjZWI3YmRlMWE1MjFmNGM3YmI2MTc3OGE1NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjYwZmMxNDZhNTMzMDQ3OWI2ZDc4NTEzOWI2Yjk1ZWU1OWE2NTZiNmY4NzZmNzY0YWNhNTYzZmZhNDEzMGQ5MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWEzNmNhNWM0NWZmODQ3MmE4MWQyNzQ2NTIzZDRiMTU1NmJhNGMzMTM5Mjg3MDM3MzY5YjdkZDJkMzUwOTQzZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_9ffe6e8abcee48d98b216403da113080",
+      "statement": "The is_free() function in scripts/filters.py determines if a model is free by checking if both prompt and completion pricing are \"0\".",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py#L20-L22",
+          "version": "repo-lines-v1:sha256:ecb4b1772f5366197f2d17dd55d6cdd27f8fc4211b2fd9c615e76d5dc0bf8c4e:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmIwYzViZDkyZWU2NTYxZmRlYTEwMjdhYjQzM2I4MDc2MzFkOWZhMjJiMWI2NGU3ZTc1Mzk0ODdhZGYxMzg1ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmYzMDY0YzkzYTQzNzhjNjk3MjJiZTFmMTJmZTA3YmE3MGQ0ODQ5NTk2N2JjNWVmNjQ4ZGIwODgxNTg3OGVhNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDU4MWRmOGU0ZjM5NzkzZGYwYzBmYTNhYzFkM2U0MmI2NWY3MzJmZWFkZWU3YjhhY2ViMTYxMmM2MDdhNzM1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2FiYTExZDVhNjcyNGVjMmNkODUzMWUxM2JlNDZlZGVlZTAzYjVlYjk1MWYyNzc2ODFjMTUxN2FiZjFjM2Q0OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e200b263ddf04cbf880a97fa661253a8",
+      "statement": "The filter_candidates() function in scripts/filters.py applies thresholds including min_param_b (hard floor), buffered context/output thresholds, require_structured_output, and allowlist/hardallowlist logic.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py#L35-L50",
+          "version": "repo-lines-v1:sha256:511fd88e724ad5e71b22e82b2c0f21b0d13d050806d8eb73f2af0dcca02275e1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwNDA0MzNmMjQwMDc5ODJjMTc2YjJhOTE1YjJiN2VlOTEwYjljODI4NjZmNGI4OTJlMTYyYjY3M2VhMTk4YzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2YTcxNTI1NzJlZTg0ZjEwOTA2Yzc0YjlmMmE5MjQzNGRkYWIwZTNjNDI4MTNiMDRlNTk3ZWZjZWM5NTFiMjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA2MmMwZDgwYzJmNzQ3OTdlYzBiZmJjMWNjODcxNGEzNGU5ODUwMWUyNDUxNmViMTU1Zjc0NzViNWI2ODhhMDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg2YTM2N2QxMmQ2ZjkwMTVmOTllMGVkYWFkZDU4Y2RlYzA3ODJhN2JhODQxNmFiYWM5NTdkYWM2NDZkOGQzZWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4a8e0d12c4b24a34906ff22c1b72a24d",
+      "statement": "The PARAM_RE constant and parse_param_count() function in scripts/filters.py extract parameter counts from model IDs using regex.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py#L5-L17",
+          "version": "repo-lines-v1:sha256:6de81b80b86435593c6a4325ce648877bdb3781941c2cf7d27a35d77d75bab35:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYyMzE4YTA4MDBjZjQ5OGRjZGU0NmM0MjkyYWEyZDg4MTZiNDliZWQ4YmNmYzA2YzJiYWQ3NTFhNjc4NzhjMzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzMzlmNGJlOTNhYmI2N2E0ZmQyNjBhNjg3ZDlmYzRkYWI2Yjc4ZjE5ZDk3YzkyM2YyOTQ0NmI2NmExOGMxMmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ5ZmFhNTk4NDhhMjQyM2EzNDQwNWNmNmFmMGVkYzc4ZjMxOGEzMjgxNzdhOTgxMjMzMzk3MDUxYmE1YzQ5YjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA2ZjM0OWExZGZjMmUwNTY4NjRjMjk1NWUwODY1N2UzNmU1ZDZhNzUxODNhZWIxYzg1M2MxOGEwOWI2ZTkwOTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e8f742e26b8b4beeb648772363ac3a85",
+      "statement": "The fetch_endpoint_stats() function in scripts/endpoint_stats.py retrieves OpenRouter's aggregated endpoint stats for models.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py",
+          "version": "repo-file-v1:sha256:99ac7cc2ad14dcaab5093e0c5326aa07b817f086ee4616d67b93296ddb957b6e"
+        }
+      ]
+    },
+    {
+      "id": "claim_8fbe00d71b304fd788c319d3efdccb4b",
+      "statement": "The probe_model() function in scripts/probe.py sends a minimal completion request to test model availability, returning success and latency.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L11-L24",
+          "version": "repo-lines-v1:sha256:e26e05a835aeba54b7421d5cb8564db666c413cd808735a66fe703575a56b7f6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxODNhNzk4YjE3ZDE0NjlmZjc4NTk3ODgzNzAwOTQ5ZTZkYjRkNmE4NDNhYzM2ZDE2OWI1OTc0MWFkZjM0MTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyYmM1YjczODRhOThiNzQxNGMwOGIyMTNlODQyODE3N2I3NThmMzhiYjc0ZjE5YTU0MWQzYWZhNTFkNThjZmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBlZTYyMzY0YmM4NzExNzE4ZjZiM2Q2OTU4MjQwMzgwMjZmYTEwZTZkZDU1MmIxZmM4ZjllMDI5OTA5ZmIwODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdiNWUxMWQzNTFmMDZiM2ZmZjc2MThkNzhiYzBmZmY3ODhjOTE4Y2MzYThiNGYyMThjMTgyZmYxMTRhZGUwYjYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_3fe38c466fff40bdb8be1412dd74601f",
+      "statement": "The record_probe() function in scripts/probe.py appends probe results to history files maintaining a 30-day rolling window.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L27-L41",
+          "version": "repo-lines-v1:sha256:a12754ec070f2c224debd50c518d05b2a3e3155cdd7d9ff4a14ff50455ef45e7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5MjMyYjg1NjkyMWFhYmYwYmY4YjA1ZGZmOGE3ZTBjMzk0M2VhMzM3MzE5MDdhMDUwNjhkMmEyMTRmM2Q0NjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmZDU2OTFkYmYxNDc4ZjljZGYxMzZlNDIwYTc2YmI2YzkzZDEzY2Y5MWRjNGEyMjY5NTg3Nzc0ZmYzMDhjY2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZDE4ZGU2YjU5N2JlNThkYzMwMGEwY2M1MWMwODc0ZmY5YjlmZjhjYzRhOGM2MzZmZTJkOWFlMzJiMzE5OWYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_3092191d0f204f03ba1cbec5d59241e7",
+      "statement": "The read_history() function in scripts/probe.py reads probe history from JSONL files for a given model.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L43-L48",
+          "version": "repo-lines-v1:sha256:b121861ff084f06350353025a8875f9b61d6421bd789cb7fa249ba67cffecc43:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzdkYjNjMDRhNTRmM2NkOTI3MGUyOWE0OTJlYWNhZWQyNDY0MzhlMmM0ZTZjOGNjMTk0MzRmZDAyMDNkODRhMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjIzNWQ0YjE0YzNmMDQyMTQwODc0MWExYTkxZmE3YjNhM2I4YzRmMjAyYzY5ZDk2NjdiNjEyMWRhN2NlODE1ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTVlMmVhMDk3MDFiYmU0NmQzNjE3NTlmNmU1NjhjNWE5NGYzNjNjM2Y0Zjk0M2U3YjY3OTliZmRlMTU3Mjg0MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDJlNmExOGE4ZTIwNDM5OTQ1MzNiOTY3OWIzOTQzNGY0ZmQ0ODQ5YjJhMTQ5ZDZiZTI0MDJhZWEwNmJiMDhiNCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_17240557278640f48c2b1ba61ee5f071",
+      "statement": "The compute_uptime() function in scripts/scoring.py calculates uptime-based scores with NEUTRAL_UPTIME as the default for insufficient samples.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py",
+          "version": "repo-file-v1:sha256:bb1d005198ac9525f158235466a1947e3aa3d838667705666d183871e1d66786"
+        }
+      ]
+    },
+    {
+      "id": "claim_c6649eb7b3e845a8811d85ba9e98b451",
+      "statement": "The compute_score() function in scripts/scoring.py combines uptime, latency, and capability scores with configurable weights and latency caps.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py",
+          "version": "repo-file-v1:sha256:bb1d005198ac9525f158235466a1947e3aa3d838667705666d183871e1d66786"
+        }
+      ]
+    },
+    {
+      "id": "claim_464979bb5c7743288b250ef6cf71376f",
+      "statement": "The passes_post_probe_filters() function in scripts/scoring.py applies post-probe filters based on OpenRouter's endpoint stats.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py",
+          "version": "repo-file-v1:sha256:bb1d005198ac9525f158235466a1947e3aa3d838667705666d183871e1d66786"
+        }
+      ]
+    },
+    {
+      "id": "claim_6274cc82d8dc4de2bbb97c09b00eeb63",
+      "statement": "The load_thresholds() function in scripts/thresholds.py loads YAML threshold configurations with default fallbacks.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/thresholds.py",
+          "version": "repo-file-v1:sha256:5d9295b6870684991b5f2daa93c6350ad4e742ea648e415925e91e202544ac0d"
+        }
+      ]
+    },
+    {
+      "id": "claim_94b8c3a06b5540bf9c433c640809ea68",
+      "statement": "The fetch_models() function in scripts/openrouter_client.py retrieves the OpenRouter model catalog via API.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/openrouter_client.py",
+          "version": "repo-file-v1:sha256:709fbaad64398fca50af927533dc095be6ad34c25782535333aba080697538f8"
+        }
+      ]
+    },
+    {
+      "id": "claim_50417910acaf409c98f1789b2aa693b2",
+      "statement": "The mengram thresholds file sets min_param_b: 28, min_context_length: 40000, min_max_output_tokens: 8000, require_structured_output: true, and allowlist: [openrouter/owl-alpha].",
+      "evidence": [
+        {
+          "resource": "repo://thresholds-mengram.yaml#L28-L30",
+          "version": "repo-lines-v1:sha256:649664575c9b0b468a1d0d5b9c0d19a9610ccf8058f5bffd8701f52aafabb36b:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjFmYjY2NzQ0NGM0NWQ4ZGE1MTk0ZWFjMjkxYjkyOGQ4MjFhYTEwNmZhMmUxN2IxODY1ODBlZGE2Y2UyNTEzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDU0MThmOTRhOWU1Y2Q1OTBiYTdiMWE3MGUwYTcyN2M4MDhjY2VlMzMyOWJiYWNjM2EyNWE1MDJlZDcyNzUwNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTBkMGU0OGU0NGQzMzRmZjNlYzI5NGI2ODRlMzc4NzhjZDhjZDFkNGIyM2MwMGUwZTZmNTcxZjYzMTMwMzE5MSJ9"
+        },
+        {
+          "resource": "repo://thresholds-mengram.yaml#L5-L13",
+          "version": "repo-lines-v1:sha256:41e3698a7827e74253bebd5c4b83b8103700cca53f64c029cf1c916887f05f7f:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTk3NDg3ODFlMDcyMGJlMmRiMmQ5MGRkZDBiMDcwZDE1MmRlYTdlODNkOTAwMDcxYTg2NTRhNzJjNjk0OWRkZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjVlNTRjNGJmMWE0OTgyN2JiMmQ4MmIwYzE1NGY3MDkxYTBjNTZjNzFiNDYzNjI2YmZlYTQ1NTQyYWNmZGMyNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGVjZTQzYjE1YjNkMmM5ZTllYzE0MGNhZWUxMTEwNGUzNTYyYzg0YjdlN2FiYjZiNzg4OWRjNWMxMjMwZGUxNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDhhZGE3ODcyMzkwMzhjYWUxYWUyOWQ5ZWRjZDA1YTVlYWE3ZTZlZDA2YjZmM2YwZmQ3YWE1MmFiNDNmYTNkZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_491a597c58324cde98a391adbce99eff",
+      "statement": "The yt-summarizer thresholds file sets min_param_b: 14, min_context_length: 32000, min_max_output_tokens: 2000, require_structured_output: false, and allowlist: [meta-llama/llama-4-scout:free, openrouter/owl-alpha, qwen/qwen3-32b:free].",
+      "evidence": [
+        {
+          "resource": "repo://thresholds-yt-summarizer.yaml#L12-L15",
+          "version": "repo-lines-v1:sha256:25b86789a23c06a27ae759873f40ac16321250f7c6dc1382ed5299d61de905a7:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjFmYjY2NzQ0NGM0NWQ4ZGE1MTk0ZWFjMjkxYjkyOGQ4MjFhYTEwNmZhMmUxN2IxODY1ODBlZGE2Y2UyNTEzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTY1NTI3NDYwMjgxODRlMzIyNWY1YWIzZGNkNzkyZWJiMWFhMzcxODdhMTBhMzAxNzIwODc0MjQ3NzI2NGJmOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWViYTAwNTZhZmQxOWFlNDYxMzYwOWM4YTI3ZTE4OWNhY2IzZTc5NTYxZDNiMTU1MjRkMjAyZThhNTQ3ZmZjMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTIzOTY5YzMwOGMwZTRjN2E0MjgzZmFjOTk5OWJhYmFkNGVlODY0YjlmODYzNGJjM2IxZWVlOWExMDRiOWM1NSJ9"
+        },
+        {
+          "resource": "repo://thresholds-yt-summarizer.yaml#L5-L10",
+          "version": "repo-lines-v1:sha256:1114c7e5b72decceb255a0f1e2b08794f3ed55f87180602ba86cc6b4e5640ee7:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjVmZWZmMGIwOWE4ODY2YjUxMDVjNTU5MjVkMjAxZmZhMTRhOGQwMjg3ZmEyOWM4NjdhZTYwZjA0OTEyODhhYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWU2ZTlmNWZkYTM4MjI2NWM1YjU1YWQzNTliODUwNmIxMDFmZTlhNjE3NmY2ZWUwMzMxZmNjMjkwMTRjY2ZhZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWVjZmIxNmJiZjVhNjVjMmZjMzg5OGIxMTZmNmU3MDI4ZjAyNDRmYzBiM2FkMTQzYjI1YzAxNTRhMmNkYzAyMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjMzOGJjMTQxOTA2NWQ0ZDZlNjc1YzkwYzYxODE1MzE4ZTk0NDJkYjQ2NjUzYjg3MjNmMWY5YWFkYTYzZDZkZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a24e50188a3e4622adad513af68ac532",
+      "statement": "The openwiki thresholds file sets min_param_b: 70, min_context_length: 128000, min_max_output_tokens: 16000, require_tools: true, and allowlist for models without parseable size parameters.",
+      "evidence": [
+        {
+          "resource": "repo://thresholds-openwiki.yaml#L32-L37",
+          "version": "repo-lines-v1:sha256:fb7b2bb067e044cf0f782a5460aba66ef8eec2f6459fe2154eec1f9130f27335:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjFmYjY2NzQ0NGM0NWQ4ZGE1MTk0ZWFjMjkxYjkyOGQ4MjFhYTEwNmZhMmUxN2IxODY1ODBlZGE2Y2UyNTEzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjVlNDQ3MjU0MTk5ZGJjMzg4OTRlNzkxODBkOWY3ODVhOTZkNGU4NjExOWQ3OTFkMDk0NThhMTQ5ZmMxMjBiZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTIzOTY5YzMwOGMwZTRjN2E0MjgzZmFjOTk5OWJhYmFkNGVlODY0YjlmODYzNGJjM2IxZWVlOWExMDRiOWM1NSJ9"
+        },
+        {
+          "resource": "repo://thresholds-openwiki.yaml#L5-L11",
+          "version": "repo-lines-v1:sha256:427cafb52ea60feba9c6cbb82987b265b81b87428211a872f46fbe78316701ee:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2NjOWNiYjM1NTJlODU5OGMwNDMyZTM5NDE5MDBlOGU0NzY2N2FjNDQxY2U0NzZlYWI4MWMwYmI2MjE2MzhjZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTk1OGU1NTQ3ZGMyODhiNDAwMjE5MDMzNDkwYmZhOTIwNTEwMTg0YmQ3NzE2NGQxOGQ5MTJjZmM5NjI5NDc0MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzI2OTU4YzY5OTQ1YTZjMDZjNDQwMzQxYzkwNGUzMGQzYjRmMDMxMGQ3OGFkZDQ0ZDI2ZjY3NDkyYWIzODJjNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDhhZGE3ODcyMzkwMzhjYWUxYWUyOWQ5ZWRjZDA1YTVlYWE3ZTZlZDA2YjZmM2YwZmQ3YWE1MmFiNDNmYTNkZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7753c98412b8422a9012193916485fd7",
+      "statement": "The PROFILES dictionary in scripts/generate_models.py maps profile names to their thresholds and output paths.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L19-L32",
+          "version": "repo-lines-v1:sha256:6cbb8de229c0e1a4ccb2a10d22c081393a8547369b6f5f746da45a0d21ed403e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMTgyMmI4YjQ1M2NiNmIzMDBmYzEwYmU2NjUzYjMyOTU1ZWQwOTY3MTQ4NzY5OGY4Yzk2MjNjYzBhNDQ1MzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyM2UwZWE2NTFkMzBhODcyYjBlMjU3ZWU4MjlhM2RmYjBiMDVlOGEwNDcyZTZhNmUyN2M1ZmMxZDA5ZTI4YTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc5YWEzZGQ3MzVkMWQ1NjMwZGNhZjAxNzUwNThiYjc0ODRmYjA2MDE2NjJiZWYzZjYwNjcyZjNlZDBkZTE0MjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c72177561a914c239b612b6562e11fcb",
+      "statement": "The models-mengram.json, models-yt-summarizer.json, and models-openwiki.json files share a schema including generated_at, schema_version, and models array with id, score, context_length, max_output_tokens, uptime, latency_ms, own_uptime, and sanity_ok fields.",
+      "evidence": [
+        {
+          "resource": "repo://models-mengram.json",
+          "version": "repo-file-v1:sha256:65a586cb79725dc3b9e6f517e2612e68d530e89136927f88e7e24bb6b7faad6a"
+        },
+        {
+          "resource": "repo://models-openwiki.json",
+          "version": "repo-file-v1:sha256:062bdc10d0e62e6b1d06cdcef6ef1c3ff37ad7711e787e1b8a93b91b68e6e50b"
+        },
+        {
+          "resource": "repo://models-yt-summarizer.json",
+          "version": "repo-file-v1:sha256:0d58422a4f6bd1066ee15b428b28063a564c8b19a2307821c71cbbd707004e9c"
+        },
+        {
+          "resource": "repo://scripts/generate_models.py#L34-L34",
+          "version": "repo-lines-v1:sha256:a10cbd5d1ab3384121df47fd2193b3022e35e7fe3d3bf73ebf50260fe0ac3854:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTEwY2JkNWQxYWIzMzg0MTIxZGY0N2ZkMjE5M2IzMDIyZTM1ZTdmZTNkM2JmNzNlYmY1MDI2MGZlMGFjMzg1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTEwY2JkNWQxYWIzMzg0MTIxZGY0N2ZkMjE5M2IzMDIyZTM1ZTdmZTNkM2JmNzNlYmY1MDI2MGZlMGFjMzg1NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjc2YTU0NGNjMDIzZWQ0MDVlM2I5OGI4YTM1NDA5MGZhZDE2ZTllMThkNWVlOWY3YmE2YzNlNzAwNTMwMDlkMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTJjNTdjNTA5ZmY0ZTJmOWM2MWJiN2EzZjkwOTYzMWYxYmVkZjliOTA5MTA2MWUzMDdiNWJkMjYxZDdjNWJkZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_89abef3a91564d929ec22f55be1262c3",
+      "statement": "The anthropic-models.json file is generated by scripts/generate_anthropic_models.py and contains a sorted array of Anthropic model objects with id, display_name, type, and created_at fields.",
+      "evidence": [
+        {
+          "resource": "repo://anthropic-models.json",
+          "version": "repo-file-v1:sha256:0df25ad96110790a1a4ac6a2cec82c2f2a449b10b5a1c4db9c45924442499bfb"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py",
+          "version": "repo-file-v1:sha256:c8a3ad21a0ff479895fa254abfd730c4c21e29e8c2f172d5f3ecc72105c84417"
+        }
+      ]
+    },
+    {
+      "id": "claim_0cda70b7a31446ccb59a46ff730f8e1f",
+      "statement": "History files in the history/ directory store probe results as JSONL objects with timestamp, success, and latency_ms fields, trimmed to a 30-day window.",
+      "evidence": [
+        {
+          "resource": "repo://history/nvidia__nemotron-3.5-lightning__free.jsonl",
+          "version": "repo-file-v1:sha256:8585923e3f48477bafcd1a2bb2d03f49174224ee5e2ca32a1d19f0a68d734420"
+        }
+      ]
+    },
+    {
+      "id": "claim_4a74a6a8f2064341b2b1513ef1d2a053",
+      "statement": "The update-models.yml workflow runs daily at 03:00 UTC to generate model lists for all three profiles via uv sync and generate_models.py.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L19-L26",
+          "version": "repo-lines-v1:sha256:f2ade1a4c8a4c1cf5aae79e49d2b9842328b3f8763496615fe356d93c5e4bc7a:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg5OTkxMTAzZjZiYTg4OGUzZGU3NjUxYzVhMzA1Yzc3ZTU1NDc2NzczYWJhODM5NTkxZWNjNWJkMGYyYWIxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBiNjZjNTlkZjhhMDQzNDQ5NGFlNGYyNmYwYmNiZDY2YTM2ZjlkMDlhNTEwYTVkYTA2MTM0ZDljOTIxMDYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTVjMjJlYzg1ZTFiNzQxMTE2OWM2MzhjOGFlYTZhNzM0MDk0Y2ZmZDc0NDVmNjY3NTY5Yzk3YjJlZGFlMWVjNyJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L31-L32",
+          "version": "repo-lines-v1:sha256:d1a4b78ff4ef85a5897cc456f1fc25b6be88822a1c7a2e20303a239258051687:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTBkYjFmOGNlOTI3NzFkMzgxNGU0MWQ2MDc3YjJhNDY2MTI1Njc2NjdkNzgwYmQyYzAzNTYwMDhlMzBhMmZmMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDBlNTIzNGRjNWNlNWM3ZDc4MDg4NDBmYjI4M2NmNGMwMjc5ZWEwMDdjMGFjOTk2YjZiZTY5YzQzMmFjZmZmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTk3YjFhZjFkMWZjNTg2NzQ5OGFhZjY3YTc3ZWUxOWI2Mzk2OTM3YmYzOTFjNWUwN2JkNWI1ZWZlYTE4NzRmNCJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L5-L5",
+          "version": "repo-lines-v1:sha256:8e49968019248f61ec05db4a86a6854fba6a335e4273afc37a4581fb5c11d0a7:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGU0OTk2ODAxOTI0OGY2MWVjMDVkYjRhODZhNjg1NGZiYTZhMzM1ZTQyNzNhZmMzN2E0NTgxZmI1YzExZDBhNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGU0OTk2ODAxOTI0OGY2MWVjMDVkYjRhODZhNjg1NGZiYTZhMzM1ZTQyNzNhZmMzN2E0NTgxZmI1YzExZDBhNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjM3ZjU0YWI0MjUzNjI2ZmJhZmQ3ZmE1YmQzYTJiYjQxZTQxMjg4ZDhjZDlkNDNhMjcxNDNmOGJlMmY3NDZkZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTY5MGJiNWMwZGE0MzdkNjg4OTk5YzAwMDJiOGUxMDUyY2YzYTE5NzUwZGZlODRjMjJkMjc4OGU3YTk0ZGE4ZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5c28240a31d94d8f9b2723f8011220fe",
+      "statement": "The update-anthropic-models.yml workflow runs daily at 03:15 UTC to generate anthropic-models.json via uv sync and generate_anthropic_models.py.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L19-L26",
+          "version": "repo-lines-v1:sha256:f2ade1a4c8a4c1cf5aae79e49d2b9842328b3f8763496615fe356d93c5e4bc7a:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg5OTkxMTAzZjZiYTg4OGUzZGU3NjUxYzVhMzA1Yzc3ZTU1NDc2NzczYWJhODM5NTkxZWNjNWJkMGYyYWIxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBiNjZjNTlkZjhhMDQzNDQ5NGFlNGYyNmYwYmNiZDY2YTM2ZjlkMDlhNTEwYTVkYTA2MTM0ZDljOTIxMDYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzRkNGRhNDUyYWRlNTRkMjlhYWU4YWNkZDYwN2Q5OTk1N2MxNTk1OGMyZWIwNDhmMmY5YWQ2Nzk2MDNiOGFiYSJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L28-L31",
+          "version": "repo-lines-v1:sha256:0f7718dc3b843c55595d30c8097c8059f8553d00ae505c2c491a439d5c8cd8a4:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGU5Zjc4MWE4MTU2YTYxNjdlMjJkY2I1Y2NjMzAxODMyODdhMjhhYWFiZTgyMTRkMzMwM2YzMTMxYTYyZWMzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGYzMDZhM2VhOTc4ODQzMWUwYWRjNjk2ZWIzMzhlMmFiYTcwMDA0M2RhZjU4NTJhN2JkYTc5NjMwZGQ0OTAwYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2U1OTk5ZWVjNmZmYmExZmM2MzI4NDNmN2FlYjc5YmQ1ZjJiZmVlYjNiNTJiNDU3MTNjZDY0MTJmYjVhYjJjMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2E1YWMyNmQxZWNjNGRkZGVjY2ZjNzI3OWYzNWU4OTkyMThmOTJiNWIzN2NlMDUyNWY4ZTI2YWE1MjQ5NGNmNSJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L5-L5",
+          "version": "repo-lines-v1:sha256:8d551a9aa3662cf1c0c66bfdda296499b3453abf0113c09721618b1403dc7ed4:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGQ1NTFhOWFhMzY2MmNmMWMwYzY2YmZkZGEyOTY0OTliMzQ1M2FiZjAxMTNjMDk3MjE2MThiMTQwM2RjN2VkNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGQ1NTFhOWFhMzY2MmNmMWMwYzY2YmZkZGEyOTY0OTliMzQ1M2FiZjAxMTNjMDk3MjE2MThiMTQwM2RjN2VkNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjM3ZjU0YWI0MjUzNjI2ZmJhZmQ3ZmE1YmQzYTJiYjQxZTQxMjg4ZDhjZDlkNDNhMjcxNDNmOGJlMmY3NDZkZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTY5MGJiNWMwZGE0MzdkNjg4OTk5YzAwMDJiOGUxMDUyY2YzYTE5NzUwZGZlODRjMjJkMjc4OGU3YTk0ZGE4ZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e28715e81d5449d6ad9938f6ae1e0de8",
+      "statement": "The openwiki-update.yaml workflow runs bi-weekly (gated by ISO week parity) at 05:00 UTC on Saturdays to update OpenWiki using candidate models from models-openwiki.json.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L15-L35",
+          "version": "repo-lines-v1:sha256:282addc6a9fa21a0c956709ca285baacd82248274884d6b71979ae4e7daeac1f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjYWNjNjVjZjQ3NWFhODQ0NWMyZjljMjgxZDJlNzY4MmRkNmQ4ZTk1NGM5MWI2NjFjYzVhYWY3YWY2MTFjNjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJmNTU5NzljZTczMDIwMzNlNmIyZmQ3ZDg4ZjUzN2EzYjhlMDkxZWEzMDVjODExZmZhMTI3NGJmNTc2NGVhNWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyMjVhZjJjNTZlY2M5NzlmZDFhOTMzZjkwYzQ3YzEwYmVlMDM3OGY2MDhjZTFlOTBjZDFhZmY3ZmM3NDc3MTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA2N2ViMTZjYTg5YjEwZTRmMTY0YTBjNTA1ZGRhMmY3ZmRiNGU4MTY0NDAxYjA0NTQ2YzE3YTQ1NTBlODQyNmMifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L42-L53",
+          "version": "repo-lines-v1:sha256:63b07506b50f29f9278506b092db031e62f599649e9dae3508bff2d92da25eaa:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ1ZDZjZjdkNDI4Y2E4MTE1ZmM0YmFiYjY4MDczOTAyMzMyN2E3YTlkOTE2M2Y3MDZhMjc2ODdkZDUxNmYzOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkZWRlNGJlYzRjZGRiYWJkMzMzNzRiMTJlMWJmNzY3ZDY5YjQ4MzBiM2U3YzA3NTkwYjIzNGU2M2IwMTQ5MzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlkOGU0M2I5NTgzYTkyZmExN2ZlYzQzMTAyZTUzMGM5YWMwYjdmZTQ4ZjI0NTQ1ZmI3ZDYzZTUzMjZkMjgxOGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyMmZhOWVkMzNhN2I0MjhlMmUzYzM4YjhiNTM3N2EzOTBiM2Q5MWM5NThhNWM2NjNkMTBjZWRlNmQxMTljODYifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L55-L88",
+          "version": "repo-lines-v1:sha256:0504d72c9ac4dbdf180993ac522d087a88df0b222e4fb94b1776d07d92232982:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA0YmJlNDY1M2UzOGM2ZTIxOTBhMTNkYWUzMjI3NDcwMDUwNDEyNmQ0NzFlNzlmNDM1YzhkOTRiMDk0NjA3NDIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwZGIxZjhjZTkyNzcxZDM4MTRlNDFkNjA3N2IyYTQ2NjEyNTY3NjY3ZDc4MGJkMmMwMzU2MDA4ZTMwYTJmZjMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVjMDE3NjkwYzA4YzhlMDA2ODA1ZGI0N2QwMzVmMWU1YTg5NmI1ZTkxNTc0Yzk5ZTE4NmYxZTRmZTc5YjUyYzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMzOGRkODIzNmY2ZTIxMjZmZDBlMDJhMDg3ZTAyNzczNTgyZGVhMjgyMzBhNjNhN2Y1ZmNiZGU3YWRhYWFiMmIifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L6-L6",
+          "version": "repo-lines-v1:sha256:78cf24bd22673e191753baca2edcb1a86afd33f243b2984234e74879b5189a49:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzhjZjI0YmQyMjY3M2UxOTE3NTNiYWNhMmVkY2IxYTg2YWZkMzNmMjQzYjI5ODQyMzRlNzQ4NzliNTE4OWE0OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzhjZjI0YmQyMjY3M2UxOTE3NTNiYWNhMmVkY2IxYTg2YWZkMzNmMjQzYjI5ODQyMzRlNzQ4NzliNTE4OWE0OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmEwZmEzMTgyNjM0NDA4MmViNjkxYjRjMjQ5MjdlZjU1ZmI1NmUxNTk5MDkzZTYzMTUzN2ZkN2ZjYzc0YzhjMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzk0NjJkNWYyYzIwN2U2YjRmODI4NDNkOTE1NGZmMGJiYWQwMzQzOTI0YjJjM2M0YmFiZDk5Yjg3Y2NkNGI4MiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_bf3869615b964cd186a2a778d9b06995",
+      "statement": "All model list workflows use the concurrency group 'update-model-lists' with cancel-in-progress set to false.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L8-L9",
+          "version": "repo-lines-v1:sha256:15496fe691ea11aaede654b8d8e8f8410cf112f63381571f4926b11de55cd2cd:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzUyNjI0N2VkZTAwNmU5YmRhYjljNjg1MDcyODQyNWQxYjQxNjZjYWY1Y2FjNTBjZjA5NTVjNDRkMjRjMWE4ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTg1NjBmZWM5YzI0ODYwZjA3NTUxOWI0OTY1NDcyOTczZDViNGZjMGI1Mjk1NmNkZDZiYjYwMDQ0ZmIyOGIzOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDg2ZmZmMmViZTgxMTlmN2YyOGNlYTU1ZGI4YWZiZjNjNDZhYjg2NDVlMTFjZjBkMzVhNWIyM2U2YWIwMTMxYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWQyM2MyNDc3ODQ1MTBkNWMyNjE4ZWQ3MWQzOWRiMWRhMzhjNzVhYmYwZDY4ODAwYWE1NWQ2YmIzZGYyMjllMyJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L8-L9",
+          "version": "repo-lines-v1:sha256:17ebb15279b876d4815d00f57592c6298d1ab24a356ab8851074e9b465c3d9a3:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODRhZmUyNGRhZjM0ZDFiNWNmODNmY2FhM2Y1NmFhNGMxMDdjMDU4MDM5Yzg1N2JjYjZkNTE2ZDYyMTk0N2YwNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzExNjQzNGYxMzMwMmYwOGY0MjgxNGY1YzFjMTMxZTRiYTZkODJmNWEwYWU3MWU2NmUwZThiMTBiZTliMDhmYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDU4NzQwNjdjZjJhM2E1MGZmNWEwZGZjY2Y3M2ExYjhkNDIxOTA4MzYxYjljOWRhNGYxNTUyYjg1YmVjZDI2MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDQ5YjdlMzk4NjE2Y2EyNzU2M2Y1MGQ3YjdmOTgzNmY4ZDU3ZGJkZDBiODVlZjJiYWFhNmIyM2E1OWUzZGJkNiJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L8-L9",
+          "version": "repo-lines-v1:sha256:17ebb15279b876d4815d00f57592c6298d1ab24a356ab8851074e9b465c3d9a3:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODRhZmUyNGRhZjM0ZDFiNWNmODNmY2FhM2Y1NmFhNGMxMDdjMDU4MDM5Yzg1N2JjYjZkNTE2ZDYyMTk0N2YwNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzExNjQzNGYxMzMwMmYwOGY0MjgxNGY1YzFjMTMxZTRiYTZkODJmNWEwYWU3MWU2NmUwZThiMTBiZTliMDhmYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjY4YzE5YjM4MWIzYzY5NWNhYTFjYWFiMTBlZGMxZDBmZTc1ZDdlMjFlNzAxZDRlMDFkM2U0N2MwNzBhNGZmYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDQ5YjdlMzk4NjE2Y2EyNzU2M2Y1MGQ3YjdmOTgzNmY4ZDU3ZGJkZDBiODVlZjJiYWFhNmIyM2E1OWUzZGJkNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d4225003f3ee421d9988412c28de1d45",
+      "statement": "The workflows authenticate using GITHUB_TOKEN for GitHub operations and rely on specific API keys (OPENROUTER_API_KEY, ANTHROPIC_API_KEY, LANGSMITH_API_KEY) stored as secrets for external service access.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L12-L14",
+          "version": "repo-lines-v1:sha256:7225af2c56ecc979fd1a933f90c47c10bee0378f608ce1e90cd1aff7fc747719:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTlkODAxNTRlZDQyZmM1Yzc3OWIxMzMxNTc4YjU4Yjg5YzgwMWVhY2U3NGYyNGNkNDhlYjRhMjM1Nzk0MGE5NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTAzNzEyYjA4M2YwMDllNDRmNDZmZGZlYWM2MTlmZjJjZTVjZjI3NTZhNGI5ZmFiY2NiYjU2ZTdmODdkOTIxOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTZmN2QzN2ZiMjk3Mzk5ZmVhMmE1Y2VmMWNjNDAyOGM4OTk3OWE5MDUwYTkyODU2ZjBkOTZlMWMxOGJhMTlhNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDM5MzZjYmEzMGE2MzcxY2JmNGQyMzY1ZTEwMjY2MWM4ODE1OTY2ZTE3NWU3YTdkMjFhMjEzZjViNjNmOGUyZCJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L87-L95",
+          "version": "repo-lines-v1:sha256:2fc96f9a8a9627ca7a251269a1ebaf572bb69c3346c3b2d8309b61cabd8a1f66:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGM0YzZhZGQ2MmJiZDFlNWI4YjJiYTZlMDY5N2Q2ZGFiNTFhYTdjN2EwZTYwMzM0ZmE1MjJjOTc0OTlhMjY5ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWZiMTQ5YWNjNzJhNGRiYzQzODg0NTU2MDM4ZmYyNTQ1NzBkZDI3NjY0NmJjNDQ1MTEyODJkZmI1ZDA1MTE5MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzhiNzYwNzcwZTdlZjM5Mjk4NjliZWZjZTViYTkwNDU3Y2U4Y2ZjZjNmMmViZGMwNDY3NTM1YzcyOGQxMDM2MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDE5MTM3MzI1ODJjM2U2MDM1OTA3ODZjODY4MzY5NTFmZjM1ZTliMmQwZjhkMzEwNjdkNGY0Yzg3NDNkYjJhYiJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L12-L14",
+          "version": "repo-lines-v1:sha256:dcc4bb79f6ebc8555975f87c1bbfadb4481f70b03c1a7b0c9ccb4ee3dac77d61:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzUyNjI0N2VkZTAwNmU5YmRhYjljNjg1MDcyODQyNWQxYjQxNjZjYWY1Y2FjNTBjZjA5NTVjNDRkMjRjMWE4ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTc0M2EyYTJmYjgyZWFlZDI0ODhlMjg2NGQ0MjNiZWI1MDA2MWRkNDIzZDgwYjg3MjFkM2JhZTVhNjQ3YTdmNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2U2YTJmYTNkODJjMDY4OTk0NzcxZTVkOWFmNTE3MzYxZGYyMTE4YzIzZTU4OTE3NGQ0NjQzMGMyYmY2ODVkZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2JhNWFmZmQ4MjMxYzBlODFiYmNkNDIxNTRhMWNjOTBlODZlZmY2NjM1NWMwNDhjZTU1YjMyMzdiZGFjM2ExZCJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L29-L31",
+          "version": "repo-lines-v1:sha256:c942d580bdf6137c0bccbc8df281d1711c6f792bdb601b0a7b50a5ec58d43415:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2IwNzg0OGE0MzY2NjU2YjJiYTYxOTdiZTAyYjkyMDgxNDU0NmY5ZDlhZDBiNTMzOWU0YzI2YTJjOTQ2NTExNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGYzMDZhM2VhOTc4ODQzMWUwYWRjNjk2ZWIzMzhlMmFiYTcwMDA0M2RhZjU4NTJhN2JkYTc5NjMwZGQ0OTAwYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGMyOTEyYWI0MTljNWMyYmUxOTNkNzQwZjFkMGVkNzMyNTI1MzMzOGNlOTIyMTJkMDExYmNlMjNlMGFkZjNkZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2E1YWMyNmQxZWNjNGRkZGVjY2ZjNzI3OWYzNWU4OTkyMThmOTJiNWIzN2NlMDUyNWY4ZTI2YWE1MjQ5NGNmNSJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L12-L14",
+          "version": "repo-lines-v1:sha256:dcc4bb79f6ebc8555975f87c1bbfadb4481f70b03c1a7b0c9ccb4ee3dac77d61:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzUyNjI0N2VkZTAwNmU5YmRhYjljNjg1MDcyODQyNWQxYjQxNjZjYWY1Y2FjNTBjZjA5NTVjNDRkMjRjMWE4ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTc0M2EyYTJmYjgyZWFlZDI0ODhlMjg2NGQ0MjNiZWI1MDA2MWRkNDIzZDgwYjg3MjFkM2JhZTVhNjQ3YTdmNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2U2YTJmYTNkODJjMDY4OTk0NzcxZTVkOWFmNTE3MzYxZGYyMTE4YzIzZTU4OTE3NGQ0NjQzMGMyYmY2ODVkZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2JhNWFmZmQ4MjMxYzBlODFiYmNkNDIxNTRhMWNjOTBlODZlZmY2NjM1NWMwNDhjZTU1YjMyMzdiZGFjM2ExZCJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L29-L30",
+          "version": "repo-lines-v1:sha256:2b53b2d01fc38bac5a992351bf305499b0607e280047221cc047f1e6e42ecc15:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGNkZDY3YTgzMWQyZmFjOWJiMTQ0NWZhNThkOTY4YmRhZGYxNDA3MGFiNjYyNzM4YzdhYTBkZjZlODExMmRjMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2IwNzg0OGE0MzY2NjU2YjJiYTYxOTdiZTAyYjkyMDgxNDU0NmY5ZDlhZDBiNTMzOWU0YzI2YTJjOTQ2NTExNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTVlYjUwYWU3NzRkODdiZDA3NWUyMWUwZDE5MGE4N2M0MDhmZmJhNzUwOWJiYWI3MGVhMDU4NTMwNTk0NDFkNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGM2Y2M4MjdlZGMxM2Y2NDY4MGJkYTIyNTJmODY3ZTRkNzFmYTM1MjBjYThmNmQ0MjdhNzJjNTQyOGY0MGJlNyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_3696613294d54fa8a29dccb5048720d0",
+      "statement": "The Python environment is managed via uv sync from pyproject.toml on Ubuntu-latest with Python 3.11+, while Node.js environment uses actions/setup-node@v7 with Node 24 for OpenWiki workflows.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/openwiki-update.yaml#L47-L53",
+          "version": "repo-lines-v1:sha256:a80fb3191a4058de1fa65f64a6c9c7d162b5265cf2938a9c76cd5a9329b6b443:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzZkNzEwYTE3NjI4OTVjZDRjOTNjNmEyYTI5ZTYyOTI0ZDZmNzMwZDk1ZTJhZDE3N2NhNTA0OGViNTY5YzlhYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWRlZGU0YmVjNGNkZGJhYmQzMzM3NGIxMmUxYmY3NjdkNjliNDgzMGIzZTdjMDc1OTBiMjM0ZTYzYjAxNDkzOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmVkODY0ZjZjMGU0ZmNjMzI1M2U0MmMxZTNmYjQ2MzFlYmEzNzk3YWZiMDU3ODc4ODc3MWMwYmM1YThkN2VkMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDIyZmE5ZWQzM2E3YjQyOGUyZTNjMzhiOGI1Mzc3YTM5MGIzZDkxYzk1OGE1YzY2M2QxMGNlZGU2ZDExOWM4NiJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L22-L26",
+          "version": "repo-lines-v1:sha256:3a3bcb606a37b75095e2c79bef2db88252e4d19cc3f70015461dbd210d5b3ad2:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBiYTcwNGRjMzgxMWE1MzVlZGY3OWE4ZWE0M2Q4NmE1ZjVjMDM2OGE0MjczM2Y3YTc3NTI2YzhkNGFhZGU3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg2NmNhY2VmYWMzMmJjOGMzOTcyM2E4YjZmZDRhMzQzMzcwZDhlZmQ0MDNkYTU3ZTFkYWExYzM5N2E2ZDUyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzRkNGRhNDUyYWRlNTRkMjlhYWU4YWNkZDYwN2Q5OTk1N2MxNTk1OGMyZWIwNDhmMmY5YWQ2Nzk2MDNiOGFiYSJ9"
+        },
+        {
+          "resource": "repo://.github/workflows/update-models.yml#L22-L26",
+          "version": "repo-lines-v1:sha256:3a3bcb606a37b75095e2c79bef2db88252e4d19cc3f70015461dbd210d5b3ad2:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBiYTcwNGRjMzgxMWE1MzVlZGY3OWE4ZWE0M2Q4NmE1ZjVjMDM2OGE0MjczM2Y3YTc3NTI2YzhkNGFhZGU3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg2NmNhY2VmYWMzMmJjOGMzOTcyM2E4YjZmZDRhMzQzMzcwZDhlZmQ0MDNkYTU3ZTFkYWExYzM5N2E2ZDUyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTVjMjJlYzg1ZTFiNzQxMTE2OWM2MzhjOGFlYTZhNzM0MDk0Y2ZmZDc0NDVmNjY3NTY5Yzk3YjJlZGFlMWVjNyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5b3741f04f9a4cd0a593121f9f5a10af",
+      "statement": "Unit tests cover filter functions (parse_param_count, is_free, supports_structured_output, supports_tools, filter_candidates) in tests/test_filters.py.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_filters.py",
+          "version": "repo-file-v1:sha256:3d15f43150d2b57f9d1d247af1b73757d801d484306601cc2e6375683f6f6df8"
+        }
+      ]
+    },
+    {
+      "id": "claim_405e0605b7534838b62d8ffb6c49adf6",
+      "statement": "Unit tests cover endpoint stats fetching (success, no free endpoints, HTTP error, missing p50) in tests/test_endpoint_stats.py.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_endpoint_stats.py",
+          "version": "repo-file-v1:sha256:610f401f1109100978814e6fc7bca8feb832ceb2d62873e47c36a8a2ff345425"
+        }
+      ]
+    },
+    {
+      "id": "claim_00ef638215394c6d83c8a300c44d3110",
+      "statement": "Unit tests cover probe functions (probe_model, record_probe, read_history) in tests/test_probe.py.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_probe.py",
+          "version": "repo-file-v1:sha256:89395c3cc750bd038180e3cb8e96e2f463c996ba3564fcb0691def5f77be0863"
+        }
+      ]
+    },
+    {
+      "id": "claim_228c409bb6ba40449d87ec553933ab96",
+      "statement": "Unit tests cover scoring functions (compute_uptime, compute_latency_p50, passes_post_probe_filters, compute_score) in tests/test_scoring.py.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_scoring.py",
+          "version": "repo-file-v1:sha256:a686ac33da0b840f8af8288c722b4f94a405d92ce1f440bfa923169d0e37469d"
+        }
+      ]
+    },
+    {
+      "id": "claim_d99ed7cfcf67489aaffb2dc3d1aaf731",
+      "statement": "Unit tests cover threshold loading (defaults, override, missing keys) in tests/test_thresholds.py.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_thresholds.py",
+          "version": "repo-file-v1:sha256:91dc36005f058df2d6bb5e694a254374f26124ca0b2542c7c7b032c7c9e1e8f7"
+        }
+      ]
+    },
+    {
+      "id": "claim_dfd957ea30ce4921896cd0812f6b481d",
+      "statement": "Unit tests cover OpenRouter client fetching (success, HTTP error) in tests/test_openrouter_client.py.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_openrouter_client.py",
+          "version": "repo-file-v1:sha256:41f128cd7b78facb38400f1590277aed76483b5b403f99697717c74ebc9459a4"
+        }
+      ]
+    },
+    {
+      "id": "claim_4b0e0434be19488bb01f42c4eeda6162",
+      "statement": "Integration tests cover the generate() function with mocked dependencies, profile resolution, output schema, probe history, and warnings in tests/test_generate_models.py.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_generate_models.py",
+          "version": "repo-file-v1:sha256:77b776a1a93484e8716e627bc4c73147bc9a008afcbfdc0d44b14bbd4a80bf79"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-17T08:58:08.450Z"
+  }
+}

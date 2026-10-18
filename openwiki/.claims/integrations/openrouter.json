@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:9bb4c719ae3b9fcec02fa12e131c55b1dc89fa5bd0f81fbfb4a3a4c83f2ff21c",
+  "claims": [
+    {
+      "id": "claim_6b14297a6ffe4b9a96be35e57bd7d260",
+      "statement": "The `fetch_models` function in `scripts/openrouter_client.py` sends a GET request to `https://openrouter.ai/api/v1/models` with an Authorization header containing a Bearer token derived from the provided API key.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/openrouter_client.py#L7-L14",
+          "version": "repo-lines-v1:sha256:f70bbfe970e75725afc8bf824ac78dae30b04e538596328ffff344a29192f1f4:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDU5NTc5ZTA1ZmM1MjQwNmE5YzYyMDI4NmNjYmUyZWE3NTBkYzU4YWE5YmY2YTBlOGY3ZjJmNmU2ZWVkYzJmNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzE0YjIyZTIzY2M2YWRiM2QzOTM2MGYzMTUxZWQyNTc3NzBkYWQ5ZWNmNTgwZjFmZDBkNTlkYWVmMzUyM2RiZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDUyNWFjYjdhZWQyYzE5NjNiZmY3MTY2MTg2NjQ4YmNlNGY5MTJiZjU5MzY4ZWY1NmQxOGM0MTBkYjIxYmE3MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_426dddaffe664ff1851e624da35f0d65",
+      "statement": "The `fetch_endpoint_stats` function in `scripts/endpoint_stats.py` sends a GET request to `https://openrouter.ai/api/v1/models/{model_id}/endpoints` with an Authorization header containing a Bearer token derived from the provided API key.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L18-L24",
+          "version": "repo-lines-v1:sha256:8f8de22360f6343d35816c1b698d7f68a7ee1eb29d707bbaa0d463385e7ad0b5:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDQ3ZTMzNmE1YzA4YzI0NTI4ZWNmYjQ2NzYyN2E2ZTc2Nzk2NzJiNjk3MGQ3YTA4NzU2MTUyNzllNjFmMjMzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTkwOWE1M2E2MThkMDI4ZTFkMzAwMGMwYTdhYmNlZWNiZTVmYjM3ZjRlNTExZWZlNDY2NDNmYWQ2ZTY2ODcyZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzk0NWRiM2Q3YTE5MWZmZjFhZmNkMGFmMzMxNWY0ZDUwMDhhN2NkNzA1YjcwZmNmMjIyNzE2MzU2ZjA3ZjI1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjljZDAwZjE2ZGJkMzEzYmFhZmExNGJmNDY2ZDU0OTU2YjUzYTdiNjE5N2U2NDcyOWQ3MGVjMDVmZTk1MzA2YyJ9"
+        },
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L4-L7",
+          "version": "repo-lines-v1:sha256:dc8e4cf1ec42d6f263413e682bfee9f4f243c7b8818ee4e4e26009e26382b768:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjYxMmM5ZDNkMzcxMjI2NDMxYmI4YWEyNTkzODA4NGMxZjI1MTgwMzUxNTZiNmFkN2I1YTEwYzZmMjNkMTU0NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWVhYjQxZWE2MjlmZmNkOWJmZGVjMmNmNjFiMjEyNzNhMTIzOGExMGYzYTFhOWY0NGI1YmRkMTc0ZjY4Mzc5ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWEzYTY1MTJkYWI3YmQ3YTllODQxOWE5ZjZkN2QxMDdlNzM0OWEzZWRjZGU2NzhiOTFhOTI5YzdkZmJlNmY0YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTk2MmE2MjhiODE1YWIwODRmY2NhOTFkMGM0Y2IzZTk4ZmI5YTRkZmUxZTIxMTVhYWYwNjMyYjJhNTRkNDcxYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f496583f3b5a434891bcb6c3d19c06cd",
+      "statement": "The `fetch_endpoint_stats` function filters the response to endpoints with zero pricing (prompt and completion costs equal to \"0\") and computes the average uptime (as a ratio) and average p50 latency (in milliseconds) across these free endpoints.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L29-L47",
+          "version": "repo-lines-v1:sha256:a909d0a1ec49941e0d377ef89b004e944a2171ea6e4302967174562d38dc05b5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkNWEwZmFhYTg5ODA5MDBjMzM2NmFlN2Y0ZTIyYWQ1OGFhMWM3ZTIwZmZkMThmZTI4YTA1MTQ3YzdiZDI4NjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwY2FhNGZmNGRlMDU1NzMzOTNlNzZlZWYyZmQ0M2ZmMjIwMGQ2NTY0ZGM0NWQxYTM3NTVjNzI4NTM1MDQzMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFkMjg4OTRiNzllM2M0NjdiOTliZmRmYmYwMDA2OTZjMTVhMDVjOGIwYWIzYjliNzRjODBkMGEzYmY0ODJhYTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ4OTNmNDBlMzc4MWViODk2YzgyZDA0NmEwODA2N2ExMWUzNWNkZjJmMWRmYWYyNmZlYTkwYjhkYjY2NzY0MTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2cb9c6a351224ba3bd5b0f089cab8df7",
+      "statement": "The `fetch_endpoint_stats` function returns `None` if the HTTP request fails or if no free endpoints are found.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L26-L27",
+          "version": "repo-lines-v1:sha256:522e11ec179093ec587b3258b6f5b8ed7f6b9dd836d61f446a8eb82b2c8070ce:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzA0ZjE4YTc5ZDI5NjY0OTZlYWYwYWU0MTBiNzJkYTAxMjhkYmI5ZDJlNWEwMjg4Yzc5NGJlMjA0ODMyNTE2NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWU3Yzk1N2JjYjQ0ZmI2NzNjOThiMDA1MGE3NWQzODA4MmRiODFkOTE4ZGUzMTNhM2YwN2MxMjM1MzA2ZDdlYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzhjMThiODNmMzkyMGZmYWVhYzNiMzIwYTc2MTFjNWIzODAyNWVkZDljNGM5ODI3MmU4ZTY1M2U1M2VmMTM4NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGE2MzViYmY3ZDQ2ZDBkOGVjYzlkN2Q4YTg4YWQ3OWIyZGJlYzYyM2M4MmQ3YWI4ZDIwZWZkYmE1N2U2MjY2OCJ9"
+        },
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L35-L36",
+          "version": "repo-lines-v1:sha256:327f0477f49e5037d925b0c2a984d6cca9a715ddd43298f760d9e928bfe9ac4c:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzFiMjI0ZjVlMGE1ZmYxNGYyMDgxNjc5ZDlkYzMzYzJlZjVkMjYzZWE5ZGMwZTE3Nzk3MTJmYTQ0MjQwZTI2YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWU3Yzk1N2JjYjQ0ZmI2NzNjOThiMDA1MGE3NWQzODA4MmRiODFkOTE4ZGUzMTNhM2YwN2MxMjM1MzA2ZDdlYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjQ3Y2E5ZWRjNTZhNTY2NmNiODk0NGI0ZGY5MmU1MzE0MjMxNDliYjAxZjg5OGNiMDM0MGI0NTU4ZDM4OGI3MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWNjN2IxMjY2NzBkMjNkMTBmNmVmZTE1NTljYWUxOTEwY2RhMmZmYWQ5OGQyYzUxMjRkZDY1YmE1N2ZiMzY4NiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_9677d781b8234725a5df921e8924a018",
+      "statement": "In `scripts/generate_models.py`, the OpenRouter API key is retrieved from the `OPENROUTER_API_KEY` environment variable.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L55-L55",
+          "version": "repo-lines-v1:sha256:e4a089c92d4f158c6c5a1a0a313bf0803f0b1e997ecdc0f448727e9ceaa65079:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRhMDg5YzkyZDRmMTU4YzZjNWExYTBhMzEzYmYwODAzZjBiMWU5OTdlY2RjMGY0NDg3MjdlOWNlYWE2NTA3OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRhMDg5YzkyZDRmMTU4YzZjNWExYTBhMzEzYmYwODAzZjBiMWU5OTdlY2RjMGY0NDg3MjdlOWNlYWE2NTA3OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGIyZDhhNzcxNmFmMjdkMTcwYWNlMmVjZDJhY2NiZTNmNzQ1YTUxZTgxOTk3ZGU1NWUwYjBmY2I1OWVkYmIxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTc3ZTEyYjYwMDBmOTRmNmMyNTM4ZTcyMjNiNTdmYmI3Zjc5NjAwNTIzYjMwZTA1OWNmNGJkNTBlNWUxMmRkMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_aa1ccc3fc4f042d78fe3a2e5747fc43c",
+      "statement": "The system uses an `openai.OpenAI` client with base URL `https://openrouter.ai/api/v1` to perform sanity probes on models.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L122-L123",
+          "version": "repo-lines-v1:sha256:fee10fb5ff4f4d89df74ace0a3ea67d771cfaa5c0282629a5d8e309ec1e63ae1:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODc0Nzg5OTIzOWE1NDU0Zjk0NzQ4OGZkNTFmNjdiNTMwY2M1YmMwNzdiYjkxOGQxODhhYjliZmVmYzc2ODNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzUxOTlmNDZlODM3M2JmM2UzNmZjNWU1NDUxYWMwMWZhZjkyNWRhYWVjZDM2Y2VjZTM3ODZlYzUxMmYwNDg1MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDViNjc0YjgyNDVjMzY2MGE0YTI0N2Q1ZjMyMTgyMGMxODc2N2U3Y2E3NWQwMTY1YzBiNzU1MjM0NWJmOWM5ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjUyYjllYmY1Y2U2MzZkNTRjMDlhNGViYTkzZDFlMDQzZmZiZjA4MzM0ODlkMTRjOTI5ZTVhNjU1ZGIxMDI2OSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-17T08:58:08.450Z"
+  }
+}

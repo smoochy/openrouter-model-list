@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:548db8f4f5280ef7dd785be292c96b7a483ff5ebfb4532915893ee1c223cb7df",
+  "claims": [
+    {
+      "id": "claim_a01cb97e568c48f8ab7088b0907823e1",
+      "statement": "The integration fetches Claude model metadata from the Anthropic Models API.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L49-L72",
+          "version": "repo-lines-v1:sha256:5b637b041e594db62b0a41e7c05be1bf2f583176e3ba5f3cc0cd439a5e664935:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA1OTU3OWUwNWZjNTI0MDZhOWM2MjAyODZjY2JlMmVhNzUwZGM1OGFhOWJmNmEwZThmN2YyZjZlNmVlZGMyZjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxMDQ2NTI0ZmNlOTcxYmRhNTg5YWMxMjcxOWI4ZmU4YzgxMzk5ODI4ZjhkNjQ3YzA4NzllZWExMzM0YzJhNTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQyZWQyYTJjYzI4NWIxYjg2YjFmZjlhMzJmMTdlZjFjN2IwZDIzMGE2ZjAwY2VlMTBkYmI2OTE0NjMwMWYyZWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVjZTkwYTkwOGNlNDQ3NTJhYTc0OWUwNDAwNTk0Mzc1MTM0YzE4NWRmNDQ4YzEzNjUyYWNkOTQyMzQ2MzM4ZWMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_894e7b10e93f4f1596c87b022608381d",
+      "statement": "The integration scrapes the Claude pricing page in Markdown format.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L75-L79",
+          "version": "repo-lines-v1:sha256:68f6402f3cca52a94533d98686ede9b4d4d773767d75b670f6a9460287d467f9:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTIxZmE0OTMyZGQ4ZmRiMTkyM2Q4MWU3MzVjZDlmODVmOWU1ZjE5MTUzMGVkZDhmMGVjNDYzMWI4MzU1MmNiNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjhmNDgwNDczNDgyMjg2YThjMDU2OGUzY2ExYzhkODAxNTliNzZmMDA4MjQ5ZDMwMzVlOTNhMWQzMWM1NzdlOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmVkMjhmNGQzNzNmNTBkOWFhZWRiNTQ3ZGZlNjgyMTcwOGU1ZjM5MGY2OTcwOTE3NzU2OGM2YTZjNGE1YzhlNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTJmMmUxNTZkYzZhMzg5NjZlMmZhYjkwYmNhNDhmYWIwM2NmZTU5MTRkMDQzOTZiODEwZmZmYmFiYzAyMDg4MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_6b78b709f0304c79b3421769fe674712",
+      "statement": "The integration parses the pricing table to extract model names and five price fields (input, cache_write_5m, cache_write_1h, cache_read, output).",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L102-L132",
+          "version": "repo-lines-v1:sha256:bc8f2aac5c1aa5fbe675a27c30f7320402313ea0a0536c123847d0b1f959bd73:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJjMTIzM2QwNTMxYjVkOTcxM2M5YmFjMWFhNjNhZTNhNmViOWQwNTEwMjY1NTUzNjc1MWJiMzYzYzE2YWU2ODEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJhOGM2ZmI1NDBjODlkYTEwNGI0Y2JjYTQxODc0YzRmMWNkZjg1YjZhM2M0NmMxZDc3ZTEwOTQ5YzNhNDIwZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI5ZWUxOTMyODRlODJmYjc2YWY0ZjRmNTgzZTQzZjA1MDdiNWYxMzJiMTY0ZTZkMzUyM2JhZmI5NGMwYzdiMWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdjZDY5MGI0NmI5NzUyYjBlMWVhYTNlYzJhZGYyNDNiMjdhNWU5MTA2NDkxZmViOGM0ZTliNmU3MzRmOTA5MWEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_35812e68f27349429d78d48578cde639",
+      "statement": "The integration matches API model IDs to pricing table rows by slugifying the pricing page model name and consulting an alias table, raising an error if any model ID lacks a price.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L143-L166",
+          "version": "repo-lines-v1:sha256:5d7e1948e748902cc94b407b3922a8c5c250588cf733c6a4262d488aabca0d5f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyYzU4NzcwMWFhYTNkMzQxMmQ0ZThmODMyZjQwMjFkMTc5YjRlZWJjNWRmOTYxYzg4ZjRlZWFiYTcxZmJkZmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU0MmM1YjMwNTk0NDM0ZDBjMjY4ZTMxZjIwOWVjMTczM2MwNjM3YTllMzJhZWVhNDJmNGI0NmI0ZTE2MTYwMDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBjMDRmM2Q3NzZiMWJlOTI3YzE5ZDU1N2FhNzE0NTljZTRjMDBhZDg0MDBlNDFjMDNkZjA3NjdjNmEzZGQzMzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0YzhmYjBmY2Q2ZTU3Nzg1Mjk2YzBiZWFiZjc4YWJiN2Q3ZGY4ZTFiNWUxNTM1OTBiOTQ5ZTMwNTFmYWRiODkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_54f605d3e13e40779d3a2b365139f24c",
+      "statement": "The integration extracts long-context token thresholds from pricing table model name cells containing a pattern like \"(for prompts over 200000 tokens)\".",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L179-L192",
+          "version": "repo-lines-v1:sha256:6ce993d4403db38660dc09eb50b947e74aa61403b6786ae7a478cdf234a45650:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIyMWM5MzU2ZWY2NzgyODRlNDI4MDU4ZWE5OTE2MTA4OGJiZDAxZGU5MTU0Nzk0ZDdhYjU2MDJmMGQ5MTRlNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlMWI1MWYwYjBiMTFkZTk3YzQ2OTdiYjRiOTE0ZDdjZGE1M2IxZDc4MGNlZjk1Nzg5NTZiOTI3OWJiZTE1MWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFlZTU3YTg0YTg4MzU2YmEwNzk3Y2IwNjBiNjQwMTdkYWM4ZWQzMmVkZWY1Nzk3NGQ3ODMyYWMxY2RiODk5M2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBjNWM5ZGRlZGNhZGVjMzA4MzM1YzI2MTc3MmY4ODY4NTE4ZjQ3MmFmZDBiNjRmNjZjMTVhZGQ4NWRlMmRmNzUifQ"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L37-L38",
+          "version": "repo-lines-v1:sha256:2ecf7b26af401a37dad163facf785e7955fee19ffdf4d1e1df1997b29cb0471c:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjBhNzEyNzU1ZGI5NDA0ZjMyNzc1OWM5YTk2Yzk3OTIxODVhOWUwYTkyNDIwOWE4ZGMyMWI2YWE3ZjQzMGM1ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjM2OTVhMzRkZWIyZWFhY2E0NTMyZWRhNjEyNTRiN2EwMWZmMDVkZmZhZWNmYzY5YWU0YjIyY2U0YzNlYmI2ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTU2NGM4YWNhNDZlN2EzZjI0OTcxMzhhN2I1N2NlMTFhOTJjZThhNWFiNjc3ODU4NGRkZWI4MzhmZmI2NTNiMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjM4NGJjZDNhZjY4MjQwNDZlMzE3ODE3OTIzNTZkOWFhZTIzOGE0NjMxNmJlNjVmMGQ4ZDllODNkMTZiZTY1YyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5428c88db7d64c4d9bd5f858ec1a969d",
+      "statement": "On success, the integration writes a JSON file anthropic-models.json containing the model list with pricing and optional long-context thresholds, and appends a timestamped entry to history/anthropic-models.jsonl.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L195-L225",
+          "version": "repo-lines-v1:sha256:60295d610161e1b88ab9799f91a5a60df25f2efc41dd04e4a0d5f29c7fedaaa7:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5Y2JhMTkzMGQ0MjE1NTgwZjE2YTIxN2U0NmNmOWQ2YjE1ODFhY2ViN2JkZTFhNTIxZjRjN2JiNjE3NzhhNTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxMDQ2NTI0ZmNlOTcxYmRhNTg5YWMxMjcxOWI4ZmU4YzgxMzk5ODI4ZjhkNjQ3YzA4NzllZWExMzM0YzJhNTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI4ZDRmMDI5ODkwZTRlNGI0MzZjNTFkZDg1YmRlYjFjOTFkN2RlMzZiMzQ3NDBkNTY3NGJiMzYxZmM2N2Y0MDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU0OGQ3NDgzZDA2MGYxNzIyZTI0NTM2ODg4MzM0MjU2YjU0OTBlOGJiZTg2OTgyMDY3NmNhOWVhZjM1MDljYzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_bc1b03b9ae1249a694ef3e288e6b0db5",
+      "statement": "The integration fails closed (exits with non-zero and writes no output) on any of: missing pricing table header, malformed table rows, unparsable or zero/negative prices, or any API model ID missing a price after joining.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L114-L115",
+          "version": "repo-lines-v1:sha256:1949dd652a4edde9cbfad2a066c96885d6cde06df6e92979bbb4bdbb204f4243:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjNkOWE5MWY5MjM2NDdmNTgyMWU5N2ViNDMzYzE2MTQ1MGZhNTlmZWNjZDYwOTUxYzFhODA1OTk5ZDAzM2VhZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzQ0ZThiMGRhOGUxOTg5YzBmZTVmNGZiZjE0ZmUzMzExNGVmYmVlMmYxZDY5ZDc1ZWY3YzFkZjVhOTdjYzllOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODMzZTM2NDlhOTljOWExOGFmOTM0Y2U2ZmI1NjhhMTM4MDYxMDU0NTI0ZGEzYzBjZDhiZWMxYWQ2ZjliMTlhYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGMyMzdiMmYzNmJlYjNiNTFkYWM5ODQ4NjBiMjI3YzMwODcxYmE0MWU2YzZjNTljMTU3MTI3YWU3YzlmNWEzMyJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L123-L124",
+          "version": "repo-lines-v1:sha256:bdf563f1e326c32e7c49a3372e1cd2c3b4e9fac60edd1b800ec59810cff36499:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDI5OWRjMGU2OTliZTMzNjRhZDA1MjhmMDYzZWUxZjZlZWM0MWVkZjliZmI3MDEyYTM5ODk5ZmE0YmU4MDhiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTJiYjM1MWNlMjk2NTcwNTA5YzVmMjBjYTNmZWUxNzAwZDFkMDhlNzJiOGM1OTFlYTk2MzU2OWIyMzkwODIxYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWI0M2I0ZWZlMTgxNWEzYmUwYjhlZWJlNmFhNWRlNDQ4YmVkMDU0NjlmNmY2ZGRjMWJmODcyZGUwNzQ2MDRmMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTY0YWE2NDk5NzVkYzE1YjVlMWRjYWExZjEwMjcxNWZlNDQ1YmMxNGMzOTRjN2MyZWMzOGExZjk3NzA3NDllNyJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L130-L132",
+          "version": "repo-lines-v1:sha256:d4b64ed6a5579828f21fda85bf555a00dbbc74a625534944ef8c5c241328c859:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IxOTlhN2JhMjc2YmI3YmM4NzhhOGUzZjkyODc5ZGU5NjIxMWFiNjM4YjM0ZjBiZGU3ZmYwM2NjZjI4NTEzYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmE4YzZmYjU0MGM4OWRhMTA0YjRjYmNhNDE4NzRjNGYxY2RmODViNmEzYzQ2YzFkNzdlMTA5NDljM2E0MjBmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzY1M2ZiZjU5Yjk4YmUzYzZmZWJkYzVhNjYxNjBkZWQyYTM0MzMzOWY0MDZlMDAzODg1ZThhNTVjMTEwZDZkOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2NkNjkwYjQ2Yjk3NTJiMGUxZWFhM2VjMmFkZjI0M2IyN2E1ZTkxMDY0OTFmZWI4YzRlOWI2ZTczNGY5MDkxYSJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L163-L166",
+          "version": "repo-lines-v1:sha256:6bf03ca4eed8f78e4731f337b0ad945e0374b3d367b63a39b549f098b89378cf:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjM2M2UyMGI2MDg0NzRhOTE5Zjk1NWU3ZmQyMGQzNWY2NGI2NTZlNDYzZjFjNWNiZGIyOTE5YTY2NWFlYzE1OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTQyYzViMzA1OTQ0MzRkMGMyNjhlMzFmMjA5ZWMxNzMzYzA2MzdhOWUzMmFlZWE0MmY0YjQ2YjRlMTYxNjAwMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWM2YTlhMDlkNzRlNjIyYTA1MjNjZDFhOTQ1YjVhM2ViYjYzZmE3OWJkN2NlNTExYzE3ZDYzOTg5M2IyMGYyNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDRjOGZiMGZjZDZlNTc3ODUyOTZjMGJlYWJmNzhhYmI3ZDdkZjhlMWI1ZTE1MzU5MGI5NDllMzA1MWZhZGI4OSJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L240-L242",
+          "version": "repo-lines-v1:sha256:b10dfffa3def1f8172f14df4ba9e8cc115c6e6becb1669686a409d0a45cd5d12:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzY5MTQyMmM5YWIxZjMwM2EyNWExYWI4ZWMxMWE3MmNkMDIwY2RjZjk0MDc4NzI5MmQxYTc0YzY4YTNlZmY5ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjMwODY2ZTFiY2M1YWI3NmUzZWY1OTAxMmQwYWQzOWE2ODdhYmUwMDIzYjQzOGFjYjExMzBhMTg4MjVlODE5MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjAxMDczNmQ4ZDRhN2MyYmQ4NjgzMzYwYzE3ZWIxZTFmZjYyMmVlYTg2YTY2ZWQ4NDZlMmRlZmQ3OGU1ZTYxNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDU3MjJiOGM0ZjI4MzFhMDhhNmZmMTY4ZDE2NTExNGI2ZmRiYWNmOTg0MjE1MzY2Mjc3NjkzYmRjYjNiZDAyMCJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L3-L9",
+          "version": "repo-lines-v1:sha256:af353f2e56fb3f326df1c31f9226b126ab4e2a1a9ec9ae989831a09701257eeb:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGNlMzk0ZDcxYmE1ZTUyZmUxOGU5YjA0NGM1MWUwYjg3NWNjNTc2MWFiMmMwYWE1YjQzMTVmMTM3NTQ3ZjNhOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTc4Zjg1OGM2NDExYTA2ZTIzNTFhYTcwOTZiMzAzMDA5OGNhZmY2MjRhZDU4NmE1ODNhNmI1NTQ1ZWY4NDk0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGE5ZjkwOGI1M2I5NmU1NWIxNzFkMGI2ZTBlMzVhMDgyNjc0MjhiOWNlN2E4NGRjNDIzMWJlMzIwNDRhMGI3NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGJkZTIyYTJiMTY2YzZhOWYyODk0NjEzNDQ4ZTg5MjliYTE1N2JmODZjYTNmOTU4YjhiMDJmYmRmYTExYjJjMSJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L91-L99",
+          "version": "repo-lines-v1:sha256:eb1cdb8c7fba6f4b5d367ae1c8a8ed7597f83e31bfb7220c40ca7044a09d1158:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmUxZGFiOWZlNmI5ODMzYzcxN2JiMmIxMDEyMWUwNDdlMjRkNGFiZjBlZDNmYTc1NGMzZDNmMGNmMThmZDFkZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTkzYTEzMDYyZjEwZWU0ZjEyMThkOTNlMzdhNmY4MWQzNDZmZjExZWM3ZTU1ZGQ1NDJlMmQyZDJlZjA3MTFmMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODc5MTExMmZkYzFhNmE0ZTM1NDliNGRkYjUzMGFjODgwZDY3N2VmYmNmNjdhZjFhNjAxNzI4OTM3MGU3YmI3YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWE4ODIwYTJlYTkxZTBkYTAwYTQ1ZGIxNGJkYjQ3NzcwMjVhYmRmMzg3MzZkNzNjZDVhZmJiMjg4ZjQyN2MwNyJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.2",
+    "at": "2026-10-17T08:58:08.450Z"
+  }
+}
