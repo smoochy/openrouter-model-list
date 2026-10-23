@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-23
+
+### Changed
+
+- `pyproject.toml` and `uv.lock` cap `requires-python` at `<3.15`, because PyYAML and other dependencies do not work with Python 3.15 yet.
+
 ## 2026-10-11
 
 ### Changed
