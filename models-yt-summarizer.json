@@ -1,65 +1,65 @@
 {
-  "generated_at": "2026-10-23T08:12:05.755134Z",
+  "generated_at": "2026-10-24T07:50:34.576769Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8572,
+      "score": 0.8983,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9917,
-      "latency_ms": 2297,
+      "uptime": 0.9972,
+      "latency_ms": 1666,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "xingchen-agi/xing4.0-29b-a4b:free",
-      "score": 0.63,
+      "score": 0.5784,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 0.9882,
-      "latency_ms": 1319,
-      "own_uptime": 0.75,
-      "sanity_ok": true
+      "uptime": 0.9847,
+      "latency_ms": 1513,
+      "own_uptime": 0.7,
+      "sanity_ok": false
     },
     {
       "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-      "score": 0.3724,
+      "score": 0.3831,
       "context_length": 256000,
       "max_output_tokens": 65536,
-      "uptime": 0.1187,
-      "latency_ms": 408,
+      "uptime": 0.1417,
+      "latency_ms": 459,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
-      "id": "google/gemma-4-31b-it:free",
-      "score": 0.3184,
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "score": 0.3256,
       "context_length": 262144,
       "max_output_tokens": 32768,
       "uptime": 1.0,
-      "latency_ms": 1288,
+      "latency_ms": 967,
       "own_uptime": 0.375,
-      "sanity_ok": false
+      "sanity_ok": true
     },
     {
-      "id": "google/gemma-4-26b-a4b-it:free",
-      "score": 0.2889,
+      "id": "google/gemma-4-31b-it:free",
+      "score": 0.2862,
       "context_length": 262144,
       "max_output_tokens": 32768,
       "uptime": 1.0,
-      "latency_ms": 992,
+      "latency_ms": 1125,
       "own_uptime": 0.3333,
       "sanity_ok": false
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "score": 0.0244,
+      "score": 0.0233,
       "context_length": 262144,
       "max_output_tokens": 235929,
       "uptime": 0.0,
       "latency_ms": null,
-      "own_uptime": 0.9296,
+      "own_uptime": 0.8873,
       "sanity_ok": false
     }
   ]
