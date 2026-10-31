@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-10-29T09:15:41.183865Z",
+  "generated_at": "2026-10-31T09:13:28.176211Z",
   "schema_version": 2,
   "models": [
     {
       "id": "nvidia/nemotron-3.5-lightning:free",
-      "score": 0.9322,
+      "score": 0.9602,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9472,
-      "latency_ms": 525,
-      "own_uptime": 1.0,
-      "sanity_ok": true
-    },
-    {
-      "id": "cohere/north-mini-code:free",
-      "score": 0.8817,
-      "context_length": 256000,
-      "max_output_tokens": 64000,
-      "uptime": 1.0,
-      "latency_ms": 712,
+      "uptime": 0.9938,
+      "latency_ms": 523,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "score": 0.8721,
+      "score": 0.8983,
       "context_length": 1000000,
       "max_output_tokens": 65536,
-      "uptime": 0.9931,
-      "latency_ms": 1985,
+      "uptime": 0.9986,
+      "latency_ms": 1604,
+      "own_uptime": 1.0,
+      "sanity_ok": true
+    },
+    {
+      "id": "cohere/north-mini-code:free",
+      "score": 0.8845,
+      "context_length": 256000,
+      "max_output_tokens": 64000,
+      "uptime": 1.0,
+      "latency_ms": 666,
       "own_uptime": 1.0,
       "sanity_ok": true
     },
     {
       "id": "poolside/laguna-s-2.1:free",
-      "score": 0.6668,
+      "score": 0.6616,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 0.9965,
-      "latency_ms": 1654,
-      "own_uptime": 0.8095,
+      "uptime": 1.0,
+      "latency_ms": 1633,
+      "own_uptime": 0.8,
       "sanity_ok": true
     },
     {
@@ -47,8 +47,8 @@
       "score": 0.0,
       "context_length": 1048576,
       "max_output_tokens": 262144,
-      "uptime": 0.9708,
-      "latency_ms": 2503,
+      "uptime": 0.9757,
+      "latency_ms": 3627,
       "own_uptime": 0.0,
       "sanity_ok": false
     }
