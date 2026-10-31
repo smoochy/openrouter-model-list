@@ -3,9 +3,6 @@ type: integration
 title: Anthropic API Integration
 description: Details how the system fetches Claude model metadata and pricing from Anthropic's API and pricing page to generate anthropic-models.json.
 tags: [anthropic, api, integration, models, pricing]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 sources:
   - id: openwiki-source-23fb3ed4bd0ff9d6e2dfb273
     resource: repo://scripts/generate_anthropic_models.py

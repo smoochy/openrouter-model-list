@@ -25,9 +25,6 @@ sources:
   - id: openwiki-source-95e171e2045483fa0c961258
     resource: repo://thresholds-yt-summarizer.yaml
 generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 ---
 
 # Quickstart

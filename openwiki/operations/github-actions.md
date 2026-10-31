@@ -13,9 +13,6 @@ sources:
   - id: openwiki-source-d8b85b547cd70ae9d19deeea
     resource: repo://scripts/generate_models.py
 generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 ---
 
 # GitHub Actions Workflows
