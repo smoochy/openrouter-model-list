@@ -4,9 +4,6 @@ title: Source Map
 description: "Maps the openrouter-model-list repository's source code structure, highlighting key files, symbols, and tests for contributors."
 resource: /openwiki/source-map.md
 tags: [reference, source-map, architecture, workflows, configuration, operations]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 sources:
   - id: openwiki-source-e082dc1d961398caa2e27f47
     resource: repo://.github/workflows/openwiki-update.yaml

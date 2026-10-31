@@ -3,9 +3,6 @@ type: workflow
 title: Anthropic Model List Generation Workflow
 description: Explains how the Anthropic model list is generated, including fetching from the Anthropic API, normalizing, and outputting the JSON.
 tags: [anthropic, models, generation, workflow]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 sources:
   - id: openwiki-source-23fb3ed4bd0ff9d6e2dfb273
     resource: repo://scripts/generate_anthropic_models.py

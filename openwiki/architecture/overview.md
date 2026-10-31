@@ -20,7 +20,7 @@ sources:
 generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
 verified:
   - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
+    at: 2026-10-31T10:41:37.317Z
 ---
 
 # Architecture Overview
