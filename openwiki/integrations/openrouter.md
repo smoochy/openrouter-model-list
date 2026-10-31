@@ -3,9 +3,6 @@ type: integration
 title: OpenRouter API Integration
 description: Describes how the system fetches model catalogs, endpoint statistics, and handles errors when interacting with the OpenRouter API.
 tags: [openrouter, api, models, endpoint-stats]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 sources:
   - id: openwiki-source-678af2bf704a9375a5423843
     resource: repo://scripts/endpoint_stats.py
@@ -14,6 +11,9 @@ sources:
   - id: openwiki-source-f53424678e8568c6002e83f4
     resource: repo://scripts/openrouter_client.py
 generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
+verified:
+  - by: openwiki/0.7.2
+    at: 2026-10-31T10:41:37.317Z
 ---
 
 # OpenRouter API Integration

@@ -4,9 +4,6 @@ title: Model Generation Workflow
 description: "End-to-end model generation pipeline for each profile: fetch OpenRouter catalog, filter free models by thresholds, fetch endpoint stats, probe candidates, score, and write ranked output JSON."
 resource: /openwiki/workflows/generate-models.md
 tags: ["workflow", "generation", "pipeline", "filters", "scoring", "probing"]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 sources:
   - id: openwiki-source-d62a846da6fa0f2e25b94fa4
     resource: repo://scripts/filters.py

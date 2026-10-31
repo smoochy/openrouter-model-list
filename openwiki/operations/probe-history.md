@@ -3,9 +3,6 @@ type: process
 title: Probe History and Reliability Scoring
 description: Explains how probe results are collected, stored in rolling-window history files, and used to compute the own_uptime malus that adjusts model scores based on local probe success rate.
 tags: ["probe", "history", "scoring", "reliability"]
-verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-17T08:58:08.450Z
 sources:
   - id: openwiki-source-11968c67bba9651b9ac1c4e5
     resource: repo://scripts/probe.py

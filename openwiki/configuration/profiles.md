@@ -3,9 +3,6 @@ type: Configuration
 title: Profiles & Thresholds Configuration
 description: "Per-profile threshold configuration for the three model generation profiles: mengram (structured extraction), yt-summarizer (YouTube transcripts), and openwiki (agentic documentation). Each profile has its own thresholds YAML and output JSON."
 tags: ["configuration", "profiles", "thresholds", "mengram", "yt-summarizer", "openwiki"]
-verified:
-  - by: openwiki/0.5.2
-    at: 2026-09-19T09:07:56.091Z
 sources:
   - id: openwiki-source-a53118abdd8a4e93bbeab156
     resource: repo://scripts/thresholds.py
