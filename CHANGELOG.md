@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-06
+
+### Changed
+
+- `thresholds-openwiki.yaml` allowlists `google/gemma-4-31b-it:free`, `google/gemma-4-26b-a4b-it:free` and `nvidia/nemotron-3.5-super-vl:free`, free tool-capable models the size regex kept out, so the openwiki profile probes and scores them
+
 ## 2026-10-23
 
 ### Changed

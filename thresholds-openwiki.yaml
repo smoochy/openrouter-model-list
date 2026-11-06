@@ -34,5 +34,9 @@ allowlist:
   - poolside/laguna-s-2.1:free
   - cohere/north-mini-code:free
   - nvidia/nemotron-3.5-lightning:free
+  # Free tool-capable models no openwiki run has tried yet (smooCorp/mengram#75).
+  - google/gemma-4-31b-it:free
+  - google/gemma-4-26b-a4b-it:free
+  - nvidia/nemotron-3.5-super-vl:free
 
 hardallowlist: []
