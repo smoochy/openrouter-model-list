@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-11-06T16:34:16.981112Z",
+  "generated_at": "2026-11-07T09:33:06.271748Z",
   "schema_version": 2,
   "models": [
     {
       "id": "xingchen-agi/xing4.0-29b-a4b:free",
-      "score": 0.4774,
+      "score": 0.4746,
       "context_length": 262144,
       "max_output_tokens": 235929,
-      "uptime": 0.9972,
-      "latency_ms": 1449,
-      "own_uptime": 0.5238,
-      "sanity_ok": true
+      "uptime": 1.0,
+      "latency_ms": 1505,
+      "own_uptime": 0.5217,
+      "sanity_ok": false
     },
     {
       "id": "google/gemma-4-31b-it:free",
-      "score": 0.1186,
+      "score": 0.108,
       "context_length": 262144,
       "max_output_tokens": 32768,
       "uptime": 1.0,
-      "latency_ms": 1344,
-      "own_uptime": 0.129,
+      "latency_ms": 1363,
+      "own_uptime": 0.1176,
       "sanity_ok": false
     }
   ]
