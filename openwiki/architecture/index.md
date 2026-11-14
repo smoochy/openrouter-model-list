@@ -1,3 +1,3 @@
 # Files
 
-- [Architecture Overview](overview.md) - High-level architecture of the openrouter-model-list pipeline: fetch OpenRouter catalog, filter free models by profile thresholds, fetch endpoint stats, probe candidates, score, and write ranked model lists.
+- [Architecture Overview](overview.md) - High-level architecture of the model generation pipelines: per-profile OpenRouter free-model filtering/probing/scoring, plus the Anthropic model list fetch with fail-closed pricing; scheduled GitHub Actions delivery to consumers.

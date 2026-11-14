@@ -8,7 +8,10 @@ sources:
     resource: repo://scripts/thresholds.py
   - id: openwiki-source-efe52f802136ea4316cd0f90
     resource: repo://thresholds-mengram.yaml
-generated: { by: "openwiki/0.7.0", at: "2026-10-03T10:09:48.589Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+verified:
+  - by: openwiki/0.9.0
+    at: 2026-11-14T11:53:54.399Z
 ---
 
 # Profiles & Thresholds Configuration
@@ -181,6 +184,10 @@ allowlist:
   - poolside/laguna-s-2.1:free
   - cohere/north-mini-code:free
   - nvidia/nemotron-3.5-lightning:free
+  # Free tool-capable models no openwiki run has tried yet.
+  - google/gemma-4-31b-it:free
+  - google/gemma-4-26b-a4b-it:free
+  - nvidia/nemotron-3.5-super-vl:free
 hardallowlist: []
 ```
 
@@ -191,7 +198,7 @@ hardallowlist: []
 - `require_tools: true` — Must support `tools`/`tool_choice` for agent loop.
 - `require_structured_output: false` — Tool-calling is the key feature, not structured output.
 - Smallest `min_candidate_pool: 2` — Fewer models expected to meet this bar.
-- `allowlist` includes 4 free models that don't encode size in their ID (so would be dropped by `min_param_b: 70`) but meet context/output/tool thresholds per catalog metadata. These diversify providers beyond just Nvidia Nemotron models.
+- `allowlist` includes 7 free models that don't encode size in their ID (so would be dropped by `min_param_b: 70`) but meet context/output/tool thresholds per catalog metadata. These diversify providers beyond just Nvidia Nemotron models. The list includes `thinkingmachines/inkling:free`, `poolside/laguna-s-2.1:free`, `cohere/north-mini-code:free`, `nvidia/nemotron-3.5-lightning:free`, plus `google/gemma-4-31b-it:free`, `google/gemma-4-26b-a4b-it:free`, and `nvidia/nemotron-3.5-super-vl:free` — free tool-capable models no openwiki run has tried yet.
 
 **Source:** [`thresholds-openwiki.yaml`](../../thresholds-openwiki.yaml)
 
@@ -264,15 +271,11 @@ These would further reduce the candidate pool after scoring.
        "output_path": REPO_ROOT / "models-new-profile.json",
    },
    ```
-<!-- openwiki: broken internal link [operations/github-actions.md] file "operations/github-actions.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-3. Add generation step to `.github/workflows/update-models.yml` (see [GitHub Actions](operations/github-actions.md))
+3. Add generation step to `.github/workflows/update-models.yml` (see [GitHub Actions](../operations/github-actions.md))
 4. Run locally to test: `python scripts/generate_models.py --profile new-profile`
 
 ## Related Pages
 
-<!-- openwiki: broken internal link [/openwiki/workflows/generate-models.md] link "/openwiki/workflows/generate-models.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Model Generation Workflow](/openwiki/workflows/generate-models.md) — How thresholds are applied in the pipeline
-<!-- openwiki: broken internal link [/openwiki/architecture/overview.md] link "/openwiki/architecture/overview.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Architecture Overview](/openwiki/architecture/overview.md) — High-level system design
-<!-- openwiki: broken internal link [/openwiki/source-map.md] link "/openwiki/source-map.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Source Map](/openwiki/source-map.md) — File-to-concept mapping
+- [Model Generation Workflow](../workflows/generate-models.md) — How thresholds are applied in the pipeline
+- [Architecture Overview](../architecture/overview.md) — High-level system design
+- [Source Map](../source-map.md) — File-to-concept mapping

@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-31T10:47:56.873Z",
+  "updatedAt": "2026-11-14T12:25:55.057Z",
   "command": "update",
   "gitHead": "d40fdcf851540dfa6ec833cc15e122f0a98f0098",
-  "model": "nvidia/nemotron-3.5-lightning:free",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
   "status": "interrupted",
   "language": "en"
 }

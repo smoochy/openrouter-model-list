@@ -1,20 +1,124 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:6677a35f46a8a71a8e8584a105a25a43c01f2ac59510da4d856a68b654222801",
+  "pageVersion": "sha256:5efc61343e706ced5cc0b129e62307b064227c330d5e18ff6e21578275fed8d5",
   "claims": [
     {
       "id": "claim_047fd5c4e5564b4786fd51406878d60d",
       "statement": "The `is_free` function in `filters.py` considers a model free only if both its prompt and completion pricing are exactly the string `\"0\"`.",
       "evidence": [
         {
-          "resource": "repo://scripts/filters.py#L93-L95",
-          "version": "repo-lines-v1:sha256:229528adf50fd408f86ecc57287f70a647ee806a2e04ba6fc99b9448adad607e:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmIxZmU3ZTkzNzczMDhjNmRhZWVhMjc1MTg4ZTM2Yzc2ZjdiYWE3ZTlhMmM1NTQwZDBkNDk1NmQyMDEwZmQ3MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzkzZWYwYWQ2ZTlkZWUwZDA5YWZmM2Y2MTY3MWRhN2NiNzBmMDExZTFjNDIwY2UwMGJmMjhiZGE4NTU0ZTZkOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGFjMmVmMjliYTI0ZjNjYzNmMWYxMDMzMzE5OWVkNThmOWQ5NDA4YTAwNmMwOTZiYzA0MmRmMDcxYjExMWIxMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTJiY2U0NWNhNDgxZTM2OTBjNWQ5NzM3ZDc1MTUyN2UxYzBiZGFkZmE2NDUxNGY4ZGUwNGIzNWJjMGZhMjU4NiJ9"
+          "resource": "repo://scripts/filters.py#L20-L22",
+          "version": "repo-lines-v1:sha256:ecb4b1772f5366197f2d17dd55d6cdd27f8fc4211b2fd9c615e76d5dc0bf8c4e:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmIwYzViZDkyZWU2NTYxZmRlYTEwMjdhYjQzM2I4MDc2MzFkOWZhMjJiMWI2NGU3ZTc1Mzk0ODdhZGYxMzg1ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmYzMDY0YzkzYTQzNzhjNjk3MjJiZTFmMTJmZTA3YmE3MGQ0ODQ5NTk2N2JjNWVmNjQ4ZGIwODgxNTg3OGVhNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDU4MWRmOGU0ZjM5NzkzZGYwYzBmYTNhYzFkM2U0MmI2NWY3MzJmZWFkZWU3YjhhY2ViMTYxMmM2MDdhNzM1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2FiYTExZDVhNjcyNGVjMmNkODUzMWUxM2JlNDZlZGVlZTAzYjVlYjk1MWYyNzc2ODFjMTUxN2FiZjFjM2Q0OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c797d4da6c4342509ed388e7791a5b80",
+      "statement": "`filter_candidates` applies thresholds in a fixed order: hardallowlist models bypass all thresholds, allowlisted models bypass size/context/output thresholds but must pass feature requirements, `min_param_b` is a fixed floor that is never relaxed, and `buffer_pct` decrements step-wise toward 0 only when the candidate pool is below `min_candidate_pool`.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py#L35-L107",
+          "version": "repo-lines-v1:sha256:d72c5661ef61489ad38f528c964b2f7c7c8b7711c3f7b5fc30dd3d45052a8aec:eyJzZWxlY3RlZExpbmVDb3VudCI6NzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwNDA0MzNmMjQwMDc5ODJjMTc2YjJhOTE1YjJiN2VlOTEwYjljODI4NjZmNGI4OTJlMTYyYjY3M2VhMTk4YzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzN2IzZmI4M2NmOGI2ZGZhNTExZDE4YTZhNmEyNzQ0MWU4YjliNTU2MTQ5NGFiYzczYjhlMzVmODA1YjJkYjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA2MmMwZDgwYzJmNzQ3OTdlYzBiZmJjMWNjODcxNGEzNGU5ODUwMWUyNDUxNmViMTU1Zjc0NzViNWI2ODhhMDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoyLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRjYjEzZDFkN2VlMDY5YzkzZDIyOTQzZDZkYjc2YmJjMDU0ZjJhNDAxNWNmNjhhYjgwOGUwYTBlZjI1M2U1OTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5465ab4ab2464b8698875ff9fca33152",
+      "statement": "`fetch_endpoint_stats` returns `None` when the request fails or no free endpoints exist, and `generate_models.py` falls back to `NEUTRAL_UPTIME = 0.5` with `latency_p50 = None` in that case.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L1-L48",
+          "version": "repo-lines-v1:sha256:99ac7cc2ad14dcaab5093e0c5326aa07b817f086ee4616d67b93296ddb957b6e:eyJzZWxlY3RlZExpbmVDb3VudCI6NDgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyZDA0NDc5NjEyNDM0OGM2MWFmMzljOWQxYTVjNjhjMDUxOTQ3MWZjY2EzZjQ4MmMwMmU4ZTZmMzA2M2NkYTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4OTNmNDBlMzc4MWViODk2YzgyZDA0NmEwODA2N2ExMWUzNWNkZjJmMWRmYWYyNmZlYTkwYjhkYjY2NzY0MTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://scripts/generate_models.py#L57-L66",
+          "version": "repo-lines-v1:sha256:10518fced6bfe2cb5fe50eb84ad04bbf5bc5fa27fbc359fef9a23c5b342fc842:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc1YzlmZWU4NTMxNGRkMzY2NmMwOTQyY2UyNGFjYmFkYmE5OTU0YzBhY2VmOGYwYjJjMzMzYjg1NTMwYzNkNmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJkNWE2Y2Y0ZDZkNWJjYjQxM2E0YzkxYzNkYjE4NDMyZDIwM2UyNmVmNzBiMjhhNDczMDk1MGE3OGJkYWY1OTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVkNWJlYWNkNDYwMDc4ZjZlYjExM2VmM2ZkYjQxNTJiODdhY2U0NTlkOTY0NmFmNzAyMDhhZWIxNGRlYzFkMDgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyMzJjYmE3OWNkYTRhNWQ5ZDRmNGViYTVmMDAzODA2NmFiMTQ5OTJmZDIzNjdiN2ExN2M0N2M4NDdjMDczYzIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fdd896d0535743a1a0725e921dba0d48",
+      "statement": "`probe_model` sends a minimal 1-token `ping` completion through the OpenAI client pointed at OpenRouter, records the result to `history/<safe_model_id>.jsonl` via `record_probe`, and probe failures are logged to stderr but do not abort the run.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L68-L75",
+          "version": "repo-lines-v1:sha256:d16ab2ac191d938f8d1e2df332bcede7422476edcdb9199d97395ac4b703d707:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTk3YjQ3YmI4MWNlOTNjYmE2N2FmYzA4Njk4YTgwY2ZhMDkzYTg2NjdlOWM5Zjk2NTMzNzgxOGQ2NTc4ZDE4NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTg4MDFjODE1NGY4ZWM4NzY2NzcyMDhiMjRhOGVlNmY4NDU2MmZlM2JkZTFjMGE3ZDc4MTdlNDA0OTAzZTEyOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzY3ZmUyYmEzOTUwMWU5ZDBhOTk0MGI3YWU5OGRhOWMyYzNlZjUxMmZmZjI4ZjgzY2VlNWYzMjY5Zjg3OWE5NSJ9"
+        },
+        {
+          "resource": "repo://scripts/probe.py#L11-L41",
+          "version": "repo-lines-v1:sha256:7b832e5e1310a0c9ee6d3ad0d1e9b9da9c369679fd017d5e647eb94d16407235:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxODNhNzk4YjE3ZDE0NjlmZjc4NTk3ODgzNzAwOTQ5ZTZkYjRkNmE4NDNhYzM2ZDE2OWI1OTc0MWFkZjM0MTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBlZTYyMzY0YmM4NzExNzE4ZjZiM2Q2OTU4MjQwMzgwMjZmYTEwZTZkZDU1MmIxZmM4ZjllMDI5OTA5ZmIwODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZDE4ZGU2YjU5N2JlNThkYzMwMGEwY2M1MWMwODc0ZmY5YjlmZjhjYzRhOGM2MzZmZTJkOWFlMzJiMzE5OWYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ed4238a21e544418bb147da275cd355d",
+      "statement": "`record_probe` trims probe history entries older than `HISTORY_WINDOW_DAYS` (30 days) on every write, keeping a rolling 30-day window per model.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L27-L48",
+          "version": "repo-lines-v1:sha256:c94c310cbc86e1148061da9281034cb7847d9c8a05438461acbc61df8ee132d8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5MjMyYjg1NjkyMWFhYmYwYmY4YjA1ZGZmOGE3ZTBjMzk0M2VhMzM3MzE5MDdhMDUwNjhkMmEyMTRmM2Q0NjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyMzVkNGIxNGMzZjA0MjE0MDg3NDFhMWE5MWZhN2IzYTNiOGM0ZjIwMmM2OWQ5NjY3YjYxMjFkYTdjZTgxNWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmZDU2OTFkYmYxNDc4ZjljZGYxMzZlNDIwYTc2YmI2YzkzZDEzY2Y5MWRjNGEyMjY5NTg3Nzc0ZmYzMDhjY2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQyZTZhMThhOGUyMDQzOTk0NTMzYjk2NzliMzk0MzRmNGZkNDg0OWIyYTE0OWQ2YmUyNDAyYWVhMDZiYjA4YjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a1a99d113c794524b385ccd00497091f",
+      "statement": "`compute_uptime` returns neutral `0.5` when a model has fewer than 3 probe samples, otherwise returns the observed success rate; it is used as a multiplicative malus on the final score.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py#L12-L16",
+          "version": "repo-lines-v1:sha256:20e3619b0622cee246b3aa0a1613d38544838ec0f4d3cb0b0ac3a052d778360b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTBmNTkxNzZiZDZlYWQ5ODc2YjQxY2Q1ZWE1MDUzOTIzYTdlYzcwMzVjNDc0YjZjNDc0NmI3MjU1M2U5YmJjMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWNiYWUxMmUyM2YwNDEyZGM5MzBhNzUxYTIwNGYzZmE5MTBhNDNkZGM4NTE2Mzk3ZjE0MDE1MGMzNzg1YTEwOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmRjNzk2ODg5ZjAzYmQxMjhlMjZjNTg1YmVhNDM0ZjI5NWRmODExZTc1MjUxYjg2M2ZkOTYyOTYwMWQ3YzU3MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzIyZDM2NTcxZDBiMTYwMTI0NWU3N2MyNzM4NzY3MDM1OGJmMGJlMDBmMTY0MTNhYzRjNmU1YzNiZjQ5N2JkNCJ9"
+        },
+        {
+          "resource": "repo://scripts/scoring.py#L39-L66",
+          "version": "repo-lines-v1:sha256:464860741c74676bea9c6773fb26d3ca045e62822a33d2831484f3d8e6d3c1ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0MzA2M2I1YWIzN2Y1MGU5ZTQ5YmNlMGY4MTQxOTRlMWUwMjc0OGNhOTU1YmZjMzU2ZTNkM2M2MjBhNTUxMDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzMzdiYjZjZjE1N2ExYmQ0MzNmYTVlZGFiMjM2N2Y3OTY5NjNiYjQ4N2ZjMDJlNjQyNzRlMWVkMzM1MDY3N2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlNzU3NWMzYjc3NzZjZjJmOWMyYmZiY2E0NGYyMTQ4MTNhNzgyN2VhYTljMzg0NTRjNzAzYjY4OWE3NDQzODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_afc6a5747fe94c1dadbba046e228a3fd",
+      "statement": "`passes_post_probe_filters` optionally excludes models below `min_uptime` or above `max_latency_ms` after probing; both are currently empty in all threshold profiles, so the filter is effectively disabled.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py#L18-L27",
+          "version": "repo-lines-v1:sha256:3ee70307d0f4fbeb1006bb1f427005dcbafca9301d02e594517eea3b62e3f2dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJmMTYyYWQ0ZGM2ZGZlNzMyNjJiZDYzMTBlZTJmOTE0NWVlZDJjNjk3MWVhNjUwMDYwZTZiYjRjZjNjNTI2YTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxODMzYjZkMzg2ZDQwMzcxYzQ4OTk4MDBlNjcyMWRkYWQxYTIzYzYyZGVjYjQ2N2VmYzBkMzgwNDllYjE5ZWMifQ"
+        },
+        {
+          "resource": "repo://thresholds-mengram.yaml",
+          "version": "repo-file-v1:sha256:6080b4e82f2c421bbf09bad4d0cd576e997276d73d7f00f23633b55e25da1eac"
+        },
+        {
+          "resource": "repo://thresholds-openwiki.yaml",
+          "version": "repo-file-v1:sha256:76771e22953766816ee6870c88abfd1070d2389a917e43c1039a186c5f5a9c16"
+        },
+        {
+          "resource": "repo://thresholds-yt-summarizer.yaml",
+          "version": "repo-file-v1:sha256:e1f69a926c9a6946532cb431f3baca37a62ae5511227470c1ea787c5fd254bcd"
+        }
+      ]
+    },
+    {
+      "id": "claim_8c8c35bf7c7341b7b9847e136f81e3a0",
+      "statement": "`compute_score` weights OpenRouter uptime at 0.6, normalized latency at 0.3, and relative context capability at 0.1, then multiplies the base score by the model's own uptime (30-day probe success rate).",
+      "evidence": [
+        {
+          "resource": "repo://scripts/scoring.py#L39-L66",
+          "version": "repo-lines-v1:sha256:464860741c74676bea9c6773fb26d3ca045e62822a33d2831484f3d8e6d3c1ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0MzA2M2I1YWIzN2Y1MGU5ZTQ5YmNlMGY4MTQxOTRlMWUwMjc0OGNhOTU1YmZjMzU2ZTNkM2M2MjBhNTUxMDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzMzdiYjZjZjE1N2ExYmQ0MzNmYTVlZGFiMjM2N2Y3OTY5NjNiYjQ4N2ZjMDJlNjQyNzRlMWVkMzM1MDY3N2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlNzU3NWMzYjc3NzZjZjJmOWMyYmZiY2E0NGYyMTQ4MTNhNzgyN2VhYTljMzg0NTRjNzAzYjY4OWE3NDQzODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_97f4e66f1d9641e9a5f204cfca441d88",
+      "statement": "The generated output is sorted by score descending and written as JSON with `schema_version: 2`, `generated_at`, and a `models` array containing id, score, context_length, max_output_tokens, uptime, latency_ms, own_uptime, and sanity_ok per model.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L94-L100",
+          "version": "repo-lines-v1:sha256:fa29d7d8828a1cf85bf2c5603f44fdfa30fc9d54fb21d0b91466e44dda261255:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjc4ZGU0YWMxMGJhNDc3NmQzMDVjNmY2MGExZGIyNjAyNTY3NTU1ZjNhYzQ4NGQyOGZhNTRmNTg4ZDFmMmUxOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWRmMjk1MzVmZWRlNDE1Mjk0MjhmYzViMmQxZjkzYjViZDk1NDNlZDU2M2I1NjBhYmZkMTAwNGM0Nzg4NGU4ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWYzZjcxMzM5ODRjZmE5ZWE2YTE1ZTg0ZTcxMjBjODFlOTU1YzQxNWI4NDhlNjI1Y2ZiZTAyNjNiNWUyNjk5YSJ9"
         }
       ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-17T08:58:08.450Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-14T11:53:54.399Z"
   }
 }
