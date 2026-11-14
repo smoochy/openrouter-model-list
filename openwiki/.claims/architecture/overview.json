@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:7485f80edae07c76f8591ad4f1258b0bcfc10ecb4f2c65fcb6fa2b2825bcaaac",
+  "pageVersion": "sha256:ad02ef9f09c537149a01fc5830523a2791fde1bf50373dc18969e4aab50fa02e",
   "claims": [
     {
       "id": "claim_8f64b98699d640de9c6a717956a214db",
@@ -31,10 +31,48 @@
           "version": "repo-file-v1:sha256:bb1d005198ac9525f158235466a1947e3aa3d838667705666d183871e1d66786"
         }
       ]
+    },
+    {
+      "id": "claim_2e3f858de688449bbade871c54bce2e9",
+      "statement": "The Anthropic pipeline requires ANTHROPIC_API_KEY sent as the x-api-key header; it is not a public unauthenticated endpoint.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L15-L15",
+          "version": "repo-lines-v1:sha256:bd3698cb9f306b035e45c51278a2dfff864360ff5b22ba137ee373b0821704bb:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmQzNjk4Y2I5ZjMwNmIwMzVlNDVjNTEyNzhhMmRmZmY4NjQzNjBmZjViMjJiYTEzN2VlMzczYjA4MjE3MDRiYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmQzNjk4Y2I5ZjMwNmIwMzVlNDVjNTEyNzhhMmRmZmY4NjQzNjBmZjViMjJiYTEzN2VlMzczYjA4MjE3MDRiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTIyNGQzM2ZlOWMxZmMxNjU2ZTJkMWUxNTRiNmRkZGU1MjJkYmZmZDBiYjcyOGNiYjQyMDNhZTMxZDczZTZkZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjk4MjI3MTk1MGE3OThkY2YxZmE3Y2VhODRkMWIzYjUyY2I5NTYzMjI5M2JmYWUzZjgyZGE0MjQ3NWU0NWE4OSJ9"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L46-L55",
+          "version": "repo-lines-v1:sha256:488fc0c7586908f92f256df41c410060baa8f1195cc831b8f1a477591f0e6fcf:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdiMTE4YTFiMzAxY2MwZjVhMWM4ZjFmN2RhYTgyZjJmMzE1ZGQ2NDEzZjczOGQ3M2RjYTkzYmEyNmY3ZDUxMTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ0ZmZmOGRjOThiNjM5MzNhOGQ2ZDE3N2Q3OTlkYzk1ZGY1M2Y3YmFiNjRmZGRkZDUwODIzMTA0NjQyM2E3NzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwNDExYTZhNzlkNWQ4YjRiMWQ4MDE1YjEzNGI5NjU0YmU1YWI0YWQ1MjU1ODZlMDQ5OGRlZmQ0OWYwOGFlYWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk3MTA0ZDhhZDMzOGRjMjkzYWY4NjM5NWExZDg5NWNiODdkMmYzZDJlYWMwOGFhODQwZTY5MTg5ZDcwMzk0NGUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_67f3c6e918ca4fddba70a8ddd21c00a0",
+      "statement": "The Anthropic model list workflow runs daily at 03:15 UTC (cron \"15 3 * * *\"), not weekly.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L4-L6",
+          "version": "repo-lines-v1:sha256:4e3f41ad0e57a47863a7f745228a45d1b743e2c2d990460de5dda4d867bd0df6:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTI4ODQwYTZiN2U2MDMwM2Q4N2JlNGQ0ZDgyYTUwYjMzMjg0MjkwZGVjNGUzNDI4ZDQ3ZDkzZmJlZmQxYzU5MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2YyZmE3M2YwNzA0ODlkOTcyNGEwMjlkZmI1MDJhYTA4ODUwN2QwODU3OWJiYmNjOTRlZDkzNWMxYTA1MzMxNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzhiM2U0OWIyMjQ0ZmY1NzZlY2M5NTBkYjMzMTU1YjA1MzFjYmVmNDdjYTIzZjM0MzBiZDM0N2FmMTczNTEyMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWU2MjU1YjA2NDIzNzc3ODAzNGFmNTI3MGVmM2Q5ODFkYTFhNjFiM2UzZThkMWFiNmYxMDcyNmEwZDgwM2QyYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b8724930cf174b77bfac492364f65a8b",
+      "statement": "The Anthropic pipeline fails closed: on any pricing problem it exits non-zero and leaves anthropic-models.json untouched, preserving the last known-good file.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L1-L12",
+          "version": "repo-lines-v1:sha256:13cc1502793611d78dbffee95436e97370300f0ee41c9df8aedf44594e47bcfe:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA4YWJiNDg2YzMyNDk3Njk3ZjQwZWFlMjNjMjk5ZjU5ZDMyYzAzYzYxYjZmOGJkYWQ5Mzk1NzE0NTY5NmRkZTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM3MjdhZGZmNTI0ZTA2MTYwMjJlYWRkOGY0YWYyMWEwNzc4YjI5ZmM0Yzc3YmRmZWZkMWFmY2UyY2JmNWU0YjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5ZjVlZWE3YmMwZDU2NTE4Mjc3ZjhhM2NiNjhiZWQ5ZmY3ZWM4ZmVjZDFlODkzNDI2OGU3NjkyMGU3NTRhYTkifQ"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L200-L210",
+          "version": "repo-lines-v1:sha256:9378f3376c4bba9b8b0cb74d1fc03090c0c7bafb114922a1a39816734952158d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY0NTlkNGEzMzYwNWVlNDgyMjA2YWI4MDRhNTc2YTY3Y2I1ZjVkYWU4OTk0NWFmYzdlYTkzMTEzZGFiYjJjYzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlNTNlMzQ1MTY4YjgyNDQ4MTFhYTdkYTYzMDUzMTI4ZjgyMzk5YWVkNjA3NzkzZjVhNTBkZWU2YTVhOTBkNTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRhOWRjNWQwZTZhOWMyNDA2NTEyYmM1YTQyMGViOTA0MTM3NzA5OTJkZWU4MWVhMzk1YzU5MzM3MzZiZTgxN2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYxZTNkMmUyZmU2OWEwMjgyMWZjM2ExOThmNTIzOTVkZTAyMDBlM2MxNmM5MmIzOWEyODhlM2Q1NTc1ODhiMTQifQ"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-31T10:41:37.317Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-14T11:53:54.399Z"
   }
 }

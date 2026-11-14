@@ -1,8 +1,8 @@
 ---
 type: integration
 title: OpenRouter API Integration
-description: Describes how the system fetches model catalogs, endpoint statistics, and handles errors when interacting with the OpenRouter API.
-tags: [openrouter, api, models, endpoint-stats]
+description: Describes how the system fetches the OpenRouter model catalog, endpoint statistics, and performs 1-token sanity probes via the OpenAI-compatible API, including error handling and missing free endpoint behavior.
+tags: [openrouter, api, models, endpoint-stats, probing]
 sources:
   - id: openwiki-source-678af2bf704a9375a5423843
     resource: repo://scripts/endpoint_stats.py
@@ -10,10 +10,14 @@ sources:
     resource: repo://scripts/generate_models.py
   - id: openwiki-source-f53424678e8568c6002e83f4
     resource: repo://scripts/openrouter_client.py
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
+  - id: openwiki-source-11968c67bba9651b9ac1c4e5
+    resource: repo://scripts/probe.py
+  - id: openwiki-source-f3047b157e385d6464b26dbd
+    resource: repo://scripts/scoring.py
 verified:
-  - by: openwiki/0.7.2
-    at: 2026-10-31T10:41:37.317Z
+  - by: openwiki/0.9.0
+    at: 2026-11-14T11:53:54.399Z
+generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
 ---
 
 # OpenRouter API Integration
@@ -33,7 +37,7 @@ def fetch_models(api_key: str) -> list[dict]:
     return response.json()["data"]
 ```
 
-The function requires an OpenRouter API key provided via the `OPENROUTER_API_KEY` environment variable. It returns a list of model objects, each containing at least an `id` field (e.g., `"google/gemma-4-31b-it:free"`). This function is called by `scripts/generate_models.py` during the model generation process.
+The caller (`scripts/generate_models.py`) resolves the API key from the `OPENROUTER_API_KEY` environment variable and passes it to `fetch_models`. The function returns the `data` array from the response, a list of model objects each containing at least an `id` field (e.g., `"google/gemma-4-31b-it:free"`).
 
 ## Endpoint Statistics Fetching
 
@@ -74,31 +78,53 @@ def fetch_endpoint_stats(api_key: str, model_id: str) -> dict | None:
     }
 ```
 
+The `model_id` is passed through as-is, including the `:free` suffix (e.g., `"google/gemma-4-31b-it:free"`).
+
 The function returns a dictionary with:
-- `uptime`: average uptime over the last day (as a float between 0 and 1) across all free endpoints for the model.
+- `uptime`: average uptime over the last day (as a float between 0 and 1) across all free endpoints for the model. The raw `uptime_last_1d` value is divided by 100.
 - `latency_p50`: average 50th percentile latency over the last 30 minutes (in milliseconds) across free endpoints, or `None` if no latency data is available.
 
-If the request fails or no free endpoints are found, the function returns `None`. In the model generation script, a `None` result triggers a warning and causes the system to use neutral uptime and latency values.
+Free endpoints are those where both `pricing.prompt` and `pricing.completion` equal `"0"`. If the HTTP request fails or no free endpoints are found, the function returns `None`.
 
-## Error Handling and Rate Limits
+## Error Handling
 
-Both API functions use `httpx` with a 30-second timeout and call `response.raise_for_status()` to convert HTTP error responses (4xx/5xx) into exceptions.
+Both API functions use `httpx` with a 30-second timeout and call `response.raise_for_status()` to convert HTTP error responses (4xx/5xx) into exceptions, but they handle failures differently:
 
-- In `fetch_models`, exceptions are not caught and will propagate up, halting the model generation process.
-- In `fetch_endpoint_stats`, any `httpx.HTTPError` (including network errors, timeouts, and HTTP status errors) is caught and results in a `None` return value.
+- In `fetch_models`, exceptions are not caught and propagate up, halting the model generation process. An HTTP 429 (rate limit) or other error stops the run.
+- In `fetch_endpoint_stats`, any `httpx.HTTPError` (including network errors, timeouts, and HTTP status errors) is caught and results in a `None` return value. The caller treats `None` as "no stats available" and substitutes neutral values.
 
-The system does not implement explicit rate limit handling (e.g., retry-after headers) beyond the built-in timeout and exception mechanisms. HTTP 429 responses will raise an exception in `fetch_models` or be caught and treated as a failure in `fetch_endpoint_stats`.
+The system does not implement explicit rate limit handling (e.g., `Retry-After` headers) beyond the built-in timeout and exception mechanisms.
 
 ## Probing Models (OpenAI-compatible API)
 
-Beyond the OpenRouter-specific endpoints, the system uses OpenRouter's OpenAI-compatible chat completions API to perform sanity probes on candidate models. This is done via an `openai.OpenAI` client configured with:
+Beyond the OpenRouter-specific endpoints, the system uses OpenRouter's OpenAI-compatible chat completions API to perform sanity probes on candidate models. The orchestrator (`scripts/generate_models.py`) configures an `openai.OpenAI` client with:
 
 ```python
 client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
 ```
 
-The probe function (defined in `scripts/probe.py`) sends a minimal chat request to verify model responsiveness. This leverages OpenRouter's compatibility with the OpenAI API rather than a proprietary endpoint.
+The probe function in `scripts/probe.py` sends a minimal chat request to verify model responsiveness:
 
-## Environment Configuration
+```python
+def probe_model(client, model_id: str) -> dict:
+    start = time.monotonic()
+    try:
+        client.chat.completions.create(
+            model=model_id,
+            messages=[{"role": "user", "content": "ping"}],
+            max_tokens=1,
+        )
+        success = True
+    except Exception:
+        success = False
+    latency_ms = int((time.monotonic() - start) * 1000)
+    return {"success": success, "latency_ms": latency_ms}
+```
 
-The OpenRouter API key must be supplied via the `OPENROUTER_API_KEY` environment variable. Both the model fetching and endpoint statistics functions depend on this key for authentication.
+The probe sends a single-user message `"ping"` with `max_tokens=1` — a 1-token completion request. Any exception (network error, model unavailable, authentication failure, etc.) results in `success: False`; otherwise `success: True`. The returned dictionary always includes `latency_ms`, measured wall-clock time in milliseconds.
+
+Probe results are recorded to a per-model JSONL file under `history/` (a 30-day rolling window), and the local success rate feeds into the model's `own_uptime` malus in scoring. See [Probe History and Reliability Scoring](../operations/probe-history.md).
+
+## Missing Free Endpoints
+
+When `fetch_endpoint_stats` returns `None` (request failure or no free endpoints), `generate_models.py` logs a warning and substitutes neutral values: `uptime = 0.5` (`NEUTRAL_UPTIME`) and `latency_p50 = None`. The model is still probed and scored, but without OpenRouter-reported uptime/latency contributions.

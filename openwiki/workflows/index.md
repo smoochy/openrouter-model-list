@@ -1,4 +1,4 @@
 # Files
 
-- [Anthropic Model List Generation Workflow](generate-anthropic-models.md) - Explains how the Anthropic model list is generated, including fetching from the Anthropic API, normalizing, and outputting the JSON.
-- [Model Generation Workflow](generate-models.md) - End-to-end model generation pipeline for each profile: fetch OpenRouter catalog, filter free models by thresholds, fetch endpoint stats, probe candidates, score, and write ranked output JSON.
+- [Generate anthropic models](generate-anthropic-models.md)
+- [Model Generation Workflow](generate-models.md) - End-to-end per-profile model generation pipeline: entry point in generate_models.py, OpenRouter catalog fetch, free model filtering, threshold application, endpoint stats fetch, sanity probing, 30-day history read, post-probe filters, weighted scoring, and output JSON writing.
