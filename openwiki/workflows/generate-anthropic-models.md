@@ -30,7 +30,7 @@ The `generate_anthropic_models.py` script produces `anthropic-models.json` by co
 - **History** – Each successful run appends a compact JSON line to `history/anthropic-models.jsonl`, enabling audit and rollback.
 - **CLI Entrypoint** – Executed via `uv run scripts/generate_anthropic_models.py` (or `python scripts/generate_anthropic_models.py`); requires the `ANTHROPIC_API_KEY` environment variable, read via `os.environ["ANTHROPIC_API_KEY"]`.
 - **Deterministic Output** – Model list is sorted by `id` before joining, ensuring diff‑friendly updates.
-- **Bare Array** – Output is a bare array of model objects, not the `{generated_at, schema_version, models}` wrapper used by other model lists, to avoid breaking the existing consumer (`smoochy/yt-transcript-distiller`).
+- **Bare Array** – Output is a bare array of model objects, not the `{generated_at, schema_version, models}` wrapper used by other model lists, to avoid breaking the existing downstream consumer.
 
 ## Related Files
 
