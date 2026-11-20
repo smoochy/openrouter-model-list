@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-17T11:26:08.727668Z",
+  "generated_at": "2026-11-19T11:03:01.401669Z",
   "schema_version": 2,
   "models": [
     {
       "id": "google/gemma-4-31b-it:free",
-      "score": 0.2246,
+      "score": 0.2423,
       "context_length": 262144,
       "max_output_tokens": 32768,
-      "uptime": 1.0,
-      "latency_ms": 1279,
-      "own_uptime": 0.2432,
-      "sanity_ok": false
+      "uptime": 0.9927,
+      "latency_ms": 1249,
+      "own_uptime": 0.2632,
+      "sanity_ok": true
     }
   ]
 }
