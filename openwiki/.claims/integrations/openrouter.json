@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:31c017311d8dab302c5da9e8d69c8b694f31d73d4bb73c9f7af674df925eb0f3",
+  "pageVersion": "sha256:6ec83464be938b6871cccc4a8d91eb0afd5a7d06923f73a895a635b9b6126f79",
   "claims": [
     {
       "id": "claim_6b14297a6ffe4b9a96be35e57bd7d260",
@@ -69,10 +69,72 @@
           "version": "repo-lines-v1:sha256:fee10fb5ff4f4d89df74ace0a3ea67d771cfaa5c0282629a5d8e309ec1e63ae1:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODc0Nzg5OTIzOWE1NDU0Zjk0NzQ4OGZkNTFmNjdiNTMwY2M1YmMwNzdiYjkxOGQxODhhYjliZmVmYzc2ODNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzUxOTlmNDZlODM3M2JmM2UzNmZjNWU1NDUxYWMwMWZhZjkyNWRhYWVjZDM2Y2VjZTM3ODZlYzUxMmYwNDg1MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDViNjc0YjgyNDVjMzY2MGE0YTI0N2Q1ZjMyMTgyMGMxODc2N2U3Y2E3NWQwMTY1YzBiNzU1MjM0NWJmOWM5ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjUyYjllYmY1Y2U2MzZkNTRjMDlhNGViYTkzZDFlMDQzZmZiZjA4MzM0ODlkMTRjOTI5ZTVhNjU1ZGIxMDI2OSJ9"
         }
       ]
+    },
+    {
+      "id": "claim_7d1c376a2c8749cd90cf0fde57d803d2",
+      "statement": "fetch_endpoint_stats divides the raw uptime_last_1d value by 100 to convert it to a 0-1 uptime ratio before averaging across free endpoints.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L38-L38",
+          "version": "repo-lines-v1:sha256:47d0112194d28a34b9a2ff3a4b9d895c486af72add4bd2e2d258b94a830bee03:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDdkMDExMjE5NGQyOGEzNGI5YTJmZjNhNGI5ZDg5NWM0ODZhZjcyYWRkNGJkMmUyZDI1OGI5NGE4MzBiZWUwMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDdkMDExMjE5NGQyOGEzNGI5YTJmZjNhNGI5ZDg5NWM0ODZhZjcyYWRkNGJkMmUyZDI1OGI5NGE4MzBiZWUwMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmM1M2IyZTA5MDBkYjk5YzY2YmI0YmJiZjliMzRhODIyNGQ3ZTlhYzQ0NDE4MjA0MTcyMjU0NWRmNGM5NjUyNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzkxYzY2NDI5YzY4OGViNTQ4MzAxMWYxYjBlYzI0ZGNiNjkxOTIwMGY4NzNiMTY0YjQ0MGEyN2NlYTE2MjE3YSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f0c6be50dabc4ed1aaa40e80e91ef7cd",
+      "statement": "fetch_endpoint_stats passes the model_id through to the URL as-is, including the :free suffix (e.g. google/gemma-4-31b-it:free).",
+      "evidence": [
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L21-L21",
+          "version": "repo-lines-v1:sha256:567b05c351d22b53f736e67f64849b2ed5ffbd7afc0e39e78f800fd6a48cff2c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTY3YjA1YzM1MWQyMmI1M2Y3MzZlNjdmNjQ4NDliMmVkNWZmYmQ3YWZjMGUzOWU3OGY4MDBmZDZhNDhjZmYyYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTY3YjA1YzM1MWQyMmI1M2Y3MzZlNjdmNjQ4NDliMmVkNWZmYmQ3YWZjMGUzOWU3OGY4MDBmZDZhNDhjZmYyYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWRmNTgzZGYzOTc0NGEyNzk2NzFlZGE1M2M5MzQ5MmE2ODE4N2RiZWYxNDNjNjkwMTVlNjhhMTg2NjQxNGUwNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2VkNzAxZjA5MGM2YTM4NjI3NjQ1MjBhMDk0ZmQzZTA4YWNhY2EzZjI3ZGRjMzIzZDVlOWMxMjgwMzliMmNjNSJ9"
+        },
+        {
+          "resource": "repo://scripts/endpoint_stats.py#L7-L8",
+          "version": "repo-lines-v1:sha256:c362ac739067f5d2da11c3d15936db1f2db3969c376148d2584d6697e211a183:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWVhYjQxZWE2MjlmZmNkOWJmZGVjMmNmNjFiMjEyNzNhMTIzOGExMGYzYTFhOWY0NGI1YmRkMTc0ZjY4Mzc5ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWE2YTVlYjU4MzkyMDU4M2QxOGUzYWQ3MjhhYzBjMjA4ZGU5OGRmODc3OWQzNzA4NzcwZDE3ODdjNGE5Mjg4NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDI4MWJlYmFiYWMyOWNiYTI1MDE2ODMxZTNiNmQ3NmE3NmExYmIwZDg4MDQxMTQ5OTE5MGExODk3MTM1NGI1MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDgzNGZkNGRkYjIyZmUxZDgwMmJhYTg4MzkyYjVlMzcyYzg3ODVkMTliOTU5YzE5ZWMwYzdiYWVhNmI3NjQ5NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_942d4f3effd64c3da519082ee0191a09",
+      "statement": "probe_model sends a 1-token completion request (max_tokens=1, prompt ping) to the model via the OpenAI-compatible client and returns {success, latency_ms}; any exception results in success: False.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/probe.py#L13-L26",
+          "version": "repo-lines-v1:sha256:9f5fd672bfa33422579c1e74ebccb49c9910ff4a65fc34aba39580cf033c4487:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1MDcyNzI2N2IzZjM5MTRiNmMxZmZjM2IwZmY4ZmVjZjE0ODgyN2Y5OWVhYTM3MWRhMzRhOTBjZGJiMGZiNzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZlNjdhZmQ0NmY2MjA2MTFiNjgyNTY0ZjgyYWY1NThhMDk5ZDBjNjAwMWY0MjJiZWQ5MjIwNjllYjFjZTg2OTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEwZjUyYzdlYjgyMjU5NWIxYjlkNzdjMmQyZjFiZTAzOWFmMjcxZjQ0YjZhMjRkMmUzYTE4YzgxMWU3OGY4OTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6064034717424807acd244c6ff7865bc",
+      "statement": "When fetch_endpoint_stats returns None (request failure or no free endpoints), generate_models.py logs a warning and substitutes neutral values: uptime = 0.5 (NEUTRAL_UPTIME) and latency_p50 = None.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L63-L66",
+          "version": "repo-lines-v1:sha256:1d05837092f3826032c4494391418ec9425c57d464b95be65e1e7ac39819e402:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTYxNGEyNDgyNmViYWNlNjJlZGQzZTkzODA0Mjc5NzcxMWIzNzUyZDc5YTY1YjczY2JmMmRhNmQ5NTM0ZGY5YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmQ1YTZjZjRkNmQ1YmNiNDEzYTRjOTFjM2RiMTg0MzJkMjAzZTI2ZWY3MGIyOGE0NzMwOTUwYTc4YmRhZjU5OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDdjMjk0ODI2YjI2NjllMTU0MzY4NzUwOTAzNTUwNmZhYWJjMzNjYTU1YzcwMWVjMmZmMzMyNjY1YWYyMmZlYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzIzMmNiYTc5Y2RhNGE1ZDlkNGY0ZWJhNWYwMDM4MDY2YWIxNDk5MmZkMjM2N2I3YTE3YzQ3Yzg0N2MwNzNjMiJ9"
+        },
+        {
+          "resource": "repo://scripts/scoring.py#L4-L4",
+          "version": "repo-lines-v1:sha256:c595169b70a22d32224adcbfc40f9c01f28a0dde777b700991e92aea68d411ac:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzU5NTE2OWI3MGEyMmQzMjIyNGFkY2JmYzQwZjljMDFmMjhhMGRkZTc3N2I3MDA5OTFlOTJhZWE2OGQ0MTFhYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzU5NTE2OWI3MGEyMmQzMjIyNGFkY2JmYzQwZjljMDFmMjhhMGRkZTc3N2I3MDA5OTFlOTJhZWE2OGQ0MTFhYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWEwZWU0OGRlMWFkZDQ5YzllNThlNGVkODczYTMwYTc5MWU0MWYyNjYyYTJjMmQ2NTYxOGJmNDZkMmNlNGYyYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmQwMWIxODFmMjQ1NGQzYmViNGRhOGIxMGU0NzFkODRmNjM2YjJiMGZhODlkY2VjNDgwNGRhY2QxNDBmMTY5OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_535d4b142cf04736a75f7f0fc5725531",
+      "statement": "Probe results are recorded to a per-model JSONL file under history/ with a 30-day rolling window via record_probe, and the local success rate feeds into the model's own_uptime malus in scoring.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L69-L73",
+          "version": "repo-lines-v1:sha256:1ed2165e312c9e31b7bbd6fbdf70be5a7fe18849bd8ae58e26cca9bf6996b0f6:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjg4ZDhlM2IzOWI5NjRkOTg0ZTdlMjA0MGM5OTY1N2IyNmEyZjViOWM2MWZlMmQ2ZGI1ZjJlYTI2YWQ3OGM3NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzk5Njg0MjNjZDYyYzQyM2EzMDNlZDU2NWMyZjZiYTA1MmMyOTVhOWMzOTk1ZmIxYjFjYjE4ZjM1OTE4ODFmZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDczZGI3MjNmM2ExZTdlYzdmNjViYjM1YmE3MjcxM2Y0ZDIxZjNiOTViMGE5ZWJjNmE3Y2RjN2M1NDZkM2QxNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDU5Mzg0Nzc1ZjA2YzQwOTkyMjU4NWY5ZjNmYWUyMTM0YTZkN2E1ZDg0MzBhMjYwMjYyZGY5MTFkYTA2MDk1YiJ9"
+        },
+        {
+          "resource": "repo://scripts/probe.py#L27-L41",
+          "version": "repo-lines-v1:sha256:a12754ec070f2c224debd50c518d05b2a3e3155cdd7d9ff4a14ff50455ef45e7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5MjMyYjg1NjkyMWFhYmYwYmY4YjA1ZGZmOGE3ZTBjMzk0M2VhMzM3MzE5MDdhMDUwNjhkMmEyMTRmM2Q0NjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmZDU2OTFkYmYxNDc4ZjljZGYxMzZlNDIwYTc2YmI2YzkzZDEzY2Y5MWRjNGEyMjY5NTg3Nzc0ZmYzMDhjY2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZDE4ZGU2YjU5N2JlNThkYzMwMGEwY2M1MWMwODc0ZmY5YjlmZjhjYzRhOGM2MzZmZTJkOWFlMzJiMzE5OWYifQ"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-31T10:41:37.317Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-14T11:53:54.399Z"
   }
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:6dcccad0328b673620a07e7676aefa08bf6cc2c5c53d57661dca3edfb277e2bc",
+  "pageVersion": "sha256:4923a192b7cfe13c1f3bb2f8f9f4722cc96b034261e5723b6a449eaae721d91e",
   "claims": [
     {
       "id": "claim_5ee8b8e95ed241b2a77a2de99e49f23a",
@@ -141,10 +141,62 @@
           "version": "repo-lines-v1:sha256:36032a922ba4bfa924d32ea3368da8b9e9167b048ffe843b597b9271d5b185ef:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDMwNzI0NTNjNmMwMDZiMjZiYTM3NDBiNTdlNDUxZjA5NjlmMzQ5YmE0NGU5Mzg2ZGY3ZTQ1OTFlOTAzN2IzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTNjMGUwZjgwMjc3MDM3ZmUzMTk4N2ZkOTRmMzc5ODY3YzM4ZTMzYzBkMjZlOTY1NDRhMDRjZWYzZTg3ODY5OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWM0NDI2ZDY0YWYyOGVjYTM2NjFkYWI5Y2E5MDllMjZlMjhjMzAyZTgwMmI0YzBmYTBkOGNjYmM5YTc3OTQzNSJ9"
         }
       ]
+    },
+    {
+      "id": "claim_ccf90686d2a6407fa9b4748471ebb462",
+      "statement": "The repository also tests the Anthropic pricing-table-driven model generation workflow in test_generate_anthropic_models.py, covering slug generation, strict pricing-table parsing that fails closed on malformed input, alias-based price joining, long-context tiering, end-to-end output/history writing, and PricingError propagation.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_generate_anthropic_models.py",
+          "version": "repo-file-v1:sha256:c948b6f631d9828b0b1a13ba9716c4e834eb2ef99b42a25089bfc675f82daa0f"
+        }
+      ]
+    },
+    {
+      "id": "claim_097b4373efa14878a02cd13a0fe8736d",
+      "statement": "Unit tests isolate external API calls using respx for HTTP mocking and hand-rolled FakeClient/FakeChat/FakeCompletions doubles for probe tests, avoiding live service calls.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_endpoint_stats.py",
+          "version": "repo-file-v1:sha256:610f401f1109100978814e6fc7bca8feb832ceb2d62873e47c36a8a2ff345425"
+        },
+        {
+          "resource": "repo://tests/test_openrouter_client.py",
+          "version": "repo-file-v1:sha256:41f128cd7b78facb38400f1590277aed76483b5b403f99697717c74ebc9459a4"
+        },
+        {
+          "resource": "repo://tests/test_probe.py",
+          "version": "repo-file-v1:sha256:89395c3cc750bd038180e3cb8e96e2f463c996ba3564fcb0691def5f77be0863"
+        }
+      ]
+    },
+    {
+      "id": "claim_e33b4185822243b9850426d11d31bd96",
+      "statement": "The generate() function accepts fetch_models_fn, fetch_endpoint_stats_fn, and probe_model_fn as injectable parameters so tests can supply fakes instead of calling live OpenRouter services.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L62-L90",
+          "version": "repo-lines-v1:sha256:e6a8e8c47ddc6caca3beb9bde1e6db18f0faf95f553d4a1aff59f3bff78fce31:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY3ZGUxYzU2NTM5OGI4NjY5NWE4ODY5OWYyODMzOTA5MzUyYTgxOTYzYmZiZTA0YjBjYmNhNzE1MzQ4MjdmYzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkODMzZjcyZjY3N2E3MmU0YTY4YzVhY2VjODRhOGFkZjllODk4NWZhMWI0NzY5YTM1NzBmNjlkYzIxM2E3ZjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjljZDVkNjFkZWUxMTU0YzAzMGU1YWM2NGJhYzg1ZDgyZDhlYTQ4OWM0NDcyYjEyY2FlYWEzZDBhMDBhOTFmYWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFkZjI5NTM1ZmVkZTQxNTI5NDI4ZmM1YjJkMWY5M2I1YmQ5NTQzZWQ1NjNiNTYwYWJmZDEwMDRjNDc4ODRlOGUifQ"
+        },
+        {
+          "resource": "repo://tests/test_generate_models.py#L120-L165",
+          "version": "repo-lines-v1:sha256:b233d34312f18378b3e86c043ecfc574cb10a3afabebcffb6f38a8eac552a96d:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA4NTVmNDBkMzUyNmQwNGExYjczMDRlOWVmNjk2NWYxNDU3MzVhMDYzYWI0ODU3NDYyOWE4NmY4Nzk4OGMzYWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NGViOTMxNGU3NTg4YzY4NjlhN2QzYjU0NmVlNjFjZGFmOTI0NTc5MzY1Y2EzOTE5YzAwZTc4MDAyYzFmZjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQwMTlmMzU2Y2YzMDBlMDM1N2I3MDgwMDUzNGE4YTcxOGIzNTU1NmNlZGFiOGY0YjgyNWYyNWIzOWZhYzJiNjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYxNjdjMTNhMGZjZjI1MTQyYTA5NWQ1ZjE0ODlmMmQ3M2FiM2E0NzMyMmVmODNlYmZmNDQwN2NjZDZiNmQ4YzcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fc99b5adbf1f44be96ab0abf52a1fe96",
+      "statement": "Anthropic pricing table parsing raises PricingError on missing headers, wrong column counts, zero prices, and unparseable prices rather than silently producing bad data.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_generate_anthropic_models.py#L34-L75",
+          "version": "repo-lines-v1:sha256:c1501fb5cb14bc64c41fc8674b4517fd361282af1be1e72a82e1cf6d4a04da8e:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4MzRmYjE0ODkxNTQ4ZTNiNTRkYjhkMjkxZGUyZTIyZjI1MDc1ZDNiYmEzNTFhNmUwMGJkOWRkYTY2ODc3YzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU3MTFmOTBiZWVkZjI2Mzg0ZWU3ZGYzN2FhZDM1ODAwODAwMjY2MTEyNjk5ZTk2YTFmMmI3MzkwM2U5N2Y1MDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJmMjlkZWJmMTIyYTZjODM4ZmFhMTFkMzhjMzQ1YzZhYzk1NjdmMzA1YjM1ZWQ0NmVhZmRiMmYwZGE2ZjNiODUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMxMGQzMGQyNmZjZDlhYmI3ZTVmYzhiYjI3NDJiZTY0NWRjMDY1ZWNlNjc1YWM3NWE0NzI4NWFhOGQxYzFmMDIifQ"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.0",
-    "at": "2026-10-03T10:09:48.589Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-14T11:53:54.399Z"
   }
 }

@@ -1,8 +1,7 @@
 ---
 type: Reference
 title: Source Map
-description: "Maps the openrouter-model-list repository's source code structure, highlighting key files, symbols, and tests for contributors."
-resource: /openwiki/source-map.md
+description: "Maps repository documentation to implementation source files, key symbols, tests, output artifacts, and data files so contributors can navigate from docs to code and back."
 tags: [reference, source-map, architecture, workflows, configuration, operations]
 sources:
   - id: openwiki-source-e082dc1d961398caa2e27f47
@@ -13,6 +12,8 @@ sources:
     resource: repo://.github/workflows/update-models.yml
   - id: openwiki-source-4dab8009ad11ecde31efe1bd
     resource: repo://anthropic-models.json
+  - id: openwiki-source-8c8637d5c45f55218d1c3e2c
+    resource: repo://anthropic-price-aliases.yaml
   - id: openwiki-source-7d5f69b071aa52e8ef9e8a4f
     resource: repo://history/nvidia__nemotron-3.5-lightning__free.jsonl
   - id: openwiki-source-7e04a6f89135965340679759
@@ -21,6 +22,8 @@ sources:
     resource: repo://models-openwiki.json
   - id: openwiki-source-9b20ebe8f326f32ddab0d3ca
     resource: repo://models-yt-summarizer.json
+  - id: openwiki-source-05ccef8d4cf1698187f20464
+    resource: repo://pyproject.toml
   - id: openwiki-source-678af2bf704a9375a5423843
     resource: repo://scripts/endpoint_stats.py
   - id: openwiki-source-d62a846da6fa0f2e25b94fa4
@@ -57,12 +60,15 @@ sources:
     resource: repo://thresholds-openwiki.yaml
   - id: openwiki-source-95e171e2045483fa0c961258
     resource: repo://thresholds-yt-summarizer.yaml
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+verified:
+  - by: openwiki/0.9.0
+    at: 2026-11-14T11:53:54.399Z
 ---
 
 # Source Map
 
-This page maps the repository's source code structure to help contributors navigate from documentation to implementation. It highlights key files, symbols, and tests for the openrouter-model-list pipeline.
+This page maps the repository's source code structure to help contributors navigate from documentation to implementation. It highlights key files, symbols, tests, output artifacts, and data files for the openrouter-model-list pipeline.
 
 ## Architecture & Pipeline
 
@@ -79,15 +85,34 @@ This page maps the repository's source code structure to help contributors navig
 | Post-probe filters | `scripts/scoring.py::passes_post_probe_filters` | `passes_post_probe_filters()` | `tests/test_scoring.py::test_passes_post_probe_filters` |
 | Threshold loading | `scripts/thresholds.py` | `load_thresholds()`, `DEFAULTS` | `tests/test_thresholds.py::test_load_thresholds_*` |
 | OpenRouter catalog fetch | `scripts/openrouter_client.py` | `fetch_models()`, `MODELS_URL` | `tests/test_openrouter_client.py::test_fetch_models` |
+| Anthropic model list | `scripts/generate_anthropic_models.py` | `generate()`, `fetch_models()`, `fetch_pricing_page()`, `parse_pricing_table()`, `join_prices()`, `join_long_context()` | — |
+
+## Data & Control Flow
+
+`generate_models.py` is the main orchestrator. For a given profile it:
+
+1. Loads thresholds from the profile's YAML file via `load_thresholds()` (`scripts/thresholds.py`).
+2. Fetches the OpenRouter catalog via `fetch_models()` (`scripts/openrouter_client.py`).
+3. Filters free models with `filter_candidates()` (`scripts/filters.py`), applying a hard `min_param_b` floor (models without a parseable size token are excluded unless allowlisted), buffered `min_context_length` and `min_max_output_tokens`, and optional `require_structured_output`/`require_tools` checks. Allowlisted models bypass the size/context/output floors but still must pass capability checks; hardallowlisted models bypass everything. If buffering shrinks the pool below `min_candidate_pool`, `buffer_pct` relaxes step-wise toward 0.
+4. For each candidate, fetches OpenRouter endpoint stats via `fetch_endpoint_stats()` (`scripts/endpoint_stats.py`); missing stats fall back to `NEUTRAL_UPTIME` and `latency_ms: null`.
+5. Probes each model with `probe_model()` (`scripts/probe.py`) — one minimal completion request returning `{success, latency_ms}`.
+6. Records each probe via `record_probe()` to `history/<model>.jsonl`, trimmed to a rolling `HISTORY_WINDOW_DAYS` (30 days) window.
+7. Reads history via `read_history()`, computes `own_uptime` via `compute_uptime()` (`scripts/scoring.py`).
+8. Applies `passes_post_probe_filters()` (`scripts/scoring.py`) using OpenRouter endpoint uptime/latency.
+9. Scores survivors with `compute_score()` — weighted uptime (0.6), latency (0.3), relative context (0.1), multiplied by `own_uptime`.
+10. Writes `{generated_at, schema_version, models[]}` sorted by score descending.
+
+The Anthropic path (`scripts/generate_anthropic_models.py`) fetches paginated models from `https://api.anthropic.com/v1/models`, scrapes the pricing page at `https://platform.claude.com/docs/en/about-claude/pricing`, joins prices by slug/alias table, and fails closed (non-zero exit, no output write) on any missing or invalid price — preserving the last-known-good committed file.
 
 ## Configuration
 
 | Concept | Source Files | Key Symbols |
 |---------|--------------|-------------|
-| mengram thresholds | `thresholds-mengram.yaml` | `min_param_b: 28`, `min_context_length: 40000`, `min_max_output_tokens: 8000`, `require_structured_output: true`, `allowlist: [openrouter/owl-alpha]` |
-| yt-summarizer thresholds | `thresholds-yt-summarizer.yaml` | `min_param_b: 14`, `min_context_length: 32000`, `min_max_output_tokens: 2000`, `require_structured_output: false`, `allowlist: [meta-llama/llama-4-scout:free, openrouter/owl-alpha, qwen/qwen3-32b:free]` |
-| openwiki thresholds | `thresholds-openwiki.yaml` | `min_param_b: 70`, `min_context_length: 128000`, `min_max_output_tokens: 16000`, `require_tools: true`, `min_candidate_pool: 2` |
+| mengram thresholds | `thresholds-mengram.yaml` | `min_param_b: 28`, `min_context_length: 40000`, `min_max_output_tokens: 8000`, `buffer_pct: 5`, `require_structured_output: true`, `allowlist: [openrouter/owl-alpha]`, `min_candidate_pool: 3` |
+| yt-summarizer thresholds | `thresholds-yt-summarizer.yaml` | `min_param_b: 14`, `min_context_length: 32000`, `min_max_output_tokens: 2000`, `buffer_pct: 5`, `require_structured_output: false`, `allowlist: [meta-llama/llama-4-scout:free, openrouter/owl-alpha, qwen/qwen3-32b:free]`, `min_candidate_pool: 3` |
+| openwiki thresholds | `thresholds-openwiki.yaml` | `min_param_b: 70`, `min_context_length: 128000`, `min_max_output_tokens: 16000`, `buffer_pct: 5`, `require_structured_output: false`, `require_tools: true`, `allowlist: [thinkingmachines/inkling:free, poolside/laguna-s-2.1:free, cohere/north-mini-code:free, nvidia/nemotron-3.5-lightning:free, google/gemma-4-31b-it:free, google/gemma-4-26b-a4b-it:free, nvidia/nemotron-3.5-super-vl:free]`, `min_candidate_pool: 2` |
 | Profile registry | `scripts/generate_models.py` | `PROFILES` dict mapping profile name to `{thresholds_path, output_path}` |
+| Anthropic price aliases | `anthropic-price-aliases.yaml` | `aliases` map used by `load_aliases()` when slug matching fails |
 
 ## Outputs & Data
 
@@ -96,16 +121,19 @@ This page maps the repository's source code structure to help contributors navig
 | `models-mengram.json` | `generate_models.py --profile mengram` | `generated_at`, `schema_version: 2`, `models[] {id, score, context_length, max_output_tokens, uptime, latency_ms, own_uptime, sanity_ok}` |
 | `models-yt-summarizer.json` | `generate_models.py --profile yt-summarizer` | Same schema |
 | `models-openwiki.json` | `generate_models.py --profile openwiki` | Same schema |
-| `anthropic-models.json` | `scripts/generate_anthropic_models.py` | Array of `{id, display_name, type, created_at}` sorted by `id` |
+| `anthropic-models.json` | `scripts/generate_anthropic_models.py` | Array of `{id, display_name, type, created_at, line, max_input_tokens, max_tokens, capabilities, ...}` sorted by `id` |
 | `history/*.jsonl` | `probe.py::record_probe` | Rolling 30-day: `{timestamp, success, latency_ms}` per line |
+| `history/anthropic-models.jsonl` | `generate_anthropic_models.py` | `{timestamp, models[]}` appended per run |
 
 ## Workflows
 
 | Workflow | File | Schedule | Key Steps |
 |----------|------|----------|-----------|
 | Daily model lists | `.github/workflows/update-models.yml` | `0 3 * * *` (daily 03:00 UTC) | Checkout → uv sync → generate 3 profiles → PR to `automation/update-models` → merge attempt |
-| Weekly Anthropic | `.github/workflows/update-anthropic-models.yml` | `15 3 * * *` (daily 03:15 UTC) | Fetch Anthropic API → normalize → PR to `automation/update-anthropic-models` → merge attempt |
-| Bi-weekly OpenWiki | `.github/workflows/openwiki-update.yaml` | `0 5 * * 6` (Sat 05:00 UTC) + parity gate | Gate: ISO week parity → Checkout → Install openwiki → Fetch ALL sanity_ok models → Loop through candidates → Create PR |
+| Daily Anthropic | `.github/workflows/update-anthropic-models.yml` | `15 3 * * *` (daily 03:15 UTC) | Fetch Anthropic API → normalize → PR to `automation/update-anthropic-models` → merge attempt |
+| Bi-weekly OpenWiki | `.github/workflows/openwiki-update.yaml` | `0 5 * * 6` (Sat 05:00 UTC) + parity gate | Gate: ISO week parity → Checkout → Node.js setup → Install openwiki → Fetch ALL sanity_ok models → Loop through candidates → Create PR |
+
+All three workflows use the `update-model-lists` concurrency group with `cancel-in-progress: false`, authenticate via `GITHUB_TOKEN` for GitHub operations, and rely on API-key secrets (`OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`, `LANGSMITH_API_KEY`) for external service access.
 
 ## Testing
 

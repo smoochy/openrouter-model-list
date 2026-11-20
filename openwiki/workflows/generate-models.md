@@ -1,13 +1,30 @@
 ---
 type: Workflow
 title: Model Generation Workflow
-description: "End-to-end model generation pipeline for each profile: fetch OpenRouter catalog, filter free models by thresholds, fetch endpoint stats, probe candidates, score, and write ranked output JSON."
+description: "End-to-end per-profile model generation pipeline: entry point in generate_models.py, OpenRouter catalog fetch, free model filtering, threshold application, endpoint stats fetch, sanity probing, 30-day history read, post-probe filters, weighted scoring, and output JSON writing."
 resource: /openwiki/workflows/generate-models.md
 tags: ["workflow", "generation", "pipeline", "filters", "scoring", "probing"]
 sources:
+  - id: openwiki-source-678af2bf704a9375a5423843
+    resource: repo://scripts/endpoint_stats.py
   - id: openwiki-source-d62a846da6fa0f2e25b94fa4
     resource: repo://scripts/filters.py
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
+  - id: openwiki-source-d8b85b547cd70ae9d19deeea
+    resource: repo://scripts/generate_models.py
+  - id: openwiki-source-11968c67bba9651b9ac1c4e5
+    resource: repo://scripts/probe.py
+  - id: openwiki-source-f3047b157e385d6464b26dbd
+    resource: repo://scripts/scoring.py
+  - id: openwiki-source-efe52f802136ea4316cd0f90
+    resource: repo://thresholds-mengram.yaml
+  - id: openwiki-source-f0ff834cf56ce15024d0ede4
+    resource: repo://thresholds-openwiki.yaml
+  - id: openwiki-source-95e171e2045483fa0c961258
+    resource: repo://thresholds-yt-summarizer.yaml
+verified:
+  - by: openwiki/0.9.0
+    at: 2026-11-14T11:53:54.399Z
+generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
 ---
 
 # Model Generation Workflow
@@ -47,7 +64,7 @@ sequenceDiagram
     SC-->>GM: pass/fail
     GM->>SC: compute_score
     SC-->>GM: score
-    GM->>FS: Write models-mengram.json
+    GM->>FS: Write models-<profile>.json
 ```
 
 **Caption:** Sequence diagram of the per-profile generation pipeline.
@@ -58,7 +75,6 @@ sequenceDiagram
 
 ```python
 # Called via CLI: python scripts/generate_models.py --profile <name>
-# Resolves profile to thresholds_path and output_path
 profile = resolve_profile(args.profile)  # {"thresholds_path", "output_path"}
 generate(
     thresholds_path=profile["thresholds_path"],
@@ -67,12 +83,19 @@ generate(
     fetch_models_fn=fetch_models,
     fetch_endpoint_stats_fn=fetch_endpoint_stats,
     probe_model_fn=probe_model,
-    llm_client=OpenAI(...),
+    llm_client=OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1"),
     now=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
 )
 ```
 
-**Source:** [`scripts/generate_models.py`](../../scripts/generate_models.py) lines 37-100
+Profiles are defined in `PROFILES`:
+- `mengram` → `thresholds-mengram.yaml`, `models-mengram.json`
+- `yt-summarizer` → `thresholds-yt-summarizer.yaml`, `models-yt-summarizer.json`
+- `openwiki` → `thresholds-openwiki.yaml`, `models-openwiki.json`
+
+An unknown profile raises `ValueError`. The CLI defaults to `mengram`. `OPENROUTER_API_KEY` is read from the environment (fatal if missing in `main()`).
+
+**Source:** [`scripts/generate_models.py`](../../scripts/generate_models.py) lines 37-140
 
 ### 2. Fetch OpenRouter Catalog: `openrouter_client.py::fetch_models`
 
@@ -87,7 +110,7 @@ def fetch_models(api_key: str) -> list[dict]:
     return response.json()["data"]
 ```
 
-Returns full model catalog with fields: `id`, `name`, `pricing`, `context_length`, `top_provider.max_completion_tokens`, `supported_parameters`, etc.
+Returns full model catalog with fields: `id`, `name`, `pricing`, `context_length`, `top_provider.max_completion_tokens`, `supported_parameters`, etc. HTTP errors propagate (raises).
 
 **Source:** [`scripts/openrouter_client.py`](../../scripts/openrouter_client.py)
 
@@ -99,7 +122,7 @@ def is_free(model: dict) -> bool:
     return pricing.get("prompt") == "0" and pricing.get("completion") == "0"
 ```
 
-Keeps only models where both prompt and completion pricing are `"0"` (string).
+A model is free only if **both** `pricing.prompt` and `pricing.completion` are exactly the string `"0"`.
 
 **Source:** [`scripts/filters.py`](../../scripts/filters.py) lines 20-22
 
@@ -107,13 +130,14 @@ Keeps only models where both prompt and completion pricing are `"0"` (string).
 
 This is the core filtering logic. Order of operations:
 
-1. **Separate hardallowlist** — Models in `hardallowlist` bypass ALL thresholds (except they still get probed/scored)
-2. **Process allowlist** — Models in `allowlist` bypass `min_param_b` and context/output thresholds, but MUST pass `require_structured_output` and `require_tools` (if enabled)
-3. **Filter remaining by `min_param_b`** — Parse param count from model ID (e.g., `qwen/qwen3-32b:free` → 32). Models without parseable size are excluded.
-4. **Apply buffered context/output thresholds** — `min_context_length * (1 + buffer_pct/100)`, `min_max_output_tokens * (1 + buffer_pct/100)`
-5. **Apply feature requirements** — `require_structured_output` checks `supported_parameters` for `response_format` or `structured_outputs`; `require_tools` checks for `tools` or `tool_choice`
-6. **Relax buffer** — If `len(allowed) + len(candidates) < min_candidate_pool`, decrement `buffer_pct` by 1 and retry (down to 0). `min_param_b` NEVER relaxes.
-7. **Return** `allowed + candidates`
+1. **Free filter** — Only models passing `is_free` proceed.
+2. **Separate hardallowlist** — Models in `hardallowlist` bypass ALL thresholds (`min_param_b`, context/output, feature requirements). Still probed and scored normally.
+3. **Process allowlist** — Models in `allowlist` bypass `min_param_b` and context/output thresholds, but MUST pass `require_structured_output` and `require_tools` (if enabled); excluded with a warning if not.
+4. **Filter remaining by `min_param_b`** — Parse param count from model ID (e.g., `qwen/qwen3-32b:free` → 32). Models without parseable size are excluded; `min_param_b` is a fixed floor, never buffered.
+5. **Apply buffered context/output thresholds** — `min_context_length * (1 + buffer_pct/100)`, `min_max_output_tokens * (1 + buffer_pct/100)`. Missing/null `max_completion_tokens` is treated as unknown, not zero.
+6. **Apply feature requirements** — `require_structured_output` checks `supported_parameters` for `response_format` or `structured_outputs`; `require_tools` checks for `tools` or `tool_choice`.
+7. **Relax buffer** — If `len(allowed) + len(candidates) < min_candidate_pool`, decrement `buffer_pct` by 1 and retry (down to 0). `min_param_b` NEVER relaxes.
+8. **Return** `allowed + candidates`
 
 **Source:** [`scripts/filters.py`](../../scripts/filters.py) lines 35-107
 
@@ -127,9 +151,9 @@ url = f"https://openrouter.ai/api/v1/models/{model_id}/endpoints"
 # Average uptime_last_1d (divide by 100) and latency_last_30m.p50 across free endpoints
 ```
 
-Returns `{"uptime": float, "latency_p50": float|None}` or `None` if request fails or no free endpoints.
+Returns `{"uptime": float, "latency_p50": float|None}` or `None` if the request fails or no free endpoints are present. `uptime_last_1d` is a percentage divided by 100.
 
-**Fallback:** If `None`, use `NEUTRAL_UPTIME = 0.5` and `latency_p50 = None`.
+**Fallback:** If `None`, use `NEUTRAL_UPTIME = 0.5` and `latency_p50 = None`, with a warning logged to stderr.
 
 **Source:** [`scripts/endpoint_stats.py`](../../scripts/endpoint_stats.py)
 
@@ -151,7 +175,7 @@ def probe_model(client, model_id: str) -> dict:
     return {"success": success, "latency_ms": latency_ms}
 ```
 
-Sends a minimal 1-token completion via OpenAI client (pointing at OpenRouter). Records result to history.
+Sends a minimal 1-token completion via the OpenAI client pointing at OpenRouter. On failure, logs a warning to stderr and sets `sanity_ok: false` in output. Probes happen even for hardallowlisted models.
 
 **Source:** [`scripts/probe.py`](../../scripts/probe.py) lines 11-24
 
@@ -167,19 +191,21 @@ History file: `history/google__gemma-4-31b-it__free.jsonl` (slashes/colons → `
 
 Each line: `{"timestamp": "2026-01-15T03:00:00Z", "success": true, "latency_ms": 1234}`
 
+Entries older than `HISTORY_WINDOW_DAYS` (30 days) are trimmed on every write.
+
 **Source:** [`scripts/probe.py`](../../scripts/probe.py) lines 27-41
 
-### 8. Compute Own Uptime: `probe.py::compute_uptime` / `scoring.py::compute_uptime`
+### 8. Compute Own Uptime: `scoring.py::compute_uptime`
 
 ```python
 def compute_uptime(history: list[dict]) -> float:
-    if len(history) < 3:  # MIN_SAMPLES_FOR_UPTIME
-        return 0.5  # NEUTRAL_UPTIME
+    if len(history) < MIN_SAMPLES_FOR_UPTIME:  # 3
+        return NEUTRAL_UPTIME  # 0.5
     successes = sum(1 for e in history if e["success"])
     return successes / len(history)
 ```
 
-- **<3 probes** → neutral `0.5` (malus doesn't penalize new models)
+- **<3 probes** → neutral `0.5` (new models not penalized)
 - **≥3 probes** → actual success rate (0.0–1.0)
 - Used as multiplicative malus on final score
 
@@ -196,9 +222,9 @@ def passes_post_probe_filters(uptime: float, latency_p50: float|None, thresholds
     return True
 ```
 
-Optional filters applied AFTER probing. Currently unused (both `min_uptime` and `max_latency_ms` are empty in all thresholds files).
+Optional filters applied **after** probing. Currently unused (both `min_uptime` and `max_latency_ms` are empty in all thresholds files). Models that fail are skipped entirely (not scored, not written).
 
-**Source:** [`scripts/scoring.py`](../../scripts/scoring.py) lines 29-36
+**Source:** [`scripts/scoring.py`](../../scripts/scoring.py) lines 18-27
 
 ### 10. Score Candidates: `scoring.py::compute_score`
 
@@ -210,16 +236,9 @@ CAPABILITY_WEIGHT = 0.1
 LATENCY_CAP_MS = 5000
 
 def compute_score(model, or_uptime, or_latency_p50, max_context, own_uptime):
-    # Latency normalized: 1 - (latency / 5000), clamped to [0, 1]
-    latency_norm = 0.0 if or_latency_p50 is None else max(0.0, 1 - or_latency_p50 / 5000)
-    
-    # Capability: model's context / max context in pool
+    latency_norm = 0.0 if or_latency_p50 is None else max(0.0, 1 - or_latency_p50 / LATENCY_CAP_MS)
     capability_norm = model["context_length"] / max_context if max_context > 0 else 0.0
-    
-    # Base weighted score
-    base = (0.6 * or_uptime + 0.3 * latency_norm + 0.1 * capability_norm)
-    
-    # Apply own-uptime malus
+    base = (UPTIME_WEIGHT * or_uptime + LATENCY_WEIGHT * latency_norm + CAPABILITY_WEIGHT * capability_norm)
     return base * own_uptime
 ```
 
@@ -238,12 +257,13 @@ scored.sort(key=lambda m: m["score"], reverse=True)
 
 output = {
     "generated_at": now,
-    "schema_version": 2,
+    "schema_version": SCHEMA_VERSION,  # 2
     "models": scored,
 }
 
 with open(output_path, "w") as f:
     json.dump(output, f, indent=2)
+    f.write("\n")
 ```
 
 Output schema (v2):
@@ -279,7 +299,7 @@ Output schema (v2):
 | `require_tools` | false | false | true |
 | `buffer_pct` | 5 | 5 | 5 |
 | `min_candidate_pool` | 3 | 3 | 2 |
-| `allowlist` | `openrouter/owl-alpha` | `meta-llama/llama-4-scout:free`, `openrouter/owl-alpha`, `qwen/qwen3-32b:free` | (empty) |
+| `allowlist` | `openrouter/owl-alpha` | `meta-llama/llama-4-scout:free`, `openrouter/owl-alpha`, `qwen/qwen3-32b:free` | `thinkingmachines/inkling:free`, `poolside/laguna-s-2.1:free`, `cohere/north-mini-code:free`, `nvidia/nemotron-3.5-lightning:free`, `google/gemma-4-31b-it:free`, `google/gemma-4-26b-a4b-it:free`, `nvidia/nemotron-3.5-super-vl:free` |
 | `hardallowlist` | (empty) | (empty) | (empty) |
 
 See [Profiles & Thresholds](../configuration/profiles.md) for full threshold details.
@@ -290,7 +310,8 @@ See [Profiles & Thresholds](../configuration/profiles.md) for full threshold det
 - **Probe fails** → Log warning, record failure to history, `sanity_ok: false` in output
 - **Allowlisted model missing structured output** → Log warning, exclude from candidates
 - **Allowlisted model missing tool-calling** → Log warning, exclude from candidates
-- **HTTP errors** → `fetch_endpoint_stats` returns `None`; `fetch_models` raises on failure
+- **HTTP errors (catalog)** → `fetch_models` raises on failure
+- **HTTP errors (endpoint stats)** → `fetch_endpoint_stats` returns `None`; neutral values used
 
 All warnings printed to stderr (visible in GitHub Actions logs).
 

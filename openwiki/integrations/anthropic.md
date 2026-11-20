@@ -1,12 +1,15 @@
 ---
 type: integration
 title: Anthropic API Integration
-description: Details how the system fetches Claude model metadata and pricing from Anthropic's API and pricing page to generate anthropic-models.json.
+description: Details how the system fetches Claude model metadata from the Anthropic API, scrapes pricing from the public pricing page, joins prices via slugify and alias table, handles long-context tiers, and fails closed on any pricing problem.
 tags: [anthropic, api, integration, models, pricing]
 sources:
   - id: openwiki-source-23fb3ed4bd0ff9d6e2dfb273
     resource: repo://scripts/generate_anthropic_models.py
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+verified:
+  - by: openwiki/0.9.0
+    at: 2026-11-14T11:53:54.399Z
 ---
 The Anthropic API integration is implemented in `scripts/generate_anthropic_models.py`. It fetches the list of available Claude models from the Anthropic Models API and combines it with pricing data scraped from the official Claude pricing page to produce `anthropic-models.json`, which is used throughout the system for cost calculations.
 
@@ -14,8 +17,8 @@ The Anthropic API integration is implemented in `scripts/generate_anthropic_mode
 The integration retrieves model metadata by making authenticated requests to `https://api.anthropic.com/v1/models`. It uses:
 - Header `x-api-key` with the API key from the execution environment
 - Header `anthropic-version: 2023-06-01`
-- Query parameter `limit: 1000` for pagination
-It follows the `has_more` and `last_id` fields to iterate through all pages, filtering results to objects where `type == "model"`. The final model list is sorted by `id`.
+- Query parameter `limit: 1000`
+It follows the `has_more` and `last_id` fields to iterate through all pages, sending `after_id` (the previous page's `last_id`) to fetch the next page, and filters results to objects where `type == "model"`. The final model list is sorted by `id`.
 
 ## Pricing Page Scraping
 Pricing data is obtained by requesting `https://platform.claude.com/docs/en/about-claude/pricing` with the header `Accept: text/markdown` to receive the page in Markdown format. The integration locates the first table whose header matches (after whitespace normalization):
@@ -33,11 +36,38 @@ For each pricing row, the resolved model IDs (from aliases or slug) are assigned
 ## Long-Context Tiers
 Some pricing page rows include a suffix like `(for prompts over 200000 tokens)` in the model name cell. The integration extracts the threshold value using `\(\s*for prompts over ([0-9][0-9,]*) tokens\s*\)`. When present, the same prices are combined with the threshold as `threshold_input_tokens` for the matched model ID(s). Rows that do not map to any API model ID are ignored.
 
-## Output and History
-On successful completion, the integration writes a JSON object to `anthropic-models.json` mapping each model ID to an object containing:
-- `input`, `cache_write_5m`, `cache_write_1h`, `cache_read`, `output` (all floats, dollars per million tokens)
-- Optionally `threshold_input_tokens` (integer) for long-context variants
-Additionally, it appends a JSON line to `history/anthropic-models.jsonl` containing the same data plus a `fetched_at` timestamp (ISO 8601, UTC). If any step fails, no output files are written and the existing `anthropic-models.json` remains unchanged, preserving the last known-good dataset.
+## Output Format
+On successful completion, the integration writes a JSON **array** to `anthropic-models.json`. Each element is a model object from the API (including `id`, `display_name`, `type`, `created_at`, and capabilities) enriched with:
+- `pricing` — an object with `input`, `cache_write_5m`, `cache_write_1h`, `cache_read`, `output` (all floats, dollars per million tokens)
+- Optionally `pricing_long_context` — an object with `threshold_input_tokens` (integer) plus the same five price fields, present only for models the pricing page tiers by prompt length
+
+Example entry:
+```json
+{
+  "id": "claude-haiku-5-5",
+  "display_name": "Claude Haiku 5.5",
+  "type": "model",
+  "created_at": "2026-01-01T00:00:00Z",
+  "pricing": {
+    "input": 0.1,
+    "cache_write_5m": 0.125,
+    "cache_write_1h": 0.2,
+    "cache_read": 0.01,
+    "output": 0.5
+  },
+  "pricing_long_context": {
+    "threshold_input_tokens": 100000,
+    "input": 0.5,
+    "cache_write_5m": 0.625,
+    "cache_write_1h": 1.0,
+    "cache_read": 0.05,
+    "output": 2.5
+  }
+}
+```
+
+## History
+Additionally, it appends a JSON line to `history/anthropic-models.jsonl` containing the same model data plus a `timestamp` field (ISO 8601, UTC). If any step fails, no output files are written and the existing `anthropic-models.json` remains unchanged, preserving the last known-good dataset.
 
 ## Operational Context
 This integration is executed on a schedule by GitHub Actions (see workflows/generate-anthropic-models.md). It requires an `ANTHROPIC_API_KEY` secret in the workflow environment. The fail-closed design ensures that pricing anomalies (e.g., missing or zero prices) prevent corruption of downstream cost calculations rather than silently propagating bad data.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:5c370eb097e2b0206b5bbb37439058f092006a5cf7c125e7115ededa3067ef22",
+  "pageVersion": "sha256:e0b1d6065cf62d06715632331470ef8dfbc1673294b7b1664bb83165397c8a5e",
   "claims": [
     {
       "id": "claim_5f9833c75a3042218a1c151d62774e93",
@@ -170,15 +170,11 @@
     },
     {
       "id": "claim_a24e50188a3e4622adad513af68ac532",
-      "statement": "The openwiki thresholds file sets min_param_b: 70, min_context_length: 128000, min_max_output_tokens: 16000, require_tools: true, and allowlist for models without parseable size parameters.",
+      "statement": "The openwiki thresholds file sets min_param_b: 70, min_context_length: 128000, min_max_output_tokens: 16000, buffer_pct: 5, require_structured_output: false, require_tools: true, min_candidate_pool: 2, and a seven-model allowlist (thinkingmachines/inkling:free, poolside/laguna-s-2.1:free, cohere/north-mini-code:free, nvidia/nemotron-3.5-lightning:free, google/gemma-4-31b-it:free, google/gemma-4-26b-a4b-it:free, nvidia/nemotron-3.5-super-vl:free) for models without parseable size parameters.",
       "evidence": [
         {
-          "resource": "repo://thresholds-openwiki.yaml#L32-L37",
-          "version": "repo-lines-v1:sha256:fb7b2bb067e044cf0f782a5460aba66ef8eec2f6459fe2154eec1f9130f27335:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjFmYjY2NzQ0NGM0NWQ4ZGE1MTk0ZWFjMjkxYjkyOGQ4MjFhYTEwNmZhMmUxN2IxODY1ODBlZGE2Y2UyNTEzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjVlNDQ3MjU0MTk5ZGJjMzg4OTRlNzkxODBkOWY3ODVhOTZkNGU4NjExOWQ3OTFkMDk0NThhMTQ5ZmMxMjBiZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTIzOTY5YzMwOGMwZTRjN2E0MjgzZmFjOTk5OWJhYmFkNGVlODY0YjlmODYzNGJjM2IxZWVlOWExMDRiOWM1NSJ9"
-        },
-        {
-          "resource": "repo://thresholds-openwiki.yaml#L5-L11",
-          "version": "repo-lines-v1:sha256:427cafb52ea60feba9c6cbb82987b265b81b87428211a872f46fbe78316701ee:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2NjOWNiYjM1NTJlODU5OGMwNDMyZTM5NDE5MDBlOGU0NzY2N2FjNDQxY2U0NzZlYWI4MWMwYmI2MjE2MzhjZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTk1OGU1NTQ3ZGMyODhiNDAwMjE5MDMzNDkwYmZhOTIwNTEwMTg0YmQ3NzE2NGQxOGQ5MTJjZmM5NjI5NDc0MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzI2OTU4YzY5OTQ1YTZjMDZjNDQwMzQxYzkwNGUzMGQzYjRmMDMxMGQ3OGFkZDQ0ZDI2ZjY3NDkyYWIzODJjNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDhhZGE3ODcyMzkwMzhjYWUxYWUyOWQ5ZWRjZDA1YTVlYWE3ZTZlZDA2YjZmM2YwZmQ3YWE1MmFiNDNmYTNkZSJ9"
+          "resource": "repo://thresholds-openwiki.yaml#L5-L42",
+          "version": "repo-lines-v1:sha256:97894e949db27f78340a75e2141459713560c2f98a2a17b665a671ad8d832194:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNjYzljYmIzNTUyZTg1OThjMDQzMmUzOTQxOTAwZThlNDc2NjdhYzQ0MWNlNDc2ZWFiODFjMGJiNjIxNjM4Y2YiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkyMzk2OWMzMDhjMGU0YzdhNDI4M2ZhYzk5OTliYWJhZDRlZTg2NGI5Zjg2MzRiYzNiMWVlZTlhMTA0YjljNTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMyNjk1OGM2OTk0NWE2YzA2YzQ0MDM0MWM5MDRlMzBkM2I0ZjAzMTBkNzhhZGQ0NGQyNmY2NzQ5MmFiMzgyYzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         }
       ]
     },
@@ -198,15 +194,15 @@
       "evidence": [
         {
           "resource": "repo://models-mengram.json",
-          "version": "repo-file-v1:sha256:65a586cb79725dc3b9e6f517e2612e68d530e89136927f88e7e24bb6b7faad6a"
+          "version": "repo-file-v1:sha256:49ee61284db0507e8df5e4ec30a55399855e165cd04b708487780a04d692c96c"
         },
         {
           "resource": "repo://models-openwiki.json",
-          "version": "repo-file-v1:sha256:062bdc10d0e62e6b1d06cdcef6ef1c3ff37ad7711e787e1b8a93b91b68e6e50b"
+          "version": "repo-file-v1:sha256:d03c7307634f3cf9d25a85ff315672d4853cd6f32c26d740ea232c42918e7480"
         },
         {
           "resource": "repo://models-yt-summarizer.json",
-          "version": "repo-file-v1:sha256:0d58422a4f6bd1066ee15b428b28063a564c8b19a2307821c71cbbd707004e9c"
+          "version": "repo-file-v1:sha256:34cb4c0f44642d6687afa8d2b54410f82e300d01e1d871a56221f6f69108ddb6"
         },
         {
           "resource": "repo://scripts/generate_models.py#L34-L34",
@@ -220,7 +216,7 @@
       "evidence": [
         {
           "resource": "repo://anthropic-models.json",
-          "version": "repo-file-v1:sha256:0df25ad96110790a1a4ac6a2cec82c2f2a449b10b5a1c4db9c45924442499bfb"
+          "version": "repo-file-v1:sha256:225b9e6eb88db2cb8ce3f6f307b61d5afbc5719da524ac1732ad6b64795ef79a"
         },
         {
           "resource": "repo://scripts/generate_anthropic_models.py",
@@ -234,7 +230,7 @@
       "evidence": [
         {
           "resource": "repo://history/nvidia__nemotron-3.5-lightning__free.jsonl",
-          "version": "repo-file-v1:sha256:8585923e3f48477bafcd1a2bb2d03f49174224ee5e2ca32a1d19f0a68d734420"
+          "version": "repo-file-v1:sha256:393ae9cdd53ccc64e9036502edd722467a62100fcf68e885e94995d1670915d0"
         }
       ]
     },
@@ -244,7 +240,7 @@
       "evidence": [
         {
           "resource": "repo://.github/workflows/update-models.yml#L19-L26",
-          "version": "repo-lines-v1:sha256:f2ade1a4c8a4c1cf5aae79e49d2b9842328b3f8763496615fe356d93c5e4bc7a:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg5OTkxMTAzZjZiYTg4OGUzZGU3NjUxYzVhMzA1Yzc3ZTU1NDc2NzczYWJhODM5NTkxZWNjNWJkMGYyYWIxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBiNjZjNTlkZjhhMDQzNDQ5NGFlNGYyNmYwYmNiZDY2YTM2ZjlkMDlhNTEwYTVkYTA2MTM0ZDljOTIxMDYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTVjMjJlYzg1ZTFiNzQxMTE2OWM2MzhjOGFlYTZhNzM0MDk0Y2ZmZDc0NDVmNjY3NTY5Yzk3YjJlZGFlMWVjNyJ9"
+          "version": "repo-lines-v1:sha256:cdf5f10b09bf21e55ac2b8d636ca489c4d54055fd4e68a38e2268e7070e18157:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg5OTkxMTAzZjZiYTg4OGUzZGU3NjUxYzVhMzA1Yzc3ZTU1NDc2NzczYWJhODM5NTkxZWNjNWJkMGYyYWIxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBiNjZjNTlkZjhhMDQzNDQ5NGFlNGYyNmYwYmNiZDY2YTM2ZjlkMDlhNTEwYTVkYTA2MTM0ZDljOTIxMDYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTVjMjJlYzg1ZTFiNzQxMTE2OWM2MzhjOGFlYTZhNzM0MDk0Y2ZmZDc0NDVmNjY3NTY5Yzk3YjJlZGFlMWVjNyJ9"
         },
         {
           "resource": "repo://.github/workflows/update-models.yml#L31-L32",
@@ -262,7 +258,7 @@
       "evidence": [
         {
           "resource": "repo://.github/workflows/update-anthropic-models.yml#L19-L26",
-          "version": "repo-lines-v1:sha256:f2ade1a4c8a4c1cf5aae79e49d2b9842328b3f8763496615fe356d93c5e4bc7a:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg5OTkxMTAzZjZiYTg4OGUzZGU3NjUxYzVhMzA1Yzc3ZTU1NDc2NzczYWJhODM5NTkxZWNjNWJkMGYyYWIxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBiNjZjNTlkZjhhMDQzNDQ5NGFlNGYyNmYwYmNiZDY2YTM2ZjlkMDlhNTEwYTVkYTA2MTM0ZDljOTIxMDYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzRkNGRhNDUyYWRlNTRkMjlhYWU4YWNkZDYwN2Q5OTk1N2MxNTk1OGMyZWIwNDhmMmY5YWQ2Nzk2MDNiOGFiYSJ9"
+          "version": "repo-lines-v1:sha256:cdf5f10b09bf21e55ac2b8d636ca489c4d54055fd4e68a38e2268e7070e18157:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg5OTkxMTAzZjZiYTg4OGUzZGU3NjUxYzVhMzA1Yzc3ZTU1NDc2NzczYWJhODM5NTkxZWNjNWJkMGYyYWIxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBiNjZjNTlkZjhhMDQzNDQ5NGFlNGYyNmYwYmNiZDY2YTM2ZjlkMDlhNTEwYTVkYTA2MTM0ZDljOTIxMDYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzRkNGRhNDUyYWRlNTRkMjlhYWU4YWNkZDYwN2Q5OTk1N2MxNTk1OGMyZWIwNDhmMmY5YWQ2Nzk2MDNiOGFiYSJ9"
         },
         {
           "resource": "repo://.github/workflows/update-anthropic-models.yml#L28-L31",
@@ -284,7 +280,7 @@
         },
         {
           "resource": "repo://.github/workflows/openwiki-update.yaml#L42-L53",
-          "version": "repo-lines-v1:sha256:63b07506b50f29f9278506b092db031e62f599649e9dae3508bff2d92da25eaa:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ1ZDZjZjdkNDI4Y2E4MTE1ZmM0YmFiYjY4MDczOTAyMzMyN2E3YTlkOTE2M2Y3MDZhMjc2ODdkZDUxNmYzOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkZWRlNGJlYzRjZGRiYWJkMzMzNzRiMTJlMWJmNzY3ZDY5YjQ4MzBiM2U3YzA3NTkwYjIzNGU2M2IwMTQ5MzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlkOGU0M2I5NTgzYTkyZmExN2ZlYzQzMTAyZTUzMGM5YWMwYjdmZTQ4ZjI0NTQ1ZmI3ZDYzZTUzMjZkMjgxOGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyMmZhOWVkMzNhN2I0MjhlMmUzYzM4YjhiNTM3N2EzOTBiM2Q5MWM5NThhNWM2NjNkMTBjZWRlNmQxMTljODYifQ"
+          "version": "repo-lines-v1:sha256:603e1d5884a88b73ab1f5818baa01a76b78df0eb0b7a61ac6d891cedecc5d807:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ1ZDZjZjdkNDI4Y2E4MTE1ZmM0YmFiYjY4MDczOTAyMzMyN2E3YTlkOTE2M2Y3MDZhMjc2ODdkZDUxNmYzOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkZWRlNGJlYzRjZGRiYWJkMzMzNzRiMTJlMWJmNzY3ZDY5YjQ4MzBiM2U3YzA3NTkwYjIzNGU2M2IwMTQ5MzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlkOGU0M2I5NTgzYTkyZmExN2ZlYzQzMTAyZTUzMGM5YWMwYjdmZTQ4ZjI0NTQ1ZmI3ZDYzZTUzMjZkMjgxOGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyMmZhOWVkMzNhN2I0MjhlMmUzYzM4YjhiNTM3N2EzOTBiM2Q5MWM5NThhNWM2NjNkMTBjZWRlNmQxMTljODYifQ"
         },
         {
           "resource": "repo://.github/workflows/openwiki-update.yaml#L55-L88",
@@ -346,19 +342,23 @@
     },
     {
       "id": "claim_3696613294d54fa8a29dccb5048720d0",
-      "statement": "The Python environment is managed via uv sync from pyproject.toml on Ubuntu-latest with Python 3.11+, while Node.js environment uses actions/setup-node@v7 with Node 24 for OpenWiki workflows.",
+      "statement": "The Python environment is managed via uv sync from pyproject.toml on Ubuntu-latest with requires-python >=3.12,<3.15, while Node.js environment uses actions/setup-node@v7 with Node 26 for OpenWiki workflows.",
       "evidence": [
         {
           "resource": "repo://.github/workflows/openwiki-update.yaml#L47-L53",
-          "version": "repo-lines-v1:sha256:a80fb3191a4058de1fa65f64a6c9c7d162b5265cf2938a9c76cd5a9329b6b443:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzZkNzEwYTE3NjI4OTVjZDRjOTNjNmEyYTI5ZTYyOTI0ZDZmNzMwZDk1ZTJhZDE3N2NhNTA0OGViNTY5YzlhYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWRlZGU0YmVjNGNkZGJhYmQzMzM3NGIxMmUxYmY3NjdkNjliNDgzMGIzZTdjMDc1OTBiMjM0ZTYzYjAxNDkzOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmVkODY0ZjZjMGU0ZmNjMzI1M2U0MmMxZTNmYjQ2MzFlYmEzNzk3YWZiMDU3ODc4ODc3MWMwYmM1YThkN2VkMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDIyZmE5ZWQzM2E3YjQyOGUyZTNjMzhiOGI1Mzc3YTM5MGIzZDkxYzk1OGE1YzY2M2QxMGNlZGU2ZDExOWM4NiJ9"
+          "version": "repo-lines-v1:sha256:799ae9cf5ce8f1b603f3a2ced5d3dfafcbf84c8c0a962692907f05440ad09377:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzZkNzEwYTE3NjI4OTVjZDRjOTNjNmEyYTI5ZTYyOTI0ZDZmNzMwZDk1ZTJhZDE3N2NhNTA0OGViNTY5YzlhYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWRlZGU0YmVjNGNkZGJhYmQzMzM3NGIxMmUxYmY3NjdkNjliNDgzMGIzZTdjMDc1OTBiMjM0ZTYzYjAxNDkzOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmVkODY0ZjZjMGU0ZmNjMzI1M2U0MmMxZTNmYjQ2MzFlYmEzNzk3YWZiMDU3ODc4ODc3MWMwYmM1YThkN2VkMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDIyZmE5ZWQzM2E3YjQyOGUyZTNjMzhiOGI1Mzc3YTM5MGIzZDkxYzk1OGE1YzY2M2QxMGNlZGU2ZDExOWM4NiJ9"
         },
         {
           "resource": "repo://.github/workflows/update-anthropic-models.yml#L22-L26",
-          "version": "repo-lines-v1:sha256:3a3bcb606a37b75095e2c79bef2db88252e4d19cc3f70015461dbd210d5b3ad2:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBiYTcwNGRjMzgxMWE1MzVlZGY3OWE4ZWE0M2Q4NmE1ZjVjMDM2OGE0MjczM2Y3YTc3NTI2YzhkNGFhZGU3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg2NmNhY2VmYWMzMmJjOGMzOTcyM2E4YjZmZDRhMzQzMzcwZDhlZmQ0MDNkYTU3ZTFkYWExYzM5N2E2ZDUyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzRkNGRhNDUyYWRlNTRkMjlhYWU4YWNkZDYwN2Q5OTk1N2MxNTk1OGMyZWIwNDhmMmY5YWQ2Nzk2MDNiOGFiYSJ9"
+          "version": "repo-lines-v1:sha256:c2eb9b569445ee7b35d96ba017caab7e7d3d80a81b7d40163e46299bc0d2c96e:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBiYTcwNGRjMzgxMWE1MzVlZGY3OWE4ZWE0M2Q4NmE1ZjVjMDM2OGE0MjczM2Y3YTc3NTI2YzhkNGFhZGU3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg2NmNhY2VmYWMzMmJjOGMzOTcyM2E4YjZmZDRhMzQzMzcwZDhlZmQ0MDNkYTU3ZTFkYWExYzM5N2E2ZDUyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzRkNGRhNDUyYWRlNTRkMjlhYWU4YWNkZDYwN2Q5OTk1N2MxNTk1OGMyZWIwNDhmMmY5YWQ2Nzk2MDNiOGFiYSJ9"
         },
         {
           "resource": "repo://.github/workflows/update-models.yml#L22-L26",
-          "version": "repo-lines-v1:sha256:3a3bcb606a37b75095e2c79bef2db88252e4d19cc3f70015461dbd210d5b3ad2:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBiYTcwNGRjMzgxMWE1MzVlZGY3OWE4ZWE0M2Q4NmE1ZjVjMDM2OGE0MjczM2Y3YTc3NTI2YzhkNGFhZGU3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg2NmNhY2VmYWMzMmJjOGMzOTcyM2E4YjZmZDRhMzQzMzcwZDhlZmQ0MDNkYTU3ZTFkYWExYzM5N2E2ZDUyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTVjMjJlYzg1ZTFiNzQxMTE2OWM2MzhjOGFlYTZhNzM0MDk0Y2ZmZDc0NDVmNjY3NTY5Yzk3YjJlZGFlMWVjNyJ9"
+          "version": "repo-lines-v1:sha256:c2eb9b569445ee7b35d96ba017caab7e7d3d80a81b7d40163e46299bc0d2c96e:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDBiYTcwNGRjMzgxMWE1MzVlZGY3OWE4ZWE0M2Q4NmE1ZjVjMDM2OGE0MjczM2Y3YTc3NTI2YzhkNGFhZGU3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2YwNzVjMDMwMWI0NmEzMDliNmM4NDUwMGEyOWRlM2MxZjk3ZDViMjYwNzVkZjc5YTA0Nzk4NjUxODBjODU0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg2NmNhY2VmYWMzMmJjOGMzOTcyM2E4YjZmZDRhMzQzMzcwZDhlZmQ0MDNkYTU3ZTFkYWExYzM5N2E2ZDUyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTVjMjJlYzg1ZTFiNzQxMTE2OWM2MzhjOGFlYTZhNzM0MDk0Y2ZmZDc0NDVmNjY3NTY5Yzk3YjJlZGFlMWVjNyJ9"
+        },
+        {
+          "resource": "repo://pyproject.toml#L1-L3",
+          "version": "repo-lines-v1:sha256:1959a798eafdf1c63f2fc50c341cd00883cc2e8fa0959a29965bc18363ad50e3:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzAyYTgxYzM4MzZlZGVmMmQwYmExMWQyMzUzZmI2ZGFiYzc3NzE1MGE3Y2E4M2VhMGQ5ZTlhNzAzMTNmZWFiYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjhlMWRhYzBiZDczYjg3MzFmMDU2Mjk3YWIwNTI0NWRjNWJkZWE4NWNiMzQyNjNlMDk3NzQ3MGVhOTMzZTIwZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzViYTVjNGQzYWYzYTkwMzU0ODlhMzEwZjhlMmVmMjczYjg5NDBiYWI1N2M3ZGIxMzQ5OWJiZDBjMmY4MDhjYiJ9"
         }
       ]
     },
@@ -431,10 +431,70 @@
           "version": "repo-file-v1:sha256:77b776a1a93484e8716e627bc4c73147bc9a008afcbfdc0d44b14bbd4a80bf79"
         }
       ]
+    },
+    {
+      "id": "claim_32410bba56494646bc4a7b912ad7d5c9",
+      "statement": "The anthropic-price-aliases.yaml file supplies an aliases map consumed by generate_anthropic_models.py's load_aliases() and join_prices(), letting pricing-page rows be joined to API model ids by slug or by alias when direct slug matching fails.",
+      "evidence": [
+        {
+          "resource": "repo://anthropic-price-aliases.yaml",
+          "version": "repo-file-v1:sha256:adf22a419c781c1c3948b587963e8eac9a26c4a9683297ce01d9615f6e2d0ed0"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L101-L135",
+          "version": "repo-lines-v1:sha256:2b9a8675a28e0194d1e2fbb6aaac6e219a77a9d687a11a16653ae5c113bd6d28:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNhMzgzZGQyOWEyNThiODkzYzA2Yjg0ODJkYzA1YjFmNjY1ZmRjZGE3Y2Y2ZThlYWI0N2MyMGJlNzQyZTc0YmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRmODgyYzBhNmVmZjdiNzc3ODNmMmVjOTRhZTg3NzA1YzRjMThlYzE4NTU5YmQwYWExZTRhNzY1YjYzZDJlNjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM5MjFjNDMyNDZkNzQyYWM5YWFhZDljZDliNjA1YWVlODA4ODY1NTFjYzVjZjNlY2I0NGU0MWQ5N2JiZWY2NDQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8c45f6f2672b4ab58f720b5abcc31236",
+      "statement": "The history/anthropic-models.jsonl file appends one JSON object per Anthropic model-list run with fields {timestamp, models[]}, preserving run history alongside the committed anthropic-models.json output.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L201-L247",
+          "version": "repo-lines-v1:sha256:e7a804cc2c779f460bbd77c007498ff44426845691190fb0491bd1ab56a035eb:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA4ZTA0MGMwMDM5ZjJlMzRlNzRmMmZkNzA2ODk2MDAwYWE2Y2Y4MDMzMjJmZDlmMWRlMDc2YjAyYjNkN2VkZTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2MzcyNmIwNWQzODllYjA5NzM5NTBhMDk0OWMzZTA4YjA5YWNmZjRiNjg4NzExYzA1YzIyMjMyMDg0YjJjNGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFlNjYzNTNkMWQ0NTIzOWYxMjIyNTk4NjFhYjIwNmExZmU5OWFjN2IxMDc5MThlNDhmY2RjZDUwNzVhYjQ0ZTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_493ab88c224e4a34bcbd1c8369d0be01",
+      "statement": "The Anthropic model-list generator (scripts/generate_anthropic_models.py) fetches paginated models from https://api.anthropic.com/v1/models, scrapes the pricing page at https://platform.claude.com/docs/en/about-claude/pricing, joins prices onto model ids by slug/alias, and fails closed (non-zero exit, no output write) on any missing or invalid price to preserve the last-known-good committed file.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L1-L100",
+          "version": "repo-lines-v1:sha256:808c8d8d52b946be9d947eecc6b559d48b663eeeb11ab8767e258d601f7e0f33:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIwOGFiYjQ4NmMzMjQ5NzY5N2Y0MGVhZTIzYzI5OWY1OWQzMmMwM2M2MWI2ZjhiZGFkOTM5NTcxNDU2OTZkZGU0IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIwMWJhNDcxOWM4MGI2ZmU5MTFiMDkxYTdjMDUxMjRiNjRlZWVjZTk2NGUwOWMwNThlZjhmOTgwNWRhY2E1NDZiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI1OTM4NGNhNzY1NGMxYTNiZGY1NzJmNTQ5M2I1MmNmYjJmNmY0NDFiMDRlZGIwYTIyZGIxZWYzZTk2YTNiNmJjIn0"
+        },
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L201-L247",
+          "version": "repo-lines-v1:sha256:e7a804cc2c779f460bbd77c007498ff44426845691190fb0491bd1ab56a035eb:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA4ZTA0MGMwMDM5ZjJlMzRlNzRmMmZkNzA2ODk2MDAwYWE2Y2Y4MDMzMjJmZDlmMWRlMDc2YjAyYjNkN2VkZTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2MzcyNmIwNWQzODllYjA5NzM5NTBhMDk0OWMzZTA4YjA5YWNmZjRiNjg4NzExYzA1YzIyMjMyMDg0YjJjNGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFlNjYzNTNkMWQ0NTIzOWYxMjIyNTk4NjFhYjIwNmExZmU5OWFjN2IxMDc5MThlNDhmY2RjZDUwNzVhYjQ0ZTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1226c735ccd1442193bca2f5369f27c2",
+      "statement": "The generate_models.py pipeline runs end-to-end as: load thresholds via load_thresholds() → fetch OpenRouter catalog via fetch_models() → filter free candidates via filter_candidates() (hard min_param_b floor, buffered context/output floors, allowlist/hardallowlist bypass, buffer_pct relaxation toward min_candidate_pool) → per-candidate endpoint stats via fetch_endpoint_stats() (NEUTRAL_UPTIME fallback) → probe via probe_model() → record_probe() to history/<model>.jsonl (30-day rolling trim) → read_history() → compute_uptime() → passes_post_probe_filters() → compute_score() (0.6 uptime / 0.3 latency / 0.1 capability, multiplied by own_uptime) → write {generated_at, schema_version: 2, models[]} sorted by score descending.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py#L35-L109",
+          "version": "repo-lines-v1:sha256:6479db6d6b30915740d43c11901cd55be49217289f95a769df3fe99817fec555:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwNDA0MzNmMjQwMDc5ODJjMTc2YjJhOTE1YjJiN2VlOTEwYjljODI4NjZmNGI4OTJlMTYyYjY3M2VhMTk4YzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzN2M0ZGFmZGY5YTM1MmE2NjkzMTA2MjM4M2U4MjFmOGE2Yjg3MzUyMDk0OGVlOTFiOWY0OTEzOTk5NzIzZGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA2MmMwZDgwYzJmNzQ3OTdlYzBiZmJjMWNjODcxNGEzNGU5ODUwMWUyNDUxNmViMTU1Zjc0NzViNWI2ODhhMDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://scripts/generate_models.py#L43-L140",
+          "version": "repo-lines-v1:sha256:e00bd36b431b801d35907cba6f083e00f5653392fba5bf8f3f4be1246092fd44:eyJzZWxlY3RlZExpbmVDb3VudCI6OTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5Y2JhMTkzMGQ0MjE1NTgwZjE2YTIxN2U0NmNmOWQ2YjE1ODFhY2ViN2JkZTFhNTIxZjRjN2JiNjE3NzhhNTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2MzcyNmIwNWQzODllYjA5NzM5NTBhMDk0OWMzZTA4YjA5YWNmZjRiNjg4NzExYzA1YzIyMjMyMDg0YjJjNGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2MGZjMTQ2YTUzMzA0NzliNmQ3ODUxMzliNmI5NWVlNTlhNjU2YjZmODc2Zjc2NGFjYTU2M2ZmYTQxMzBkOTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://scripts/probe.py#L1-L62",
+          "version": "repo-lines-v1:sha256:9f4402180be01ca6229a400bb684dfeae2924cd1599aff47f01ec665608aa839:eyJzZWxlY3RlZExpbmVDb3VudCI6NjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA3MGUyNWNjZTk0ZWU0ZDBiY2JmZmQ4YmUxNDE0ODk5ZjNjMzdiY2ZiZDdhNzI5OGYyYWYyYjM0YTNlMWQ2ZGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1ODY3Nzg4YWZlYTM4OWU5ZDljYTIwODIzYjdjM2M5NDg3YzRmMWRhYThkZWNhMDc1YjExMmU4MmI2NzExYjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://scripts/scoring.py#L1-L66",
+          "version": "repo-lines-v1:sha256:bb1d005198ac9525f158235466a1947e3aa3d838667705666d183871e1d66786:eyJzZWxlY3RlZExpbmVDb3VudCI6NjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUxMTk2Y2EzZGFlYmI5MmVjYjRhNWY3MDQ4NTI3NGI5YjBhMzA3NzY0Y2Q2NGY2ZWU5ZDQ4YzIwMjI5MGVhYjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzMzdiYjZjZjE1N2ExYmQ0MzNmYTVlZGFiMjM2N2Y3OTY5NjNiYjQ4N2ZjMDJlNjQyNzRlMWVkMzM1MDY3N2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
     }
   ],
   "verification": {
-    "by": "openwiki/0.7.2",
-    "at": "2026-10-17T08:58:08.450Z"
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-14T11:53:54.399Z"
   }
 }

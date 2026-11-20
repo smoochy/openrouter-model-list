@@ -9,6 +9,9 @@ sources:
   - id: openwiki-source-f3047b157e385d6464b26dbd
     resource: repo://scripts/scoring.py
 generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
+verified:
+  - by: openwiki/0.9.0
+    at: 2026-11-14T11:53:54.399Z
 ---
 
 OpenRouter models are probed daily with a minimal completion request to measure local success rate and latency. The outcomes are stored in a per-model history file and used to compute an *own_uptime* factor that acts as a malus on the overall score.
