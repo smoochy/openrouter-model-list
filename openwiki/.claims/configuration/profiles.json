@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:5c3d22b2d0613ab2ba4c04d5385916fbf165d3bd9c3f2eb23c7a9c9f273a5689",
+  "pageVersion": "sha256:3afcc365acecf0bcf2070a6ef60f9589f6947497baca3104e1905deabfc773c7",
   "claims": [
     {
       "id": "claim_2b0e1d633ada4a879f91801013e4872a",
@@ -15,10 +15,78 @@
           "version": "repo-file-v1:sha256:6080b4e82f2c421bbf09bad4d0cd576e997276d73d7f00f23633b55e25da1eac"
         }
       ]
+    },
+    {
+      "id": "claim_b6b4ccca88f14f109bbf7e3f5e938827",
+      "statement": "scripts/thresholds.py::DEFAULTS supplies defaults for all 11 threshold keys (min_param_b=28, min_context_length=40000, min_max_output_tokens=8000, buffer_pct=5, require_structured_output=True, require_tools=False, min_uptime=None, max_latency_ms=None, min_candidate_pool=3, allowlist=[], hardallowlist=[]) applied whenever a YAML omits a key.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/thresholds.py",
+          "version": "repo-file-v1:sha256:5d9295b6870684991b5f2daa93c6350ad4e742ea648e415925e91e202544ac0d"
+        }
+      ]
+    },
+    {
+      "id": "claim_9cf94314c5ae4f1a8235fef58e9f901f",
+      "statement": "scripts/filters.py::filter_candidates applies thresholds in order: free-only filter, hardallowlist inclusion, allowlist inclusion (with stderr warnings on feature failure), parameter floor (min_param_b never buffered or relaxed), soft thresholds with buffer, candidate-pool relaxation reducing buffer_pct by 1 toward 0 while below min_candidate_pool, then post-probe filters.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py",
+          "version": "repo-file-v1:sha256:20f5c9a2d7ca0824c11bf051efdc3d47b72ee7e8d3fa4b645d4452d64327d7b4"
+        }
+      ]
+    },
+    {
+      "id": "claim_7c679dafb5564782825e122ab3b47213",
+      "statement": "Models without a parseable size token (Nb pattern) in their OpenRouter id are excluded by min_param_b unless listed in allowlist or hardallowlist; min_param_b itself is a fixed floor never relaxed during pool relaxation.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py",
+          "version": "repo-file-v1:sha256:20f5c9a2d7ca0824c11bf051efdc3d47b72ee7e8d3fa4b645d4452d64327d7b4"
+        }
+      ]
+    },
+    {
+      "id": "claim_7ae4e6bf64b942d08067671096c231f4",
+      "statement": "allowlist models bypass min_param_b and context/output thresholds but still must pass require_structured_output and require_tools (excluded with a stderr warning if not); hardallowlist models bypass min_param_b, context/output thresholds, and both feature requirements entirely with no warning.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py",
+          "version": "repo-file-v1:sha256:20f5c9a2d7ca0824c11bf051efdc3d47b72ee7e8d3fa4b645d4452d64327d7b4"
+        }
+      ]
+    },
+    {
+      "id": "claim_1fc45636e38444de888b0352c0ee5820",
+      "statement": "Candidate-pool relaxation reduces buffer_pct by 1 toward 0 while allowed+candidates < min_candidate_pool, stopping when the pool is large enough or buffer_pct reaches 0.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/filters.py",
+          "version": "repo-file-v1:sha256:20f5c9a2d7ca0824c11bf051efdc3d47b72ee7e8d3fa4b645d4452d64327d7b4"
+        }
+      ]
+    },
+    {
+      "id": "claim_f7dee07621524fe5be15337eb8d805d7",
+      "statement": "Profile-specific threshold values: mengram min_param_b=28/context=40000/output=8000/structured_output=true/tools=false/pool=3; yt-summarizer 14/32000/2000/false/false/3; openwiki 70/128000/16000/false/true/2.",
+      "evidence": [
+        {
+          "resource": "repo://thresholds-mengram.yaml",
+          "version": "repo-file-v1:sha256:6080b4e82f2c421bbf09bad4d0cd576e997276d73d7f00f23633b55e25da1eac"
+        },
+        {
+          "resource": "repo://thresholds-openwiki.yaml",
+          "version": "repo-file-v1:sha256:76771e22953766816ee6870c88abfd1070d2389a917e43c1039a186c5f5a9c16"
+        },
+        {
+          "resource": "repo://thresholds-yt-summarizer.yaml",
+          "version": "repo-file-v1:sha256:e1f69a926c9a6946532cb431f3baca37a62ae5511227470c1ea787c5fd254bcd"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-14T11:53:54.399Z"
+    "at": "2026-11-28T13:48:21.508Z"
   }
 }

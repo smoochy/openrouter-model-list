@@ -1,17 +1,23 @@
 ---
 type: Configuration
 title: Profiles & Thresholds Configuration
-description: "Per-profile threshold configuration for the three model generation profiles: mengram (structured extraction), yt-summarizer (YouTube transcripts), and openwiki (agentic documentation). Each profile has its own thresholds YAML and output JSON."
+description: "Per-profile threshold configuration for the three model generation profiles (mengram, yt-summarizer, openwiki). Documents the shared threshold schema, defaults, profile-specific values, allowlist/hardallowlist behavior, and candidate-pool relaxation."
 tags: ["configuration", "profiles", "thresholds", "mengram", "yt-summarizer", "openwiki"]
 sources:
+  - id: openwiki-source-d62a846da6fa0f2e25b94fa4
+    resource: repo://scripts/filters.py
   - id: openwiki-source-a53118abdd8a4e93bbeab156
     resource: repo://scripts/thresholds.py
   - id: openwiki-source-efe52f802136ea4316cd0f90
     resource: repo://thresholds-mengram.yaml
-generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+  - id: openwiki-source-f0ff834cf56ce15024d0ede4
+    resource: repo://thresholds-openwiki.yaml
+  - id: openwiki-source-95e171e2045483fa0c961258
+    resource: repo://thresholds-yt-summarizer.yaml
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-14T11:53:54.399Z
+    at: 2026-11-28T13:48:21.508Z
 ---
 
 # Profiles & Thresholds Configuration
@@ -24,7 +30,7 @@ This repository uses **profiles** to generate different model lists for differen
 ## Profile Definitions
 
 ```python
-# scripts/generate_models.py lines 19-32
+# scripts/generate_models.py::PROFILES
 PROFILES = {
     "mengram": {
         "thresholds_path": REPO_ROOT / "thresholds-mengram.yaml",
@@ -50,11 +56,12 @@ python scripts/generate_models.py --profile openwiki
 
 ## Threshold Schema
 
-All thresholds files share the same schema (loaded by `scripts/thresholds.py::load_thresholds` with defaults from `DEFAULTS`):
+All thresholds files share the same schema. `scripts/thresholds.py::load_thresholds` loads the YAML and falls back to `DEFAULTS` for missing keys:
 
 ```yaml
 # Hard floor — no buffer applied. Models whose parameter count can't be
-# determined from their OpenRouter id are excluded unless in allowlist.
+# determined from their OpenRouter id are excluded unless in allowlist
+# or hardallowlist.
 min_param_b: <int>
 
 # Soft thresholds — buffer_pct is added on top before filtering.
@@ -76,11 +83,12 @@ min_candidate_pool: <int>
 
 # Model IDs always included, bypassing min_param_b and context/output thresholds.
 # Still must pass require_structured_output (if enabled) — excluded with warning if not.
-# Still probed and scored normally.
+# Still must pass require_tools (if enabled). Still probed and scored normally.
 allowlist: [<model_id>, ...]
 
 # Model IDs always included, bypassing min_param_b, context/output thresholds,
-# AND require_structured_output entirely. Still probed and scored normally.
+# AND require_structured_output and require_tools entirely. Still probed
+# and scored normally.
 hardallowlist: [<model_id>, ...]
 ```
 
@@ -100,6 +108,8 @@ hardallowlist: [<model_id>, ...]
     "hardallowlist": [],
 }
 ```
+
+All eleven keys are applied for every profile even if a YAML omits them; missing keys inherit the defaults above.
 
 ## Profile: mengram
 
@@ -129,7 +139,8 @@ hardallowlist: []
 - `allowlist: [openrouter/owl-alpha]` — Bypasses param floor and context/output thresholds, but still needs structured output (excluded with warning if missing).
 - `min_candidate_pool: 3` — If fewer than 3 candidates after buffering, relax `buffer_pct` toward 0.
 
-**Source:** [`thresholds-mengram.yaml`](../../thresholds-mengram.yaml)
+<!-- openwiki: broken internal link [../thresholds-mengram.yaml] file "../thresholds-mengram.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
+**Source:** [`thresholds-mengram.yaml`](../thresholds-mengram.yaml)
 
 ## Profile: yt-summarizer
 
@@ -160,7 +171,8 @@ hardallowlist: []
 - `require_structured_output: false` — Plain text generation is fine.
 - Allowlist includes 3 models that may not meet param/context thresholds but are known-good for summarization.
 
-**Source:** [`thresholds-yt-summarizer.yaml`](../../thresholds-yt-summarizer.yaml)
+<!-- openwiki: broken internal link [../thresholds-yt-summarizer.yaml] file "../thresholds-yt-summarizer.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
+**Source:** [`thresholds-yt-summarizer.yaml`](../thresholds-yt-summarizer.yaml)
 
 ## Profile: openwiki
 
@@ -200,7 +212,8 @@ hardallowlist: []
 - Smallest `min_candidate_pool: 2` — Fewer models expected to meet this bar.
 - `allowlist` includes 7 free models that don't encode size in their ID (so would be dropped by `min_param_b: 70`) but meet context/output/tool thresholds per catalog metadata. These diversify providers beyond just Nvidia Nemotron models. The list includes `thinkingmachines/inkling:free`, `poolside/laguna-s-2.1:free`, `cohere/north-mini-code:free`, `nvidia/nemotron-3.5-lightning:free`, plus `google/gemma-4-31b-it:free`, `google/gemma-4-26b-a4b-it:free`, and `nvidia/nemotron-3.5-super-vl:free` — free tool-capable models no openwiki run has tried yet.
 
-**Source:** [`thresholds-openwiki.yaml`](../../thresholds-openwiki.yaml)
+<!-- openwiki: broken internal link [../thresholds-openwiki.yaml] file "../thresholds-openwiki.yaml" does not exist. Fix the href or restore the target, then delete this comment. -->
+**Source:** [`thresholds-openwiki.yaml`](../thresholds-openwiki.yaml)
 
 ## Comparison Table
 
@@ -216,20 +229,25 @@ hardallowlist: []
 | `allowlist` | owl-alpha | llama-4-scout, owl-alpha, qwen3-32b | inkling, laguna-s-2.1, north-mini-code, nemotron-3.5-lightning |
 | `hardallowlist` | (none) | (none) | (none) |
 
-## Parameter Count Parsing
+## Filter Pipeline & Candidate-Pool Relaxation
 
-`filters.py::parse_param_count` extracts parameter count in billions from the model ID:
+`scripts/filters.py::filter_candidates` applies thresholds in this order:
 
-```python
-PARAM_RE = re.compile(r"(\d+(?:\.\d+)?)b", re.IGNORECASE)
-# "qwen/qwen3-32b:free" → 32.0
-# "google/gemma-4-31b-it:free" → 31.0
-# "meta-llama/llama-4-scout:free" → None (no "Xb" pattern)
-# "openrouter/owl-alpha" → None
-```
+1. **Free-only** — models with non-zero prompt or completion pricing are dropped.
+2. **Hardallowlist** — models listed there bypass `min_param_b`, context/output thresholds, `require_structured_output`, and `require_tools`. No warning if they fail feature checks.
+3. **Allowlist** — models listed there bypass `min_param_b` and context/output thresholds, but still must pass `require_structured_output` (warning to stderr if not) and `require_tools` (warning to stderr if not).
+4. **Parameter floor** — remaining models must parse a size token (`N[bB]`) from their ID and meet `min_param_b`. `min_param_b` is a fixed floor: never buffered, never relaxed toward 0.
+5. **Soft thresholds with buffer** — `min_context_length` and `min_max_output_tokens` are multiplied by `(1 + buffer_pct / 100)`. A missing/null `max_completion_tokens` is treated as unknown, not zero, and does not by itself fail the output-token check. Remaining models must also pass `require_structured_output` and `require_tools`.
+6. **Pool relaxation** — if `len(allowlisted) + len(candidates) < min_candidate_pool`, `buffer_pct` is reduced by 1 (toward 0) and the soft-threshold check repeats. `min_param_b` stays fixed throughout.
+7. **Post-probe filters** — `min_uptime` / `max_latency_ms` are applied after probing, using OpenRouter aggregated endpoint stats (see [Model Generation Workflow](../workflows/generate-models.md)).
 
-- Models with `None` param count are **excluded by `min_param_b`** unless in `allowlist` or `hardallowlist`.
-- `min_param_b` is a **hard floor** — never buffered, never relaxed.
+`scripts/filters.py::parse_param_count` extracts parameter count in billions from the model ID:
+- `"qwen/qwen3-32b:free"` → 32.0
+- `"google/gemma-4-31b-it:free"` → 31.0
+- `"meta-llama/llama-4-scout:free"` → None (no `Nb` pattern)
+- `"openrouter/owl-alpha"` → None
+
+Models with `None` param count are excluded by `min_param_b` unless in `allowlist` or `hardallowlist`.
 
 ## Allowlist vs Hardallowlist
 
@@ -271,8 +289,7 @@ These would further reduce the candidate pool after scoring.
        "output_path": REPO_ROOT / "models-new-profile.json",
    },
    ```
-3. Add generation step to `.github/workflows/update-models.yml` (see [GitHub Actions](../operations/github-actions.md))
-4. Run locally to test: `python scripts/generate_models.py --profile new-profile`
+3. Run locally to test: `python scripts/generate_models.py --profile new-profile`
 
 ## Related Pages
 

@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-11-14T12:25:55.057Z",
+  "updatedAt": "2026-11-28T14:27:57.238Z",
   "command": "update",
-  "gitHead": "d40fdcf851540dfa6ec833cc15e122f0a98f0098",
+  "gitHead": "ae3a459f8b6d002380c76e4c8a29e7b5fa687917",
   "model": "nvidia/nemotron-3.5-super-vl:free",
-  "status": "interrupted",
+  "status": "complete",
   "language": "en"
 }

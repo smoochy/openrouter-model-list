@@ -4,13 +4,12 @@ title: "Generate anthropic models"
 openwiki_generated: true
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-14T11:53:54.399Z
+    at: 2026-11-28T13:48:21.508Z
 sources:
   - id: openwiki-source-23fb3ed4bd0ff9d6e2dfb273
     resource: repo://scripts/generate_anthropic_models.py
-generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
 ---
-
 
 The `generate_anthropic_models.py` script produces `anthropic-models.json` by combining live model metadata from the Anthropic API with pricing information scraped from the public Claude pricing page. The workflow follows a fail-closed design: if any model lacks a valid price after joining, the script exits with a non-zero status and writes no output, preserving the last known good output.
 

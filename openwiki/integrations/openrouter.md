@@ -16,8 +16,8 @@ sources:
     resource: repo://scripts/scoring.py
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-14T11:53:54.399Z
-generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+    at: 2026-11-28T13:48:21.508Z
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
 ---
 
 # OpenRouter API Integration

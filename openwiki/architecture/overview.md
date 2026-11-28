@@ -1,12 +1,16 @@
 ---
 type: Architecture Overview
 title: Architecture Overview
-description: "High-level architecture of the model generation pipelines: per-profile OpenRouter free-model filtering/probing/scoring, plus the Anthropic model list fetch with fail-closed pricing; scheduled GitHub Actions delivery to consumers."
+description: "High-level system design and data flow for both model generation pipelines: per-profile OpenRouter free-model filtering/probing/scoring, and the Anthropic model list fetch with fail-closed pricing; scheduled GitHub Actions delivery to consumers."
 resource: /openwiki/architecture/overview.md
 tags: ["architecture", "overview", "pipeline"]
 sources:
+  - id: openwiki-source-e082dc1d961398caa2e27f47
+    resource: repo://.github/workflows/openwiki-update.yaml
   - id: openwiki-source-cc9c2e48d2340a266da2a1aa
     resource: repo://.github/workflows/update-anthropic-models.yml
+  - id: openwiki-source-c98bff360638db4f2aa27c80
+    resource: repo://.github/workflows/update-models.yml
   - id: openwiki-source-678af2bf704a9375a5423843
     resource: repo://scripts/endpoint_stats.py
   - id: openwiki-source-d62a846da6fa0f2e25b94fa4
@@ -21,10 +25,14 @@ sources:
     resource: repo://scripts/probe.py
   - id: openwiki-source-f3047b157e385d6464b26dbd
     resource: repo://scripts/scoring.py
-generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+  - id: openwiki-source-a53118abdd8a4e93bbeab156
+    resource: repo://scripts/thresholds.py
+  - id: openwiki-source-0e65ceef13e4b6b565a83f82
+    resource: repo://tests/test_scoring.py
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-14T11:53:54.399Z
+    at: 2026-11-28T13:48:21.508Z
 ---
 
 # Architecture Overview
@@ -158,7 +166,7 @@ flowchart LR
 | 3. Apply thresholds | `filters.py::filter_candidates` | Free models + thresholds | Candidates | Hard floor `min_param_b`; buffered `min_context_length`, `min_max_output_tokens`; `allowlist`/`hardallowlist`; `require_structured_output`, `require_tools`; relax `buffer_pct` to meet `min_candidate_pool` |
 | 4. Endpoint stats | `endpoint_stats.py` | Candidate IDs | `uptime`, `latency_p50` (avg over free endpoints) | `GET /models/{id}/endpoints`, average free endpoints; fallback `0.5`/`None` on failure |
 | 5. Probe | `probe.py` | Candidate IDs | `success`, `latency_ms` (recorded to history) | 1-token completion via OpenAI client; append to `history/<model>.jsonl` (30-day rolling) |
-| 6. Own uptime | `probe.py::compute_uptime` | 30-day history | `own_uptime` (0-1) | `<3 samples` → `0.5` neutral; else success rate |
+| 6. Own uptime | `scoring.py::compute_uptime` | 30-day history | `own_uptime` (0-1) | `<3 samples` → `0.5` neutral; else success rate |
 | 7. Post-probe filter | `scoring.py::passes_post_probe_filters` | OR uptime/latency + thresholds | Pass/fail | Optional `min_uptime`, `max_latency_ms` |
 | 8. Score | `scoring.py::compute_score` | Model, OR stats, max context, own uptime | `score` (0-1) | `0.6*or_uptime + 0.3*latency_norm + 0.1*capability_norm` × `own_uptime`; latency capped at 5s; capability = `context_length / max_context` |
 | 9. Sort & write | `generate_models.py` | Scored list | `models-<profile>.json` | Descending score; schema v2 |

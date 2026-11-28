@@ -1,10 +1,11 @@
 ---
 type: "Reference"
-title: "Overview"
-openwiki_generated: true
+title: "Testing Overview"
+description: "Documents the testing strategy for the model list generation project: unit test coverage per module, integration test patterns, mocking with respx, dependency injection, determinism practices, fail-closed parsing, and how to run tests."
+tags: ["testing", "unit-tests", "integration-tests", "respx", "dependency-injection", "pytest"]
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-14T11:53:54.399Z
+    at: 2026-11-28T13:48:21.508Z
 sources:
   - id: openwiki-source-d8b85b547cd70ae9d19deeea
     resource: repo://scripts/generate_models.py
@@ -24,23 +25,22 @@ sources:
     resource: repo://tests/test_scoring.py
   - id: openwiki-source-3408766c6be85dd20e112827
     resource: repo://tests/test_thresholds.py
-generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
 ---
 
-
-The OpenWiki project employs a comprehensive testing strategy to ensure correctness and reliability across its modules. Tests are organized in the `tests/` directory and cover unit-level functionality for individual components as well as integrated workflows that exercise end-to-end model generation processes.
+The project employs a comprehensive testing strategy to ensure correctness and reliability across its modules. Tests are organized in the `tests/` directory and cover unit-level functionality for individual components as well as integrated workflows that exercise end-to-end model generation processes.
 
 ## Unit Test Coverage
 
 ### Filters (`test_filters.py`)
 Validates the candidate filtering logic that selects models based on:
-- Parameter count parsing (extracting `b` suffixes)
-- Free model detection via pricing fields
+- Parameter count parsing (extracting `b` suffixes from model IDs)
+- Free model detection via zero pricing fields
 - Structured output and tool call support detection
 - Application of thresholds including:
-  - Parameter floors (`min_param_b`)
+  - Parameter floors (`min_param_b`) — models without a parseable size are excluded unless allowlisted
   - Free model requirements
-  - Allowlist enforcement with warning logs
+  - Allowlist enforcement with warning logs to stderr
   - Tool and structured output requirements
   - Buffer percentage relaxation toward `min_candidate_pool`
   - Hardallowlist bypassing all thresholds except structured output
@@ -48,10 +48,9 @@ Validates the candidate filtering logic that selects models based on:
 ### Endpoint Statistics (`test_endpoint_stats.py`)
 Tests the `fetch_endpoint_stats` function which queries OpenRouter for per-model endpoint data:
 - Averages uptake and latency across free endpoints only
-- Handles missing latency fields gracefully
 - Returns `None` when no free endpoints exist or on HTTP errors
 - Verifies Bearer token authentication in requests
-- Handles null uptime/latency fields
+- Handles missing or null latency/uptime fields gracefully
 
 ### OpenRouter Client (`test_openrouter_client.py`)
 Covers the `fetch_models` function that retrieves the global model catalog:
@@ -69,12 +68,12 @@ Tests model probing functionality including:
 
 ### Scoring (`test_scoring.py`)
 Validates the scoring algorithm that ranks models:
-- Uptime computation from probe history (ratio with minimum sample threshold)
+- Uptime computation from probe history (neutral default of 0.5 below 3 samples, success ratio above)
 - Latency P50 calculation using only successful probes
 - Score components:
   - Capability score (normalized context length)
-  - Uptime weight (highest impact factor)
-  - Own-uptime malus (linear scaling)
+  - Uptime weight (highest impact factor at 0.6)
+  - Own-uptime malus (linear scaling by own uptime)
 - Post-probe filter enforcement (minimum uptime, maximum latency)
 - Neutral uptime default for models with no successful probes
 
@@ -113,13 +112,13 @@ End-to-end validation of the core workflow via the `generate` function:
 
 ## Testing Practices
 
-- **Isolation**: Unit tests use mocking (`respx`, `pytest-mock`) to avoid external API calls. `respx` mocks HTTP responses for OpenRouter endpoints; probe tests use hand-rolled `FakeClient`/`FakeChat`/`FakeCompletions` doubles.
-- **Dependency injection**: `generate()` accepts `fetch_models_fn`, `fetch_endpoint_stats_fn`, and `probe_model_fn` as parameters so tests can inject fakes instead of calling live services.
+- **Isolation**: Unit tests use mocking (`respx` for HTTP) to avoid external API calls. `respx` mocks OpenRouter endpoint responses; probe tests use hand-rolled `FakeClient`/`FakeChat`/`FakeCompletions` doubles instead of live service clients.
+- **Dependency injection**: `generate()` accepts `fetch_models_fn`, `fetch_endpoint_stats_fn`, and `probe_model_fn` as parameters so tests can inject fakes instead of calling live OpenRouter services.
 - **Fixtures**: Shared helpers like `make_model` in `conftest.py` reduce duplication across filter and scoring tests.
 - **Determinism**: Fixed timestamps (`now` parameter) and controlled inputs ensure reproducible results.
-- **Error Handling**: Explicit tests for HTTP failures (500), missing fields, null latency/uptime, unparseable pricing tables, schema changes, unknown profile names, and unmapped models.
-- **Output Validation**: Tests verify both return values and side effects (file writes, history logs, stderr warnings).
-- **Fails-closed parsing**: Anthropic pricing table parsing raises `PricingError` on malformed input rather than silently producing bad data.
+- **Error handling**: Explicit tests for HTTP failures (500), missing fields, null latency/uptime, unparseable pricing tables, schema changes, unknown profile names, and unmapped models.
+- **Output validation**: Tests verify both return values and side effects (file writes, history logs, stderr warnings).
+- **Fails-closed parsing**: Anthropic pricing table parsing raises `PricingError` on malformed input rather than silently producing bad data. The `generate()` function does not write output or history when pricing fails closed.
 
 ## Running Tests
 
@@ -134,3 +133,5 @@ Individual test files can be run directly:
 ```
 pytest tests/test_filters.py tests/test_scoring.py
 ```
+
+Note: `pytest-mock` is not a project dependency and is not used by any test file; HTTP mocking is done exclusively with `respx`, and probe tests use hand-rolled test doubles.

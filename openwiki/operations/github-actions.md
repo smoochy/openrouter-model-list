@@ -1,7 +1,7 @@
 ---
 type: Operations
 title: GitHub Actions Workflows
-description: "Scheduled GitHub Actions workflows that keep model lists and documentation current: daily model list updates (3 profiles), weekly Anthropic model list, and bi-weekly OpenWiki documentation updates."
+description: "Scheduled GitHub Actions workflows that keep model lists and documentation current: daily model list updates (3 profiles), daily Anthropic model list, and bi-weekly OpenWiki documentation updates."
 tags: ["operations", "github-actions", "workflows", "scheduling", "automation"]
 sources:
   - id: openwiki-source-e082dc1d961398caa2e27f47
@@ -10,9 +10,14 @@ sources:
     resource: repo://.github/workflows/update-anthropic-models.yml
   - id: openwiki-source-c98bff360638db4f2aa27c80
     resource: repo://.github/workflows/update-models.yml
+  - id: openwiki-source-23fb3ed4bd0ff9d6e2dfb273
+    resource: repo://scripts/generate_anthropic_models.py
   - id: openwiki-source-d8b85b547cd70ae9d19deeea
     resource: repo://scripts/generate_models.py
-generated: { by: "openwiki/0.7.2", at: "2026-10-17T08:58:08.450Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
+verified:
+  - by: openwiki/0.9.0
+    at: 2026-11-28T13:48:21.508Z
 ---
 
 # GitHub Actions Workflows
@@ -25,7 +30,7 @@ This repository uses three GitHub Actions workflows for automated maintenance:
 | **Update Anthropic models** | `update-anthropic-models.yml` | Daily 03:15 UTC | Fetch and commit `anthropic-models.json` |
 | **OpenWiki Update** | `openwiki-update.yaml` | Bi-weekly Sat 05:00 UTC (even ISO weeks) | Regenerate repository documentation via OpenWiki |
 
-All workflows use `concurrency.group: update-model-lists` to prevent overlapping runs.
+The model list and Anthropic workflows share `concurrency.group: update-model-lists` to prevent overlapping runs. The OpenWiki workflow has no concurrency block.
 
 ---
 
@@ -56,7 +61,7 @@ flowchart TD
 | Step | Command | Notes |
 |------|---------|-------|
 | Checkout | `actions/checkout@v7` | Uses `SYNC_PAT` for write access |
-| Install uv | `astral-sh/setup-uv@v10.1.0` | Fast Python package installer |
+| Install uv | `astral-sh/setup-uv@v10.4.0` | Fast Python package installer |
 | Install deps | `uv sync` | Installs from `pyproject.toml` |
 | Generate mengram | `uv run scripts/generate_models.py --profile mengram` | `OPENROUTER_API_KEY` in env |
 | Generate yt-summarizer | `uv run scripts/generate_models.py --profile yt-summarizer` | Same API key |
@@ -98,6 +103,9 @@ sequenceDiagram
     GH->>API: GET /v1/models (with x-api-key, anthropic-version)
     API-->>GH: {data: [{id, name, type, ...}, ...]}
     GH->>GH: Filter type=="model", sort by id
+    GH->>API: Fetch pricing page (Accept: text/markdown)
+    API-->>GH: Markdown pricing table
+    GH->>GH: Join pricing by slugify + alias table; add long-context tiers
     GH->>FS: Write anthropic-models.json
     GH->>FS: Append to history/anthropic-models.jsonl
     GH->>Git: git add anthropic-models.json history/anthropic-models.jsonl
@@ -141,7 +149,6 @@ Creates a PR on branch `automation/update-anthropic-models`, then attempts immed
 
 ### Flow
 
-<!-- openwiki: mermaid parse failed and this diagram was converted to a text fence so it does not break rendering. Fix the diagram source and restore the mermaid fence. Parser error: Heuristic: a semicolon inside a label breaks rendering; rephrase the label. -->
 <!-- openwiki: mermaid parse failed and this diagram was converted to a text fence so it does not break rendering. Fix the diagram source and restore the mermaid fence. Parser error: Heuristic: an unescaped angle bracket inside a label breaks rendering; rephrase the label. -->
 ```text
 flowchart TD
@@ -149,7 +156,7 @@ flowchart TD
     B --> C{Even week?}
     C -->|No| D[Skip: echo "Odd ISO week skipping"]
     C -->|Yes| E[Checkout]
-    E --> F[Setup Node.js 24]
+    E --> F[Setup Node.js]
     F --> G[npm install -g openwiki]
     G --> H[Fetch models-openwiki.json<br/>Get ALL sanity_ok models]
     H --> I[Loop: try each model until one succeeds]
@@ -208,7 +215,7 @@ echo "All candidate models failed." >&2
 exit 1
 ```
 
-- Fetches the latest `models-openwiki.json` from the repo
+- Fetches the latest `models-openwiki.json` from the upstream openrouter-model-list repo
 - Filters to `sanity_ok: true` models
 - Tries each model in score order (highest first) until one completes successfully
 - Fails if no sanity-ok model exists or all candidates fail
@@ -243,16 +250,17 @@ Uses `peter-evans/create-pull-request@v8`:
 
 ## Concurrency Control
 
-All three workflows share:
+Two workflows share:
 ```yaml
 concurrency:
   group: update-model-lists
   cancel-in-progress: false
 ```
 
+- **`update-models.yml`** and **`update-anthropic-models.yml`** share the `update-model-lists` concurrency group
 - **`cancel-in-progress: false`** — Running workflows are not cancelled; new triggers queue up
-- Prevents simultaneous OpenRouter API calls from multiple workflows
-- Daily + weekly + bi-weekly can run sequentially without conflict
+- Prevents simultaneous OpenRouter API calls from these two workflows
+- `openwiki-update.yaml` has **no concurrency block** and is not part of this group
 
 ---
 
@@ -296,16 +304,3 @@ All workflows support `workflow_dispatch` for on-demand runs:
        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
    ```
 3. The PR creation step automatically includes all `models-*.json` and `history/` files
-
----
-
-## Related Pages
-
-<!-- openwiki: broken internal link [workflows/generate-models.md] file "workflows/generate-models.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Model Generation Workflow](workflows/generate-models.md) — Pipeline executed by the daily workflow
-<!-- openwiki: broken internal link [configuration/profiles.md] file "configuration/profiles.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Profiles & Thresholds](configuration/profiles.md) — Threshold configs for each profile
-<!-- openwiki: broken internal link [architecture/overview.md] file "architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Architecture Overview](architecture/overview.md) — High-level system design
-<!-- openwiki: broken internal link [source-map.md] file "source-map.md" does not exist. Fix the href or restore the target, then delete this comment. -->
-- [Source Map](source-map.md) — File-to-concept mapping
