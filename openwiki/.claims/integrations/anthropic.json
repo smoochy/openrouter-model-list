@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:5c702ce082781ac0d8b81b94ce65e872adbf2631ed8fc4d7f8abc5c73372e1e6",
+  "pageVersion": "sha256:8b106681a70c9f19d6f61bcc304e5d2986c7a9dfa92fdbe5b49270c612bbf988",
   "claims": [
     {
       "id": "claim_a01cb97e568c48f8ab7088b0907823e1",
@@ -99,10 +99,72 @@
           "version": "repo-lines-v1:sha256:eb1cdb8c7fba6f4b5d367ae1c8a8ed7597f83e31bfb7220c40ca7044a09d1158:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmUxZGFiOWZlNmI5ODMzYzcxN2JiMmIxMDEyMWUwNDdlMjRkNGFiZjBlZDNmYTc1NGMzZDNmMGNmMThmZDFkZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTkzYTEzMDYyZjEwZWU0ZjEyMThkOTNlMzdhNmY4MWQzNDZmZjExZWM3ZTU1ZGQ1NDJlMmQyZDJlZjA3MTFmMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODc5MTExMmZkYzFhNmE0ZTM1NDliNGRkYjUzMGFjODgwZDY3N2VmYmNmNjdhZjFhNjAxNzI4OTM3MGU3YmI3YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWE4ODIwYTJlYTkxZTBkYTAwYTQ1ZGIxNGJkYjQ3NzcwMjVhYmRmMzg3MzZkNzNjZDVhZmJiMjg4ZjQyN2MwNyJ9"
         }
       ]
+    },
+    {
+      "id": "claim_3fd9a2e0f1e84b2aadebc8fe2b818a9d",
+      "statement": "The generate() function accepts injected fetch_models_fn and fetch_pricing_fn callables so the join and output logic can be exercised without network access.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L195-L225",
+          "version": "repo-lines-v1:sha256:60295d610161e1b88ab9799f91a5a60df25f2efc41dd04e4a0d5f29c7fedaaa7:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5Y2JhMTkzMGQ0MjE1NTgwZjE2YTIxN2U0NmNmOWQ2YjE1ODFhY2ViN2JkZTFhNTIxZjRjN2JiNjE3NzhhNTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxMDQ2NTI0ZmNlOTcxYmRhNTg5YWMxMjcxOWI4ZmU4YzgxMzk5ODI4ZjhkNjQ3YzA4NzllZWExMzM0YzJhNTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI4ZDRmMDI5ODkwZTRlNGI0MzZjNTFkZDg1YmRlYjFjOTFkN2RlMzZiMzQ3NDBkNTY3NGJiMzYxZmM2N2Y0MDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU0OGQ3NDgzZDA2MGYxNzIyZTI0NTM2ODg4MzM0MjU2YjU0OTBlOGJiZTg2OTgyMDY3NmNhOWVhZjM1MDljYzkifQ"
+        },
+        {
+          "resource": "repo://tests/test_generate_anthropic_models.py#L148-L185",
+          "version": "repo-lines-v1:sha256:a0a9c9c598171ae46d225090683f9af4b9ba30e54d6e14c14e89add5f5220203:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg1Yzg5NjNkNjVhOGE5YWVjYTljYmI0YTdmMzBkNTkwMTY1YmI2OTE1YzAwYTU0MjgzNzdjMzY4ZDMzMTQyOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ4NWMwZjU5MjkzNmExNWY2NjU4Yjk1NDBlZjJjN2M3MjIxZDQxOTRkZGY1NDhlMmQ5MWM2YTBlYzU2YmMzOTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyMzkyM2IyZjE4ZjI0NmIzNjE2NDQwMzE1YTZlZTBiMDU2ODU1ZWI4MjQ1OGY0MGQxMTBhYzZkYjZiMDg4YTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUzNDk2ZWYyMmUzYWJlMjI0YmZhN2YxNWNiNDVjMzFlNDAzNTlhYzRlYTE4NTdhMzViNTM1OWU5OTEwZDJiYjAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7564a828b0ea43a98afa100d5bf50711",
+      "statement": "The script reads the API key via os.environ[\"ANTHROPIC_API_KEY\"], so a missing key raises KeyError before any fetch occurs.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L236-L237",
+          "version": "repo-lines-v1:sha256:14645c4a493443ea5aa261ec7df880700d2f39f5049aa40942a9bc30874db5b6:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGY4M2Q5YjY5MGUyZDRkNjhhMmNmNzEzNDA5ZWU5N2YzMzkyMzZjNGVkMGJkYTVmMWIxOTI3NWUxNWNhZmUxMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDM3NWE1NTQwNjU5ODkyNmM4NDMwN2M1Nzc0MGU1YjZiMGY4YmYzMzY3MTc3MTQzYzg1YWFmNDM2ZjMzNzI2MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWJiNzBlMGFlOGMzMDUwODAyMjJiYmM1ZjNkNWI5MzI3MDkxM2NjYzEwMWYzMTViYzU1MDkxOWQ5NjY3MzQ3NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2U5ODNhYjBhZmE5M2VhNGIxNWZiOWE4ZThjZmQ4ZTg0OWU1NTRmOTgwOTg5ZDc2MWFiZDY4NTc4NzZhYzJkZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_145ac926b42740e191b197c6a2bf13ea",
+      "statement": "The scheduled GitHub Actions workflow runs on cron \"15 3 * * *\" (daily 03:15 UTC), supports manual workflow_dispatch triggers, runs via uv run scripts/generate_anthropic_models.py, and requires the ANTHROPIC_API_KEY secret.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L1-L12",
+          "version": "repo-lines-v1:sha256:e311551d4df6cde7a64b7acc7d4cb3e566c73dd76d874ef11e96e93511fcfd5a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzYjE3NjNlZWZkZjU0OWJiMGNmOTU0MmE0MzAwMzc3MDY5ODhhZGFkMjlhM2JkNGEyNzUyMjRjYTEwMmM1MzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM1MjYyNDdlZGUwMDZlOWJkYWI5YzY4NTA3Mjg0MjVkMWI0MTY2Y2FmNWNhYzUwY2YwOTU1YzQ0ZDI0YzFhOGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE2ZjdkMzdmYjI5NzM5OWZlYTJhNWNlZjFjYzQwMjhjODk5NzlhOTA1MGE5Mjg1NmYwZDk2ZTFjMThiYTE5YTcifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L19-L24",
+          "version": "repo-lines-v1:sha256:35fe0852645f6d5c120951e376018682f40ab0e1b6b83426ce46b6de15ee9025:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg5OTkxMTAzZjZiYTg4OGUzZGU3NjUxYzVhMzA1Yzc3ZTU1NDc2NzczYWJhODM5NTkxZWNjNWJkMGYyYWIxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBiNjZjNTlkZjhhMDQzNDQ5NGFlNGYyNmYwYmNiZDY2YTM2ZjlkMDlhNTEwYTVkYTA2MTM0ZDljOTIxMDYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2U1OTk5ZWVjNmZmYmExZmM2MzI4NDNmN2FlYjc5YmQ1ZjJiZmVlYjNiNTJiNDU3MTNjZDY0MTJmYjVhYjJjMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0ca1d4f5ab374344af1ed87a904e1264",
+      "statement": "On success the workflow opens a pull request against branch automation/update-anthropic-models with changes to anthropic-models.json and history/anthropic-models.jsonl, attempts an immediate merge, and leaves the PR open if the merge is refused.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/update-anthropic-models.yml#L27-L56",
+          "version": "repo-lines-v1:sha256:c65175ae3ff59ab7e13da4529c096c77d2db31958a7df461715458000c2181e1:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxNWI1Njc5NGQxZTljZTQ3MzAzMzk3ZTlmMTRkZTY1MDhlZmY5OTg5ZGRkYTdmNDA3YWFiMTA5MjA3MTVlZDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRhYzE2YWEzOGIyYThmNWQ2NmJmMzU2YTUwYWM5MzE0NGU5NjMxMGZiNDBkODdlZTg0MzVjMWRlMTk2MGNmMmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzYjQ2MDk0ZjI4ZWRkMDJkYmE4YTEwYmYwYTNmYTE1ZmViZGM2MzFmN2Q0ZTRmODBkNmE3YTNmZDM4ZjVmMWUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0aa159251e72498ba0cd3063c8925488",
+      "statement": "Each successful run appends one compact JSON line to history/anthropic-models.jsonl with the shape {\"timestamp\": now, \"models\": models}, where timestamp is an ISO 8601 UTC string.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_anthropic_models.py#L208-L213",
+          "version": "repo-lines-v1:sha256:6ac56c859556a1cc509d4f381e48d9a3335b4fe4a2fd0371390fde84fca6d810:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjg1ODk3ODI3OGY3NWQwMzUzOTVlNjNiMTJjYjIwMTRkNzkzOTViNjQyNTY4N2IxN2ZjYjA4ODAzMDMyNTkyNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjViYThmYWZmOWQ2YTZjZmVhZDI2YzMwYjExYzAxMGQwMWE4YTg1ZjI1ODNhYmJjMTVjNzRkY2ZiMGQyZGI0YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWYzZjcxMzM5ODRjZmE5ZWE2YTE1ZTg0ZTcxMjBjODFlOTU1YzQxNWI4NDhlNjI1Y2ZiZTAyNjNiNWUyNjk5YSJ9"
+        },
+        {
+          "resource": "repo://tests/test_generate_anthropic_models.py#L196-L206",
+          "version": "repo-lines-v1:sha256:5cedcc616d5981367e0af58430eb646fe4ecbf505cd2d00a864face212f29756:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdhMzAzMDdiMjQ4ODNlY2JiZjU0ZDI5OWIxNjQxOGYwYzZjZTg3NWE0NThhOGQ3ODNlOTI5ZTAxMzQ2YmFmOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MDlhNTNhNjE4ZDAyOGUxZDMwMDBjMGE3YWJjZWVjYmU1ZmIzN2Y0ZTUxMWVmZTQ2NjQzZmFkNmU2Njg3MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJiMGFkYjFjMDliMWM3YTk5NmVlYmI2NTNjZDFkMTYxYjczYTI2OGQyYzIxOTNiMmU2ZTRiY2MzMzBlOTQzMDAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUxMTZhMGQ1ZDg2ZDdhZmE1YTc3ZWQ5YWFlMWZkOGQ1NjQ1ZDk0OGVkZDE4NjY2MzRiODQyNDFmOWI2ZDY5ZTIifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-14T11:53:54.399Z"
+    "at": "2026-11-28T13:48:21.508Z"
   }
 }

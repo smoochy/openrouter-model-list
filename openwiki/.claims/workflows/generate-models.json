@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:5efc61343e706ced5cc0b129e62307b064227c330d5e18ff6e21578275fed8d5",
+  "pageVersion": "sha256:9d81f4be891867ff286cb4262303a072b78f863489c52a5381caa9fd971e323c",
   "claims": [
     {
       "id": "claim_047fd5c4e5564b4786fd51406878d60d",
@@ -115,10 +115,58 @@
           "version": "repo-lines-v1:sha256:fa29d7d8828a1cf85bf2c5603f44fdfa30fc9d54fb21d0b91466e44dda261255:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjc4ZGU0YWMxMGJhNDc3NmQzMDVjNmY2MGExZGIyNjAyNTY3NTU1ZjNhYzQ4NGQyOGZhNTRmNTg4ZDFmMmUxOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWRmMjk1MzVmZWRlNDE1Mjk0MjhmYzViMmQxZjkzYjViZDk1NDNlZDU2M2I1NjBhYmZkMTAwNGM0Nzg4NGU4ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWYzZjcxMzM5ODRjZmE5ZWE2YTE1ZTg0ZTcxMjBjODFlOTU1YzQxNWI4NDhlNjI1Y2ZiZTAyNjNiNWUyNjk5YSJ9"
         }
       ]
+    },
+    {
+      "id": "claim_1878d0a8d7544f20a079ae5136092e7b",
+      "statement": "`generate()` loads thresholds via `thresholds.load_thresholds(thresholds_path)`, which applies defaults for missing keys (e.g., `require_tool` defaults false, `min_uptime`/`max_latency_ms` default None), so profile YAML files only need to declare profile-specific values.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L43-L50",
+          "version": "repo-lines-v1:sha256:a33cc5f2d8c2b5a463c4256838fb35d6e1cc5cc12748e03855da687cf6d287a8:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjljYmExOTMwZDQyMTU1ODBmMTZhMjE3ZTQ2Y2Y5ZDZiMTU4MWFjZWI3YmRlMWE1MjFmNGM3YmI2MTc3OGE1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjhkZGQ2Zjc3N2ZjMTY0ZDQ2MjE3MjJhNTg4YmVmYTY5ODUwNGM1NDY5Zjg1OTU1OTg3NzA2MDg4ZWJlOGEzMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjYwZmMxNDZhNTMzMDQ3OWI2ZDc4NTEzOWI2Yjk1ZWU1OWE2NTZiNmY4NzZmNzY0YWNhNTYzZmZhNDEzMGQ5MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjdlNjVkOTgzODczYWRmNDAwM2ZiNDAzNzkwMzhlYjAzNzZiN2RhNDRjNWRhZmFkY2I3ZGJmNjRmOGQzMWNlOSJ9"
+        },
+        {
+          "resource": "repo://scripts/thresholds.py",
+          "version": "repo-file-v1:sha256:5d9295b6870684991b5f2daa93c6350ad4e742ea648e415925e91e202544ac0d"
+        }
+      ]
+    },
+    {
+      "id": "claim_8e689b1cfb3e4a849a23c3cf871c07c2",
+      "statement": "`generate()` accepts injected callables (`fetch_models_fn`, `fetch_endpoint_stats_fn`, `probe_model_fn`, `llm_client`) so the pipeline can be exercised without network calls in tests, and `main()` wires in the real OpenAI/OpenRouter implementations.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L112-L139",
+          "version": "repo-lines-v1:sha256:4792a94c4ca7f0c9d155222a5b697f5c356b41261e1a16a340fd40939fbfdc7c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNlMGEyMDY5YzU3NDhlMGNmMzhlZjJlYTVkNTM4NjY0MTJjYmJkOGIxMzFhMmNjYTdjNzVkZDU2ZTA1ODk0YzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY0ODZmZjVjZjkzNjNiNDQyOTMzNjgwM2IyYzk2MGU3M2RhOGM0N2ZhMGM2ZjY3NjU4ZDE0YjMyM2NkMjJkMzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc3NDliOWQ1MGM1MDRmZDc1NmVhZjRkY2I0NzQ5OWQ3MzQxODc0Yjg3NTU0OTc4NDcxYzFkYzNlZjVmYmI4MzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk2MzcyNmIwNWQzODllYjA5NzM5NTBhMDk0OWMzZTA4YjA5YWNmZjRiNjg4NzExYzA1YzIyMjMyMDg0YjJjNGUifQ"
+        },
+        {
+          "resource": "repo://scripts/generate_models.py#L43-L61",
+          "version": "repo-lines-v1:sha256:60d10af06c1693f4ffdd9d8ed3cf4161c2805ac03dc9a1ce61d42222ae4c4cf8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5Y2JhMTkzMGQ0MjE1NTgwZjE2YTIxN2U0NmNmOWQ2YjE1ODFhY2ViN2JkZTFhNTIxZjRjN2JiNjE3NzhhNTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2MGZjMTQ2YTUzMzA0NzliNmQ3ODUxMzliNmI5NWVlNTlhNjU2YjZmODc2Zjc2NGFjYTU2M2ZmYTQxMzBkOTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI2OTRkNTZmOWE5YTJiYTI4Y2EwYWI5NGUwODM1ODkxOTA5OTZjMDBjZjMzYmUwYjdiYmVkNDhhYWVjNDYyOGEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9adea38f42694a70a016156c766c25b2",
+      "statement": "`fetch_models()` raises `httpx.HTTPStatusError` when the OpenRouter catalog request fails (non-2xx), propagating upstream rather than returning partial data.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/openrouter_client.py#L1-L14",
+          "version": "repo-lines-v1:sha256:709fbaad64398fca50af927533dc095be6ad34c25782535333aba080697538f8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYwNDE0ZDlkYTcwMmI5M2E3N2Y0N2U2MzJlNjEyMmE4YTlmYmIzYTEzMTllYWFkOGMyZDZhYjI1Njc0MmIxYjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxNGIyMmUyM2NjNmFkYjNkMzkzNjBmMzE1MWVkMjU3NzcwZGFkOWVjZjU4MGYxZmQwZDU5ZGFlZjM1MjNkYmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1be1e153dce449e6b5aee77716c1b8db",
+      "statement": "The CLI (`main()`) defaults to the `mengram` profile, reads `OPENROUTER_API_KEY` via `os.environ[]` (fatal KeyError if missing), stamps `SCHEMA_VERSION = 2` on output, and writes an ISO-8601 UTC `generated_at` timestamp.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/generate_models.py#L112-L139",
+          "version": "repo-lines-v1:sha256:4792a94c4ca7f0c9d155222a5b697f5c356b41261e1a16a340fd40939fbfdc7c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNlMGEyMDY5YzU3NDhlMGNmMzhlZjJlYTVkNTM4NjY0MTJjYmJkOGIxMzFhMmNjYTdjNzVkZDU2ZTA1ODk0YzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY0ODZmZjVjZjkzNjNiNDQyOTMzNjgwM2IyYzk2MGU3M2RhOGM0N2ZhMGM2ZjY3NjU4ZDE0YjMyM2NkMjJkMzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc3NDliOWQ1MGM1MDRmZDc1NmVhZjRkY2I0NzQ5OWQ3MzQxODc0Yjg3NTU0OTc4NDcxYzFkYzNlZjVmYmI4MzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk2MzcyNmIwNWQzODllYjA5NzM5NTBhMDk0OWMzZTA4YjA5YWNmZjRiNjg4NzExYzA1YzIyMjMyMDg0YjJjNGUifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-14T11:53:54.399Z"
+    "at": "2026-11-28T13:48:21.508Z"
   }
 }

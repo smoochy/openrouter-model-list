@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:4923a192b7cfe13c1f3bb2f8f9f4722cc96b034261e5723b6a449eaae721d91e",
+  "pageVersion": "sha256:5563c73c3401b94237dcdbcbd894461314eb263e163d77f9fdf94b36d350b97a",
   "claims": [
     {
       "id": "claim_5ee8b8e95ed241b2a77a2de99e49f23a",
@@ -193,10 +193,20 @@
           "version": "repo-lines-v1:sha256:c1501fb5cb14bc64c41fc8674b4517fd361282af1be1e72a82e1cf6d4a04da8e:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4MzRmYjE0ODkxNTQ4ZTNiNTRkYjhkMjkxZGUyZTIyZjI1MDc1ZDNiYmEzNTFhNmUwMGJkOWRkYTY2ODc3YzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU3MTFmOTBiZWVkZjI2Mzg0ZWU3ZGYzN2FhZDM1ODAwODAwMjY2MTEyNjk5ZTk2YTFmMmI3MzkwM2U5N2Y1MDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJmMjlkZWJmMTIyYTZjODM4ZmFhMTFkMzhjMzQ1YzZhYzk1NjdmMzA1YjM1ZWQ0NmVhZmRiMmYwZGE2ZjNiODUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMxMGQzMGQyNmZjZDlhYmI3ZTVmYzhiYjI3NDJiZTY0NWRjMDY1ZWNlNjc1YWM3NWE0NzI4NWFhOGQxYzFmMDIifQ"
         }
       ]
+    },
+    {
+      "id": "claim_b8facdd8a7374284806eb22153e6b3f1",
+      "statement": "When Anthropic pricing fails closed (missing price for a model), the generate() function raises PricingError without writing either the output JSON or history JSONL file.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_generate_anthropic_models.py#L223-L247",
+          "version": "repo-lines-v1:sha256:f0e4d913707721107fe0061cb99ee4b46721eda95364be955181e42c9519a0f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiNmIyYjljMTRjNTNhNzBjNzYxMjI2ZGRkNzhlNDRkNWVjMGMxZmUxYzQ2MTNkOTZlMjY2MGU0NWNkNjBlOTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImExM2U2YmUzZjMzZGE0MzczMTg5OWU0YjRhOGQ3MmZlYzJlMTc2ZGU1NjQ4ZGRhOWRjYjc2ZDY1ZGFmZDIwOTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE2OTQyZmYzMThmMWY4ZDUxZjc2MzQxMDA1YTAzZWU2N2Q3OGJjZmQwZTJiZjJjNWRjMmEzYWJiYjQ2M2Q0N2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxZWU3NzE5NjZhMmViZWUwYmMwYzc2YTRmMDM0MzE3N2E2ZmQ0NmRhNDA5ODRmOWFiOWUwNDJhYTc4YzYyZmQifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.9.0",
-    "at": "2026-11-14T11:53:54.399Z"
+    "at": "2026-11-28T13:48:21.508Z"
   }
 }

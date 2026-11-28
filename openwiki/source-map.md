@@ -60,10 +60,10 @@ sources:
     resource: repo://thresholds-openwiki.yaml
   - id: openwiki-source-95e171e2045483fa0c961258
     resource: repo://thresholds-yt-summarizer.yaml
-generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-14T11:53:54.399Z
+    at: 2026-11-28T13:48:21.508Z
 ---
 
 # Source Map
@@ -85,7 +85,7 @@ This page maps the repository's source code structure to help contributors navig
 | Post-probe filters | `scripts/scoring.py::passes_post_probe_filters` | `passes_post_probe_filters()` | `tests/test_scoring.py::test_passes_post_probe_filters` |
 | Threshold loading | `scripts/thresholds.py` | `load_thresholds()`, `DEFAULTS` | `tests/test_thresholds.py::test_load_thresholds_*` |
 | OpenRouter catalog fetch | `scripts/openrouter_client.py` | `fetch_models()`, `MODELS_URL` | `tests/test_openrouter_client.py::test_fetch_models` |
-| Anthropic model list | `scripts/generate_anthropic_models.py` | `generate()`, `fetch_models()`, `fetch_pricing_page()`, `parse_pricing_table()`, `join_prices()`, `join_long_context()` | — |
+| Anthropic model list | `scripts/generate_anthropic_models.py` | `generate()`, `fetch_models()`, `fetch_pricing_page()`, `parse_pricing_table()`, `join_prices()`, `join_long_context()` | `tests/test_generate_anthropic_models.py` |
 
 ## Data & Control Flow
 
@@ -121,7 +121,7 @@ The Anthropic path (`scripts/generate_anthropic_models.py`) fetches paginated mo
 | `models-mengram.json` | `generate_models.py --profile mengram` | `generated_at`, `schema_version: 2`, `models[] {id, score, context_length, max_output_tokens, uptime, latency_ms, own_uptime, sanity_ok}` |
 | `models-yt-summarizer.json` | `generate_models.py --profile yt-summarizer` | Same schema |
 | `models-openwiki.json` | `generate_models.py --profile openwiki` | Same schema |
-| `anthropic-models.json` | `scripts/generate_anthropic_models.py` | Array of `{id, display_name, type, created_at, line, max_input_tokens, max_tokens, capabilities, ...}` sorted by `id` |
+| `anthropic-models.json` | `scripts/generate_anthropic_models.py` | Sorted array of `{id, display_name, type, created_at, line, max_input_tokens, max_tokens, capabilities, ...}` |
 | `history/*.jsonl` | `probe.py::record_probe` | Rolling 30-day: `{timestamp, success, latency_ms}` per line |
 | `history/anthropic-models.jsonl` | `generate_anthropic_models.py` | `{timestamp, models[]}` appended per run |
 
@@ -146,6 +146,7 @@ All three workflows use the `update-model-lists` concurrency group with `cancel-
 | `tests/test_thresholds.py` | `load_thresholds` (defaults, override, missing keys) |
 | `tests/test_openrouter_client.py` | `fetch_models` (success, HTTP error) |
 | `tests/test_generate_models.py` | Integration: `generate()` with mocked deps, profile resolution, output schema, probe history, warnings |
+| `tests/test_generate_anthropic_models.py` | `slugify`, `parse_pricing_table`, `join_prices`, `join_long_context`, `fetch_models` |
 
 ## Quick Commands
 

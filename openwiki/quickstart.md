@@ -24,10 +24,10 @@ sources:
     resource: repo://thresholds-openwiki.yaml
   - id: openwiki-source-95e171e2045483fa0c961258
     resource: repo://thresholds-yt-summarizer.yaml
-generated: { by: "openwiki/0.9.0", at: "2026-11-14T11:53:54.399Z" }
+generated: { by: "openwiki/0.9.0", at: "2026-11-28T13:48:21.508Z" }
 verified:
   - by: openwiki/0.9.0
-    at: 2026-11-14T11:53:54.399Z
+    at: 2026-11-28T13:48:21.508Z
 ---
 
 # Quickstart
@@ -44,6 +44,10 @@ Consumers point their `model_list_url` at the file matching their requirements; 
 - [GitHub Actions](operations/github-actions.md) — Scheduled workflows and manual triggers
 - [Source Map](source-map.md) — Source code map linking docs to implementation
 - [Testing Overview](testing/overview.md) — Testing strategy for the repository
+- [Anthropic API Integration](integrations/anthropic.md) — Anthropic model fetch, pricing scrape, fail-closed behavior
+- [OpenRouter API Integration](integrations/openrouter.md) — OpenRouter catalog fetch, endpoint stats, probing
+- [Probe History and Reliability Scoring](operations/probe-history.md) — 30-day probe history and uptime malus
+- [Generate Anthropic Models](workflows/generate-anthropic-models.md) — Anthropic model list generation workflow
 
 ## Available Model Lists
 
@@ -91,7 +95,11 @@ The file updates daily via GitHub Actions. No manual upkeep required.
    # or
    uv run python scripts/generate_models.py --profile openwiki
    ```
-5. Run tests: `uv run pytest`
+5. Run Anthropic model generation:
+   ```bash
+   uv run python scripts/generate_anthropic_models.py
+   ```
+6. Run tests: `uv run pytest`
 
 ## Repository Structure
 
@@ -99,7 +107,7 @@ The file updates daily via GitHub Actions. No manual upkeep required.
 ├── models-mengram.json           # Output: mengram profile
 ├── models-yt-summarizer.json     # Output: yt-summarizer profile
 ├── models-openwiki.json          # Output: openwiki profile
-├── anthropic-models.json         # Output: weekly Anthropic model fetch
+├── anthropic-models.json         # Output: daily Anthropic model fetch
 ├── thresholds-mengram.yaml       # Thresholds for mengram profile
 ├── thresholds-yt-summarizer.yaml # Thresholds for yt-summarizer profile
 ├── thresholds-openwiki.yaml      # Thresholds for openwiki profile
